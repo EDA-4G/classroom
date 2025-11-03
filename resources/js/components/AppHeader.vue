@@ -61,11 +61,16 @@ const activeItemStyles = computed(
 );
 
 const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
+    // {
+    //     title: 'Salas',
+    //     href: dashboard(),
+    //     icon: LayoutGrid,
+    // },
+    // {
+    //     title: 'Administração',
+    //     href: dashboard(),
+    //     icon: LayoutGrid,
+    // },
 ];
 
 const rightNavItems: NavItem[] = [
@@ -74,11 +79,11 @@ const rightNavItems: NavItem[] = [
         href: 'https://github.com/laravel/vue-starter-kit',
         icon: Folder,
     },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
-    },
+    // {
+    //     title: 'Documentation',
+    //     href: 'https://laravel.com/docs/starter-kits#vue',
+    //     icon: BookOpen,
+    // },
 ];
 </script>
 
@@ -189,7 +194,7 @@ const rightNavItems: NavItem[] = [
 
                 <div class="ml-auto flex items-center space-x-2">
                     <div class="relative flex items-center space-x-1">
-                        <Button
+                        <!-- <Button
                             variant="ghost"
                             size="icon"
                             class="group h-9 w-9 cursor-pointer"
@@ -197,7 +202,7 @@ const rightNavItems: NavItem[] = [
                             <Search
                                 class="size-5 opacity-80 group-hover:opacity-100"
                             />
-                        </Button>
+                        </Button> -->
 
                         <div class="hidden space-x-1 lg:flex">
                             <template
