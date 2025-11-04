@@ -23,8 +23,9 @@ import {
 
 import emblaCarouselVue from 'embla-carousel-vue'
 import Autoplay from 'embla-carousel-autoplay'
+import { ref } from 'vue';
 
-const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [Autoplay()])
+const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [Autoplay({ delay: 8000 })])
 function scrollNext() {
     emblaApi.value?.scrollNext()
 }
@@ -32,6 +33,17 @@ function scrollNext() {
 function scrollPrev() {
     emblaApi.value?.scrollPrev()
 }
+
+const selectedIndex = ref(0)
+// 🖼️ Slides
+const slides = [
+    'https://picsum.photos/id/1005/800/400',
+    'https://picsum.photos/id/1015/800/400',
+    'https://picsum.photos/id/1020/800/400',
+    'https://picsum.photos/id/1024/800/400',
+    'https://picsum.photos/id/1035/800/400',
+    'https://picsum.photos/id/1045/800/400'
+]
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -51,9 +63,24 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class=" px-4 py-10 sm:px-6 lg:px-0 lg:py-6">
                 <div class="embla overflow-hidden" ref="emblaRef">
                     <div class="embla__container flex">
-                        <div class="embla__slide min-w-0 w-full h-[200px] bg-red-400 rounded-xl">.1..</div>
-                        <div class="embla__slide min-w-0 w-full h-[200px] bg-blue-400 rounded-xl">.2..</div>
-                        <div class="embla__slide min-w-0 w-full h-[200px] bg-gray-400 rounded-xl">.3..</div>
+                        <!-- bg-red-400 -->
+                        <div class="embla__slide min-w-0  rounded-xl grid grid-cols-2 lg:grid-cols-4 gap-2">
+                            <!-- .1.. -->
+                            <div class="bg-red-200 border border-gray-400 rounded-xl">
+                                <img src="/storage/regulamento.jpg"/>
+                            </div>
+                            <div class="bg-red-200 rounded-xl">
+                                B
+                            </div>
+                            <div class="bg-red-200 rounded-xl">
+                                C
+                            </div>
+                             <div class="bg-red-200 rounded-xl">
+                                D
+                            </div>
+                        </div>
+                        <div class="embla__slide min-w-0 w-full h-[260px] bg-blue-400 rounded-xl">.2..</div>
+                        <div class="embla__slide min-w-0 w-full h-[260px] bg-gray-400 rounded-xl">.3..</div>
                     </div>
                 </div>
                 <div class="flex justify-between py-4 mb-4">
@@ -63,6 +90,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                     <button class="text-sm border rounded-lg p-2">Repositório Instituicional</button>
                 </div>
+                <div class="embla__dots"></div>
+
+                <!-- 📊 Slide counter -->
+                <!-- <div class="embla__counter">
+        {{ selectedIndex + 1 }} / {{ slides.length }}
+      </div> -->
                 <!-- <div class="mb-8">
                     <Carousel class="w-full" :plugins="[Autoplay()]">
                         <CarouselContent>
@@ -298,7 +331,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
