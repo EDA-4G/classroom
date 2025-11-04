@@ -88,8 +88,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <button @click="scrollPrev" class="embla__prev text-sm border rounded-lg p-2">Prev</button>
                         <button @click="scrollNext" class="embla__next text-sm border rounded-lg p-2">Next</button>
                     </div>
-                    <button @click="dashboard().url" class="text-sm border cursor-pointer rounded-lg p-2">Repositório
-                        Instituicional</button>
+                    <button class="text-sm border rounded-lg p-2">Repositório Instituicional</button>
                 </div>
                 <div class="embla__dots"></div>
 
@@ -117,7 +116,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <!-- Imagem da faculdade de engenharia -->
                 <!-- Accordion -->
 
-                <h2 class="font-bold text-lg">Departamentos</h2>
+                <h2 class="font-bold text-lg">Documentos</h2>
                 <!-- <div class="hs-accordion-group divide-y divide-gray-200 dark:divide-neutral-700">
                     <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
