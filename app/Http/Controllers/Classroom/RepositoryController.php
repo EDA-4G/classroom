@@ -13,7 +13,7 @@ class RepositoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('department/Index');
+        return Inertia::render('repository/Index');
     }
 
     /**
