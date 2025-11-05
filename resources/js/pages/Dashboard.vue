@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
-import departments from '@/routes/departments';
 import { type BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/vue3';
 import Autoplay from 'embla-carousel-autoplay';
@@ -12,6 +11,8 @@ import {
     ChevronRight,
     FolderOpen,
 } from 'lucide-vue-next';
+import departments from '@/routes/departments';
+import repositories from '@/routes/repositories';
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [
     Autoplay({ delay: 8000 }),
@@ -110,7 +111,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Building2 width="18" />
                     Departamentos
                     </Link>
-                    <Link :href="dashboard().url"
+                    <Link :href="repositories.index().url"
                         class="text-md flex cursor-pointer place-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
                     <FolderOpen width="18" />
                     Repositório Instituicional
