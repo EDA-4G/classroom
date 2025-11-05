@@ -3,22 +3,9 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import PlaceholderPattern from '../components/PlaceholderPattern.vue';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from '@/components/ui/carousel'
-
-import { ChevronLeft, ChevronRight, FolderOpen, Search } from 'lucide-vue-next';
-
+import { ChevronLeft, ChevronRight, FolderOpen, Building2 } from 'lucide-vue-next';
 import emblaCarouselVue from 'embla-carousel-vue'
 import Autoplay from 'embla-carousel-autoplay'
-// import { ref } from 'vue';
-// import Input from '@/components/ui/input/Input.vue';
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [Autoplay({ delay: 8000 })])
 function scrollNext() {
@@ -36,30 +23,15 @@ function scrollPrev() {
 
 
 import { ref, onMounted, onUnmounted } from 'vue'
-// import emblaCarouselVue from 'embla-carousel-vue'
-// import Autoplay from 'embla-carousel-autoplay'
-
 const slides = [
     'https://picsum.photos/id/1015/800/400',
     'https://picsum.photos/id/1016/800/400',
     'https://picsum.photos/id/1018/800/400',
 ]
 
-// const [emblaRef, emblaApi] = emblaCarouselVue(
-//   { loop: true, align: 'center' },
-//   [Autoplay({ delay: 8000 })]
-// )
+
 
 const selectedIndex = ref(0)
-
-// function scrollNext() {
-//   emblaApi.value?.scrollNext()
-// }
-
-// function scrollPrev() {
-//   emblaApi.value?.scrollPrev()
-// }
-
 function scrollTo(index: number) {
     emblaApi.value?.scrollTo(index)
 }
@@ -99,30 +71,17 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <section class="embla overflow-hidden" ref="emblaRef">
                     <div class="embla__container flex gap-1">
-                        <!-- bg-red-400 -->
-                        <!-- <div class="embla__slide min-w-0  h-full rounded-xl grid grid-cols-2 lg:grid-cols-4 gap-2">
-                            <div class="bg-red-200 border border-gray-400 rounded-xl">
-                                <img src="/storage/regulamento.jpg" class="w-full " />
-                            </div>
-                            <div class="bg-red-200 border border-gray-400 rounded-xl">
-                                <img src="/storage/relatario-final-de-auto-avaliaaao-cpa-periodo-2012.jpg" />
-                            </div>
-                            <div class="bg-red-200 border border-gray-400 rounded-xl">
-                                <img src="/storage/regulamento.jpg" />
-                            </div>
-                            <div class="bg-red-200 border border-gray-400 rounded-xl">
-                                <img src="/storage/relatario-final-de-auto-avaliaaao-cpa-periodo-2012.jpg" />
-                            </div>
-                        </div> -->
-
-                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-blue-400 rounded-xl">
-                            <img src="/storage/hero/colors.jpg" class="w-full h-full object-cover  rounded-xl" />
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100">
+                            <img src="/storage/hero/colors.jpg" class="w-full h-full object-cover rounded-xl"
+                                loading="lazy" decoding="async" />
                         </div>
-                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-gray-400 rounded-xl">
-                            <img src="/storage/hero/ocean.jpg" class="w-full h-full object-cover  rounded-xl" />
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100">
+                            <img src="/storage/hero/ocean.jpg" class="w-full h-full object-cover  rounded-xl"
+                                loading="lazy" decoding="async" />
                         </div>
-                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-gray-400 rounded-xl">
-                            <img src="/storage/hero/arindam.jpg" class="w-full h-full object-cover  rounded-xl" />
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100">
+                            <img src="/storage/hero/arindam.jpg" class="w-full h-full object-cover  rounded-xl"
+                                loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </section>
@@ -143,24 +102,149 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <button v-for="(_, index) in slides" :key="'dot-' + index" @click="scrollTo(index)"
                             class="w-3.5 h-3.5 cursor-pointer rounded-full border-2 transition-all duration-300 ease-in-out focus:outline-none"
                             :class="selectedIndex === index
-                                ? 'border-blue-600 bg-blue-600 scale-110 shadow-sm'
-                                : 'border-gray-400 bg-transparent hover:border-blue-400 hover:scale-105'">
+                                ? 'border-[#038043] bg-[#038043] scale-110 shadow-sm'
+                                : 'border-gray-400 bg-transparent hover:border-[#1fad68] hover:scale-105'">
                         </button>
                     </div>
                 </section>
 
-                <div class="flex gap-2">
+                <div class="grid lg:grid-cols-2 gap-2">
                     <button @click="dashboard().url"
-                        class="flex gap-1 place-items-center text-sm border cursor-pointer rounded-lg px-2 py-1">
-                        <FolderOpen width="16" />
+                        class="flex bg-[#038043] hover:bg-[#1fad68] gap-1 place-items-center justify-center text-white font-semibold text-md border cursor-pointer rounded-lg px-2 py-3">
+                        <Building2 width="18" />
                         Departamentos
                     </button>
                     <button @click="dashboard().url"
-                        class="flex gap-1 place-items-center text-sm border cursor-pointer rounded-lg px-2 py-1">
-                        <FolderOpen width="16" />
+                        class="flex gap-1 place-items-center justify-center text-md text-[#038043] hover:text-[#1fad68] font-semibold border border-[#038043] cursor-pointer rounded-lg px-2 py-3">
+                        <FolderOpen width="18" />
                         Repositório Instituicional
                     </button>
                 </div>
+
+                <section class="py-10">
+                    <div class="pb-4">
+                        <h2 class="font-bold text-lg">Salas</h2>
+                        <p class="text-gray-400 text-sm">Mais acessadas</p>
+                    </div>
+
+                    <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=2" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="true"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 208
+                                </span>
+                                <span class="text-sm font-semibold text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=3" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="false"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 209
+                                </span>
+                                <span class="text-sm font-medium text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=7" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="false"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 202
+                                </span>
+                                <span class="text-sm font-medium text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=6" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="true"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 205
+                                </span>
+                                <span class="text-sm font-medium text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+
+                    </div>
+                </section>
 
                 <section>
                     <div class="pb-4">
@@ -217,8 +301,3 @@ const breadcrumbs: BreadcrumbItem[] = [
         </div>
     </AppLayout>
 </template>
-<style scoped>
-.embla__slide {
-    /*flex: 0 0 100%;*/
-}
-</style>
