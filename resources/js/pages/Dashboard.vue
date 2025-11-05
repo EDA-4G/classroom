@@ -115,13 +115,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </div>
                         </div> -->
 
-                        <div class="embla__slide min-w-0 w-full h-100 bg-blue-400 rounded-xl">
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-blue-400 rounded-xl">
                             <img src="/storage/hero/colors.jpg" class="w-full h-full object-cover  rounded-xl" />
                         </div>
-                        <div class="embla__slide min-w-0 w-full h-100 bg-gray-400 rounded-xl">
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-gray-400 rounded-xl">
                             <img src="/storage/hero/ocean.jpg" class="w-full h-full object-cover  rounded-xl" />
                         </div>
-                        <div class="embla__slide min-w-0 w-full h-100 bg-gray-400 rounded-xl">
+                        <div class="embla__slide flex-[0_0_100%] min-w-0 w-full h-100 bg-gray-400 rounded-xl">
                             <img src="/storage/hero/arindam.jpg" class="w-full h-full object-cover  rounded-xl" />
                         </div>
                     </div>
@@ -219,6 +219,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 </template>
 <style scoped>
 .embla__slide {
-    flex: 0 0 100%;
+    /*flex: 0 0 100%;*/
 }
 </style>
