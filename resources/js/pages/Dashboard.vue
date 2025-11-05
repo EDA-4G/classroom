@@ -122,9 +122,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
 
                 <section class="py-10">
-                    <div class="pb-4">
-                        <h2 class="font-bold text-lg">Salas</h2>
-                        <p class="text-gray-400 text-sm">Mais acessadas</p>
+                    <div class="pb-2">
+                        <p class="font-bold text-xl">Salas</p>
+                        <p class="pt-0 text-gray-400 text-sm">Mais acessadas</p>
                     </div>
 
                     <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
@@ -244,11 +244,75 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </button>
 
                     </div>
+
+                    <div class="pt-6 pb-2">
+                        <p class="text-gray-400 text-sm">Fixadas</p>
+                    </div>
+
+                    <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=1" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="false"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 208
+                                </span>
+                                <span class="text-sm font-semibold text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+
+                        <button
+                            class="relative h-46 rounded-2xl overflow-hidden shadow-md group cursor-pointer transition-all duration-300 hover:shadow-xl">
+                            <img src="https://picsum.photos/300/400?random=9" alt="Sala"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-black/40 transition-colors duration-300">
+                            </div>
+
+                            <div v-if="true"
+                                class="absolute top-2 right-2 flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full  ring-1 ring-white/40 animate-[pulse_2s_infinite]">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75 animate-ping"></span>
+                                    <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                                </span>
+                                <span>Em Aula</span>
+                            </div>
+
+                            <div
+                                class="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+                                <span class="text-2xl font-bold drop-shadow-md transition-colors">
+                                    Sala 208
+                                </span>
+                                <span class="text-sm font-semibold text-white drop-shadow-md">
+                                    Dep. Engenharia Electrotécnica
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+
                 </section>
 
                 <section>
                     <div class="pb-4">
-                        <h2 class="font-bold text-lg">Departamentos</h2>
+                        <h2 class="font-bold text-xl">Departamentos</h2>
                     </div>
 
                     <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
