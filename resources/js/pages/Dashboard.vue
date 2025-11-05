@@ -3,7 +3,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import { ChevronLeft, ChevronRight, FolderOpen, Building2 } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, FolderOpen, Building2, MoveRight } from 'lucide-vue-next';
 import emblaCarouselVue from 'embla-carousel-vue'
 import Autoplay from 'embla-carousel-autoplay'
 
@@ -123,8 +123,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <section class="py-10">
                     <div class="pb-2">
-                        <p class="font-bold text-xl">Salas</p>
-                        <p class="pt-0 text-gray-400 text-sm">Mais acessadas</p>
+                        <p class="font-bold text-xl">Salas de aulas</p>
+                        <div class="flex justify-between">
+                            <p class="text-gray-400 text-sm">Mais acessadas</p>
+                            <a class="flex gap-2 text-gray-400 text-sm cursor-pointer hover:text-gray-500">Veja mais
+                                &rarr;
+                            </a>
+                        </div>
                     </div>
 
                     <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
@@ -311,24 +316,30 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
 
                 <section>
-                    <div class="pb-4">
-                        <h2 class="font-bold text-xl">Departamentos</h2>
+                    <div class="pb-2">
+                        <p class="font-bold text-xl">Publicações</p>
+                        <div class="flex justify-between">
+                            <p class="text-gray-400 text-sm">Repositório instituicional</p>
+                            <a class="flex gap-2 text-gray-400 text-sm cursor-pointer hover:text-gray-500">Veja mais
+                                &rarr;
+                            </a>
+                        </div>
                     </div>
 
                     <div class="embla__slide min-w-0  h-full grid grid-cols-2 lg:grid-cols-4 gap-2">
                         <div>
-                            <img src="/storage/regulamento.jpg" class="w-full border border-gray-400 rounded-xl" />
+                            <img src="/storage/regulamento.jpg" class="border border-[#038043] rounded-xl" />
                         </div>
                         <div>
                             <img src="/storage/relatario-final-de-auto-avaliaaao-cpa-periodo-2012.jpg"
                                 class="border border-gray-400 rounded-xl" />
                         </div>
                         <div>
-                            <img src="/storage/regulamento.jpg" class="border border-gray-400 rounded-xl" />
+                            <img src="/storage/regulamento.jpg" class="border border-[#038043] rounded-xl" />
                         </div>
                         <div>
                             <img src="/storage/relatario-final-de-auto-avaliaaao-cpa-periodo-2012.jpg"
-                                class="border border-gray-400 rounded-xl" />
+                                class="border border-[#038043] rounded-xl" />
                         </div>
                     </div>
                 </section>
