@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Spinner } from '@/components/ui/spinner';
 import { Loader } from 'lucide-vue-next';
+import { Button } from '@/components/ui/button';
 
 // import InputG
 
@@ -73,13 +74,6 @@ const breadcrumbs: BreadcrumbItem[] = [
             </div>
 
             <section>
-                <div class="pb-2">
-                    <p class="text-xl font-bold">Cadeiras gerais</p>
-                    <p class="text-sm text-gray-400">Mais acessadas</p>
-                    <div>
-                        <p>Todas, Em Aulas, Abertas, Fechadas</p>
-                    </div>
-                </div>
 
                 <div class="py-4 grid grid-cols-2 lg:grid-cols-4 gap-2">
                     <button
