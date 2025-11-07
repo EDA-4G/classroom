@@ -25,8 +25,12 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import { Loader } from 'lucide-vue-next';
 import { Button } from '@/components/ui/button';
+import { Waypoints, Layers } from 'lucide-vue-next';
 
-// import InputG
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from "@/components/ui/input-group";
+
+import { Check, ChevronsUpDown, Search } from "lucide-vue-next"
+import { ref } from "vue"
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -43,7 +47,6 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 px-4 flex-col gap-4  rounded-xl p-4">
 
-            <!-- <template> -->
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem1>
@@ -54,30 +57,61 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <BreadcrumbSeparator />
 
                     <BreadcrumbItem1>
-                        <BreadcrumbLink href="/docs/components/accordion.html">
-                            Components
-                        </BreadcrumbLink>
-                    </BreadcrumbItem1>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem1>
-                        <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                        <BreadcrumbPage>Departamentos</BreadcrumbPage>
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
 
-            <h1>Departamentos</h1>
 
-            <div class="grid grid-cols-5 gap-2">
-                <Input placeholder="Departamentos" />
-                <Input placeholder="Estado" />
-                <Input placeholder="Procurar..." class="col-span-3" />
-            </div>
+            <InputGroup>
+                <InputGroupInput placeholder="Departamento, sala..." />
+                <InputGroupAddon>
+                    <Search />
+                </InputGroupAddon>
+                <InputGroupAddon align="inline-end">
+                    12 resultados
+                </InputGroupAddon>
+            </InputGroup>
 
             <section>
+                <div class="py-4">
+                    <p class="text-2xl font-bold">Cadeiras gerais</p>
+                    <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">5</span>
+                        salas e <span class="font-semibold">2</span> wc's</p>
+                </div>
+                <section>
+                    <div class="flex justify-between pb-2">
+                        <div
+                            class="flex max-h-6 items-center font-semibold order-2 gap-2 text-sm bg-[#0e976a] text-white border border-[#0e976a] px-2 rounded-lg">
+                            <Layers width="16" />
+                            <p>Nível</p>
+                            <p>0</p>
+                        </div>
+
+                        <section class="grid grid-cols-3 lg:grid-cols-4  gap-2">
+                            <button autoFocus
+                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full ">
+                                Todas
+                            </button>
+                            <button
+                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
+                                Em Aulas
+                            </button>
+                            <button
+                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
+                                Abertas
+                            </button>
+                            <button
+                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
+                                Fechadas
+                            </button>
+                        </section>
+                    </div>
+                </section>
 
                 <div class="py-4 grid grid-cols-2 lg:grid-cols-4 gap-2">
                     <button
-                        class="group relative h-48 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                        class="group relative h-46 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                         aria-label="Sala Aberta - Dep. Mecânica e Produção">
                         <!-- Imagem da sala -->
                         <img src="https://picsum.photos/300/400?random=8" alt="Sala Aberta"
@@ -116,7 +150,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
                     </button>
                     <button
-                        class="group relative h-48 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                        class="group relative h-46 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                         aria-label="Sala Aberta - Dep. Mecânica e Produção">
                         <!-- Imagem da sala -->
                         <img src="https://picsum.photos/300/400?random=9" alt="Sala Aberta"
@@ -155,7 +189,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
                     </button>
                     <button
-                        class="group relative h-48 cursor-not-allowed overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300"
+                        class="group relative h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300"
                         aria-label="Sala Fechada - Dep. Mecânica e Produção">
                         <!-- Imagem da sala em grayscale e baixa opacidade -->
                         <img src="https://picsum.photos/300/400?random=10" alt="Sala Fechada"
@@ -223,7 +257,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             <section class="grid grid-cols-2 lg:grid-cols-4 gap-2">
 
                 <button
-                    class="group relative h-48 cursor-not-allowed overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300"
+                    class="group relative h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300"
                     aria-label="Sala Fechada - Dep. Mecânica e Produção">
                     <!-- Imagem da sala em grayscale e baixa opacidade -->
                     <img src="https://picsum.photos/300/400?random=12" alt="Sala Fechada"
@@ -264,7 +298,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
                 <button
-                    class="group relative h-48 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                    class="group relative h-46 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                     aria-label="Sala Aberta - Dep. Mecânica e Produção">
                     <!-- Imagem da sala -->
                     <img src="https://picsum.photos/300/400?random=13" alt="Sala Aberta"
