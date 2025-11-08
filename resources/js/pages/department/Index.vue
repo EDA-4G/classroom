@@ -338,6 +338,62 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </button>
 
 
+                <button
+                    class="group relative h-46 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                    aria-label="Sala Aberta - Dep. Mecânica e Produção">
+
+                    <!-- Imagem da sala -->
+                    <img src="https://picsum.photos/300/400?random=14" alt="Sala Aberta"
+                        class="absolute inset-0 h-full w-full object-cover rounded-2xl opacity-100 transition-transform duration-500 group-hover:scale-105 brightness-105" />
+
+                    <!-- Overlay para contraste -->
+                    <div class="absolute inset-0 bg-black/40 rounded-2xl"></div>
+
+                    <!-- Badge 1: ícone de desbloqueio -->
+                    <div
+                        class="absolute top-2 left-2 flex items-center justify-center w-7.5 h-7.5 rounded-full bg-emerald-600/90 shadow-md border border-white/20 backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 1 1 8 0v4" />
+                            <rect x="4" y="11" width="16" height="10" rx="2" ry="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <!-- Badge 2: ícone de camadas e número do andar -->
+                    <div
+                        class="absolute top-2 left-12 flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-600/90 shadow-md border border-white/20 backdrop-blur-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <!-- Ícone de camadas -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 9l10 6 10-6-10-6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 15l10 6 10-6" />
+                        </svg>
+                        <span class="text-sm font-semibold text-white/90 leading-none">5</span>
+                    </div>
+
+                    <!-- Conteúdo da sala -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
+                        <span class="text-2xl font-bold drop-shadow-lg">
+                            Sala 105
+                        </span>
+                        <span class="text-sm font-medium drop-shadow-md">
+                            Dep. Mecânica e Produção
+                        </span>
+                    </div>
+
+                    <!-- Feedback visual de foco -->
+                    <div
+                        class="absolute inset-0 pointer-events-none rounded-3xl ring-2 ring-transparent group-focus:ring-emerald-400 transition-all duration-200">
+                    </div>
+                </button>
+
+
+
+                
+
+
+
 
             </section>
 
