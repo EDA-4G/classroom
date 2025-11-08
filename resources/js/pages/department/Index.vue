@@ -32,6 +32,22 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGr
 import { Check, ChevronsUpDown, Search } from "lucide-vue-next"
 import { ref } from "vue"
 
+import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
+
+const frameworks = [
+    { value: "1", label: "1" },
+    { value: "2", label: "2" },
+    { value: "3", label: "3" },
+    { value: "4", label: "4" },
+    { value: "5", label: "5" },
+    { value: "6", label: "6" },
+
+
+]
+
+const value = ref<typeof frameworks[0]>()
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -45,7 +61,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Departamentos" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 px-4 flex-col gap-4  rounded-xl p-4">
+        <div class="flex h-full flex-1 px-4 flex-col gap-4  rounded-xl p-4 md:px-6 lg:px-4">
 
             <Breadcrumb>
                 <BreadcrumbList>
@@ -64,7 +80,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
             <InputGroup>
-                <InputGroupInput placeholder="Departamento, sala..." />
+                <InputGroupInput id="#" placeholder="Departamento, sala..." />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
@@ -80,15 +96,50 @@ const breadcrumbs: BreadcrumbItem[] = [
                         salas e <span class="font-semibold">2</span> wc's</p>
                 </div>
                 <section>
-                    <div class="flex justify-between pb-2">
-                        <div
+                    <div class="flex justify-between gap-2 pb-2">
+                        <!-- <div
                             class="flex max-h-6 items-center font-semibold order-2 gap-2 text-sm bg-[#0e976a] text-white border border-[#0e976a] px-2 rounded-lg">
                             <Layers width="16" />
                             <p>Nível</p>
                             <p>0</p>
-                        </div>
+                        </div> -->
 
-                        <section class="grid grid-cols-3 lg:grid-cols-4  gap-2">
+                        <Combobox v-model="value" by="label" class="order-3">
+                            <ComboboxAnchor as-child class="max-w-23 hover:bg-[#1fad7e] hover:border-[#1fad7e]">
+                                <ComboboxTrigger as-child>
+                                    <Button
+                                        class="flex max-h-6 items-center font-semibold order-2 gap-2 text-sm bg-[#0e976a] text-white border border-[#0e976a] px-2 cursor-pointer rounded-lg">
+                                        <Layers width="16" />
+                                        <p>Nível</p>
+                                        <p>0</p>
+                                    </Button>
+                                </ComboboxTrigger>
+                            </ComboboxAnchor>
+
+                            <ComboboxList class="max-w-23">
+                                <div class="relative w-full max-w-sm items-center">
+                                    <ComboboxInput
+                                        class="pl-9 focus-visible:ring-0 border-0 border-b rounded-none h-10" />
+                                    <span class="absolute start-0 inset-y-0 flex items-center justify-center px-3">
+                                        <Search class="size-4 text-muted-foreground" />
+                                    </span>
+                                </div>
+
+                                <ComboboxEmpty class="italic">
+                                    Nenhum <br>nível encontrado.
+                                </ComboboxEmpty>
+
+                                <ComboboxGroup>
+                                    <ComboboxItem v-for="framework in frameworks" :key="framework.value"
+                                        :value="framework">
+                                        {{ framework.label }}
+                                    </ComboboxItem>
+                                </ComboboxGroup>
+                            </ComboboxList>
+                        </Combobox>
+
+
+                        <section class="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-4">
                             <button autoFocus
                                 class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full ">
                                 Todas
@@ -109,7 +160,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-                <div class="py-4 grid grid-cols-2 lg:grid-cols-4 gap-2">
+                <div class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                     <button
                         class="group relative h-46 cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
                         aria-label="Sala Aberta - Dep. Mecânica e Produção">
@@ -390,7 +441,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 
-                
+
 
 
 
