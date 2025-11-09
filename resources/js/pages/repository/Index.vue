@@ -62,6 +62,21 @@ const music = [
 ]
 
 
+// import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -102,20 +117,54 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </InputGroupAddon>
             </InputGroup>
 
+
             <section>
-                <Item variant="outline" size="sm" as-child class="text-[#0f5734] border-[#0F5734]">
-                    <a href="#">
-                        <ItemMedia>
-                            <BellRing class="size-5" />
-                        </ItemMedia>
-                        <ItemContent>
-                            <ItemTitle>Receba notificação das publicações no email.</ItemTitle>
-                        </ItemContent>
-                        <ItemActions>
-                            <ChevronRightIcon class="size-4" />
-                        </ItemActions>
-                    </a>
-                </Item>
+                <Sheet>
+                    <SheetTrigger as-child>
+
+                        <Item variant="outline" size="sm" as-child class="text-[#0f5734] border-[#0F5734]">
+                            <a href="#">
+                                <ItemMedia>
+                                    <BellRing class="size-5" />
+                                </ItemMedia>
+                                <ItemContent>
+                                    <ItemTitle>Receba notificação das publicações no email.</ItemTitle>
+                                </ItemContent>
+                                <ItemActions>
+                                    <ChevronRightIcon class="size-4" />
+                                </ItemActions>
+                            </a>
+                        </Item>
+
+                    </SheetTrigger>
+                    <SheetContent>
+                        <SheetHeader>
+                            <SheetTitle>Subscrição</SheetTitle>
+                            <SheetDescription>
+                                Make changes to your profile here. Click save when you're done.
+                            </SheetDescription>
+                        </SheetHeader>
+                        <div class="grid gap-4 px-4 py-4">
+                            <div class="grid items-center gap-4">
+                                <Label for="name" class="text-right">
+                                    Email
+                                </Label>
+                                <Input id="name" value="Pedro Duarte" class="col-span-3" />
+                            </div>
+                        </div>
+                        <SheetFooter>
+                            <SheetClose as-child>
+                                <button type="submit"
+                                    class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68]">Salvar
+                                    Alterações</button>
+                            </SheetClose>
+                            <SheetClose as-child>
+                                <button type="submit"
+                                    class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68]">Cancelar</button>
+                            </SheetClose>
+                        </SheetFooter>
+                    </SheetContent>
+                </Sheet>
             </section>
 
             <section>
