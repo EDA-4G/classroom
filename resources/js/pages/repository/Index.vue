@@ -16,8 +16,7 @@ import {
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
-import { BadgeCheckIcon, ChevronRightIcon, BellRing } from "lucide-vue-next"
-import { Button } from "@/components/ui/button"
+import { ChevronRightIcon, BellRing } from "lucide-vue-next"
 import {
     Item,
     ItemActions,
@@ -62,7 +61,6 @@ const music = [
 ]
 
 
-// import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -139,7 +137,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </SheetTrigger>
                     <SheetContent>
                         <SheetHeader>
-                            <SheetTitle>Subscrição</SheetTitle>
+                            <SheetTitle>Inscrição</SheetTitle>
                             <SheetDescription>
                                 Make changes to your profile here. Click save when you're done.
                             </SheetDescription>
@@ -147,9 +145,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <div class="grid gap-4 px-4 py-4">
                             <div class="grid items-center gap-4">
                                 <Label for="name" class="text-right">
+                                    Estudante
+                                </Label>
+                                <Input id="student-email" placeholder="Ex: nome.apelido@uem.ac.mz" class="col-span-3" />
+                            </div>
+                            <div class="grid items-center gap-4">
+                                <Label for="name" class="text-right">
                                     Email
                                 </Label>
-                                <Input id="name" value="Pedro Duarte" class="col-span-3" />
+                                <Input id="personal-email" placeholder="Ex: eda.grupo4@gmail.com" class="col-span-3" />
                             </div>
                         </div>
                         <SheetFooter>
