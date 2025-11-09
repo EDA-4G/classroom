@@ -28,25 +28,26 @@ import {
 } from "@/components/ui/item"
 
 const music = [
-  {
-    title: "Midnight City Lights",
-    artist: "Neon Dreams",
-    album: "Electric Nights",
-    duration: "3:45",
-  },
-  {
-    title: "Coffee Shop Conversations",
-    artist: "The Morning Brew",
-    album: "Urban Stories",
-    duration: "4:05",
-  },
-  {
-    title: "Digital Rain",
-    artist: "Cyber Symphony",
-    album: "Binary Beats",
-    duration: "3:30",
-  },
+    {
+        title: "Midnight City Lights",
+        artist: "Neon Dreams",
+        album: "Electric Nights",
+        duration: "3:45",
+    },
+    {
+        title: "Coffee Shop Conversations",
+        artist: "The Morning Brew",
+        album: "Urban Stories",
+        duration: "4:05",
+    },
+    {
+        title: "Digital Rain",
+        artist: "Cyber Symphony",
+        album: "Binary Beats",
+        duration: "3:30",
+    },
 ]
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -124,8 +125,11 @@ const breadcrumbs: BreadcrumbItem[] = [
             </section>
 
             <section>
+                <div class="py-2">
+                    <p class="text-sm">Recentes</p>
+                </div>
                 <div class="">
-                    <ItemGroup class="grid gap-4">
+                    <ItemGroup class="grid lg:grid-cols-2 gap-4">
                         <Item v-for="song in music" :key="song.title" variant="outline" as-child role="listitem">
                             <a href="#">
                                 <ItemMedia variant="image">
@@ -134,20 +138,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 </ItemMedia>
                                 <ItemContent>
                                     <ItemTitle class="line-clamp-1">
-                                        {{ song.title }} - <span class="text-muted-foreground">{{ song.album }}</span>
+                                        {{ song.title }}
                                     </ItemTitle>
-                                    <!-- {{ song.artist }} -->
-                                    <ItemDescription> 22 Feb 2025, 12:45</ItemDescription>
-                                </ItemContent>
-                                <ItemContent class="flex-none text-center">
-                                    <ItemDescription>{{ song.duration }}</ItemDescription>
+                                    <ItemDescription class="text-xs"> 22 Feb 2025, 12:45</ItemDescription>
                                 </ItemContent>
                             </a>
                         </Item>
                     </ItemGroup>
                 </div>
             </section>
-
             <section class="flex items-center justify-between pt-4">
                 <div class="text-sm text-slate-500">
                     Mostrando <b>1-4</b> de 45
