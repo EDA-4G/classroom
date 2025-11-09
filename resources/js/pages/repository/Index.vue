@@ -16,7 +16,7 @@ import {
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
-import { BadgeCheckIcon, ChevronRightIcon } from "lucide-vue-next"
+import { BadgeCheckIcon, ChevronRightIcon, BellRing } from "lucide-vue-next"
 import { Button } from "@/components/ui/button"
 import {
     Item,
@@ -26,6 +26,7 @@ import {
     ItemMedia,
     ItemTitle,
 } from "@/components/ui/item"
+import Xlsx from '@/components/aux/extension/Xlsx.vue';
 
 const music = [
     {
@@ -39,6 +40,18 @@ const music = [
         artist: "The Morning Brew",
         album: "Urban Stories",
         duration: "4:05",
+    },
+    {
+        title: "Digital Rain",
+        artist: "Cyber Symphony",
+        album: "Binary Beats",
+        duration: "3:30",
+    },
+    {
+        title: "Digital Rain",
+        artist: "Cyber Symphony",
+        album: "Binary Beats",
+        duration: "3:30",
     },
     {
         title: "Digital Rain",
@@ -62,7 +75,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Repositório" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4  rounded-xl p-2 px-4">
+        <div class="flex h-full flex-1 flex-col gap-4  rounded-xl p-2 px-6 lg:px-4">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem1>
@@ -80,7 +93,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
             <InputGroup>
-                <InputGroupInput id="#" placeholder="Departamento, sala..." />
+                <InputGroupInput id="#" placeholder="Documento..." class="text-sm" />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
@@ -90,38 +103,19 @@ const breadcrumbs: BreadcrumbItem[] = [
             </InputGroup>
 
             <section>
-                <div class="grid gap-2">
-                    <Item variant="outline">
+                <Item variant="outline" size="sm" as-child class="text-[#0f5734] border-[#0F5734]">
+                    <a href="#">
+                        <ItemMedia>
+                            <BellRing class="size-5" />
+                        </ItemMedia>
                         <ItemContent>
-                            <ItemTitle>Basic Item</ItemTitle>
-                            <ItemDescription>
-                                A simple item with title and description.
-                            </ItemDescription>
+                            <ItemTitle>Receba notificação das publicações no email.</ItemTitle>
                         </ItemContent>
                         <ItemActions>
-                            <Button variant="outline" size="sm">
-                                Action
-                            </Button>
-                            <Button variant="outline" size="sm">
-                                Action
-                            </Button>
+                            <ChevronRightIcon class="size-4" />
                         </ItemActions>
-                    </Item>
-                    <Item variant="outline" size="sm" as-child>
-                        <a href="#">
-                            <ItemMedia>
-                                <BadgeCheckIcon class="size-5" />
-                            </ItemMedia>
-                            <ItemContent>
-                                <ItemTitle>Your profile has been verified.</ItemTitle>
-                            </ItemContent>
-                            <ItemActions>
-                                <ChevronRightIcon class="size-4" />
-                            </ItemActions>
-                        </a>
-                    </Item>
-                </div>
-
+                    </a>
+                </Item>
             </section>
 
             <section>
@@ -131,14 +125,35 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="">
                     <ItemGroup class="grid lg:grid-cols-2 gap-4">
                         <Item v-for="song in music" :key="song.title" variant="outline" as-child role="listitem">
-                            <a href="#">
+                            <a href="#" download>
                                 <ItemMedia variant="image">
-                                    <img :src="`https://avatar.vercel.sh/${song.title}`" :alt="song.title" width="32"
-                                        height="32" class="object-cover grayscale">
+                                    <Xlsx />
                                 </ItemMedia>
                                 <ItemContent>
                                     <ItemTitle class="line-clamp-1">
-                                        {{ song.title }}
+                                        {{ song.title }}.extension
+                                    </ItemTitle>
+                                    <ItemDescription class="text-xs"> 22 Feb 2025, 12:45</ItemDescription>
+                                </ItemContent>
+                            </a>
+                        </Item>
+                    </ItemGroup>
+                </div>
+            </section>
+            <section>
+                <div class="py-2">
+                    <p class="text-sm">Todos documentos</p>
+                </div>
+                <div class="">
+                    <ItemGroup class="grid lg:grid-cols-2 gap-4">
+                        <Item v-for="song in music" :key="song.title" variant="outline" as-child role="listitem">
+                            <a href="#" download>
+                                <ItemMedia variant="image">
+                                    <Xlsx />
+                                </ItemMedia>
+                                <ItemContent>
+                                    <ItemTitle class="line-clamp-1">
+                                        {{ song.title }}.extension
                                     </ItemTitle>
                                     <ItemDescription class="text-xs"> 22 Feb 2025, 12:45</ItemDescription>
                                 </ItemContent>
