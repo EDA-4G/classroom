@@ -61,7 +61,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Departamentos" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 px-4 flex-col gap-4  rounded-xl p-4 md:px-6 lg:px-4">
+        <div class="flex h-full flex-1 px-6 flex-col gap-4  rounded-xl p-4 md:px-6 lg:px-4">
 
             <Breadcrumb>
                 <BreadcrumbList>
@@ -80,7 +80,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
             <InputGroup>
-                <InputGroupInput id="#" placeholder="Departamento, sala..." />
+                <InputGroupInput id="#" placeholder="Departamento, sala..." class="text-sm" />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
