@@ -186,7 +186,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     <ItemTitle class="line-clamp-1">
                                         {{ song.title }}.extension
                                     </ItemTitle>
-                                    <ItemDescription class="text-xs"> 22 Feb 2025, 12:45</ItemDescription>
+                                    <ItemDescription class="text-xs">Sun 22 Feb 2025, 12:45</ItemDescription>
                                 </ItemContent>
                             </a>
                         </Item>
