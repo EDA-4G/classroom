@@ -92,7 +92,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem1>
-                        <BreadcrumbLink href="/">
+                        <BreadcrumbLink :href="dashboard().url">
                             Início
                         </BreadcrumbLink>
                     </BreadcrumbItem1>
