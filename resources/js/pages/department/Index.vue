@@ -25,7 +25,7 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import { Loader } from 'lucide-vue-next';
 import { Button } from '@/components/ui/button';
-import { Waypoints, Layers } from 'lucide-vue-next';
+import { Waypoints, Layers, ChevronLeft, ChevronRight } from 'lucide-vue-next';
 
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from "@/components/ui/input-group";
 
@@ -448,17 +448,17 @@ const breadcrumbs: BreadcrumbItem[] = [
 
             </section>
 
-            <section class="flex items-center justify-between pt-4">
+            <section class="flex items-center justify-between py-4">
                 <div class="text-sm text-slate-500">
                     Mostrando <b>1-4</b> de 45
                 </div>
                 <div class="flex space-x-1">
                     <button
                         class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        Prev
+                        <ChevronLeft width="16" />
                     </button>
                     <button
-                        class="ease min-h-9 min-w-9 rounded border border-slate-800 bg-slate-800 px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-slate-600 hover:bg-slate-600">
+                        class="ease min-h-9 min-w-9 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
                         1
                     </button>
                     <button
@@ -471,7 +471,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </button>
                     <button
                         class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        Next
+                        <ChevronRight width="16" />
                     </button>
                 </div>
             </section>
