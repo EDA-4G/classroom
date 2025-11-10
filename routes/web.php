@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\Classroom\DepartmentController;
 use App\Http\Controllers\Classroom\RepositoryController;
+use App\Http\Controllers\Classroom\ClassroomController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -18,5 +19,6 @@ Route::get('dashboard', function () {
 
 Route::resource('departments', DepartmentController::class);
 Route::resource('repositories', RepositoryController::class);
+Route::resource('classrooms', ClassroomController::class);
 
 require __DIR__ . '/settings.php';
