@@ -34,6 +34,7 @@ import { ref } from "vue"
 
 import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
 import classrooms from '@/routes/classrooms';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 const frameworks = [
     { value: "1", label: "1" },
@@ -45,6 +46,27 @@ const frameworks = [
 
 
 ]
+
+interface Filter {
+    id: number;
+    name: string
+}
+
+const filters: Filter[] = [
+    { id: 1, name: 'Todas' },
+    { id: 2, name: 'Em Aulas' },
+    { id: 3, name: 'Abertas' },
+    { id: 4, name: 'Fechadas' }
+]
+
+const me = (item: string) => {
+    // alert(item);
+}
+
+const filter = ref(filters ? filters.at(0)?.name : '')
+const handleToggleGroup = (value: any) => {
+    if (value) filter.value = value
+}
 
 const value = ref<typeof frameworks[0]>()
 
@@ -140,24 +162,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </Combobox>
 
 
-                        <section class="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-4">
-                            <button autoFocus
-                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full ">
-                                Todas
-                            </button>
-                            <button
-                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
-                                Em Aulas
-                            </button>
-                            <button
-                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
-                                Abertas
-                            </button>
-                            <button
-                                class="px-3 py-1 text-xs focus:bg-gray-700 focus:text-white hover:bg-gray-600 hover:text-white border border-gray-700 text-gray-700 cursor-pointer rounded-full">
-                                Fechadas
-                            </button>
+                        <section>
+                            <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
+                                class="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-4">
+                                <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
+                                    @click="me(filter.name)"
+                                    class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3 max-h-6 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
+                                    {{ filter.name }}
+                                </ToggleGroupItem>
+                            </ToggleGroup>
                         </section>
+
                     </div>
                 </section>
 
