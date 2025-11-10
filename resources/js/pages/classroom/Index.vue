@@ -13,7 +13,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { BadgeCheckIcon, ChevronRightIcon, Info } from "lucide-vue-next"
+import { BadgeCheckIcon, ChevronRightIcon, Info, BookmarkIcon } from "lucide-vue-next"
 import { Button } from "@/components/ui/button"
 import {
     Item,
@@ -25,6 +25,11 @@ import {
 } from "@/components/ui/item"
 
 import departments from '@/routes/departments';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+
+const toggleMe = () => {
+    alert('toggle me!')
+}
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -103,6 +108,21 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </a>
                         </Item>
                     </div>
+
+                    <section>
+                        <ToggleGroup type="single">
+                            <ToggleGroupItem @click="toggleMe" value="a" class="hover:bg-red-500">
+                                A
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="b">
+                                B
+                            </ToggleGroupItem>
+                            <ToggleGroupItem value="c"
+                                class="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500">
+                                <BookmarkIcon />
+                            </ToggleGroupItem>
+                        </ToggleGroup>
+                    </section>
 
 
                     B
