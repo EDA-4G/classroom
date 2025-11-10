@@ -34,7 +34,7 @@ import { toUrl, urlIsActive } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3';
-import { LayoutGrid, BookOpen, Folder, Menu, Search } from 'lucide-vue-next';
+import { LayoutGrid, BookOpen, Folder, Locate, Menu, Search } from 'lucide-vue-next';
 import { computed } from 'vue';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
@@ -81,7 +81,7 @@ const mainNavItems: NavItem[] = [
     {
         title: 'Perdidos e Achados',
         href: '#',
-        icon: BookOpen,
+        icon: Locate,
     },
 ];
 
@@ -113,10 +113,10 @@ const rightNavItems: NavItem[] = [
                         </SheetTrigger>
                         <SheetContent side="left" class="w-[300px] p-6">
                             <SheetTitle class="sr-only">Navigation Menu</SheetTitle>
-                            <SheetHeader class="flex justify-start text-left w-40">
+                            <SheetHeader class="flex justify-start text-left w-30 p-0">
                                 <AppLogoIcon class="size-6 fill-current text-black dark:text-white" />
                             </SheetHeader>
-                            <div class="flex h-full flex-1 flex-col justify-between space-y-4 py-6">
+                            <div class="flex h-full flex-1 flex-col justify-between space-y-4 py-10">
                                 <nav class="-mx-3 space-y-1">
                                     <Link v-for="item in mainNavItems" :key="item.title" :href="item.href"
                                         class="flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
