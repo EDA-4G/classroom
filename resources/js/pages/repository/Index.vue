@@ -237,8 +237,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
             </section>
             <section class="flex items-center justify-between py-4">
-                <div class="text-sm text-slate-500">
-                    Mostrando <b>1-4</b> de 45
+                <div class="text-sm text-slate-500 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
+                    <p>Mostrando</p>
+                    <p><b>1-4</b> de 45</p>
                 </div>
                 <div class="flex space-x-1">
                     <button
