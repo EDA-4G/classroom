@@ -3,7 +3,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import { Search } from "lucide-vue-next"
+import { Search, ChevronLeft, ChevronRight } from "lucide-vue-next"
 
 import {
     Breadcrumb,
@@ -88,7 +88,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Repositório" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4  rounded-xl p-2 px-6 lg:px-4">
+        <div class="flex h-full flex-1 flex-col gap-4  rounded-xl p-4 px-6 lg:px-4">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem1>
@@ -194,7 +194,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
             <section>
                 <div class="py-2">
-                    <p class="text-sm">Recentes</p>
+                    <p class="text-md font-bold">Recentes</p>
                 </div>
                 <div class="">
                     <ItemGroup class="grid lg:grid-cols-2 gap-4">
@@ -216,7 +216,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             </section>
             <section>
                 <div class="py-2">
-                    <p class="text-sm">Todos documentos</p>
+                    <p class="text-md font-bold">Todos documentos</p>
                 </div>
                 <div class="">
                     <ItemGroup class="grid lg:grid-cols-2 gap-4">
@@ -236,17 +236,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </ItemGroup>
                 </div>
             </section>
-            <section class="flex items-center justify-between pt-4">
+            <section class="flex items-center justify-between py-4">
                 <div class="text-sm text-slate-500">
                     Mostrando <b>1-4</b> de 45
                 </div>
                 <div class="flex space-x-1">
                     <button
                         class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        Prev
+                        <ChevronLeft width="16" />
                     </button>
                     <button
-                        class="ease min-h-9 min-w-9 rounded border border-slate-800 bg-slate-800 px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-slate-600 hover:bg-slate-600">
+                        class="ease min-h-9 min-w-9 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
                         1
                     </button>
                     <button
@@ -259,7 +259,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </button>
                     <button
                         class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        Next
+                        <ChevronRight width="16" />
                     </button>
                 </div>
             </section>
