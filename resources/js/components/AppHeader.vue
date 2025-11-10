@@ -34,8 +34,10 @@ import { toUrl, urlIsActive } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-vue-next';
+import { LayoutGrid, BookOpen, Folder, Menu, Search } from 'lucide-vue-next';
 import { computed } from 'vue';
+import departments from '@/routes/departments';
+import repositories from '@/routes/repositories';
 
 interface Props {
     breadcrumbs?: BreadcrumbItem[];
@@ -61,29 +63,39 @@ const activeItemStyles = computed(
 );
 
 const mainNavItems: NavItem[] = [
-    // {
-    //     title: 'Salas',
-    //     href: dashboard(),
-    //     icon: LayoutGrid,
-    // },
-    // {
-    //     title: 'Administração',
-    //     href: dashboard(),
-    //     icon: LayoutGrid,
-    // },
+    {
+        title: 'Painel Inicial',
+        href: dashboard().url,
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Encontrar Salas',
+        href: departments.index().url,
+        icon: Search,
+    },
+    {
+        title: 'Repositório',
+        href: repositories.index().url,
+        icon: Folder,
+    },
+    {
+        title: 'Perdidos e Achados',
+        href: '#',
+        icon: BookOpen,
+    },
 ];
 
 const rightNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        href: 'https://github.com/laravel/vue-starter-kit',
+        title: 'Repositório',
+        href: repositories.index().url,
         icon: Folder,
     },
-    // {
-    //     title: 'Documentation',
-    //     href: 'https://laravel.com/docs/starter-kits#vue',
-    //     icon: BookOpen,
-    // },
+    {
+        title: 'Perdidos e Achados',
+        href: 'https://laravel.com/docs/starter-kits#vue',
+        icon: BookOpen,
+    },
 ];
 </script>
 
@@ -101,7 +113,7 @@ const rightNavItems: NavItem[] = [
                         </SheetTrigger>
                         <SheetContent side="left" class="w-[300px] p-6">
                             <SheetTitle class="sr-only">Navigation Menu</SheetTitle>
-                            <SheetHeader class="flex justify-start text-left">
+                            <SheetHeader class="flex justify-start text-left w-40">
                                 <AppLogoIcon class="size-6 fill-current text-black dark:text-white" />
                             </SheetHeader>
                             <div class="flex h-full flex-1 flex-col justify-between space-y-4 py-6">
@@ -113,14 +125,14 @@ const rightNavItems: NavItem[] = [
                                     {{ item.title }}
                                     </Link>
                                 </nav>
-                                <div class="flex flex-col space-y-4">
+                                <!-- <div class="flex flex-col space-y-4">
                                     <a v-for="item in rightNavItems" :key="item.title" :href="toUrl(item.href)"
                                         target="_blank" rel="noopener noreferrer"
                                         class="flex items-center space-x-2 text-sm font-medium">
                                         <component v-if="item.icon" :is="item.icon" class="h-5 w-5" />
                                         <span>{{ item.title }}</span>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </SheetContent>
                     </Sheet>
@@ -134,7 +146,7 @@ const rightNavItems: NavItem[] = [
                 <div class="hidden h-full lg:flex lg:flex-1">
                     <NavigationMenu class="ml-10 flex h-full items-stretch">
                         <NavigationMenuList class="flex h-full items-stretch space-x-2">
-                            <NavigationMenuItem v-for="(item, index) in mainNavItems" :key="index"
+                            <!-- <NavigationMenuItem v-for="(item, index) in mainNavItems" :key="index"
                                 class="relative flex h-full items-center">
                                 <Link :class="[
                                     navigationMenuTriggerStyle(),
@@ -147,7 +159,7 @@ const rightNavItems: NavItem[] = [
                                 <div v-if="isCurrentRoute(item.href)"
                                     class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white">
                                 </div>
-                            </NavigationMenuItem>
+                            </NavigationMenuItem> -->
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
@@ -174,7 +186,7 @@ const rightNavItems: NavItem[] = [
                                                 <a :href="toUrl(item.href)" target="_blank" rel="noopener noreferrer">
                                                     <span class="sr-only">{{
                                                         item.title
-                                                        }}</span>
+                                                    }}</span>
                                                     <component :is="item.icon"
                                                         class="size-5 opacity-80 group-hover:opacity-100" />
                                                 </a>
