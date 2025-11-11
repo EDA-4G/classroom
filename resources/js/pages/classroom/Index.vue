@@ -137,7 +137,36 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Estudantes acompanhando a Aula
                     Gerar lista de presenca e estudante marcar presenca
                     Publicar algum achado na sala
+
+                    Testes 1/2, exames, recorrencia
+                    Links Importantes whatsapp
                     <button>Voltar</button>
+                    <div>
+                        <audio controls preload="auto">
+                            <source src="audio-file.mp3" type="audio/mpeg" />
+
+                            <!-- fallback for browsers that don't support mp3 -->
+                            <source src="audio-file.ogg" type="audio/ogg" />
+
+                            <!-- fallback for browsers that don't support audio element -->
+                            <a href="audio-file.mp3">download audio</a>
+                        </audio>
+                    </div>
+                    <div>
+                        <video controls width="640" height="480" poster="initial-image.png" autoplay muted>
+                            <source src="video-file.mp4" type="video/mp4" />
+
+                            <!-- fallback for browsers that don't support mp4 -->
+                            <source src="video-file.webm" type="video/webm" />
+
+                            <!-- specifying subtitle files -->
+                            <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English" />
+                            <track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian" />
+
+                            <!-- fallback for browsers that don't support video element -->
+                            <a href="video-file.mp4">download video</a>
+                        </video>
+                    </div>
                 </section>
             </section>
 
