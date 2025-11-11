@@ -103,7 +103,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
             <InputGroup>
-                <InputGroupInput id="#" placeholder="Departamento, sala..." class="text-sm" />
+                <InputGroupInput id="#" placeholder="Departamento, sala, disciplina..." class="text-sm" />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
