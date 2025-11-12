@@ -13,7 +13,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { BadgeCheckIcon, ChevronRightIcon, Info, BookmarkIcon } from "lucide-vue-next"
+import { BadgeCheckIcon, ChevronRightIcon, Info, BookmarkIcon, User, Pen, Radio, Album, Folder } from "lucide-vue-next"
 import { Button } from "@/components/ui/button"
 import {
     Item,
@@ -28,7 +28,7 @@ import departments from '@/routes/departments';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 const toggleMe = () => {
-    alert('toggle me!')
+    // alert('toggle me!')
 }
 
 
@@ -68,9 +68,91 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </BreadcrumbList>
             </Breadcrumb>
 
-            <section>
-                <p class="text-lg font-semibold">Estruturas de Dados e Algoritmos</p>
-                <p class="text-sm text-gray-400">Engenharia Informatica Pos-Laboral, 2 Ano</p>
+            <section class="grid lg:grid-cols-2 gap-4">
+                <section>
+                    <p class="text-xl font-semibold">Estruturas de Dados e Algorítmos</p>
+                    <p class="text-sm text-gray-400">Engenharia Informática Pós-Laboral, 2º Ano</p>
+                </section>
+
+                <section class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div
+                        class="flex flex-wrap items-center justify-start sm:grid-cols-2 md:justify-start lg:justify-end col-span-2 font-medium gap-1 cursor-text">
+                        <p class="max-h-9 border rounded-md p-2 text-sm flex items-center gap-1">
+                            <Album class="size-4" />
+                        <p>Sala 202</p>
+                        </p>
+                        <p class="max-h-9 border rounded-md p-2 text-sm flex items-center gap-1">
+                            <Radio class="size-4" />
+                            00:00:00
+                        </p>
+                        <p class="max-h-9 border rounded-md p-2 text-sm flex items-center gap-1">
+                            <User class="size-4" />
+                            20
+                        </p>
+                        <button class="max-h-9 border rounded-md p-2 text-sm flex items-center gap-1">
+                            <Folder class="size-4" />
+                            Repositório
+                        </button>
+                    </div>
+                    <!-- <div class="flex items-center bg-red-500">
+                        <p class="max-h-9 border rounded-md p-2 text-sm">
+                            Repositorio
+                        </p>
+                    </div> -->
+                    <!-- <button class="border rounded-md">Repositorio</button> -->
+
+                    <ToggleGroup type="multiple" class="flex justify-end col-start-3 items-start lg:items-center">
+                        <!-- <button class="border rounded-md h-full max-h-9 px-2">Repositorio</button> -->
+                        <ToggleGroupItem @click="toggleMe" value="b"
+                            class="border cursor-pointer data-[state=on]:bg-transparent data-[state=on]:border-[#0e976a] data-[state=on]:*:[svg]:fill-[#0e976a] data-[state=on]:*:[svg]:stroke-[#0e976a]">
+                            <Pen />
+                            Assinar
+                        </ToggleGroupItem>
+                        <ToggleGroupItem value="c"
+                            class="border cursor-pointer data-[state=on]:bg-transparent data-[state=on]:border-[#0e976a] data-[state=on]:*:[svg]:fill-[#0e976a] data-[state=on]:*:[svg]:stroke-[#0e976a]">
+                            <BookmarkIcon />
+                            Fixar
+                        </ToggleGroupItem>
+                    </ToggleGroup>
+                </section>
+            </section>
+
+            <!-- grid-cols-2 lg:grid-cols-4 -->
+            <section class="h-110 p-0 grid gap-1 rounded-xl lg:h-140">
+                <section class="relative h-full bg-[#1E3D33] grid place-items-center border border-black rounded-xl">
+                    <div class="relative flex h-20 w-20">
+                        <span :class="true ? 'animate-ping' : ''"
+                            class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span
+                            class="relative inline-flex rounded-full h-20 w-20 bg-red-500 justify-center items-center">
+                            <User class="text-white" />
+                        </span>
+                    </div>
+                    <section class="absolute w-40 h-full right-0 rounded-xl lg:w-60">
+                        <div class="w-full h-full flex flex-col gap-4 p-4 rounded-xl">
+                            <section
+                                class="relative grid h-40 place-items-center bg-[#274F42] border border-[#366D5C] rounded-xl">
+                                <div class="relative flex h-10 w-10">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span
+                                        class="relative inline-flex rounded-full h-10 w-10 bg-red-500 justify-center items-center">
+                                        <User class="text-white" />
+                                    </span>
+                                </div>
+                                <p
+                                    class="absolute left-2 bottom-2 w-fit px-2 py-1 bg-black text-white text-[0.65rem] rounded-lg">
+                                    António Matsinhe</p>
+                            </section>
+                           
+
+
+                        </div>
+                    </section>
+                    <p class="absolute left-2 bottom-2 w-fit px-2 py-1.5 bg-black text-white text-xs rounded-lg">
+                        António Matsinhe (Docente)</p>
+                </section>
+
             </section>
 
             <section class="grid lg:grid-cols-2 gap-4">
@@ -141,6 +223,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Testes 1/2, exames, recorrencia
                     Links Importantes whatsapp
                     <button>Voltar</button>
+
+                    <div>
+                        Aulas programadas
+                    </div>
+                    <div>
+                        Ficheiros(Aula, Exercicios)
+                    </div>
                     <div>
                         <audio controls preload="auto">
                             <source src="audio-file.mp3" type="audio/mpeg" />
