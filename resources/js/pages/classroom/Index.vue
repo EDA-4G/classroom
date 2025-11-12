@@ -46,28 +46,31 @@ const breadcrumbs: BreadcrumbItem[] = [
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4  rounded-xl p-4 px-6 lg:px-4">
-            <Breadcrumb>
-                <BreadcrumbList>
-                    <BreadcrumbItem1>
-                        <BreadcrumbLink :href="dashboard().url">
-                            Início
-                        </BreadcrumbLink>
-                    </BreadcrumbItem1>
-                    <BreadcrumbSeparator />
+            <section class="flex gap-2 justify-between">
+                <Breadcrumb>
+                    <BreadcrumbList>
+                        <BreadcrumbItem1>
+                            <BreadcrumbLink :href="dashboard().url">
+                                Início
+                            </BreadcrumbLink>
+                        </BreadcrumbItem1>
+                        <BreadcrumbSeparator />
 
-                    <BreadcrumbItem1>
-                        <BreadcrumbLink :href="departments.index().url">
-                            Departamentos
-                        </BreadcrumbLink>
-                    </BreadcrumbItem1>
-                    <BreadcrumbSeparator />
+                        <BreadcrumbItem1>
+                            <BreadcrumbLink :href="departments.index().url">
+                                Departamentos
+                            </BreadcrumbLink>
+                        </BreadcrumbItem1>
+                        <BreadcrumbSeparator />
 
-                    <BreadcrumbItem1>
-                        <BreadcrumbPage>Sala</BreadcrumbPage>
-                    </BreadcrumbItem1>
-                </BreadcrumbList>
-            </Breadcrumb>
-
+                        <BreadcrumbItem1>
+                            <BreadcrumbPage>Sala</BreadcrumbPage>
+                        </BreadcrumbItem1>
+                    </BreadcrumbList>
+                </Breadcrumb>
+                <span
+                    class="px-2 py-1 border bg-[#274f42] border-[#274f42] text-white text-xs font-semibold rounded-full">P</span>
+            </section>
             <section class="grid lg:grid-cols-2 gap-4">
                 <section>
                     <p class="text-xl font-semibold">Estruturas de Dados e Algorítmos</p>
@@ -94,15 +97,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                             Repositório
                         </button>
                     </div>
-                    <!-- <div class="flex items-center bg-red-500">
-                        <p class="max-h-9 border rounded-md p-2 text-sm">
-                            Repositorio
-                        </p>
-                    </div> -->
-                    <!-- <button class="border rounded-md">Repositorio</button> -->
+
 
                     <ToggleGroup type="multiple" class="flex justify-end col-start-3 items-start lg:items-center">
-                        <!-- <button class="border rounded-md h-full max-h-9 px-2">Repositorio</button> -->
                         <ToggleGroupItem @click="toggleMe" value="b"
                             class="border cursor-pointer data-[state=on]:bg-transparent data-[state=on]:border-[#0e976a] data-[state=on]:*:[svg]:fill-[#0e976a] data-[state=on]:*:[svg]:stroke-[#0e976a]">
                             <Pen />
@@ -117,7 +114,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
             </section>
 
-            <!-- grid-cols-2 lg:grid-cols-4 -->
             <section class="h-110 p-0 grid gap-1 rounded-xl lg:h-140">
                 <section class="relative h-full bg-[#1E3D33] grid place-items-center border border-black rounded-xl">
                     <div class="relative flex h-20 w-20">
@@ -144,7 +140,22 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     class="absolute left-2 bottom-2 w-fit px-2 py-1 bg-black text-white text-[0.65rem] rounded-lg">
                                     António Matsinhe</p>
                             </section>
-                           
+
+                            <section
+                                class="relative grid h-40 place-items-center bg-[#274F42] border border-[#366D5C] rounded-xl">
+                                <div class="relative flex h-10 w-10">
+                                    <span
+                                        class="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span
+                                        class="relative inline-flex rounded-full h-10 w-10 bg-red-500 justify-center items-center">
+                                        <User class="text-white" />
+                                    </span>
+                                </div>
+                                <p
+                                    class="absolute left-2 bottom-2 w-fit px-2 py-1 bg-black text-white text-[0.65rem] rounded-lg">
+                                    António Matsinhe</p>
+                            </section>
+
 
 
                         </div>
@@ -158,6 +169,11 @@ const breadcrumbs: BreadcrumbItem[] = [
             <section class="grid lg:grid-cols-2 gap-4">
                 <section class="grid place-items-center border border-gray-500 h-100 rounded-lg">
                     00:00:00
+
+                    Estudantes na Aula
+                    Audios
+                    Videos
+                    Aulas Programadas 4 aulas
                 </section>
                 <section>
                     <div class="grid gap-2">
