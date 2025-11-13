@@ -38,6 +38,7 @@ import { LayoutGrid, BookOpen, Folder, Locate, Menu, Search } from 'lucide-vue-n
 import { computed } from 'vue';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
+import losses from '@/routes/losses';
 
 interface Props {
     breadcrumbs?: BreadcrumbItem[];
@@ -80,7 +81,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Perdidos e Achados',
-        href: '#',
+        href: losses.index().url,
         icon: Locate,
     },
 ];
@@ -186,7 +187,7 @@ const rightNavItems: NavItem[] = [
                                                 <a :href="toUrl(item.href)" target="_blank" rel="noopener noreferrer">
                                                     <span class="sr-only">{{
                                                         item.title
-                                                    }}</span>
+                                                        }}</span>
                                                     <component :is="item.icon"
                                                         class="size-5 opacity-80 group-hover:opacity-100" />
                                                 </a>
