@@ -355,8 +355,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         </ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
-                                        <Button size="sm" variant="outline">
-                                            Review
+                                        <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                            Conteúdos
                                         </Button>
                                     </ItemActions>
                                 </Item>
@@ -367,14 +367,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <ShieldAlertIcon />
                                     </ItemMedia>
                                     <ItemContent>
-                                        <ItemTitle>Security Alert</ItemTitle>
+                                        <ItemTitle>Teste 2</ItemTitle>
                                         <ItemDescription>
-                                            New login detected from unknown device.
+                                            Monday, 23 April 2025
                                         </ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
-                                        <Button size="sm" variant="outline">
-                                            Review
+                                        <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                            Conteúdos
                                         </Button>
                                     </ItemActions>
                                 </Item>
@@ -385,37 +385,37 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <ShieldAlertIcon />
                                     </ItemMedia>
                                     <ItemContent>
-                                        <ItemTitle>Security Alert</ItemTitle>
+                                        <ItemTitle>Exame Normal</ItemTitle>
                                         <ItemDescription>
-                                            New login detected from unknown device.
+                                            Monday, 23 April 2025
                                         </ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
-                                        <Button size="sm" variant="outline">
-                                            Review
+                                        <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                            Conteúdos
+                                        </Button>
+                                    </ItemActions>
+                                </Item>
+                            </div>
+                            <div class="flex w-full flex-col gap-6">
+                                <Item variant="outline">
+                                    <ItemMedia variant="icon">
+                                        <ShieldAlertIcon />
+                                    </ItemMedia>
+                                    <ItemContent>
+                                        <ItemTitle>Exame de Recorrência</ItemTitle>
+                                        <ItemDescription>
+                                            Monday, 23 April 2025
+                                        </ItemDescription>
+                                    </ItemContent>
+                                    <ItemActions>
+                                        <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                            Conteúdos
                                         </Button>
                                     </ItemActions>
                                 </Item>
                             </div>
 
-                            <div>
-                                <Item variant="outline" as-child>
-                                    <a href="#" target="_blank" rel="noopener noreferrer">
-                                        <ItemMedia variant="icon">
-                                            <Link />
-                                        </ItemMedia>
-                                        <ItemContent>
-                                            <ItemTitle>WhatsApp</ItemTitle>
-                                            <ItemDescription>
-                                                Opens in a new tab with security attributes.
-                                            </ItemDescription>
-                                        </ItemContent>
-                                        <ItemActions>
-                                            <ExternalLinkIcon class="size-4" />
-                                        </ItemActions>
-                                    </a>
-                                </Item>
-                            </div>
                         </section>
 
                         <!-- Fixados
