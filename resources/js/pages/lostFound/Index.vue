@@ -114,46 +114,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
             <section>
                 <div class="py-4">
-                    <p class="text-2xl font-bold">Cadeiras gerais</p>
-                    <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">5</span>
-                        salas e <span class="font-semibold">2</span> wc's</p>
                 </div>
                 <section>
                     <div class="flex justify-between gap-2 pb-2">
-                        <Combobox v-model="value" by="label" class="order-3">
-                            <ComboboxAnchor as-child class="max-w-23 hover:bg-[#1fad7e] hover:border-[#1fad7e]">
-                                <ComboboxTrigger as-child>
-                                    <Button
-                                        class="flex max-h-6 items-center font-semibold order-2 gap-2 text-sm bg-[#0e976a] text-white border border-[#0e976a] px-2 cursor-pointer rounded-lg">
-                                        <Layers width="16" />
-                                        <p>Nível</p>
-                                        <p>0</p>
-                                    </Button>
-                                </ComboboxTrigger>
-                            </ComboboxAnchor>
-
-                            <ComboboxList class="max-w-23">
-                                <div class="relative w-full max-w-sm items-center">
-                                    <ComboboxInput
-                                        class="pl-9 focus-visible:ring-0 border-0 border-b rounded-none h-10" />
-                                    <span class="absolute start-0 inset-y-0 flex items-center justify-center px-3">
-                                        <Search class="size-4 text-muted-foreground" />
-                                    </span>
-                                </div>
-
-                                <ComboboxEmpty class="italic">
-                                    Nenhum <br>nível encontrado.
-                                </ComboboxEmpty>
-
-                                <ComboboxGroup>
-                                    <ComboboxItem v-for="framework in frameworks" :key="framework.value"
-                                        :value="framework">
-                                        {{ framework.label }}
-                                    </ComboboxItem>
-                                </ComboboxGroup>
-                            </ComboboxList>
-                        </Combobox>
-
 
                         <section>
                             <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
