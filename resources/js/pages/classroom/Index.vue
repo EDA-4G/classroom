@@ -456,7 +456,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     <!-- Badges -->
                                     <div class="mt-3 flex justify-center gap-2">
                                         <span
-                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Watch</span>
+                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                         <span
                                             class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
                                     </div>
@@ -486,7 +486,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     <!-- Badges -->
                                     <div class="mt-3 flex justify-center gap-2">
                                         <span
-                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Watch</span>
+                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                         <span
                                             class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
                                     </div>
@@ -516,7 +516,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     <!-- Badges -->
                                     <div class="mt-3 flex justify-center gap-2">
                                         <span
-                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Watch</span>
+                                            class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                         <span
                                             class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
                                     </div>
