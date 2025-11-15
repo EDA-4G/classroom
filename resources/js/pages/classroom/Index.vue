@@ -29,9 +29,36 @@ import {
 } from "@/components/ui/item"
 
 import departments from '@/routes/departments';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
-const toggleMe = () => {
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
+
+
+
+// import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
+function toggleMe() {
     // alert('toggle me!')
 }
 
@@ -409,9 +436,98 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         </ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
-                                        <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                        <!-- <Button size="sm" variant="outline" class="hover:cursor-pointer">
                                             Conteúdos
-                                        </Button>
+                                        </Button> -->
+
+
+                                        <div>
+                                            <AlertDialog class="">
+                                                <AlertDialogTrigger>
+                                                    <Button size="sm" variant="outline" class="hover:cursor-pointer">
+                                                        Conteúdos
+                                                    </Button>
+                                                </AlertDialogTrigger>
+                                                <AlertDialogContent class="rounded-xl ">
+                                                    <AlertDialogHeader class="grid">
+                                                        <AlertDialogTitle class="flex justify-start">Conteúdos
+                                                        </AlertDialogTitle>
+                                                        <AlertDialogDescription class="text-justify">
+                                                            Tópicos a serem avaliados.
+                                                        </AlertDialogDescription>
+                                                    </AlertDialogHeader>
+
+                                                    <section>
+                                                        <section class="grid gap-2">
+                                                            <Item variant="outline" as-child>
+                                                                <a>
+                                                                    <ItemContent>
+                                                                        <ItemTitle>External resource</ItemTitle>
+                                                                    </ItemContent>
+                                                                </a>
+                                                            </Item>
+                                                            <Item variant="outline" as-child>
+                                                                <a>
+                                                                    <ItemContent>
+                                                                        <ItemTitle>External resource</ItemTitle>
+                                                                    </ItemContent>
+                                                                </a>
+                                                            </Item>
+                                                            <Item variant="outline" as-child>
+                                                                <a>
+                                                                    <ItemContent>
+                                                                        <ItemTitle>External resource</ItemTitle>
+                                                                    </ItemContent>
+                                                                </a>
+                                                            </Item>
+                                                            <Item variant="outline" as-child>
+                                                                <a>
+                                                                    <ItemContent>
+                                                                        <ItemTitle>External resource</ItemTitle>
+                                                                    </ItemContent>
+                                                                </a>
+                                                            </Item>
+                                                        </section>
+
+                                                        <section class="flex items-center justify-between py-4">
+                                                            <div
+                                                                class="text-sm text-slate-600 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
+                                                                <p>Mostrando</p>
+                                                                <p><b>1-4</b> de 45</p>
+                                                            </div>
+                                                            <div class="flex space-x-1">
+                                                                <button
+                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                                                    <ChevronLeft width="14" />
+                                                                </button>
+                                                                <button
+                                                                    class="ease min-h-8 min-w-8 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
+                                                                    1
+                                                                </button>
+                                                                <button
+                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                                                    2
+                                                                </button>
+                                                                <button
+                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                                                    3
+                                                                </button>
+                                                                <button
+                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                                                    <ChevronRight width="14" />
+                                                                </button>
+                                                            </div>
+                                                        </section>
+                                                    </section>
+
+                                                    <AlertDialogFooter>
+                                                        <AlertDialogCancel class="cursor-pointer">Cancelar
+                                                        </AlertDialogCancel>
+                                                    </AlertDialogFooter>
+                                                </AlertDialogContent>
+                                            </AlertDialog>
+                                        </div>
+
                                     </ItemActions>
                                 </Item>
                             </div>
@@ -430,7 +546,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                     <section class="py-4">
                         <p class="pb-2 text-md font-semibold">Achados e Perdidos</p>
-                        <section class="grid grid-cols-2 lg:grid-cols-3 gap-2">
+                        <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2">
                             <!-- Product Card 2 - Red -->
                             <div
                                 class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
