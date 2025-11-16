@@ -11,7 +11,8 @@ import {
     ChevronRight,
     FolderOpen,
     Locate,
-    User2
+    User2,
+    MoveUp
 } from 'lucide-vue-next';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
@@ -67,7 +68,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Dashboard" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-2">
+        <div id="top" class="flex h-full flex-1 flex-col gap-4 rounded-xl p-2">
             <div class="px-4 py-4 sm:px-4 lg:px-2 lg:py-4">
                 <section class="embla overflow-hidden" ref="emblaRef">
                     <div class="embla__container flex gap-1">
@@ -476,6 +477,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 </div>
                             </div>
                         </div>
+                    </section>
+
+                    <section class="py-4 flex justify-end">
+                        <Link href="#top"
+                            class="flex bg-[#038043] hover:bg-[#1fad68] text-white text-sm font-semibold items-center border px-2 py-1 cursor-pointer rounded-xl">
+                        <MoveUp width="12" />
+                        Topo
+                        </Link>
                     </section>
                 </section>
 
