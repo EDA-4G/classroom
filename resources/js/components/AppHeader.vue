@@ -184,7 +184,7 @@ const rightNavItems: NavItem[] = [
                                         <TooltipTrigger>
                                             <Button variant="ghost" size="icon" as-child
                                                 class="group h-9 w-9 cursor-pointer">
-                                                <a :href="toUrl(item.href)" target="_blank" rel="noopener noreferrer">
+                                                <a :href="toUrl(item.href)" rel="noopener noreferrer">
                                                     <span class="sr-only">{{
                                                         item.title
                                                         }}</span>
