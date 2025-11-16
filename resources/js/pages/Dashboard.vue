@@ -346,7 +346,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
 
 
-                <section class="pt-6 pb-4">
+                <section class="pt-6">
                     <div class="pb-2">
                         <p class="text-xl font-bold">Achados e Perdidos</p>
                         <div class="flex justify-between">
