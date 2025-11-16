@@ -25,7 +25,7 @@ import {
 import { Spinner } from '@/components/ui/spinner';
 import { Loader } from 'lucide-vue-next';
 import { Button } from '@/components/ui/button';
-import { Waypoints, Layers, ChevronLeft, ChevronRight } from 'lucide-vue-next';
+import { Waypoints, Layers, ChevronLeft, ChevronRight, GraduationCap } from 'lucide-vue-next';
 
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from "@/components/ui/input-group";
 
@@ -69,6 +69,7 @@ const handleToggleGroup = (value: any) => {
 }
 
 const value = ref<typeof frameworks[0]>()
+
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -115,19 +116,23 @@ const breadcrumbs: BreadcrumbItem[] = [
             <section>
                 <div class="py-4">
                 </div>
-                <section>
+                <section class="grid grid-cols-2 gap-2">
                     <div class="flex justify-between gap-2 pb-2">
 
                         <section>
                             <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
-                                class="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-4">
+                                class="flex gap-2 flex-wrap justify-start">
                                 <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
                                     @click="me(filter.name)"
-                                    class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3 max-h-6 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
+                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3 max-h-6 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
                                     {{ filter.name }}
                                 </ToggleGroupItem>
                             </ToggleGroup>
                         </section>
+
+                    </div>
+                    <div class="flex lg:justify-end">
+
 
                     </div>
                 </section>
@@ -135,161 +140,170 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
 
                     <div
-                        class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
-                        <!-- Sale Badge -->
-                        <span
-                            class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
-                            <!-- SALE -->
-                            Recuperado
-                            <!-- RECUPERADO -->
-                        </span>
+                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                        <a href="#" class="w-full">
+                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" width="120px" />
+                        </a>
+                        <a href="#">
+                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
+                                your
+                                design process today.</h5>
+                        </a>
+                        <p class="text-xs">22 Jun 2025</p>
 
-                        <div class="text-center">
-                            <!-- Product Image -->
-                            <a href="#" class="block">
-                                <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
-                                    alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
-                                <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
-                                    Watch Red Aluminium
-                                </h3>
-                            </a>
+                        <div class="grid lg:grid-cols-2 items-center">
+                            <div>
+                                <p class="mt-4">— Maria</p>
+                                <p class="text-sm font-medium text-green-700">
+                                    Eng. Química</p>
+                            </div>
 
-                            <!-- Badges -->
-                            <div class="mt-3 flex justify-center gap-2">
+                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
                                 <span
                                     class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                 <span
                                     class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
                             </div>
                         </div>
+
                     </div>
+                    <div
+                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                        <a href="#" class="w-full">
+                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" width="120px" />
+                        </a>
+                        <a href="#">
+                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
+                                your
+                                design process today.</h5>
+                        </a>
+                        <p class="text-xs">22 Jun 2025</p>
+
+                        <div class="grid lg:grid-cols-2 items-center">
+                            <div>
+                                <p class="mt-4">— Maria</p>
+                                <p class="text-sm font-medium text-green-700">
+                                    Eng. Química</p>
+                            </div>
+
+                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div
+                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                        <a href="#" class="w-full">
+                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" width="120px" />
+                        </a>
+                        <a href="#">
+                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
+                                your
+                                design process today.</h5>
+                        </a>
+                        <p class="text-xs">22 Jun 2025</p>
+
+                        <div class="grid lg:grid-cols-2 items-center">
+                            <div>
+                                <p class="mt-4">— Maria</p>
+                                <p class="text-sm font-medium text-green-700">
+                                    Eng. Química</p>
+                            </div>
+
+                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div
+                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                        <a href="#" class="w-full">
+                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" width="120px" />
+                        </a>
+                        <a href="#">
+                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
+                                your
+                                design process today.</h5>
+                        </a>
+                        <p class="text-xs">22 Jun 2025</p>
+
+                        <div class="grid lg:grid-cols-2 items-center">
+                            <div>
+                                <p class="mt-4">— Maria</p>
+                                <p class="text-sm font-medium text-green-700">
+                                    Eng. Química</p>
+                            </div>
+
+                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                <span
+                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
 
                     <div
-                        class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
-                        <!-- Sale Badge -->
-                        <span
-                            class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
-                            <!-- SALE -->
-                            Recuperado
-                            <!-- RECUPERADO -->
-                        </span>
+                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                        <a href="#" class="w-full">
+                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" width="120px" />
+                        </a>
+                        <a href="#">
+                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
+                                your
+                                design process today.</h5>
+                        </a>
+                        <p class="text-xs">22 Jun 2025</p>
 
-                        <div class="text-center">
-                            <!-- Product Image -->
-                            <a href="#" class="block">
-                                <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
-                                    alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
-                                <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
-                                    Watch Red Aluminium
-                                </h3>
-                            </a>
+                        <div class="grid lg:grid-cols-2 items-center">
+                            <div>
+                                <p class="mt-4">— Maria</p>
+                                <p class="text-sm font-medium text-green-700">
+                                    Eng. Química</p>
+                            </div>
 
-                            <!-- Badges -->
-                            <div class="mt-3 flex justify-center gap-2">
+                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
                                 <span
                                     class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                 <span
                                     class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
                             </div>
                         </div>
+
                     </div>
 
-                    <div
-                        class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
-                        <!-- Sale Badge -->
-                        <span
-                            class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
-                            <!-- SALE -->
-                            Recuperado
-                            <!-- RECUPERADO -->
-                        </span>
-
-                        <div class="text-center">
-                            <!-- Product Image -->
-                            <a href="#" class="block">
-                                <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
-                                    alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
-                                <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
-                                    Watch Red Aluminium
-                                </h3>
-                            </a>
-
-                            <!-- Badges -->
-                            <div class="mt-3 flex justify-center gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
-                        <!-- Sale Badge -->
-                        <span
-                            class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
-                            <!-- SALE -->
-                            Recuperado
-                            <!-- RECUPERADO -->
-                        </span>
-
-                        <div class="text-center">
-                            <!-- Product Image -->
-                            <a href="#" class="block">
-                                <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
-                                    alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
-                                <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
-                                    Watch Red Aluminium
-                                </h3>
-                            </a>
-
-                            <!-- Badges -->
-                            <div class="mt-3 flex justify-center gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
-                        <!-- Sale Badge -->
-                        <span
-                            class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
-                            <!-- SALE -->
-                            Recuperado
-                            <!-- RECUPERADO -->
-                        </span>
-
-                        <div class="text-center">
-                            <!-- Product Image -->
-                            <a href="#" class="block">
-                                <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
-                                    alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
-                                <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
-                                    Watch Red Aluminium
-                                </h3>
-                            </a>
-
-                            <!-- Badges -->
-                            <div class="mt-3 flex justify-center gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </section>
 
 
             <section class="flex items-center justify-between py-4">
-                <div class="text-sm text-slate-500 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
+                <div class="text-sm text-slate-700 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
                     <p>Mostrando</p>
                     <p><b>1-4</b> de 45</p>
                 </div>
