@@ -119,12 +119,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <FolderOpen width="18" />
                     Repositório Instituicional
                     </Link>
-                    <Link :href="repositories.index().url"
+                    <Link :href="losses.index().url"
                         class="text-md flex cursor-pointer place-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
                     <Locate width="18" />
                     Perdidos e Achados
                     </Link>
-                    <Link :href="losses.index().url"
+                    <Link href="#"
                         class="text-md flex cursor-pointer pslace-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
                     <User2 width="18" />
                     Administrador
@@ -344,33 +344,141 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-                <section class="flex items-center justify-between pt-4">
-                    <div class="text-sm text-slate-500">
-                        Mostrando <b>1-4</b> de 45
+
+                <section class="pt-6 pb-4">
+                    <div class="pb-2">
+                        <p class="text-xl font-bold">Achados e Perdidos</p>
+                        <div class="flex justify-between">
+                            <p class="text-sm text-gray-400">
+                                Encontre o teu item perdido
+                            </p>
+                            <a class="flex cursor-pointer gap-2 text-sm text-gray-400 hover:text-gray-500">Veja mais
+                                &rarr;
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex space-x-1">
-                        <button
-                            class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                            Prev
-                        </button>
-                        <button
-                            class="ease min-h-9 min-w-9 rounded border border-slate-800 bg-slate-800 px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-slate-600 hover:bg-slate-600">
-                            1
-                        </button>
-                        <button
-                            class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                            2
-                        </button>
-                        <button
-                            class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                            3
-                        </button>
-                        <button
-                            class="ease min-h-9 min-w-9 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                            Next
-                        </button>
-                    </div>
+                    <section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2">
+                        <!-- Product Card 2 - Red -->
+                        <div
+                            class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
+                            <!-- Sale Badge -->
+                            <span
+                                class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
+                                <!-- SALE -->
+                                Recuperado
+                                <!-- RECUPERADO -->
+                            </span>
+
+                            <div class="text-center">
+                                <!-- Product Image -->
+                                <a href="#" class="block">
+                                    <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
+                                        alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
+                                    <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
+                                        Watch Red Aluminium
+                                    </h3>
+                                </a>
+
+                                <!-- Badges -->
+                                <div class="mt-3 flex justify-center gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
+                            <!-- Sale Badge -->
+                            <span
+                                class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
+                                <!-- SALE -->
+                                Recuperado
+                                <!-- RECUPERADO -->
+                            </span>
+
+                            <div class="text-center">
+                                <!-- Product Image -->
+                                <a href="#" class="block">
+                                    <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
+                                        alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
+                                    <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
+                                        Watch Red Aluminium
+                                    </h3>
+                                </a>
+
+                                <!-- Badges -->
+                                <div class="mt-3 flex justify-center gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
+                            <!-- Sale Badge -->
+                            <span
+                                class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
+                                <!-- SALE -->
+                                Recuperado
+                                <!-- RECUPERADO -->
+                            </span>
+
+                            <div class="text-center">
+                                <!-- Product Image -->
+                                <a href="#" class="block">
+                                    <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
+                                        alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
+                                    <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
+                                        Watch Red Aluminium
+                                    </h3>
+                                </a>
+
+                                <!-- Badges -->
+                                <div class="mt-3 flex justify-center gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow duration-300 dark:bg-background dark:border-border">
+                            <!-- Sale Badge -->
+                            <span
+                                class="absolute top-4 left-4 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-background dark:border dark:border-border">
+                                <!-- SALE -->
+                                Recuperado
+                                <!-- RECUPERADO -->
+                            </span>
+
+                            <div class="text-center">
+                                <!-- Product Image -->
+                                <a href="#" class="block">
+                                    <img src="https://cdn.flyonui.com/fy-assets/blocks/ecommerce/product-list/product-list-23.png"
+                                        alt="Apple Watch Silver Aluminium" class="mb-6 h-40 w-full object-contain" />
+                                    <h3 class="text-sm font-medium text-gray-900 dark:text-foreground">Apple
+                                        Watch Red Aluminium
+                                    </h3>
+                                </a>
+
+                                <!-- Badges -->
+                                <div class="mt-3 flex justify-center gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </section>
+
             </div>
         </div>
     </AppLayout>
