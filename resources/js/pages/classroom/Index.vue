@@ -316,6 +316,29 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                 Destrancar
                             </button>
+                            <button class="border py-6 rounded-lg text-sm">
+                                <span class="w-full flex justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24"
+                                        fill="currentColor" stroke="currentColor">
+                                        <path
+                                            d="M416.9 85.2L372 130.1L509.9 268L554.8 223.1C568.4 209.6 576 191.2 576 172C576 152.8 568.4 134.4 554.8 120.9L519.1 85.2C505.6 71.6 487.2 64 468 64C448.8 64 430.4 71.6 416.9 85.2zM338.1 164L122.9 379.1C112.2 389.8 104.4 403.2 100.3 417.8L64.9 545.6C62.6 553.9 64.9 562.9 71.1 569C77.3 575.1 86.2 577.5 94.5 575.2L222.3 539.7C236.9 535.6 250.2 527.9 261 517.1L476 301.9L338.1 164z" />
+                                    </svg>
+                                </span>
+
+                                Avaliação
+                            </button>
+                            <button class="border py-6 rounded-lg text-sm">
+                                <span class="w-full flex justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24"
+                                        fill="currentColor" stroke="currentColor">
+                                        <path
+                                            d="M377.9 130.8C388.3 116.5 385.1 96.5 370.8 86.1C356.5 75.7 336.5 78.9 326.1 93.2L220.1 238.9L182.6 201.4C170.1 188.9 149.8 188.9 137.3 201.4C124.8 213.9 124.8 234.2 137.3 246.7L201.3 310.7C207.9 317.3 217.1 320.7 226.4 320C235.7 319.3 244.3 314.5 249.8 306.9L377.8 130.9zM505.9 266.8C516.3 252.5 513.1 232.5 498.8 222.1C484.5 211.7 464.5 214.9 454.1 229.2L284.1 462.9L214.6 393.4C202.1 380.9 181.8 380.9 169.3 393.4C156.8 405.9 156.8 426.2 169.3 438.7L265.3 534.7C271.9 541.3 281.1 544.7 290.4 544C299.7 543.3 308.3 538.5 313.8 530.9L505.8 266.9z" />
+                                    </svg>
+                                </span>
+
+                                Exame
+                            </button>
+
                         </div>
                     </div>
                     <div class="py-4">
@@ -490,17 +513,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </section>
 
                                                         <section class="flex items-center justify-between py-4">
-                                                            <div
-                                                                class="text-sm text-slate-600 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
-                                                                <p>Mostrando</p>
-                                                                <p><b>1-4</b> de 45</p>
+                                                            <div class="order-2  text-sm text-slate-600">
+                                                                <!-- <p>Mostrando</p>
+                                                                <p><b>1-4</b> de 45</p> -->
+                                                                3/8
                                                             </div>
                                                             <div class="flex space-x-1">
                                                                 <button
                                                                     class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
                                                                     <ChevronLeft width="14" />
                                                                 </button>
-                                                                <button
+                                                                <!-- <button
                                                                     class="ease min-h-8 min-w-8 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
                                                                     1
                                                                 </button>
@@ -511,7 +534,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 <button
                                                                     class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
                                                                     3
-                                                                </button>
+                                                                </button> -->
                                                                 <button
                                                                     class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
                                                                     <ChevronRight width="14" />
@@ -521,7 +544,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </section>
 
                                                     <AlertDialogFooter>
-                                                        <AlertDialogCancel class="cursor-pointer">Cancelar
+                                                        <AlertDialogCancel class="cursor-pointer bg-gray-100">Cancelar
                                                         </AlertDialogCancel>
                                                     </AlertDialogFooter>
                                                 </AlertDialogContent>
