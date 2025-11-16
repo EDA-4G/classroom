@@ -32,8 +32,13 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGr
 import { Check, ChevronsUpDown, Search } from "lucide-vue-next"
 import { ref } from "vue"
 
-import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxItemIndicator, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
-import classrooms from '@/routes/classrooms';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 const frameworks = [
@@ -116,7 +121,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-2">
                 </div>
                 <section class="grid grid-cols-2 gap-2">
-                    <div class="flex justify-between gap-2 pb-2">
+                    <div class="flex justify-between gap-2">
 
                         <section>
                             <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
@@ -130,9 +135,51 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </section>
 
                     </div>
-                    <div class="flex lg:justify-end">
-
-
+                    <div class="flex flex-col items-end lg:flex-row lg:justify-end gap-1">
+                        <Select>
+                            <SelectTrigger class="w-fit h-7 text-xs outline-none rounded-lg">
+                                <SelectValue placeholder="Selecionar departamento" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="apple">
+                                    Engenharia Mecanica
+                                </SelectItem>
+                                <SelectItem value="banana">
+                                    Banana
+                                </SelectItem>
+                                <SelectItem value="blueberry">
+                                    Blueberry
+                                </SelectItem>
+                                <SelectItem value="grapes">
+                                    Grapes
+                                </SelectItem>
+                                <SelectItem value="pineapple">
+                                    Pineapple
+                                </SelectItem>
+                            </SelectContent>
+                        </Select>
+                        <Select>
+                            <SelectTrigger class="w-fit h-7 text-xs outline-none rounded-lg">
+                                <SelectValue placeholder="Selecionar curso" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="apple">
+                                    Engenharia Mecanica
+                                </SelectItem>
+                                <SelectItem value="banana">
+                                    Banana
+                                </SelectItem>
+                                <SelectItem value="blueberry">
+                                    Blueberry
+                                </SelectItem>
+                                <SelectItem value="grapes">
+                                    Grapes
+                                </SelectItem>
+                                <SelectItem value="pineapple">
+                                    Pineapple
+                                </SelectItem>
+                            </SelectContent>
+                        </Select>
                     </div>
                 </section>
 
