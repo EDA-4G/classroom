@@ -55,8 +55,7 @@ interface Filter {
 const filters: Filter[] = [
     { id: 1, name: 'Todas' },
     { id: 2, name: 'Laboral' },
-    { id: 3, name: 'Pós-Laboral' },
-    { id: 4, name: 'Fechadas' }
+    { id: 3, name: 'Pós-Laboral' }
 ]
 
 const me = (item: string) => {
@@ -114,7 +113,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             </InputGroup>
 
             <section>
-                <div class="py-4">
+                <div class="py-2">
                 </div>
                 <section class="grid grid-cols-2 gap-2">
                     <div class="flex justify-between gap-2 pb-2">
