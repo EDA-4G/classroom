@@ -10,9 +10,12 @@ import {
     ChevronLeft,
     ChevronRight,
     FolderOpen,
+    Locate,
+    User2
 } from 'lucide-vue-next';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
+import losses from '@/routes/losses';
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [
     Autoplay({ delay: 8000 }),
@@ -105,7 +108,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-                <div class="grid gap-2 lg:grid-cols-2">
+                <section class="grid gap-2 lg:grid-cols-2">
                     <Link :href="departments.index().url"
                         class="text-md flex cursor-pointer place-items-center justify-center gap-1 rounded-lg border border-[#038043] bg-[#038043] px-2 py-3 font-semibold text-white hover:bg-[#1fad68]">
                     <Building2 width="18" />
@@ -116,7 +119,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <FolderOpen width="18" />
                     Repositório Instituicional
                     </Link>
-                </div>
+                    <Link :href="repositories.index().url"
+                        class="text-md flex cursor-pointer place-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
+                    <Locate width="18" />
+                    Perdidos e Achados
+                    </Link>
+                    <Link :href="losses.index().url"
+                        class="text-md flex cursor-pointer pslace-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
+                    <User2 width="18" />
+                    Administrador
+                    </Link>
+                </section>
 
                 <section class="py-10">
                     <div class="pb-2">
