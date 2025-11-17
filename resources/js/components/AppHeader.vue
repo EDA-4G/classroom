@@ -34,7 +34,7 @@ import { toUrl, urlIsActive } from '@/lib/utils';
 import { dashboard } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
 import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3';
-import { LayoutGrid, BookOpen, Folder, Locate, Menu, Search } from 'lucide-vue-next';
+import { LayoutGrid, Clock, Folder, Locate, Menu, Search } from 'lucide-vue-next';
 import { computed } from 'vue';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
@@ -84,6 +84,11 @@ const mainNavItems: NavItem[] = [
         href: losses.index().url,
         icon: Locate,
     },
+    {
+        title: 'Horário',
+        href: losses.index().url,
+        icon: Clock
+    },
 ];
 
 const rightNavItems: NavItem[] = [
@@ -96,6 +101,11 @@ const rightNavItems: NavItem[] = [
         title: 'Perdidos e Achados',
         href: losses.index().url,
         icon: Locate,
+    },
+    {
+        title: 'Horário',
+        href: losses.index().url,
+        icon: Clock
     },
 ];
 </script>
