@@ -135,7 +135,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </section>
 
                     </div>
-                    <div class="flex flex-col items-end lg:flex-row lg:justify-end gap-1">
+                    <div class="flex flex-col items-end lg:flex-row lg:justify-end gap-2">
                         <Select>
                             <SelectTrigger class="w-fit h-7 text-xs outline-none rounded-lg">
                                 <SelectValue placeholder="Selecionar departamento" />
@@ -183,165 +183,175 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-                <div class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-
-                    <div
-                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                        <a href="#" class="w-full">
-                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" width="120px" />
-                        </a>
-                        <a href="#">
-                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
-                                your
-                                design process today.</h5>
-                        </a>
-                        <p class="text-xs">22 Jun 2025</p>
-
-                        <div class="grid lg:grid-cols-2 items-center">
-                            <div>
-                                <p class="mt-4">— Maria</p>
-                                <p class="text-sm font-medium text-green-700">
-                                    Eng. Química</p>
-                            </div>
-
-                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div
-                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                        <a href="#" class="w-full">
-                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" width="120px" />
-                        </a>
-                        <a href="#">
-                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
-                                your
-                                design process today.</h5>
-                        </a>
-                        <p class="text-xs">22 Jun 2025</p>
-
-                        <div class="grid lg:grid-cols-2 items-center">
-                            <div>
-                                <p class="mt-4">— Maria</p>
-                                <p class="text-sm font-medium text-green-700">
-                                    Eng. Química</p>
-                            </div>
-
-                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div
-                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                        <a href="#" class="w-full">
-                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" width="120px" />
-                        </a>
-                        <a href="#">
-                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
-                                your
-                                design process today.</h5>
-                        </a>
-                        <p class="text-xs">22 Jun 2025</p>
-
-                        <div class="grid lg:grid-cols-2 items-center">
-                            <div>
-                                <p class="mt-4">— Maria</p>
-                                <p class="text-sm font-medium text-green-700">
-                                    Eng. Química</p>
-                            </div>
-
-                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div
-                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                        <a href="#" class="w-full">
-                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" width="120px" />
-                        </a>
-                        <a href="#">
-                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
-                                your
-                                design process today.</h5>
-                        </a>
-                        <p class="text-xs">22 Jun 2025</p>
-
-                        <div class="grid lg:grid-cols-2 items-center">
-                            <div>
-                                <p class="mt-4">— Maria</p>
-                                <p class="text-sm font-medium text-green-700">
-                                    Eng. Química</p>
-                            </div>
-
-                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                            </div>
-                        </div>
-
+                <div class="py-4">
+                    <div class="pb-2">
+                        <h2 class="font-semibold">Encontre o teu bem perdido.</h2>
                     </div>
 
+                    <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                        <div
+                            class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                            <a href="#" class="w-full">
+                                <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                    src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="" width="120px" />
+                            </a>
+                            <a href="#">
+                                <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
+                                    Streamlining
+                                    your
+                                    design process today.</h5>
+                            </a>
+                            <p class="text-xs">22 Jun 2025</p>
 
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div>
+                                    <p class="mt-4">— Maria</p>
+                                    <p class="text-sm font-medium text-green-700">
+                                        Eng. Química</p>
+                                </div>
 
-
-
-
-
-                    <div
-                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                        <a href="#" class="w-full">
-                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="" width="120px" />
-                        </a>
-                        <a href="#">
-                            <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">Streamlining
-                                your
-                                design process today.</h5>
-                        </a>
-                        <p class="text-xs">22 Jun 2025</p>
-
-                        <div class="grid lg:grid-cols-2 items-center">
-                            <div>
-                                <p class="mt-4">— Maria</p>
-                                <p class="text-sm font-medium text-green-700">
-                                    Eng. Química</p>
+                                <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
                             </div>
 
-                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                <span
-                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                        </div>
+                        <div
+                            class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                            <a href="#" class="w-full">
+                                <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                    src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="" width="120px" />
+                            </a>
+                            <a href="#">
+                                <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
+                                    Streamlining
+                                    your
+                                    design process today.</h5>
+                            </a>
+                            <p class="text-xs">22 Jun 2025</p>
+
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div>
+                                    <p class="mt-4">— Maria</p>
+                                    <p class="text-sm font-medium text-green-700">
+                                        Eng. Química</p>
+                                </div>
+
+                                <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
                             </div>
+
+                        </div>
+                        <div
+                            class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                            <a href="#" class="w-full">
+                                <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                    src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="" width="120px" />
+                            </a>
+                            <a href="#">
+                                <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
+                                    Streamlining
+                                    your
+                                    design process today.</h5>
+                            </a>
+                            <p class="text-xs">22 Jun 2025</p>
+
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div>
+                                    <p class="mt-4">— Maria</p>
+                                    <p class="text-sm font-medium text-green-700">
+                                        Eng. Química</p>
+                                </div>
+
+                                <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div
+                            class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                            <a href="#" class="w-full">
+                                <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                    src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="" width="120px" />
+                            </a>
+                            <a href="#">
+                                <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
+                                    Streamlining
+                                    your
+                                    design process today.</h5>
+                            </a>
+                            <p class="text-xs">22 Jun 2025</p>
+
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div>
+                                    <p class="mt-4">— Maria</p>
+                                    <p class="text-sm font-medium text-green-700">
+                                        Eng. Química</p>
+                                </div>
+
+                                <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+
                         </div>
 
-                    </div>
+
+
+
+
+
+
+                        <div
+                            class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
+                            <a href="#" class="w-full">
+                                <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
+                                    src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="" width="120px" />
+                            </a>
+                            <a href="#">
+                                <h5 class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
+                                    Streamlining
+                                    your
+                                    design process today.</h5>
+                            </a>
+                            <p class="text-xs">22 Jun 2025</p>
+
+                            <div class="grid lg:grid-cols-2 items-center">
+                                <div>
+                                    <p class="mt-4">— Maria</p>
+                                    <p class="text-sm font-medium text-green-700">
+                                        Eng. Química</p>
+                                </div>
+
+                                <div class="h-fit mt-3 flex lg:justify-end gap-2">
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
+                                    <span
+                                        class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
 
 
                 </div>
