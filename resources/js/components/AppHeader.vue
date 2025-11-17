@@ -94,8 +94,8 @@ const rightNavItems: NavItem[] = [
     },
     {
         title: 'Perdidos e Achados',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        href: losses.index().url,
+        icon: Locate,
     },
 ];
 </script>
