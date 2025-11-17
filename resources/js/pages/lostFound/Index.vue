@@ -359,7 +359,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </SheetTrigger>
                             <SheetContent>
                                 <SheetHeader>
-                                    <SheetTitle class="text-xl">Streamlining your design process today.</SheetTitle>
+                                    <SheetTitle class="text-xl">Agradecimentos</SheetTitle>
                                     <SheetDescription>
                                         Faça as alterações da sua inscrição aqui e clique em Salvar
                                         Alterações quando terminar.
