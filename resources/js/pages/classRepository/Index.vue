@@ -73,6 +73,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import classrooms from '@/routes/classrooms';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -99,6 +100,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <BreadcrumbSeparator />
 
                     <BreadcrumbItem1>
+                        <BreadcrumbLink :href="classrooms.index().url">
+                            Sala
+                        </BreadcrumbLink>
+                    </BreadcrumbItem1>
+                    <BreadcrumbSeparator />
+
+                    <BreadcrumbItem1>
                         <BreadcrumbPage>Repositório</BreadcrumbPage>
                     </BreadcrumbItem1>
                 </BreadcrumbList>
@@ -114,83 +122,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                     12 resultados
                 </InputGroupAddon>
             </InputGroup>
-
-
-            <section>
-                <Sheet>
-                    <SheetTrigger as-child>
-
-                        <Item variant="outline" size="sm" as-child class="text-[#0f5734] border-[#0F5734]">
-                            <a href="#">
-                                <ItemMedia>
-                                    <BellRing class="size-5" />
-                                </ItemMedia>
-                                <ItemContent>
-                                    <ItemTitle>Receba notificação das publicações no email.</ItemTitle>
-                                </ItemContent>
-                                <ItemActions>
-                                    <ChevronRightIcon class="size-4" />
-                                </ItemActions>
-                            </a>
-                        </Item>
-
-                    </SheetTrigger>
-                    <SheetContent>
-                        <SheetHeader>
-                            <SheetTitle class="text-lg">Inscrição</SheetTitle>
-                            <SheetDescription>
-                                Faça as alterações da sua inscrição aqui e clique em <span class="font-semibold">Salvar
-                                    Alterações</span> quando terminar.
-                            </SheetDescription>
-                        </SheetHeader>
-                        <div class="grid gap-4 p-4">
-                            <div class="grid items-center gap-4">
-                                <Label for="name" class="text-right">
-                                    Estudante
-                                </Label>
-                                <Input id="student-email" placeholder="Ex: nome.apelido@uem.ac.mz" class="col-span-3" />
-                            </div>
-                            <div class="grid items-center gap-4">
-                                <Label for="name" class="text-right">
-                                    Email
-                                </Label>
-                                <Input id="personal-email" placeholder="Ex: eda.grupo4@gmail.com" class="col-span-3" />
-                            </div>
-                            <div class="inline-flex gap-2">
-                                <div class="relative inline-block w-11 h-5">
-                                    <input id="switch-component-desc" type="checkbox"
-                                        class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
-                                    <label for="switch-component-desc"
-                                        class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
-                                    </label>
-                                </div>
-
-                                <label for="switch-component-desc" class="text-slate-600 text-sm cursor-pointer">
-                                    <div>
-                                        <p class="font-medium">
-                                            Habilitar a Inscrição
-                                        </p>
-                                        <p class="text-slate-500">
-                                            Poderá habilitar e desabilitar o estado da sua inscrição.
-                                        </p>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <SheetFooter>
-                            <SheetClose as-child>
-                                <button type="submit"
-                                    class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">Salvar
-                                    Alterações</button>
-                            </SheetClose>
-                            <SheetClose as-child>
-                                <button type="submit"
-                                    class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
-                            </SheetClose>
-                        </SheetFooter>
-                    </SheetContent>
-                </Sheet>
-            </section>
 
             <section>
                 <div class="py-2">
