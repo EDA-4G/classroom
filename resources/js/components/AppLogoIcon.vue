@@ -13,5 +13,7 @@ defineProps<Props>();
 </script>
 
 <template>
-    <img src="/storage/logo.png" />
+    <svg class="svg-item" viewBox="0 0 100 100" fill="currentColor" stroke="currentColor">
+        <use xlink:href="/storage/logo.svg" />
+    </svg>
 </template>
