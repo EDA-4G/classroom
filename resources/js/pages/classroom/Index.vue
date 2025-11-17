@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/item"
 
 import departments from '@/routes/departments';
+import files from '@/routes/files';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 import {
@@ -256,7 +257,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <CloudUpload class="w-full size-5" />
                                 Publicar Achado
                             </button>
-                            <button class="border py-6 rounded-lg text-sm">
+                            <button :href="files.index().url" class="border py-6 rounded-lg text-sm">
                                 <Folder class="w-full size-5" />
                                 Repositório
                             </button>

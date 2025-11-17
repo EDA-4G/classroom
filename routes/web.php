@@ -7,6 +7,7 @@ use App\Http\Controllers\Classroom\DepartmentController;
 use App\Http\Controllers\Classroom\RepositoryController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\LostFoundController;
+use App\Http\Controllers\Classroom\ClassRepositoryController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -21,6 +22,7 @@ Route::get('dashboard', function () {
 Route::resource('departments', DepartmentController::class);
 Route::resource('repositories', RepositoryController::class);
 Route::resource('classrooms', ClassroomController::class);
+Route::resource('classrooms/files', ClassRepositoryController::class);
 Route::resource('losses', LostFoundController::class);
 
 require __DIR__ . '/settings.php';
