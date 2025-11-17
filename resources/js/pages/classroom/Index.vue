@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link as Linka } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 import {
     Breadcrumb,
@@ -15,7 +15,7 @@ import {
 
 import {
     LayoutGrid, BadgeCheckIcon, ChevronRightIcon, Info, BookmarkIcon, User, Pen,
-    Radio, Album, Folder, ShieldAlertIcon, ExternalLinkIcon, Link,
+    Radio, Album, Folder, ShieldAlertIcon, ExternalLinkIcon,
     FileDown, CloudUpload, Play, UserRound, Key, MessageCircle, ChevronLeft, ChevronRight
 } from "lucide-vue-next"
 import { Button } from "@/components/ui/button"
@@ -58,6 +58,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import classrooms from '@/routes/classrooms';
 
 function toggleMe() {
     // alert('toggle me!')
@@ -257,10 +258,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <CloudUpload class="w-full size-5" />
                                 Publicar Achado
                             </button>
-                            <button :href="files.index().url" class="border py-6 rounded-lg text-sm">
-                                <Folder class="w-full size-5" />
-                                Repositório
-                            </button>
+                            <Link :href="files.index().url" class="border py-6 rounded-lg text-center text-sm">
+                            <Folder class="w-full size-5" />
+                            Repositório
+                            </Link>
                             <button class="border py-6 rounded-lg text-sm">
                                 <!-- <Play class="w-full size-5" /> -->
                                 <span class="w-full flex justify-center">

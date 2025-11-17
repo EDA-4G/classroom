@@ -22,7 +22,9 @@ Route::get('dashboard', function () {
 Route::resource('departments', DepartmentController::class);
 Route::resource('repositories', RepositoryController::class);
 Route::resource('classrooms', ClassroomController::class);
-Route::resource('classrooms/files', ClassRepositoryController::class);
+
+Route::resource('files', ClassRepositoryController::class);
+
 Route::resource('losses', LostFoundController::class);
 
 require __DIR__ . '/settings.php';
