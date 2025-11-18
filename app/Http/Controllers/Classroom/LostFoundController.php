@@ -21,7 +21,7 @@ class LostFoundController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('lostFound/Create');
     }
 
     /**
