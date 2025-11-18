@@ -419,78 +419,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
                                             <span
                                                 class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                                            <!-- <span
-                                                class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span> -->
                                         </div>
                                     </div>
 
-                                    <!-- </a> -->
-
-                                    <!-- <div
-                                        class="bg-neutral-primary-soft block max-w-sm p-4 lg:p-6 border border-gray-200 hover:border-gray-300 rounded-base shadow-xs rounded-lg">
-                                        <a href="#" class="w-full">
-                                            <img class="rounded-base w-full h-30 lg:h-60 object-cover rounded-lg"
-                                                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                alt="" width="120px" />
-                                        </a>
-                                        <a href="#">
-                                            <h5
-                                                class="mt-4 lg:mt-6 mb-1 text-md font-semibold tracking-tight text-heading">
-                                                Streamlining
-                                                your
-                                                design process today.</h5>
-                                        </a>
-                                        <p class="text-xs">22 Jun 2025</p>
-
-                                        <div class="grid lg:grid-cols-2 items-center">
-                                            <div>
-                                                <p class="mt-4">— Maria</p>
-                                                <p class="text-sm font-medium text-green-700">
-                                                    Eng. Química</p>
-                                            </div>
-
-                                            <div class="h-fit mt-3 flex lg:justify-end gap-2">
-                                                <span
-                                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Relógio</span>
-                                                <span
-                                                    class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-600 dark:bg-background dark:border dark:border-border">Apple</span>
-                                            </div>
-                                        </div>
-
-                                    </div> -->
-
-                                    <!-- <div class="inline-flex gap-2">
-                                        <div class="relative inline-block w-11 h-5">
-                                            <input id="switch-component-desc" type="checkbox"
-                                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
-                                            <label for="switch-component-desc"
-                                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
-                                            </label>
-                                        </div>
-
-                                        <label for="switch-component-desc"
-                                            class="text-slate-600 text-sm cursor-pointer">
-                                            <div>
-                                                <p class="font-medium">
-                                                    Habilitar a Inscrição
-                                                </p>
-                                                <p class="text-slate-500">
-                                                    Poderá habilitar e desabilitar o estado da sua inscrição.
-                                                </p>
-                                            </div>
-                                        </label>
-                                    </div> -->
 
                                     <div class="w-full pt-2 max-w-md">
-                                        <!-- <p class="py-2 font-semibold">Compute Environment</p> -->
                                         <FieldGroup>
                                             <FieldSet>
-                                                <!-- <FieldLabel for="compute-environment-p8w">
-                                                    Compute Environment
-                                                </FieldLabel>
-                                                <FieldDescription>
-                                                    Select the compute environment for your cluster.
-                                                </FieldDescription> -->
+
                                                 <RadioGroup default-value="kubernetes">
                                                     <!-- <FieldLabel for="kubernetes-r2h"
                                                         class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
@@ -517,7 +453,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     meticais pelo serviço.
                                                                 </FieldDescription>
                                                             </FieldContent>
-                                                            <RadioGroupItem id="vm-z4k" value="vm"
+                                                            <RadioGroupItem id="vm-z4k" value="kubernetes"
                                                                 class="text-[#1F8261]" />
                                                         </Field>
                                                     </FieldLabel>
@@ -530,8 +466,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <Label for="name" class="text-right">
                                             Conta M-Pesa
                                         </Label>
-                                        <!-- <Input id="personal-email" placeholder="Ex: 84/85 xxx xxxx"
-                                            class="col-span-3" /> -->
                                         <div class="relative">
                                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -544,9 +478,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             <Input id="contactNumber" type="number"
                                                 class="w-full bg-transparent placeholder:text-gray-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                                 placeholder="Ex: 84/85 xxx xxxx"
-                                                pattern="^\+\d{1,3}\s\d{1,3}-\d{3}-\d{4}$"
-                                                title="Número de conta M-Pesa deve ser válido: 84/85 xxx xxxx"
-                                                maxlength="16" required />
+                                                title="Número de conta M-Pesa deve ser válido: 84/85 xxx xxxx" />
                                         </div>
                                     </div>
 
@@ -556,27 +488,35 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <AccordionTrigger class="hover:no-underline cursor-pointer">Informação
                                                     adicional</AccordionTrigger>
                                                 <AccordionContent>
-                                                    Curso Ano,
-                                                    Nome
-                                                    Whatsap
-                                                    Yes. It adheres to the WAI-ARIA design pattern.
-                                                    <div>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
-                                                            width="20">
-                                                            <path
-                                                                d="M240 192C240 147.8 275.8 112 320 112C364.2 112 400 147.8 400 192C400 236.2 364.2 272 320 272C275.8 272 240 236.2 240 192zM448 192C448 121.3 390.7 64 320 64C249.3 64 192 121.3 192 192C192 262.7 249.3 320 320 320C390.7 320 448 262.7 448 192zM144 544C144 473.3 201.3 416 272 416L368 416C438.7 416 496 473.3 496 544L496 552C496 565.3 506.7 576 520 576C533.3 576 544 565.3 544 552L544 544C544 446.8 465.2 368 368 368L272 368C174.8 368 96 446.8 96 544L96 552C96 565.3 106.7 576 120 576C133.3 576 144 565.3 144 552L144 544z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
-                                                            width="20">
-                                                            <path
-                                                                d="M80 259.8L289.2 345.9C299 349.9 309.4 352 320 352C330.6 352 341 349.9 350.8 345.9L593.2 246.1C602.2 242.4 608 233.7 608 224C608 214.3 602.2 205.6 593.2 201.9L350.8 102.1C341 98.1 330.6 96 320 96C309.4 96 299 98.1 289.2 102.1L46.8 201.9C37.8 205.6 32 214.3 32 224L32 520C32 533.3 42.7 544 56 544C69.3 544 80 533.3 80 520L80 259.8zM128 331.5L128 448C128 501 214 544 320 544C426 544 512 501 512 448L512 331.4L369.1 390.3C353.5 396.7 336.9 400 320 400C303.1 400 286.5 396.7 270.9 390.3L128 331.4z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
-                                                            width="20">
-                                                            <path
-                                                                d="M476.9 161.1C435 119.1 379.2 96 319.9 96C197.5 96 97.9 195.6 97.9 318C97.9 357.1 108.1 395.3 127.5 429L96 544L213.7 513.1C246.1 530.8 282.6 540.1 319.8 540.1L319.9 540.1C442.2 540.1 544 440.5 544 318.1C544 258.8 518.8 203.1 476.9 161.1zM319.9 502.7C286.7 502.7 254.2 493.8 225.9 477L219.2 473L149.4 491.3L168 423.2L163.6 416.2C145.1 386.8 135.4 352.9 135.4 318C135.4 216.3 218.2 133.5 320 133.5C369.3 133.5 415.6 152.7 450.4 187.6C485.2 222.5 506.6 268.8 506.5 318.1C506.5 419.9 421.6 502.7 319.9 502.7zM421.1 364.5C415.6 361.7 388.3 348.3 383.2 346.5C378.1 344.6 374.4 343.7 370.7 349.3C367 354.9 356.4 367.3 353.1 371.1C349.9 374.8 346.6 375.3 341.1 372.5C308.5 356.2 287.1 343.4 265.6 306.5C259.9 296.7 271.3 297.4 281.9 276.2C283.7 272.5 282.8 269.3 281.4 266.5C280 263.7 268.9 236.4 264.3 225.3C259.8 214.5 255.2 216 251.8 215.8C248.6 215.6 244.9 215.6 241.2 215.6C237.5 215.6 231.5 217 226.4 222.5C221.3 228.1 207 241.5 207 268.8C207 296.1 226.9 322.5 229.6 326.2C232.4 329.9 268.7 385.9 324.4 410C359.6 425.2 373.4 426.5 391 423.9C401.7 422.3 423.8 410.5 428.4 397.5C433 384.5 433 373.4 431.6 371.1C430.3 368.6 426.6 367.2 421.1 364.5z" />
-                                                        </svg>
-                                                    </div>
+                                                    <section class="text-sm">
+                                                        <div class="flex gap-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 640 640" width="20" fill="currentColor"
+                                                                stroke="currentColor">
+                                                                <path
+                                                                    d="M240 192C240 147.8 275.8 112 320 112C364.2 112 400 147.8 400 192C400 236.2 364.2 272 320 272C275.8 272 240 236.2 240 192zM448 192C448 121.3 390.7 64 320 64C249.3 64 192 121.3 192 192C192 262.7 249.3 320 320 320C390.7 320 448 262.7 448 192zM144 544C144 473.3 201.3 416 272 416L368 416C438.7 416 496 473.3 496 544L496 552C496 565.3 506.7 576 520 576C533.3 576 544 565.3 544 552L544 544C544 446.8 465.2 368 368 368L272 368C174.8 368 96 446.8 96 544L96 552C96 565.3 106.7 576 120 576C133.3 576 144 565.3 144 552L144 544z" />
+                                                            </svg>
+                                                            <p>Maria Tamele</p>
+                                                        </div>
+                                                        <div class="flex gap-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 640 640" width="20" fill="currentColor"
+                                                                stroke="currentColor">
+                                                                <path
+                                                                    d="M80 259.8L289.2 345.9C299 349.9 309.4 352 320 352C330.6 352 341 349.9 350.8 345.9L593.2 246.1C602.2 242.4 608 233.7 608 224C608 214.3 602.2 205.6 593.2 201.9L350.8 102.1C341 98.1 330.6 96 320 96C309.4 96 299 98.1 289.2 102.1L46.8 201.9C37.8 205.6 32 214.3 32 224L32 520C32 533.3 42.7 544 56 544C69.3 544 80 533.3 80 520L80 259.8zM128 331.5L128 448C128 501 214 544 320 544C426 544 512 501 512 448L512 331.4L369.1 390.3C353.5 396.7 336.9 400 320 400C303.1 400 286.5 396.7 270.9 390.3L128 331.4z" />
+                                                            </svg>
+                                                            Eng. Civil, 2&deg; Ano Pos-Laboral
+                                                        </div>
+                                                        <div class="flex gap-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 640 640" width="20" fill="currentColor"
+                                                                stroke="currentColor">
+                                                                <path
+                                                                    d="M476.9 161.1C435 119.1 379.2 96 319.9 96C197.5 96 97.9 195.6 97.9 318C97.9 357.1 108.1 395.3 127.5 429L96 544L213.7 513.1C246.1 530.8 282.6 540.1 319.8 540.1L319.9 540.1C442.2 540.1 544 440.5 544 318.1C544 258.8 518.8 203.1 476.9 161.1zM319.9 502.7C286.7 502.7 254.2 493.8 225.9 477L219.2 473L149.4 491.3L168 423.2L163.6 416.2C145.1 386.8 135.4 352.9 135.4 318C135.4 216.3 218.2 133.5 320 133.5C369.3 133.5 415.6 152.7 450.4 187.6C485.2 222.5 506.6 268.8 506.5 318.1C506.5 419.9 421.6 502.7 319.9 502.7zM421.1 364.5C415.6 361.7 388.3 348.3 383.2 346.5C378.1 344.6 374.4 343.7 370.7 349.3C367 354.9 356.4 367.3 353.1 371.1C349.9 374.8 346.6 375.3 341.1 372.5C308.5 356.2 287.1 343.4 265.6 306.5C259.9 296.7 271.3 297.4 281.9 276.2C283.7 272.5 282.8 269.3 281.4 266.5C280 263.7 268.9 236.4 264.3 225.3C259.8 214.5 255.2 216 251.8 215.8C248.6 215.6 244.9 215.6 241.2 215.6C237.5 215.6 231.5 217 226.4 222.5C221.3 228.1 207 241.5 207 268.8C207 296.1 226.9 322.5 229.6 326.2C232.4 329.9 268.7 385.9 324.4 410C359.6 425.2 373.4 426.5 391 423.9C401.7 422.3 423.8 410.5 428.4 397.5C433 384.5 433 373.4 431.6 371.1C430.3 368.6 426.6 367.2 421.1 364.5z" />
+                                                            </svg>
+                                                            86 758 7448
+                                                        </div>
+                                                    </section>
                                                 </AccordionContent>
                                             </AccordionItem>
                                         </Accordion>
