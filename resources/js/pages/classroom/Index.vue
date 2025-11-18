@@ -16,7 +16,7 @@ import {
 import {
     LayoutGrid, BadgeCheckIcon, ChevronRightIcon, Info, BookmarkIcon, User, Pen,
     Radio, Album, Folder, ShieldAlertIcon, ExternalLinkIcon,
-    FileDown, CloudUpload, Play, UserRound, Key, MessageCircle, ChevronLeft, ChevronRight
+    FileDown, CloudUpload, Play, UserRound, Key, MessageCircle, ChevronLeft, ChevronRight, CircleCheck
 } from "lucide-vue-next"
 import { Button } from "@/components/ui/button"
 import {
@@ -58,7 +58,17 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import classrooms from '@/routes/classrooms';
+
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 
 function toggleMe() {
     // alert('toggle me!')
@@ -461,28 +471,24 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         </ItemDescription>
                                     </ItemContent>
                                     <ItemActions>
-                                        <!-- <Button size="sm" variant="outline" class="hover:cursor-pointer">
-                                            Conteúdos
-                                        </Button> -->
-
 
                                         <div>
-                                            <AlertDialog class="">
-                                                <AlertDialogTrigger>
+                                            <Sheet>
+                                                <SheetTrigger as-child>
+
                                                     <Button size="sm" variant="outline" class="hover:cursor-pointer">
                                                         Conteúdos
                                                     </Button>
-                                                </AlertDialogTrigger>
-                                                <AlertDialogContent class="rounded-xl ">
-                                                    <AlertDialogHeader class="grid">
-                                                        <AlertDialogTitle class="flex justify-start">Conteúdos
-                                                        </AlertDialogTitle>
-                                                        <AlertDialogDescription class="text-justify">
-                                                            Tópicos a serem avaliados.
-                                                        </AlertDialogDescription>
-                                                    </AlertDialogHeader>
 
-                                                    <section>
+                                                </SheetTrigger>
+                                                <SheetContent>
+                                                    <SheetHeader>
+                                                        <SheetTitle class="text-lg">Conteúdos</SheetTitle>
+                                                        <SheetDescription>
+                                                            Tópicos a serem avaliados.
+                                                        </SheetDescription>
+                                                    </SheetHeader>
+                                                    <div class="px-4">
                                                         <section class="grid gap-2">
                                                             <Item variant="outline" as-child>
                                                                 <a>
@@ -512,45 +518,31 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </ItemContent>
                                                                 </a>
                                                             </Item>
-                                                        </section>
 
-                                                        <section class="flex items-center justify-between py-4">
-                                                            <div class="order-2  text-sm text-slate-600">
-                                                                <!-- <p>Mostrando</p>
-                                                                <p><b>1-4</b> de 45</p> -->
-                                                                3/8
-                                                            </div>
-                                                            <div class="flex space-x-1">
-                                                                <button
-                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                                                    <ChevronLeft width="14" />
-                                                                </button>
-                                                                <!-- <button
-                                                                    class="ease min-h-8 min-w-8 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
-                                                                    1
-                                                                </button>
-                                                                <button
-                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                                                    2
-                                                                </button>
-                                                                <button
-                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                                                    3
-                                                                </button> -->
-                                                                <button
-                                                                    class="ease min-h-8 min-w-8 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                                                    <ChevronRight width="14" />
-                                                                </button>
-                                                            </div>
+                                                            <!-- <Item variant="outline" size="sm" asChild>
+                                                                <a>
+                                                                    <ItemMedia>
+                                                                        <CircleCheck className="size-4" />
+                                                                    </ItemMedia>
+                                                                    <ItemContent>
+                                                                        <ItemTitle>External resource
+                                                                        </ItemTitle>
+                                                                    </ItemContent>
+                                                                </a>
+                                                            </Item> -->
                                                         </section>
-                                                    </section>
-
-                                                    <AlertDialogFooter>
-                                                        <AlertDialogCancel class="cursor-pointer bg-gray-100">Cancelar
-                                                        </AlertDialogCancel>
-                                                    </AlertDialogFooter>
-                                                </AlertDialogContent>
-                                            </AlertDialog>
+                                                    </div>
+                                                    <SheetFooter>
+                                                        <button type="submit"
+                                                            class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">Exportar
+                                                            PDF</button>
+                                                        <SheetClose as-child>
+                                                            <button type="submit"
+                                                                class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                        </SheetClose>
+                                                    </SheetFooter>
+                                                </SheetContent>
+                                            </Sheet>
                                         </div>
 
                                     </ItemActions>
