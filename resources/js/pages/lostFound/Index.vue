@@ -488,7 +488,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <AccordionTrigger class="hover:no-underline cursor-pointer">Informação
                                                     adicional</AccordionTrigger>
                                                 <AccordionContent>
-                                                    <section class="text-sm">
+                                                    <section class="text-sm" v-show="true">
                                                         <div class="flex gap-1">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 640 640" width="20" fill="currentColor"
