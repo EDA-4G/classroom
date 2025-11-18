@@ -551,8 +551,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
 
                                     <div>
-                                        <Accordion type="single" collapsible>
-                                            <AccordionItem value="item-1">
+                                        <Accordion type="single" collapsible default-value="item-1">
+                                            <AccordionItem value="item-10">
                                                 <AccordionTrigger class="hover:no-underline cursor-pointer">Informação
                                                     adicional</AccordionTrigger>
                                                 <AccordionContent>
