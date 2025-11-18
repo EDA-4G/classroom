@@ -387,14 +387,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <Input id="student-email" placeholder="Ex: nome.apelido@uem.ac.mz"
                                             class="col-span-3" />
                                     </div>
-                                    <div class="grid items-center gap-4">
-                                        <Label for="name" class="text-right">
-                                            Email
-                                        </Label>
-                                        <Input id="personal-email" placeholder="Ex: eda.grupo4@gmail.com"
-                                            class="col-span-3" />
-                                    </div>
-                                    <div class="inline-flex gap-2">
+
+                                    <!-- <div class="inline-flex gap-2">
                                         <div class="relative inline-block w-11 h-5">
                                             <input id="switch-component-desc" type="checkbox"
                                                 class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
@@ -414,7 +408,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </p>
                                             </div>
                                         </label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="w-full max-w-md">
                                         <FieldGroup>
@@ -426,23 +420,27 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     Select the compute environment for your cluster.
                                                 </FieldDescription>
                                                 <RadioGroup default-value="kubernetes">
-                                                    <FieldLabel for="kubernetes-r2h">
+                                                    <FieldLabel for="kubernetes-r2h"
+                                                        class="has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
                                                         <Field orientation="horizontal">
                                                             <FieldContent>
-                                                                <FieldTitle>Kubernetes</FieldTitle>
+                                                                <FieldTitle>Gratís</FieldTitle>
                                                                 <FieldDescription>
-                                                                    Run GPU workloads on a K8s configured cluster.
+                                                                    Sem taxa, pagamento não requisitado.
                                                                 </FieldDescription>
                                                             </FieldContent>
-                                                            <RadioGroupItem id="kubernetes-r2h" value="kubernetes" />
+                                                            <RadioGroupItem id="kubernetes-r2h" value="kubernetes"
+                                                                class="text-[#1F8261]" />
                                                         </Field>
                                                     </FieldLabel>
                                                     <FieldLabel for="vm-z4k">
                                                         <Field orientation="horizontal">
                                                             <FieldContent>
-                                                                <FieldTitle>Virtual Machine</FieldTitle>
+                                                                <FieldTitle>M-Pesa</FieldTitle>
                                                                 <FieldDescription>
-                                                                    Access a VM configured cluster to run GPU workloads.
+                                                                    Está operação irá descontar 20,00 meticais.
+                                                                    <!-- Será cobrada uma taxa de 20,00 meticais  -->
+                                                                    <!-- Access a VM configured cluster to run GPU workloads. -->
                                                                 </FieldDescription>
                                                             </FieldContent>
                                                             <RadioGroupItem id="vm-z4k" value="vm" />
@@ -452,11 +450,35 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             </FieldSet>
                                         </FieldGroup>
                                     </div>
+
+                                    <div class="grid items-center gap-2 mt-2">
+                                        <Label for="name" class="text-right">
+                                            Conta M-Pesa
+                                        </Label>
+                                        <Input id="personal-email" placeholder="Ex: 84/85 xxx xxxx"
+                                            class="col-span-3" />
+                                    </div>
+
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                fill="currentColor" class="w-4 h-4 text-slate-600">
+                                                <path fill-rule="evenodd"
+                                                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                        <Input id="contactNumber"
+                                            class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                            placeholder="Ex: 84/85 xxx xxxx" pattern="^\+\d{1,3}\s\d{1,3}-\d{3}-\d{4}$"
+                                            title="Phone number must be in the format: +1 123-456-7890" maxlength="16"
+                                            required />
+                                    </div>
                                 </div>
                                 <SheetFooter>
                                     <SheetClose as-child>
                                         <button type="submit"
-                                            class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">Recuperar</button>
+                                            class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">Confirmar</button>
                                     </SheetClose>
                                     <SheetClose as-child>
                                         <button type="submit"
