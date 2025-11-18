@@ -384,20 +384,84 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </ItemActions>
                                 </a>
                             </Item>
-                            <Item variant="outline" size="sm" as-child>
-                                <a href="#">
-                                    <ItemMedia>
-                                        <!-- <BadgeCheckIcon class="size-5" /> -->
-                                        <Info class="size-5" />
-                                    </ItemMedia>
-                                    <ItemContent>
-                                        <ItemTitle>Director/a do curso</ItemTitle>
-                                    </ItemContent>
-                                    <ItemActions>
-                                        <ChevronRightIcon class="size-4" />
-                                    </ItemActions>
-                                </a>
-                            </Item>
+
+
+
+                            <Sheet>
+                                <SheetTrigger as-child>
+
+                                    <Item variant="outline" size="sm" as-child>
+                                        <a class="cursor-pointer">
+                                            <ItemMedia>
+                                                <Info class="size-5" />
+                                            </ItemMedia>
+                                            <ItemContent>
+                                                <ItemTitle>Director/a do curso</ItemTitle>
+                                            </ItemContent>
+                                            <ItemActions>
+                                                <ChevronRightIcon class="size-4" />
+                                            </ItemActions>
+                                        </a>
+                                    </Item>
+
+                                </SheetTrigger>
+                                <SheetContent>
+                                    <SheetHeader>
+                                        <SheetTitle class="text-lg">Executivo</SheetTitle>
+                                        <SheetDescription>
+                                            Faculdade de Engenharia
+                                        </SheetDescription>
+                                    </SheetHeader>
+                                    <div class="grid gap-4 px-4">
+                                        <section>
+                                            <div class="group flex flex-col items-center text-sm bg-white transition">
+                                                <img class="w-40 rounded-full"
+                                                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
+                                                    alt="userImage1">
+                                                <h2 class="text-lg font-medium mt-2">
+                                                    Donald Jackman</h2>
+                                                <p class="text-gray-500">Director/a do Curso</p>
+                                            </div>
+
+                                            <div class="grid gap-2 mt-2">
+                                                <div
+                                                    class="flex w-full items-center justify-center gap-2 px-4 py-2 border border-gray-200 rounded-md">
+                                                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M16.5 2.5c0-.825-.675-1.5-1.5-1.5H3c-.825 0-1.5.675-1.5 1.5m15 0v9c0 .825-.675 1.5-1.5 1.5H3c-.825 0-1.5-.675-1.5-1.5v-9m15 0L9 7.75 1.5 2.5"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <p class="text-sm">maria.luiza@uem.ac.mz</p>
+                                                </div>
+                                                <div
+                                                    class="flex w-full items-center justify-center gap-2  px-4 py-2 border border-gray-200 rounded-md">
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M11.29 3.75a3.75 3.75 0 0 1 2.962 2.963M11.289.75a6.75 6.75 0 0 1 5.963 5.955m-.75 5.985v2.25a1.5 1.5 0 0 1-1.635 1.5 14.84 14.84 0 0 1-6.472-2.303 14.6 14.6 0 0 1-4.5-4.5 14.84 14.84 0 0 1-2.303-6.502A1.5 1.5 0 0 1 3.085 1.5h2.25a1.5 1.5 0 0 1 1.5 1.29 9.6 9.6 0 0 0 .525 2.108 1.5 1.5 0 0 1-.338 1.582l-.952.952a12 12 0 0 0 4.5 4.5l.952-.952a1.5 1.5 0 0 1 1.582-.338c.681.254 1.388.43 2.108.526a1.5 1.5 0 0 1 1.29 1.522"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <p class="text-sm">+258 84 567 7788</p>
+                                                </div>
+                                            </div>
+                                        </section>
+
+
+                                    </div>
+                                    <SheetFooter>
+                                        <SheetClose as-child>
+                                            <button type="submit"
+                                                class="p-2 text-sm font-medium rounded-md border border-[#D0E7DC]  text-[#038043] hover:bg-[#F5FFFA] cursor-pointer">Cancelar</button>
+                                        </SheetClose>
+                                    </SheetFooter>
+                                </SheetContent>
+                            </Sheet>
+
+
+
                         </div>
                     </div>
 
