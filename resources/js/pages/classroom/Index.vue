@@ -69,6 +69,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import losses from '@/routes/losses';
 
 function toggleMe() {
     // alert('toggle me!')
@@ -264,10 +265,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <FileDown class="w-full size-5" />
                                 Presenças
                             </button>
-                            <button class="border py-6 rounded-lg text-sm">
-                                <CloudUpload class="w-full size-5" />
-                                Publicar Achado
-                            </button>
+                            <Link :href="losses.create().url" class="border py-6 rounded-lg text-center text-sm">
+                            <CloudUpload class="w-full size-5" />
+                            Publicar Achado
+                            </Link>
                             <Link :href="files.index().url" class="border py-6 rounded-lg text-center text-sm">
                             <Folder class="w-full size-5" />
                             Repositório
