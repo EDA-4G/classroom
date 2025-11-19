@@ -32,13 +32,7 @@ import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGr
 import { Check, ChevronsUpDown, Search } from "lucide-vue-next"
 import { ref } from "vue"
 
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 import { Label } from "@/components/ui/label"
@@ -102,6 +96,23 @@ const value = ref<typeof frameworks[0]>()
 
 
 
+
+// import { Button } from '@/components/ui/button'
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog'
+// import { Input } from '@/components/ui/input'
+// import { Label } from '@/components/ui/label'
+
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -139,156 +150,223 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </BreadcrumbList>
             </Breadcrumb>
 
+            <section class="grid gap-4">
 
-            <InputGroup>
-                <InputGroupInput id="#" placeholder="Descrição, departamento, sala, turno, data..." class="text-sm" />
-                <InputGroupAddon>
-                    <Search />
-                </InputGroupAddon>
-                <InputGroupAddon align="inline-end">
-                    12 resultados
-                </InputGroupAddon>
-            </InputGroup>
+                <!-- <Dialog>
+                    <form>
+                        <DialogTrigger as-child>
+                            <Button variant="outline">
+                                Open Dialog
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent class="sm:max-w-[425px]">
+                            <DialogHeader>
+                                <DialogTitle>Edit profile</DialogTitle>
+                                <DialogDescription>
+                                    Make changes to your profile here. Click save when you're
+                                    done.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div class="grid gap-4">
+                                <div class="grid gap-3">
+                                    <Label for="name-1">Name</Label>
+                                    <Input id="name-1" name="name" default-value="Pedro Duarte" />
+                                </div>
+                                <div class="grid gap-3">
+                                    <Label for="username-1">Username</Label>
+                                    <Input id="username-1" name="username" default-value="@peduarte" />
+                                </div>
+                            </div>
+                            <DialogFooter>
+                                <DialogClose as-child>
+                                    <Button variant="outline">
+                                        Cancel
+                                    </Button>
+                                </DialogClose>
+                                <Button type="submit">
+                                    Save changes
+                                </Button>
+                            </DialogFooter>
+                        </DialogContent>
+                    </form>
+                </Dialog> -->
 
-            <section>
-                <!-- Stepper -->
-                <div data-stepper="" class="w-full">
-                    <!-- Stepper Nav -->
-                    <ul class="relative flex flex-row gap-x-2">
-                        <li class="group flex flex-1 shrink basis-0 items-center gap-x-2"
-                            data-stepper-nav-item='{ "index": 1 }'>
-                            <span class="min-h-7.5 min-w-7.5 inline-flex items-center align-middle text-sm">
-                                <span
-                                    class="stepper-active:text-bg-primary stepper-active:shadow-sm shadow-base-300/20 stepper-success:text-bg-primary stepper-success:shadow-sm stepper-completed:text-bg-success text-bg-soft-neutral flex size-7.5 shrink-0 items-center justify-center rounded-full font-medium">
-                                    <span class="stepper-success:hidden stepper-completed:hidden">1</span>
-                                    <span
-                                        class="icon-[tabler--check] stepper-success:block hidden size-4 shrink-0"></span>
-                                </span>
-                                <span class="text-base-content ms-2 max-sm:hidden">Step</span>
-                            </span>
-                            <div
-                                class="stepper-success:bg-primary stepper-completed:bg-success bg-neutral/20 h-px w-full flex-1 group-last:hidden">
-                            </div>
-                        </li>
-                        <li class="group flex flex-1 shrink basis-0 items-center gap-x-2"
-                            data-stepper-nav-item='{ "index": 2 }'>
-                            <span class="min-h-7.5 min-w-7.5 inline-flex items-center align-middle text-sm">
-                                <span
-                                    class="stepper-active:text-bg-primary stepper-active:shadow-sm shadow-base-300/20 stepper-success:text-bg-primary stepper-success:shadow-sm stepper-completed:text-bg-success stepper-error:text-bg-error text-bg-soft-neutral flex size-7.5 shrink-0 items-center justify-center rounded-full font-medium">
-                                    <span class="stepper-success:hidden stepper-completed:hidden">2</span>
-                                    <span
-                                        class="icon-[tabler--check] stepper-success:block hidden size-4 shrink-0"></span>
-                                </span>
-                                <span class="text-base-content ms-2 max-sm:hidden">Step</span>
-                            </span>
-                            <div
-                                class="stepper-success:bg-primary stepper-completed:bg-success bg-neutral/20 h-px w-full flex-1 group-last:hidden">
-                            </div>
-                        </li>
-                        <li class="group flex flex-1 shrink basis-0 items-center gap-x-2"
-                            data-stepper-nav-item='{ "index": 3 }'>
-                            <span class="min-h-7.5 min-w-7.5 inline-flex items-center align-middle text-sm">
-                                <span
-                                    class="stepper-active:text-bg-primary stepper-active:shadow-sm shadow-base-300/20 stepper-success:text-bg-primary stepper-success:shadow-sm stepper-completed:text-bg-success stepper-error:text-bg-error text-bg-soft-neutral flex size-7.5 shrink-0 items-center justify-center rounded-full font-medium">
-                                    <span class="stepper-success:hidden stepper-completed:hidden">3</span>
-                                    <span
-                                        class="icon-[tabler--check] stepper-success:block hidden size-4 shrink-0"></span>
-                                </span>
-                                <span class="text-base-content ms-2 max-sm:hidden">Step</span>
-                            </span>
-                            <div
-                                class="stepper-success:bg-primary stepper-completed:bg-success bg-neutral/20 h-px w-full flex-1 group-last:hidden">
-                            </div>
-                        </li>
-                        <!-- End Item -->
-                    </ul>
-                    <!-- End Stepper Nav -->
 
-                    <!-- Stepper Content -->
-                    <div class="mt-5 sm:mt-8">
-                        <!-- First Content -->
-                        <div data-stepper-content-item='{ "index": 1 }'>
-                            <div
-                                class="border-base-content/40 bg-base-200/50 flex h-48 items-center justify-center rounded-xl border border-dashed p-4">
-                                <h3 class="text-base-content/50 text-2xl">First content</h3>
-                            </div>
-                        </div>
-                        <!-- End First Content -->
-                        <!-- Second Content -->
-                        <div data-stepper-content-item='{ "index": 2 }' style="display: none;">
-                            <div
-                                class="border-base-content/40 bg-base-200/50 flex h-48 items-center justify-center rounded-xl border border-dashed p-4">
-                                <h3 class="text-base-content/50 text-2xl">Second content</h3>
-                            </div>
-                        </div>
-                        <!-- End Second Content -->
-                        <!-- Third Content -->
-                        <div data-stepper-content-item='{ "index": 3 }' style="display: none;">
-                            <div
-                                class="border-base-content/40 bg-base-200/50 flex h-48 items-center justify-center rounded-xl border border-dashed p-4">
-                                <h3 class="text-base-content/50 text-2xl">Third content</h3>
-                            </div>
-                        </div>
-                        <!-- End Third Content -->
-                        <!-- Final Content -->
-                        <div data-stepper-content-item='{ "isFinal": true }' style="display: none;">
-                            <div
-                                class="border-base-content/40 bg-base-200/50 flex h-48 items-center justify-center rounded-xl border border-dashed p-4">
-                                <h3 class="text-base-content/50 text-2xl">Final content</h3>
-                            </div>
-                        </div>
-                        <!-- End Final Content -->
-                        <!-- Button Group -->
-                        <div class="mt-5 flex items-center justify-between gap-x-2">
-                            <button type="button" class="btn btn-primary" data-stepper-back-btn="">
-                                <span class="icon-[tabler--chevron-left] text-primary-content rtl:rotate-180"></span>
-                                Back
-                            </button>
-                            <button type="button" class="btn btn-primary" data-stepper-next-btn="">
-                                Next
-                                <span class="icon-[tabler--chevron-right] text-primary-content rtl:rotate-180"></span>
-                            </button>
-                            <button type="button" class="btn btn-primary" data-stepper-finish-btn=""
-                                style="display: none;"> Finish </button>
-                            <button type="reset" class="btn btn-primary" data-stepper-reset-btn=""
-                                style="display: none;"> Reset </button>
-                        </div>
-                        <!-- End Button Group -->
+                <div class="">
+                    <p class="text-lg font-semibold">Postagem</p>
+                </div>
+                <div class="grid gap-2">
+                    <Label for="email">Titulo</Label>
+                    <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@example.com" />
+                    <InputError message="" />
+                </div>
+                <div class="grid gap-2">
+                    <Label for="email">Imagem</Label>
+                    <Input id="email" type="file" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@example.com" />
+                    <InputError message="" />
+                </div>
+
+                <div>
+                    <FieldGroup>
+                        <FieldSet>
+                            <RadioGroup default-value="student" class="grid lg:grid-cols-3">
+                                <FieldLabel for="student-e1"
+                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                    <Field orientation="horizontal">
+                                        <FieldContent class="gap-0">
+                                            <FieldTitle>Estudante</FieldTitle>
+                                            <FieldDescription>
+                                                Cobrança limite MZN <span class="font-semibold">50,00</span>
+                                                meticais.
+                                            </FieldDescription>
+                                        </FieldContent>
+                                        <RadioGroupItem id="student-e1" value="student" class="text-[#1F8261]" />
+                                    </Field>
+                                </FieldLabel>
+                                <FieldLabel for="teacher-e2"
+                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                    <Field orientation="horizontal">
+                                        <FieldContent class="gap-0">
+                                            <FieldTitle>Docente</FieldTitle>
+                                            <FieldDescription>
+                                                Cobrança limite MZN <span class="font-semibold">10,00</span>
+                                                meticais.
+                                            </FieldDescription>
+                                        </FieldContent>
+                                        <RadioGroupItem id="teacher-e2" value="teacher" class="text-[#1F8261]" />
+                                    </Field>
+                                </FieldLabel>
+                                <FieldLabel for="employee-e3"
+                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                    <Field orientation="horizontal">
+                                        <FieldContent class="gap-0">
+                                            <FieldTitle>Funcionário</FieldTitle>
+                                            <FieldDescription>
+                                                Cobrança limite MZN <span class="font-semibold">20,00</span>
+                                                meticais.
+                                            </FieldDescription>
+                                        </FieldContent>
+                                        <RadioGroupItem id="employee-e3" value="employee" class="text-[#1F8261]" />
+                                    </Field>
+                                </FieldLabel>
+                            </RadioGroup>
+                        </FieldSet>
+                    </FieldGroup>
+                </div>
+
+                <section class="grid lg:grid-cols-3 gap-2">
+                    <div class="grid gap-2">
+                        <Label for="email">Código</Label>
+                        <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                            placeholder="email@example.com" />
+                        <InputError message="" />
                     </div>
-                    <!-- End Stepper Content -->
+                    <div class="grid gap-2">
+                        <Label for="email">Email Instituicional</Label>
+                        <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                            placeholder="email@example.com" />
+                        <InputError message="" />
+                    </div>
+                </section>
+
+                <div class="grid gap-2">
+                    <Label for="email">Curso</Label>
+                    <!-- <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@example.com" /> -->
+                    <Select>
+                        <SelectTrigger class="w-auto">
+                            <SelectValue placeholder="Selecionar o curso" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <!-- <SelectGroup> -->
+                            <SelectItem value="apple">
+                                Apple
+                            </SelectItem>
+                            <SelectItem value="banana">
+                                Banana
+                            </SelectItem>
+                            <!-- </SelectGroup> -->
+                        </SelectContent>
+                    </Select>
+
+                    <InputError message="" />
                 </div>
-                <!-- End Stepper -->
+                <!-- <div class="grid gap-2">
+                    <Label for="email">Quem esta a publicar Docente, estudante, funcionario</Label>
+                    <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@example.com" />
+                    <InputError message="" />
+                </div> -->
+                <!-- <div class="grid gap-2">
+                    <Label for="email">Pagar/ Gratis</Label> Mpesa
+                    <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
+                        placeholder="email@example.com" />
+                    <InputError message="" />
+                </div> -->
+
+                <div class="inline-flex gap-2">
+                    <div class="relative inline-block w-11 h-5">
+                        <input id="switch-component-desc" type="checkbox"
+                            class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                        <label for="switch-component-desc"
+                            class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                        </label>
+                    </div>
+
+                    <label for="switch-component-desc" class="text-slate-600 text-sm cursor-pointer">
+                        <div>
+                            <p class="font-medium">
+                                Aceitar pagamento
+                            </p>
+                            <p class="text-slate-500">
+                                <!-- Poderá habilitar e desabilitar o estado da sua inscrição. -->
+                                Forma de agradecimento.
+                            </p>
+                        </div>
+                    </label>
+                </div>
+
+                <section class="grid lg:grid-cols-3 gap-2">
+                    <div class="grid items-center gap-2">
+                        <Label for="name" class="text-right">
+                            Conta M-Pesa
+                        </Label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-4 h-4 text-slate-600">
+                                    <path fill-rule="evenodd"
+                                        d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                            <Input id="contactNumber" type="number"
+                                class="w-full bg-transparent placeholder:text-gray-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                placeholder="Ex: 84/85 xxx xxxx" min="1"
+                                title="Número de conta M-Pesa deve ser válido: 84/85 xxx xxxx" />
+                        </div>
+                        <InputError message="" />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <Label for="amount">Valor</Label>
+                        <Input id="amount" type="number" name="amount" min="1" placeholder="Informe o valor" />
+                        <InputError message="" />
+                    </div>
+                </section>
+
+                <div class="py-1 flex flex-col gap-2 lg:flex-row lg:justify-end">
+                    <button type="submit"
+                        class="p-2 text-sm px-4 font-medium rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                        Publicar
+                    </button>
+                    <button
+                        class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                </div>
             </section>
 
-
-            <section class="flex items-center justify-between py-4">
-                <div class="text-sm text-slate-700 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
-                    <p>Mostrando</p>
-                    <p><b>1-4</b> de 45</p>
-                </div>
-                <div class="flex space-x-1">
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        <ChevronLeft width="16" />
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
-                        1
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        2
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        3
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        <ChevronRight width="16" />
-                    </button>
-                </div>
-            </section>
 
         </div>
     </AppLayout>
