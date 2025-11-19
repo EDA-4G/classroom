@@ -91,7 +91,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <InputError message="" />
                     </div>
                     <div class="grid gap-2">
-                        <Label for="color">Cor</Label>
+                        <Label for="color">Cor dominante</Label>
                         <Input id="color" type="text" name="color" autocomplete="color" placeholder="Ex: Preto" />
                         <InputError message="" />
                     </div>
