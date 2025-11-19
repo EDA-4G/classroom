@@ -272,20 +272,20 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
 
                 <div class="grid gap-2">
-                    <Label for="email">Curso</Label>
+                    <Label for="email">Onde encontrou o pertence</Label>
                     <!-- <Input id="email" type="text" name="email" required autofocus :tabindex="1" autocomplete="email"
                         placeholder="email@example.com" /> -->
                     <Select>
                         <SelectTrigger class="w-auto">
-                            <SelectValue placeholder="Selecionar o curso" />
+                            <SelectValue placeholder="Selecionar o departamento" />
                         </SelectTrigger>
                         <SelectContent>
                             <!-- <SelectGroup> -->
                             <SelectItem value="apple">
-                                Apple
+                                Cadeiras Gerais
                             </SelectItem>
                             <SelectItem value="banana">
-                                Banana
+                                Eng. Quimica
                             </SelectItem>
                             <!-- </SelectGroup> -->
                         </SelectContent>
@@ -315,7 +315,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </label>
                     </div>
 
-                    <label for="switch-component-desc" class="text-slate-600 text-sm cursor-pointer">
+                    <label for="switch-component-desc" class="text-green-900 text-sm cursor-pointer">
                         <div>
                             <p class="font-medium">
                                 Aceitar pagamento
