@@ -17,6 +17,7 @@ import {
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
 import losses from '@/routes/losses';
+import managers from '@/routes/managers';
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [
     Autoplay({ delay: 8000 }),
@@ -125,7 +126,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Locate width="18" />
                     Perdidos e Achados
                     </Link>
-                    <Link href="#"
+                    <Link :href="managers.index().url"
                         class="text-md flex cursor-pointer pslace-items-center justify-center gap-1 rounded-lg border border-[#038043] px-2 py-3 font-semibold text-[#038043] hover:text-[#1fad68]">
                     <User2 width="18" />
                     Administrador
