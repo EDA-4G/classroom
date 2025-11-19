@@ -8,7 +8,7 @@ use App\Http\Controllers\Classroom\RepositoryController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\LostFoundController;
 use App\Http\Controllers\Classroom\ClassRepositoryController;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ManagerController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -28,6 +28,6 @@ Route::resource('files', ClassRepositoryController::class);
 
 Route::resource('losses', LostFoundController::class);
 
-Route::resource('managers', AdminController::class);
+Route::resource('managers', ManagerController::class);
 
 require __DIR__ . '/settings.php';
