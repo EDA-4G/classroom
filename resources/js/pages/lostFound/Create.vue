@@ -148,7 +148,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <section class="grid lg:grid-cols-3 gap-2">
                     <div class="grid gap-2">
                         <Label for="id">Código</Label>
-                        <Input id="id" type="text" name="id" placeholder="Informe o código instituicional" />
+                        <Input id="id" type="number" name="id" placeholder="Informe o código instituicional" />
                         <InputError message="" />
                     </div>
                     <div class="grid gap-2">
