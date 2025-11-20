@@ -40,6 +40,17 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -117,8 +128,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <CardHeader>
                                 <CardTitle>Anúncios</CardTitle>
                                 <CardDescription>
-                                    Make changes to your account here. Click save when you're
-                                    done.
+                                    Veja toda informação dos teus anúncios.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent class="">
@@ -247,12 +257,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                         <p
                                                             class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                                                            Function
-                                                        </p>
-                                                    </th>
-                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                                             Situação
                                                         </p>
                                                     </th>
@@ -276,35 +280,18 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"
                                                                 alt="John Michael"
                                                                 class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
-                                                            <div class="flex flex-col">
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                                    John Michael
-                                                                </p>
-                                                                <!-- <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                    john@creative-tim.com
-                                                                </p> -->
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex flex-col">
                                                             <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                Manager
+                                                                class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                                John Michael
                                                             </p>
-                                                            <!-- <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                Organization
-                                                            </p> -->
                                                         </div>
                                                     </td>
+
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <div class="w-max">
                                                             <div
                                                                 class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
-                                                                <span class="">Online</span>
+                                                                <span class="">Activo</span>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -314,218 +301,131 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             23 Mar 2025
                                                         </p>
                                                     </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <button
-                                                            class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span class="flex justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    class="w-4 h-4">
-                                                                    <path
-                                                                        d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
-                                                        <button
-                                                            class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#B32E2E] transition-all hover:bg-[#FAEBEB] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span class="flex justify-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    class="w-4 h-4">
-                                                                    <path
-                                                                        d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
+                                                    <td class="text-right p-4 border-b border-blue-gray-50">
+
+                                                        <Sheet>
+                                                            <SheetTrigger as-child>
+
+                                                                <button
+                                                                    class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                                    type="button">
+                                                                    <span class="flex justify-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" fill="currentColor"
+                                                                            class="w-4 h-4">
+                                                                            <path
+                                                                                d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </button>
+
+                                                            </SheetTrigger>
+                                                            <SheetContent>
+                                                                <SheetHeader>
+                                                                    <SheetTitle class="text-lg">Anúncios</SheetTitle>
+                                                                    <SheetDescription>
+                                                                        Edite o anúncio aqui. Clique em
+                                                                        <span class="font-semibold">Editar</span> quando
+                                                                        terminar.
+                                                                    </SheetDescription>
+                                                                </SheetHeader>
+                                                                <section class="grid gap-4 px-4">
+                                                                    <div class="grid gap-2">
+                                                                        <Label for="description">Descrição</Label>
+                                                                        <Input id="description" name="description"
+                                                                            placeholder="Informe a descrição" />
+                                                                        <InputError message="" />
+                                                                    </div>
+                                                                    <div class="grid gap-2">
+                                                                        <Label for="email">Imagem</Label>
+                                                                        <Input id="email" type="file" name="ads" />
+                                                                        <InputError message="" />
+                                                                    </div>
+                                                                    <div class="inline-flex gap-2">
+                                                                        <div class="relative inline-block w-11 h-5">
+                                                                            <input id="switch-component-desc"
+                                                                                type="checkbox"
+                                                                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                                            <label for="switch-component-desc"
+                                                                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <label for="switch-component-desc"
+                                                                            class="text-green-900 text-sm cursor-pointer">
+                                                                            <div>
+                                                                                <p class="font-medium">
+                                                                                    Activar Anúncio
+                                                                                </p>
+                                                                                <p class="text-slate-500">
+                                                                                    Permitir que esteja visível na
+                                                                                    página inicial.
+                                                                                </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </section>
+                                                                <SheetFooter>
+                                                                    <button type="submit"
+                                                                        class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                                                        <!-- <Loader class="animate-spin" v-if="form.processing" /> -->
+
+                                                                        Editar
+                                                                    </button>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit"
+                                                                            class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                                    </SheetClose>
+                                                                </SheetFooter>
+                                                            </SheetContent>
+                                                        </Sheet>
+
+                                                        <AlertDialog>
+                                                            <AlertDialogTrigger
+                                                                class="relative cursor-pointer rounded-lg text-center align-middle font-sans text-xs font-medium text-gray-900 uppercase transition-all select-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+
+                                                                <button
+                                                                    class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#B32E2E] transition-all hover:bg-[#FAEBEB] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                                    type="button">
+                                                                    <span class="flex justify-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" fill="currentColor"
+                                                                            class="w-4 h-4">
+                                                                            <path
+                                                                                d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </button>
+
+                                                            </AlertDialogTrigger>
+
+                                                            <AlertDialogContent class="rounded-2xl max-w-sm">
+                                                                <AlertDialogHeader>
+                                                                    <AlertDialogTitle class="text-left">Exclusão
+                                                                    </AlertDialogTitle>
+                                                                    <AlertDialogDescription class="text-left">
+                                                                        Confirma a exclusão permanente do anúnico
+                                                                        <strong class="text-[#EC3636]">Inscrições 2026
+                                                                        </strong>.
+                                                                    </AlertDialogDescription>
+                                                                </AlertDialogHeader>
+                                                                <AlertDialogFooter>
+                                                                    <AlertDialogCancel class="cursor-pointer">Cancelar
+                                                                    </AlertDialogCancel>
+                                                                    <AlertDialogAction
+                                                                        class="cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
+                                                                        @click="">
+                                                                        Sim, Excluir
+                                                                    </AlertDialogAction>
+                                                                </AlertDialogFooter>
+                                                            </AlertDialogContent>
+                                                        </AlertDialog>
+
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex items-center gap-3">
-                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"
-                                                                alt="Alexa Liras"
-                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
-                                                            <div class="flex flex-col">
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                    Alexa Liras
-                                                                </p>
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                    alexa@creative-tim.com
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex flex-col">
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                Programator
-                                                            </p>
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                Developer
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="w-max">
-                                                            <div
-                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                                                                <span class="">offline</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            23/04/18
-                                                        </p>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <button
-                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span
-                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    aria-hidden="true" class="w-4 h-4">
-                                                                    <path
-                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex items-center gap-3">
-                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg"
-                                                                alt="Laurent Perrier"
-                                                                class="relative inline-block h-9 w-9 !rounded-full  object-cover object-center" />
-                                                            <div class="flex flex-col">
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                    Laurent Perrier
-                                                                </p>
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                    laurent@creative-tim.com
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex flex-col">
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                Executive
-                                                            </p>
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                Projects
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="w-max">
-                                                            <div
-                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                                                                <span class="">offline</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            19/09/17
-                                                        </p>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <button
-                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span
-                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    aria-hidden="true" class="w-4 h-4">
-                                                                    <path
-                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex items-center gap-3">
-                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg"
-                                                                alt="Michael Levi"
-                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
-                                                            <div class="flex flex-col">
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                    Michael Levi
-                                                                </p>
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                    michael@creative-tim.com
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="flex flex-col">
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                Programator
-                                                            </p>
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                Developer
-                                                            </p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <div class="w-max">
-                                                            <div
-                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
-                                                                <span class="">online</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            24/12/08
-                                                        </p>
-                                                    </td>
-                                                    <td class="p-4 border-b border-blue-gray-50">
-                                                        <button
-                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span
-                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    aria-hidden="true" class="w-4 h-4">
-                                                                    <path
-                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
-                                                    </td>
-                                                </tr>
+
                                                 <tr>
                                                     <td class="p-4">
                                                         <div class="flex items-center gap-3">
@@ -542,18 +442,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     richard@creative-tim.com
                                                                 </p>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4">
-                                                        <div class="flex flex-col">
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                Manager
-                                                            </p>
-                                                            <p
-                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                Executive
-                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="p-4">
