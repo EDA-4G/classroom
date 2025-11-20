@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
@@ -28,7 +29,20 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image_path = null;
+        if ($request->hasFile('ads')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('ads')->getClientOriginalName();
+            $image_path = $request->file('ads')->storeAs('ads', $file_name, 'public');
+        }
+
+        $advertisement = new Advertisement([
+            'description' => $request->description,
+            'image' => $image_path,
+            'is_active' => $request->is_active
+        ]);
+
+        $advertisement->save();
+        return redirect()->route('managers.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
