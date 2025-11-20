@@ -29,7 +29,17 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
-import { Plus, ChevronLeft, ChevronRight } from "lucide-vue-next"
+import { Plus, ChevronLeft, ChevronRight, Loader } from "lucide-vue-next"
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -147,11 +157,80 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                             </div>
 
-                                            <button type="button"
+                                            <!-- <button type="button"
                                                 class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                                 <Plus width="16" />
                                                 Adicionar
-                                            </button>
+                                            </button> -->
+
+                                            <Sheet>
+                                                <SheetTrigger as-child>
+
+                                                    <button type="button"
+                                                        class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                                        <Plus width="16" />
+                                                        Adicionar
+                                                    </button>
+
+                                                </SheetTrigger>
+                                                <SheetContent>
+                                                    <SheetHeader>
+                                                        <SheetTitle class="text-lg">Anúncios</SheetTitle>
+                                                        <SheetDescription>
+                                                            <!-- Faça as alterações do anúncio aqui. Clique em <span class="font-semibold">Salvar</span> quando terminar. -->
+                                                            Cadastre o anúncio aqui. Clique em <span
+                                                                class="font-semibold">Salvar</span> quando terminar.
+                                                        </SheetDescription>
+                                                    </SheetHeader>
+                                                    <section class="grid gap-4 px-4">
+                                                        <div class="grid gap-2">
+                                                            <Label for="description">Descrição</Label>
+                                                            <Input id="description" name="description"
+                                                                placeholder="Informe a descrição" />
+                                                            <InputError message="" />
+                                                        </div>
+                                                        <div class="grid gap-2">
+                                                            <Label for="email">Imagem</Label>
+                                                            <Input id="email" type="file" name="ads" />
+                                                            <InputError message="" />
+                                                        </div>
+                                                        <div class="inline-flex gap-2">
+                                                            <div class="relative inline-block w-11 h-5">
+                                                                <input id="switch-component-desc" type="checkbox"
+                                                                    class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                                <label for="switch-component-desc"
+                                                                    class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                                </label>
+                                                            </div>
+
+                                                            <label for="switch-component-desc"
+                                                                class="text-green-900 text-sm cursor-pointer">
+                                                                <div>
+                                                                    <p class="font-medium">
+                                                                        Activar Anúncio
+                                                                    </p>
+                                                                    <p class="text-slate-500">
+                                                                        Permitir que esteja visível na página inicial.
+                                                                    </p>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </section>
+                                                    <SheetFooter>
+                                                        <button type="submit"
+                                                            class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                                            <!-- <Loader class="animate-spin" v-if="form.processing" /> -->
+
+                                                            Salvar
+                                                        </button>
+                                                        <SheetClose as-child>
+                                                            <button type="submit"
+                                                                class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                        </SheetClose>
+                                                    </SheetFooter>
+                                                </SheetContent>
+                                            </Sheet>
+
                                         </div>
                                     </div>
 
