@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { SidebarInset } from '@/components/ui/sidebar';
 import { computed } from 'vue';
+import 'vue-sonner/style.css'
+import { Toaster } from '@/components/ui/sonner'
 
 interface Props {
     variant?: 'header' | 'sidebar';
@@ -22,4 +24,5 @@ const className = computed(() => props.class);
     >
         <slot />
     </main>
+     <Toaster />
 </template>
