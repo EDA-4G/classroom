@@ -29,6 +29,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
+import { Plus, ChevronLeft, ChevronRight } from "lucide-vue-next"
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -96,25 +97,436 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <TabsContent value="account">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Account</CardTitle>
+                                <CardTitle>Anúncios</CardTitle>
                                 <CardDescription>
                                     Make changes to your account here. Click save when you're
                                     done.
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent class="grid gap-6">
-                                <div class="grid gap-3">
-                                    <Label for="tabs-demo-name">Name</Label>
-                                    <Input id="tabs-demo-name" default-value="Pedro Duarte" />
-                                </div>
-                                <div class="grid gap-3">
-                                    <Label for="tabs-demo-username">Username</Label>
-                                    <Input id="tabs-demo-username" default-value="@peduarte" />
-                                </div>
+                            <CardContent class="">
+                                <section>
+                                    <div
+                                        class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 py-4">
+                                        <div class="w-full md:w-1/2">
+                                            <form class="flex items-center">
+                                                <label for="simple-search" class="sr-only">Buscar...</label>
+                                                <div class="relative w-full">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <svg aria-hidden="true"
+                                                            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                            fill="currentColor" viewbox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="simple-search"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        placeholder="Search" required>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div
+                                            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                                            <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
+                                                <button
+                                                    class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-sm text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                    type="button">
+                                                    Listar
+                                                </button>
+
+                                            </div>
+
+                                            <button type="button"
+                                                class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                                <Plus width="16" />
+                                                Adicionar
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="overflow-auto">
+                                        <table class="w-full mt-4 text-left table-auto min-w-max">
+                                            <thead>
+                                                <tr>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Descrição
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Function
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Situação
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Data Registo
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        </p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex items-center gap-3">
+                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"
+                                                                alt="John Michael"
+                                                                class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
+                                                            <div class="flex flex-col">
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                                    John Michael
+                                                                </p>
+                                                                <!-- <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                    john@creative-tim.com
+                                                                </p> -->
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex flex-col">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Manager
+                                                            </p>
+                                                            <!-- <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                Organization
+                                                            </p> -->
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="w-max">
+                                                            <div
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                                <span class="">Online</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            23 Mar 2025
+                                                        </p>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex items-center gap-3">
+                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg"
+                                                                alt="Alexa Liras"
+                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
+                                                            <div class="flex flex-col">
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                    Alexa Liras
+                                                                </p>
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                    alexa@creative-tim.com
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex flex-col">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Programator
+                                                            </p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                Developer
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="w-max">
+                                                            <div
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
+                                                                <span class="">offline</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            23/04/18
+                                                        </p>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex items-center gap-3">
+                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg"
+                                                                alt="Laurent Perrier"
+                                                                class="relative inline-block h-9 w-9 !rounded-full  object-cover object-center" />
+                                                            <div class="flex flex-col">
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                    Laurent Perrier
+                                                                </p>
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                    laurent@creative-tim.com
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex flex-col">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Executive
+                                                            </p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                Projects
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="w-max">
+                                                            <div
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
+                                                                <span class="">offline</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            19/09/17
+                                                        </p>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex items-center gap-3">
+                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg"
+                                                                alt="Michael Levi"
+                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
+                                                            <div class="flex flex-col">
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                    Michael Levi
+                                                                </p>
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                    michael@creative-tim.com
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex flex-col">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Programator
+                                                            </p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                Developer
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="w-max">
+                                                            <div
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                                <span class="">online</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            24/12/08
+                                                        </p>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4">
+                                                        <div class="flex items-center gap-3">
+                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg"
+                                                                alt="Richard Gran"
+                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
+                                                            <div class="flex flex-col">
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                    Richard Gran
+                                                                </p>
+                                                                <p
+                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                    richard@creative-tim.com
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <div class="flex flex-col">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                                Manager
+                                                            </p>
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
+                                                                Executive
+                                                            </p>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <div class="w-max">
+                                                            <div
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
+                                                                <span class="">offline</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            04/10/21
+                                                        </p>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <button
+                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span
+                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    <path
+                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </section>
+                                <section class="flex items-center justify-between py-0">
+                                    <div
+                                        class="text-sm text-green-900 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
+                                        <p>Mostrando</p>
+                                        <p><b>1-4</b> de 45</p>
+                                    </div>
+                                    <div class="flex space-x-1">
+                                        <button
+                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                            <ChevronLeft width="16" />
+                                        </button>
+                                        <button
+                                            class="ease min-h-10 min-w-10 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
+                                            1
+                                        </button>
+                                        <button
+                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                            2
+                                        </button>
+                                        <button
+                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                            3
+                                        </button>
+                                        <button
+                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
+                                            <ChevronRight width="16" />
+                                        </button>
+                                    </div>
+                                </section>
                             </CardContent>
-                            <CardFooter>
+                            <!-- <CardFooter>
                                 <Button>Save changes</Button>
-                            </CardFooter>
+                            </CardFooter> -->
                         </Card>
                     </TabsContent>
 
