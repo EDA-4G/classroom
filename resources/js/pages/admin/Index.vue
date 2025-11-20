@@ -56,7 +56,12 @@ import { toast } from 'vue-sonner';
 
 
 
-
+defineProps({
+    advertisements: {
+        type: Object,
+        required: true
+    }
+})
 
 const form = useForm({
     description: '',
@@ -103,6 +108,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
+            {{ advertisements }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
