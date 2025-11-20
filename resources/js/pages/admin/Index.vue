@@ -52,6 +52,7 @@ import {
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import advertisements from '@/routes/advertisements';
+import { toast } from 'vue-sonner';
 
 
 
@@ -66,8 +67,8 @@ const form = useForm({
 const submit = () => {
     form.post(advertisements.store().url, {
         preserveScroll: true,
-        // onSuccess: () => toast.success('Producto cadastrado com sucesso.'),
-        // onError: () => toast.error('Ocorreu um erro ao tentar cadastrar producto.')
+        onSuccess: () => toast.success('Anúncio salvo com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar salvar anúncio')
     });
 };
 
