@@ -64,29 +64,37 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
                     <TabsList class="flex justify-start flex-wrap border">
-                        <TabsTrigger value="account" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20">
+                        <TabsTrigger value="account"
+                            class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                                stroke="currentColor">
                                 <path
                                     d="M128 128C92.7 128 64 156.7 64 192L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 192C576 156.7 547.3 128 512 128L128 128zM480 248L480 392C480 405.3 469.3 416 456 416C448.9 416 442.5 412.9 438.1 408C427.9 413.1 416.3 416 404 416C362 416 328 382 328 340C328 298 362 264 404 264C413.9 264 423.3 265.9 432 269.3L432 248C432 234.7 442.7 224 456 224C469.3 224 480 234.7 480 248zM432 340C432 324.5 419.5 312 404 312C388.5 312 376 324.5 376 340C376 355.5 388.5 368 404 368C419.5 368 432 355.5 432 340zM224 272C215.2 272 208 279.2 208 288L208 320L256 320L256 288C256 279.2 248.8 272 240 272L224 272zM256 368L208 368L208 392C208 405.3 197.3 416 184 416C170.7 416 160 405.3 160 392L160 288C160 252.7 188.7 224 224 224L240 224C275.3 224 304 252.7 304 288L304 392C304 405.3 293.3 416 280 416C266.7 416 256 405.3 256 392L256 368z" />
                             </svg>
                             Anúncios
                         </TabsTrigger>
-                        <TabsTrigger value="password" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20">
+                        <TabsTrigger value="password"
+                            class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                                stroke="currentColor">
                                 <path
                                     d="M192 144C222.9 144 248 118.9 248 88C248 57.1 222.9 32 192 32C161.1 32 136 57.1 136 88C136 118.9 161.1 144 192 144zM176 576L176 416C176 407.2 183.2 400 192 400C200.8 400 208 407.2 208 416L208 576C208 593.7 222.3 608 240 608C257.7 608 272 593.7 272 576L272 240L400 240C417.7 240 432 225.7 432 208C432 190.3 417.7 176 400 176L384 176L384 128L576 128L576 320L384 320L384 288L320 288L320 336C320 362.5 341.5 384 368 384L592 384C618.5 384 640 362.5 640 336L640 112C640 85.5 618.5 64 592 64L368 64C341.5 64 320 85.5 320 112L320 176L197.3 176C151.7 176 108.8 197.6 81.7 234.2L14.3 324.9C3.8 339.1 6.7 359.1 20.9 369.7C35.1 380.3 55.1 377.3 65.7 363.1L112 300.7L112 576C112 593.7 126.3 608 144 608C161.7 608 176 593.7 176 576z" />
                             </svg>
                             Salas de Aulas
                         </TabsTrigger>
-                        <TabsTrigger value="a" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20">
+                        <TabsTrigger value="a"
+                            class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                                stroke="currentColor">
                                 <path
                                     d="M128 512L512 512C547.3 512 576 483.3 576 448L576 208C576 172.7 547.3 144 512 144L362.7 144C355.8 144 349 141.8 343.5 137.6L305.1 108.8C294 100.5 280.5 96 266.7 96L128 96C92.7 96 64 124.7 64 160L64 448C64 483.3 92.7 512 128 512z" />
                             </svg>
                             Repositório Instituicional
                         </TabsTrigger>
-                        <TabsTrigger value="b" class="cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20">
+                        <TabsTrigger value="b"
+                            class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                                stroke="currentColor">
                                 <path
                                     d="M320 48C337.7 48 352 62.3 352 80L352 98.3C450.1 112.3 527.7 189.9 541.7 288L560 288C577.7 288 592 302.3 592 320C592 337.7 577.7 352 560 352L541.7 352C527.7 450.1 450.1 527.7 352 541.7L352 560C352 577.7 337.7 592 320 592C302.3 592 288 577.7 288 560L288 541.7C189.9 527.7 112.3 450.1 98.3 352L80 352C62.3 352 48 337.7 48 320C48 302.3 62.3 288 80 288L98.3 288C112.3 189.9 189.9 112.3 288 98.3L288 80C288 62.3 302.3 48 320 48zM160 320C160 408.4 231.6 480 320 480C408.4 480 480 408.4 480 320C480 231.6 408.4 160 320 160C231.6 160 160 231.6 160 320zM320 224C373 224 416 267 416 320C416 373 373 416 320 416C267 416 224 373 224 320C224 267 267 224 320 224z" />
                             </svg>
@@ -229,15 +237,27 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </td>
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <button
-                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                             type="button">
-                                                            <span
-                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                                            <span class="flex justify-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                     viewBox="0 0 24 24" fill="currentColor"
-                                                                    aria-hidden="true" class="w-4 h-4">
+                                                                    class="w-4 h-4">
                                                                     <path
-                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
+                                                                        d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z">
+                                                                    </path>
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                        <button
+                                                            class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#B32E2E] transition-all hover:bg-[#FAEBEB] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                            type="button">
+                                                            <span class="flex justify-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 24 24" fill="currentColor"
+                                                                    class="w-4 h-4">
+                                                                    <path
+                                                                        d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z">
                                                                     </path>
                                                                 </svg>
                                                             </span>
@@ -494,7 +514,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
                                 </section>
-                                <section class="flex items-center justify-between py-0">
+                                <section class="flex items-center justify-between pt-4">
                                     <div
                                         class="text-sm text-green-900 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
                                         <p>Mostrando</p>
