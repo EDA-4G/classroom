@@ -188,12 +188,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                             </div>
 
-                                            <!-- <button type="button"
-                                                class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
-                                                <Plus width="16" />
-                                                Adicionar
-                                            </button> -->
-
+                                            <form id="advertisement" @submit.prevent="submit"
+                                                enctype="multipart/form-data"></form>
                                             <Sheet>
                                                 <SheetTrigger as-child>
 
@@ -208,7 +204,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <SheetHeader>
                                                         <SheetTitle class="text-lg">Anúncios</SheetTitle>
                                                         <SheetDescription>
-                                                            <!-- Faça as alterações do anúncio aqui. Clique em <span class="font-semibold">Salvar</span> quando terminar. -->
                                                             Cadastre o anúncio aqui. Clique em <span
                                                                 class="font-semibold">Salvar</span> quando terminar.
                                                         </SheetDescription>
@@ -216,18 +211,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <section class="grid gap-4 px-4">
                                                         <div class="grid gap-2">
                                                             <Label for="description">Descrição</Label>
-                                                            <Input id="description" name="description"
-                                                                placeholder="Informe a descrição" />
-                                                            <InputError message="" />
+                                                            <Input id="description" v-model="form.description"
+                                                                name="description" placeholder="Informe a descrição" />
+                                                            <InputError :message="form.errors.description" />
                                                         </div>
                                                         <div class="grid gap-2">
                                                             <Label for="email">Imagem</Label>
                                                             <Input id="email" type="file" name="ads" />
-                                                            <InputError message="" />
+                                                            <InputError :message="form.errors.image" />
                                                         </div>
                                                         <div class="inline-flex gap-2">
                                                             <div class="relative inline-block w-11 h-5">
-                                                                <input id="switch-component-desc" type="checkbox"
+                                                                <input id="switch-component-desc"
+                                                                    v-model="form.is_active" type="checkbox"
                                                                     class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
                                                                 <label for="switch-component-desc"
                                                                     class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
@@ -241,21 +237,22 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         Activar Anúncio
                                                                     </p>
                                                                     <p class="text-slate-500">
-                                                                        Permitir que esteja visível na página inicial.
+                                                                        Permitir que esteja visível na página
+                                                                        inicial.
                                                                     </p>
                                                                 </div>
                                                             </label>
                                                         </div>
                                                     </section>
                                                     <SheetFooter>
-                                                        <button type="submit"
-                                                            class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
-                                                            <!-- <Loader class="animate-spin" v-if="form.processing" /> -->
-
+                                                        <button type="submit" form="advertisement"
+                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                                            <!-- <Loader width="16" class="animate-spin"
+                                                                v-if="form.processing" /> -->
                                                             Salvar
                                                         </button>
                                                         <SheetClose as-child>
-                                                            <button type="submit"
+                                                            <button
                                                                 class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
                                                         </SheetClose>
                                                     </SheetFooter>
