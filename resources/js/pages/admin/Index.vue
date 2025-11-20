@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import {
     Breadcrumb,
@@ -51,6 +51,27 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import advertisements from '@/routes/advertisements';
+
+
+
+
+
+const form = useForm({
+    description: '',
+    image: '',
+    is_active: false
+})
+
+const submit = () => {
+    form.post(advertisements.store().url, {
+        preserveScroll: true,
+        // onSuccess: () => toast.success('Producto cadastrado com sucesso.'),
+        // onError: () => toast.error('Ocorreu um erro ao tentar cadastrar producto.')
+    });
+};
+
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
