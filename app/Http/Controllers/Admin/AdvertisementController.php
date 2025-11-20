@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AdvertisementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $$description = $request->query('description');
+        $advertisements = Advertisement::where('description', 'like', '%' . $description . '%')->paginate(5);
+        return Inertia::render('admin/Index', compact('advertisements'));
     }
 
     /**
