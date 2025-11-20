@@ -217,7 +217,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </div>
                                                         <div class="grid gap-2">
                                                             <Label for="email">Imagem</Label>
-                                                            <Input id="email" type="file" name="ads" />
+                                                            <Input id="email" type="file" name="ads"
+                                                                @input="form.image = $event.target.files[0]" />
                                                             <InputError :message="form.errors.image" />
                                                         </div>
                                                         <div class="inline-flex gap-2">

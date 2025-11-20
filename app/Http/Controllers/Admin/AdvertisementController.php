@@ -30,9 +30,9 @@ class AdvertisementController extends Controller
     public function store(Request $request)
     {
         $image_path = null;
-        if ($request->hasFile('ads')) {
-            $file_name = rand(0, 9999999) . '-' . $request->file('ads')->getClientOriginalName();
-            $image_path = $request->file('ads')->storeAs('ads', $file_name, 'public');
+        if ($request->hasFile('image')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('ads', $file_name, 'public');
         }
 
         $advertisement = new Advertisement([
