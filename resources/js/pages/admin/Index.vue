@@ -29,7 +29,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
-import { Plus, ChevronLeft, ChevronRight, Loader, Search } from "lucide-vue-next"
+import { Plus, ChevronLeft, ChevronRight, Loader, Search, Link } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -52,10 +52,12 @@ import {
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import advertisements from '@/routes/advertisements';
+import { update as adsUpdate } from '@/actions/App/Http/Controllers/Admin/AdvertisementController'
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
 import { IAdvertisement } from '@/interfaces';
+import { formatDate } from '@vueuse/core';
 
 
 
@@ -95,31 +97,36 @@ const submit = () => {
     });
 };
 
-const advertisementRef = ref<IAdvertisement>({
+
+
+const e_form = useForm({
     id: 0,
     description: '',
     image: '',
-    is_active: false,
-    created_at: new Date()
+    is_active: false
 })
-const edit = (item: IAdvertisement) => {
-    advertisementRef.value = item;
-    advertisementRef.value.is_active = Boolean(item.is_active)
+
+const test = (item: IAdvertisement) => {
+    e_form.id = 1;
+    e_form.description = item.description;
+    e_form.image = item.image;
+    e_form.is_active = Boolean(item.is_active);
 }
 
-const update = (item: IAdvertisement) => {
-    const adsEdit: IAdvertisement = {
-        id: item.id,
-        description: item.description,
-        image: item.image,
-        is_active: item.is_active,
-        created_at: item.created_at
+const e_submit = () => {
+    const advertisement: IAdvertisement = {
+        id: e_form.id,
+        description: e_form.description,
+        image: e_form.image,
+        is_active: e_form.is_active,
+        created_at: new Date()
     }
-
-    // router.post(advertisements.update(adsEdit).url), {
-    //     preserveScroll: true
-    // }
-}
+    e_form.put(advertisements.update(advertisement).url, {
+        preserveScroll: true,
+        onSuccess: () => toast.success('Anúncio editado com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar editar anúncio')
+    });
+};
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -151,7 +158,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
-            {{ advertisement }}
+            data: {{ advertisement }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
@@ -372,11 +379,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </p>
                                                     </td>
                                                     <td class="text-right p-4 border-b border-blue-gray-50">
-
+                                                        <form id="edit_advertisement" @submit.prevent="e_submit"
+                                                            class="m-0"></form>
                                                         <Sheet>
                                                             <SheetTrigger as-child>
 
-                                                                <button @click="edit(ads)"
+                                                                <!-- <button @click="edit(ads)" -->
+                                                                <button @click="test(ads)"
                                                                     class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                     type="button">
                                                                     <span class="flex justify-center">
@@ -404,7 +413,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <div class="grid gap-2">
                                                                         <Label for="description">Descrição</Label>
                                                                         <Input id="description"
-                                                                            v-model="advertisementRef.description"
+                                                                            v-model="e_form.description"
                                                                             name="description"
                                                                             placeholder="Informe a descrição" />
                                                                         <InputError message="" />
@@ -418,7 +427,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         <div class="relative inline-block w-11 h-5">
                                                                             <input id="switch-component-desc"
                                                                                 type="checkbox"
-                                                                                v-model="advertisementRef.is_active"
+                                                                                v-model="e_form.is_active"
                                                                                 class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
                                                                             <label for="switch-component-desc"
                                                                                 class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
@@ -440,10 +449,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </div>
                                                                 </section>
                                                                 <SheetFooter>
-                                                                    <button type="submit" @click=""
+                                                                    <!-- @click="update" -->
+                                                                    <button type="submit" form="edit_advertisement"
                                                                         class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
-                                                                        <!-- <Loader class="animate-spin" v-if="form.processing" /> -->
-
                                                                         Editar
                                                                     </button>
                                                                     <SheetClose as-child>
