@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Head, router, useForm } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import {
     Breadcrumb,
@@ -53,11 +53,12 @@ import {
 } from '@/components/ui/alert-dialog'
 import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
+import { ref } from 'vue';
 
 
 
 defineProps({
-    advertisements: {
+    ads: {
         type: Object,
         required: true
     }
@@ -68,6 +69,22 @@ const form = useForm({
     image: '',
     is_active: false
 })
+
+
+const description = ref('');
+const search = () => {
+    // router.get(advertisements.index().url, { description: description.value }, {
+    //     preserveState: true,
+    //     replace: true
+    // })
+
+    const options = {
+        query: {
+            description: description.value,
+        },
+    };
+    router.get(advertisements.index.get(options).url)
+};
 
 const submit = () => {
     form.post(advertisements.store().url, {
@@ -108,7 +125,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
-            {{ advertisements }}
+            {{ ads }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
@@ -178,7 +195,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 clip-rule="evenodd" />
                                                         </svg>
                                                     </div>
-                                                    <input type="text" id="simple-search"
+                                                    <input type="text" id="simple-search" v-model="description"
+                                                        @keyup.enter="search"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                                         placeholder="Search" required>
                                                 </div>
@@ -300,15 +318,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr v-for="ads in ads.data">
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <div class="flex items-center gap-3">
-                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"
-                                                                alt="John Michael"
+                                                            <img :src="'/storage/'.concat(ads.image)" :alt="ads.image"
                                                                 class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
                                                             <p
                                                                 class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                                John Michael
+                                                                {{ ads.description }}
                                                             </p>
                                                         </div>
                                                     </td>
@@ -317,14 +334,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <div class="w-max">
                                                             <div
                                                                 class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
-                                                                <span class="">Activo</span>
+                                                                <span class="">{{ ads.is_active }}</span>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <p
                                                             class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            23 Mar 2025
+                                                            <!-- 23 Mar 2025 -->
+                                                            {{ ads.created_at }}
                                                         </p>
                                                     </td>
                                                     <td class="text-right p-4 border-b border-blue-gray-50">
@@ -433,7 +451,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </AlertDialogTitle>
                                                                     <AlertDialogDescription class="text-left">
                                                                         Confirma a exclusão permanente do anúnico
-                                                                        <strong class="text-[#EC3636]">Inscrições 2026
+                                                                        <strong class="text-[#EC3636]">{{ ads.description }}
                                                                         </strong>.
                                                                     </AlertDialogDescription>
                                                                 </AlertDialogHeader>
@@ -449,56 +467,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             </AlertDialogContent>
                                                         </AlertDialog>
 
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="p-4">
-                                                        <div class="flex items-center gap-3">
-                                                            <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg"
-                                                                alt="Richard Gran"
-                                                                class="relative inline-block h-9 w-9 !rounded-full object-cover object-center" />
-                                                            <div class="flex flex-col">
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                                    Richard Gran
-                                                                </p>
-                                                                <p
-                                                                    class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 opacity-70">
-                                                                    richard@creative-tim.com
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4">
-                                                        <div class="w-max">
-                                                            <div
-                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-md select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                                                                <span class="">offline</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-4">
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            04/10/21
-                                                        </p>
-                                                    </td>
-                                                    <td class="p-4">
-                                                        <button
-                                                            class="relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-gray-900 transition-all hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                            type="button">
-                                                            <span
-                                                                class="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 24 24" fill="currentColor"
-                                                                    aria-hidden="true" class="w-4 h-4">
-                                                                    <path
-                                                                        d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z">
-                                                                    </path>
-                                                                </svg>
-                                                            </span>
-                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>

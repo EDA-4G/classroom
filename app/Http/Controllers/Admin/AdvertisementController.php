@@ -14,9 +14,10 @@ class AdvertisementController extends Controller
      */
     public function index(Request $request)
     {
-        $$description = $request->query('description');
-        $advertisements = Advertisement::where('description', 'like', '%' . $description . '%')->paginate(5);
-        return Inertia::render('admin/Index', compact('advertisements'));
+        $description = $request->query('description');
+        $ads = Advertisement::where('description', 'like', '%' . $description . '%')->paginate(5);
+        // dd($advertisements);
+        return Inertia::render('admin/Index', compact('ads'));
     }
 
     /**
