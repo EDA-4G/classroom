@@ -68,9 +68,15 @@ class AdvertisementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Advertisement $advertisement)
     {
-        //
+        $advertisement->id = $request->input('id');
+        $advertisement->description = $request->input('description');
+        $advertisement->image = $request->input('image');
+        $advertisement->is_active = $request->input('is_active');
+        $advertisement->save();
+
+        return redirect()->route('managers.index')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
