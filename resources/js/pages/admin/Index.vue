@@ -211,7 +211,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <SheetTrigger as-child>
 
                                                     <button type="button"
-                                                        class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                                        class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:border-[#1fad68] hover:bg-[#1fad68] focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
                                                         <Plus width="16" />
                                                         Adicionar
                                                     </button>
@@ -324,17 +324,20 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <div class="w-max">
-                                                            <div
+                                                            <div v-if="ads.is_active"
                                                                 class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
-                                                                <span class="">{{ ads.is_active }}</span>
+                                                                Activo
+                                                            </div>
+                                                            <div v-else
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-[#b91c1c] bg-[#FEEBE7] rounded-md select-none whitespace-nowrap">
+                                                                Inactivo
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class="p-4 border-b border-blue-gray-50">
                                                         <p
                                                             class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                            <!-- 23 Mar 2025 -->
-                                                            {{ ads.created_at }}
+                                                            {{ new Date(ads.created_at).toDateString() }}
                                                         </p>
                                                     </td>
                                                     <td class="text-right p-4 border-b border-blue-gray-50">
