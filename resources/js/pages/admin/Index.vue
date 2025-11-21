@@ -74,12 +74,6 @@ const form = useForm({
 
 const description = ref('');
 const search = () => {
-    // alert('ola')
-    // router.get(advertisements.index().url, { description: description.value }, {
-    //     preserveState: true,
-    //     replace: true
-    // })
-
     const options = {
         query: {
             description: description.value,
@@ -475,39 +469,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                 </section>
                                 <Pagination :list="ads" />
-                                <section class="flex items-center justify-between pt-4">
-                                    <div
-                                        class="text-sm text-green-900 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
-                                        <p>Mostrando</p>
-                                        <p><b>1-4</b> de 45</p>
-                                    </div>
-                                    <div class="flex space-x-1">
-                                        <button
-                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                            <ChevronLeft width="16" />
-                                        </button>
-                                        <button
-                                            class="ease min-h-10 min-w-10 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
-                                            1
-                                        </button>
-                                        <button
-                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                            2
-                                        </button>
-                                        <button
-                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                            3
-                                        </button>
-                                        <button
-                                            class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                                            <ChevronRight width="16" />
-                                        </button>
-                                    </div>
-                                </section>
                             </CardContent>
-                            <!-- <CardFooter>
-                                <Button>Save changes</Button>
-                            </CardFooter> -->
                         </Card>
                     </TabsContent>
 
