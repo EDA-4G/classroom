@@ -29,7 +29,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
-import { Plus, Loader, Search, Link } from "lucide-vue-next"
+import { Plus, Search, Save, RefreshCcw } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -308,9 +308,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </section>
                                                     <SheetFooter>
                                                         <button type="submit" form="advertisement"
-                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
-                                                            <!-- <Loader width="16" class="animate-spin"
-                                                                v-if="form.processing" /> -->
+                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                            <Save width="16" />
                                                             Salvar
                                                         </button>
                                                         <SheetClose as-child>
@@ -385,7 +384,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </p>
                                                     </td>
                                                     <td class="text-right p-4 border-b border-blue-gray-50">
-                                                        <form id="edit_advertisement" @submit.prevent="e_submit"
+                                                        <form id="e_advertisement" @submit.prevent="e_submit"
                                                             class="m-0"></form>
                                                         <Sheet>
                                                             <SheetTrigger as-child>
@@ -455,8 +454,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </section>
                                                                 <SheetFooter>
                                                                     <SheetClose as-child>
-                                                                        <button type="submit" form="edit_advertisement"
-                                                                            class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                                                        <button type="submit" form="e_advertisement"
+                                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                                            <RefreshCcw width="16" />
                                                                             Editar
                                                                         </button>
                                                                     </SheetClose>
@@ -490,20 +490,22 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                                             <AlertDialogContent class="rounded-2xl max-w-sm">
                                                                 <AlertDialogHeader>
-                                                                    <AlertDialogTitle class="text-left">Exclusão
+                                                                    <AlertDialogTitle class="text-center text-xl">
+                                                                        Excluír Anúncio
                                                                     </AlertDialogTitle>
-                                                                    <AlertDialogDescription class="text-left">
+                                                                    <AlertDialogDescription class="text-center">
                                                                         Confirma a exclusão permanente do anúncio<br>
-                                                                        <strong class="text-[#EC3636]">{{
+                                                                        <span class="text-[#EC3636]">{{
                                                                             ads.description }}
-                                                                        </strong>.
+                                                                        </span>?
                                                                     </AlertDialogDescription>
                                                                 </AlertDialogHeader>
-                                                                <AlertDialogFooter>
-                                                                    <AlertDialogCancel class="cursor-pointer">Cancelar
+                                                                <AlertDialogFooter class="grid grid-cols-2 gap-2 ">
+                                                                    <AlertDialogCancel class="my-0 px-3 cursor-pointer">
+                                                                        Cancelar
                                                                     </AlertDialogCancel>
                                                                     <AlertDialogAction
-                                                                        class="cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
+                                                                        class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
                                                                         @click="delete_ads(ads)">
                                                                         Sim, Excluir
                                                                     </AlertDialogAction>
