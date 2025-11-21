@@ -104,6 +104,20 @@ const advertisementRef = ref<IAdvertisement>({
 })
 const edit = (item: IAdvertisement) => advertisementRef.value = item;
 
+const update = (item: IAdvertisement) => {
+    const adsEdit: IAdvertisement = {
+        id: item.id,
+        description: item.description,
+        image: item.image,
+        is_active: item.is_active,
+        created_at: item.created_at
+    }
+
+    // router.post(advertisements.update(adsEdit).url), {
+    //     preserveScroll: true
+    // }
+}
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
