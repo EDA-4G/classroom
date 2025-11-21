@@ -82,8 +82,9 @@ class AdvertisementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Advertisement $advertisement)
     {
-        //
+        $advertisement->delete();
+        return redirect()->route('advertisements.index')->with('success', 'Excluído com sucesso!');
     }
 }
