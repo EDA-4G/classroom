@@ -197,7 +197,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </div>
                                             </div>
                                             <button @click="search"
-                                                class="flex items-center gap-1 justify-center select-none w-full lg:w-fit cursor-pointer rounded-lg border border-[#008236] lg:border-gray-300 py-1.5 px-4 text-center align-middle font-sans text-sm text-[#008236] lg:text-gray-900 hover:text-green-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                class="flex items-center gap-1 justify-center select-none w-full lg:w-fit cursor-pointer rounded-lg border border-gray-300 lg:border-gray-300 py-1.5 px-4 text-center align-middle font-sans text-sm text-[#008236] lg:text-gray-900 hover:text-green-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                 type="button">
                                                 <Search width="16" />
                                                 Buscar
