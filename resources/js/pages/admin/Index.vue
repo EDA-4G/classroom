@@ -106,8 +106,8 @@ const e_form = useForm({
     is_active: false
 })
 
-const test = (item: IAdvertisement) => {
-    e_form.id = 1;
+const get_ads_to_edit = (item: IAdvertisement) => {
+    e_form.id = item.id;
     e_form.description = item.description;
     e_form.image = item.image;
     e_form.is_active = Boolean(item.is_active);
@@ -384,8 +384,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <Sheet>
                                                             <SheetTrigger as-child>
 
-                                                                <!-- <button @click="edit(ads)" -->
-                                                                <button @click="test(ads)"
+                                                                <button @click="get_ads_to_edit(ads)"
                                                                     class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                     type="button">
                                                                     <span class="flex justify-center">
