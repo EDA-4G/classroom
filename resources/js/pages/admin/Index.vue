@@ -29,7 +29,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
-import { Plus, ChevronLeft, ChevronRight, Loader } from "lucide-vue-next"
+import { Plus, ChevronLeft, ChevronRight, Loader, Search } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -54,6 +54,7 @@ import {
 import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
+import Pagination from '@/components/aux/Pagination.vue';
 
 
 
@@ -73,6 +74,7 @@ const form = useForm({
 
 const description = ref('');
 const search = () => {
+    // alert('ola')
     // router.get(advertisements.index().url, { description: description.value }, {
     //     preserveState: true,
     //     replace: true
@@ -125,7 +127,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
-            {{ ads }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
@@ -180,8 +181,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <section>
                                     <div
                                         class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 py-4">
-                                        <div class="w-full md:w-1/2">
-                                            <form class="flex items-center">
+                                        <div class="w-full flex flex-wrap lg:flex-nowrap gap-2 md:w-1/2">
+                                            <div class="w-full items-center">
                                                 <label for="simple-search" class="sr-only">Buscar...</label>
                                                 <div class="relative w-full">
                                                     <div
@@ -198,22 +199,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <input type="text" id="simple-search" v-model="description"
                                                         @keyup.enter="search"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                        placeholder="Search" required>
+                                                        placeholder="Descrição" required>
                                                 </div>
-                                            </form>
+                                            </div>
+                                            <button @click="search"
+                                                class="flex items-center gap-1 justify-center select-none w-full lg:w-fit cursor-pointer rounded-lg border border-[#008236] lg:border-gray-300 py-1.5 px-4 text-center align-middle font-sans text-sm text-[#008236] lg:text-gray-900 hover:text-green-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                type="button">
+                                                <Search width="16" />
+                                                Buscar
+                                            </button>
                                         </div>
                                         <div
                                             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                            <div class="flex flex-col gap-2 shrink-0 sm:flex-row">
-                                                <button
-                                                    class="select-none rounded-lg border border-gray-900 py-2 px-4 text-center align-middle font-sans text-sm text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                                    type="button">
-                                                    Listar
-                                                </button>
-
-                                            </div>
-
-                                            <form id="advertisement" @submit.prevent="submit"
+                                            <form id="advertisement" @submit.prevent="submit" class="m-0"
                                                 enctype="multipart/form-data"></form>
                                             <Sheet>
                                                 <SheetTrigger as-child>
@@ -451,7 +449,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </AlertDialogTitle>
                                                                     <AlertDialogDescription class="text-left">
                                                                         Confirma a exclusão permanente do anúnico
-                                                                        <strong class="text-[#EC3636]">{{ ads.description }}
+                                                                        <strong class="text-[#EC3636]">{{
+                                                                            ads.description }}
                                                                         </strong>.
                                                                     </AlertDialogDescription>
                                                                 </AlertDialogHeader>
@@ -475,6 +474,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
                                 </section>
+                                <Pagination :list="ads" />
                                 <section class="flex items-center justify-between pt-4">
                                     <div
                                         class="text-sm text-green-900 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
