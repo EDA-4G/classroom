@@ -29,7 +29,7 @@ import {
     TabsList,
     TabsTrigger,
 } from '@/components/ui/tabs'
-import { Plus, ChevronLeft, ChevronRight, Loader, Search, Link } from "lucide-vue-next"
+import { Plus, Loader, Search, Link } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -52,12 +52,10 @@ import {
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import advertisements from '@/routes/advertisements';
-import { update as adsUpdate } from '@/actions/App/Http/Controllers/Admin/AdvertisementController'
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
 import { IAdvertisement } from '@/interfaces';
-import { formatDate } from '@vueuse/core';
 
 
 
@@ -128,6 +126,15 @@ const e_submit = () => {
     });
 };
 
+const delete_ads = (advertisement: IAdvertisement) => {
+    router.delete(advertisements.destroy(advertisement).url, {
+        preserveScroll: true,
+        onSuccess: () => toast.success('Anúncio excluído com sucesso.'),
+        onError: () => toast.error('Ocorreu um erro ao tentar excluir anúncio.')
+    })
+
+}
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -158,7 +165,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
-            data: {{ advertisement }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
@@ -448,11 +454,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </div>
                                                                 </section>
                                                                 <SheetFooter>
-                                                                    <!-- @click="update" -->
-                                                                    <button type="submit" form="edit_advertisement"
-                                                                        class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
-                                                                        Editar
-                                                                    </button>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit" form="edit_advertisement"
+                                                                            class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                                                            Editar
+                                                                        </button>
+                                                                    </SheetClose>
                                                                     <SheetClose as-child>
                                                                         <button type="submit"
                                                                             class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
@@ -486,7 +493,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <AlertDialogTitle class="text-left">Exclusão
                                                                     </AlertDialogTitle>
                                                                     <AlertDialogDescription class="text-left">
-                                                                        Confirma a exclusão permanente do anúnico
+                                                                        Confirma a exclusão permanente do anúncio<br>
                                                                         <strong class="text-[#EC3636]">{{
                                                                             ads.description }}
                                                                         </strong>.
@@ -497,7 +504,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </AlertDialogCancel>
                                                                     <AlertDialogAction
                                                                         class="cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
-                                                                        @click="">
+                                                                        @click="delete_ads(ads)">
                                                                         Sim, Excluir
                                                                     </AlertDialogAction>
                                                                 </AlertDialogFooter>
