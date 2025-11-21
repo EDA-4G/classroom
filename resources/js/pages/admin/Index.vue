@@ -102,7 +102,10 @@ const advertisementRef = ref<IAdvertisement>({
     is_active: false,
     created_at: new Date()
 })
-const edit = (item: IAdvertisement) => advertisementRef.value = item;
+const edit = (item: IAdvertisement) => {
+    advertisementRef.value = item;
+    advertisementRef.value.is_active = Boolean(item.is_active)
+}
 
 const update = (item: IAdvertisement) => {
     const adsEdit: IAdvertisement = {
