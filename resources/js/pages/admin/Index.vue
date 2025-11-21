@@ -55,6 +55,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
+import { IAdvertisement } from '@/interfaces';
 
 
 
@@ -62,6 +63,10 @@ defineProps({
     ads: {
         type: Object,
         required: true
+    },
+    advertisement: {
+        type: Object,
+        required: false
     }
 })
 
@@ -90,6 +95,14 @@ const submit = () => {
     });
 };
 
+const advertisementRef = ref<IAdvertisement>({
+    id: 0,
+    description: '',
+    image: '',
+    is_active: false,
+    created_at: new Date()
+})
+const edit = (item: IAdvertisement) => advertisementRef.value = item;
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -121,6 +134,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </BreadcrumbItem1>
                 </BreadcrumbList>
             </Breadcrumb>
+            {{ advertisement }}
 
             <div class="flex w-full flex-col gap-0">
                 <Tabs default-value="account">
@@ -345,7 +359,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <Sheet>
                                                             <SheetTrigger as-child>
 
-                                                                <button
+                                                                <button @click="edit(ads)"
                                                                     class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                     type="button">
                                                                     <span class="flex justify-center">
@@ -372,7 +386,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 <section class="grid gap-4 px-4">
                                                                     <div class="grid gap-2">
                                                                         <Label for="description">Descrição</Label>
-                                                                        <Input id="description" name="description"
+                                                                        <Input id="description"
+                                                                            v-model="advertisementRef.description"
+                                                                            name="description"
                                                                             placeholder="Informe a descrição" />
                                                                         <InputError message="" />
                                                                     </div>
@@ -385,6 +401,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         <div class="relative inline-block w-11 h-5">
                                                                             <input id="switch-component-desc"
                                                                                 type="checkbox"
+                                                                                v-model="advertisementRef.is_active"
                                                                                 class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
                                                                             <label for="switch-component-desc"
                                                                                 class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
@@ -406,7 +423,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </div>
                                                                 </section>
                                                                 <SheetFooter>
-                                                                    <button type="submit"
+                                                                    <button type="submit" @click=""
                                                                         class="p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
                                                                         <!-- <Loader class="animate-spin" v-if="form.processing" /> -->
 
