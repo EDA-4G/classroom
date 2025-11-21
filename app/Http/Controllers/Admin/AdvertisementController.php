@@ -76,7 +76,7 @@ class AdvertisementController extends Controller
         $advertisement->is_active = $request->input('is_active');
         $advertisement->save();
 
-        return redirect()->route('managers.index')->with('success', 'Actualizado com sucesso!');
+        return redirect()->route('advertisements.index')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
