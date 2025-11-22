@@ -46,7 +46,7 @@ class AdvertisementController extends Controller
         ]);
 
         $advertisement->save();
-        return redirect()->route('managers.index')->with('success', 'Cadastrado com sucesso!');
+        return redirect()->route('advertisements.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
