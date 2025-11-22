@@ -167,9 +167,9 @@ const breadcrumbs: BreadcrumbItem[] = [
             </Breadcrumb>
 
             <div class="flex w-full flex-col gap-0">
-                <Tabs default-value="account">
+                <Tabs default-value="ads">
                     <TabsList class="flex justify-start flex-wrap border">
-                        <TabsTrigger value="account"
+                        <TabsTrigger value="ads"
                             class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                                 stroke="currentColor">
@@ -178,7 +178,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </svg>
                             Anúncios
                         </TabsTrigger>
-                        <TabsTrigger value="password"
+                        <TabsTrigger value="classroom"
                             class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                                 stroke="currentColor">
@@ -187,7 +187,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </svg>
                             Salas de Aulas
                         </TabsTrigger>
-                        <TabsTrigger value="a"
+                        <TabsTrigger value="repository"
                             class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                                 stroke="currentColor">
@@ -196,18 +196,18 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </svg>
                             Repositório Instituicional
                         </TabsTrigger>
-                        <TabsTrigger value="b"
+                        <TabsTrigger value="lostFound"
                             class="py-2 data-[state=active]:text-[#008236] data-[state=active]:shadow-xs cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                                 stroke="currentColor">
                                 <path
                                     d="M320 48C337.7 48 352 62.3 352 80L352 98.3C450.1 112.3 527.7 189.9 541.7 288L560 288C577.7 288 592 302.3 592 320C592 337.7 577.7 352 560 352L541.7 352C527.7 450.1 450.1 527.7 352 541.7L352 560C352 577.7 337.7 592 320 592C302.3 592 288 577.7 288 560L288 541.7C189.9 527.7 112.3 450.1 98.3 352L80 352C62.3 352 48 337.7 48 320C48 302.3 62.3 288 80 288L98.3 288C112.3 189.9 189.9 112.3 288 98.3L288 80C288 62.3 302.3 48 320 48zM160 320C160 408.4 231.6 480 320 480C408.4 480 480 408.4 480 320C480 231.6 408.4 160 320 160C231.6 160 160 231.6 160 320zM320 224C373 224 416 267 416 320C416 373 373 416 320 416C267 416 224 373 224 320C224 267 267 224 320 224z" />
                             </svg>
-                            Achados e Perdidos
+                            Perdidos e Achados
                         </TabsTrigger>
                     </TabsList>
 
-                    <TabsContent value="account">
+                    <TabsContent value="ads">
                         <Card>
                             <CardHeader>
                                 <CardTitle>Anúncios</CardTitle>
@@ -526,30 +526,333 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </Card>
                     </TabsContent>
 
-                    <TabsContent value="password">
+
+
+
+
+                    <TabsContent value="classroom">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Password</CardTitle>
+                                <CardTitle>Salas de Aulas</CardTitle>
                                 <CardDescription>
-                                    Change your password here. After saving, you'll be logged
-                                    out.
+                                    Veja toda informação das salas de aulas.
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent class="grid gap-6">
-                                <div class="grid gap-3">
-                                    <Label for="tabs-demo-current">Current password</Label>
-                                    <Input id="tabs-demo-current" type="password" />
-                                </div>
-                                <div class="grid gap-3">
-                                    <Label for="tabs-demo-new">New password</Label>
-                                    <Input id="tabs-demo-new" type="password" />
-                                </div>
+                            <CardContent class="">
+                                <section>
+                                    <div
+                                        class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 py-4">
+                                        <div class="w-full flex flex-wrap lg:flex-nowrap gap-2 md:w-1/2">
+                                            <div class="w-full items-center">
+                                                <label for="simple-search" class="sr-only">Buscar...</label>
+                                                <div class="relative w-full">
+                                                    <div
+                                                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <svg aria-hidden="true"
+                                                            class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                            fill="currentColor" viewbox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <input type="text" id="simple-search" v-model="description"
+                                                        @keyup.enter="search"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                        placeholder="Descrição" required>
+                                                </div>
+                                            </div>
+                                            <button @click="search"
+                                                class="flex items-center gap-1 justify-center select-none w-full lg:w-fit cursor-pointer rounded-lg border border-gray-300 lg:border-gray-300 py-1.5 px-4 text-center align-middle font-sans text-sm text-[#008236] lg:text-gray-900 hover:text-green-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                type="button">
+                                                <Search width="16" />
+                                                Buscar
+                                            </button>
+                                        </div>
+                                        <div
+                                            class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                                            <form id="advertisement" @submit.prevent="submit" class="m-0"
+                                                enctype="multipart/form-data"></form>
+                                            <Sheet>
+                                                <SheetTrigger as-child>
+
+                                                    <button type="button"
+                                                        class="flex items-center justify-center gap-1 cursor-pointer text-white bg-green-700 hover:border-[#1fad68] hover:bg-[#1fad68] focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+                                                        <Plus width="16" />
+                                                        Adicionar
+                                                    </button>
+
+                                                </SheetTrigger>
+                                                <SheetContent>
+                                                    <SheetHeader>
+                                                        <SheetTitle class="text-lg">Salas de Aulas</SheetTitle>
+                                                        <SheetDescription>
+                                                            Cadastre o anúncio aqui. Clique em <span
+                                                                class="font-semibold">Salvar</span> quando terminar.
+                                                        </SheetDescription>
+                                                    </SheetHeader>
+                                                    <section class="grid gap-4 px-4">
+                                                        <div class="grid gap-2">
+                                                            <Label for="description">Descrição</Label>
+                                                            <Input id="description" v-model="form.description"
+                                                                name="description" placeholder="Informe a descrição" />
+                                                            <InputError :message="form.errors.description" />
+                                                        </div>
+                                                        <div class="grid gap-2">
+                                                            <Label for="email">Imagem</Label>
+                                                            <Input id="email" type="file" name="ads"
+                                                                @input="form.image = $event.target.files[0]" />
+                                                            <InputError :message="form.errors.image" />
+                                                        </div>
+                                                        <div class="inline-flex gap-2">
+                                                            <div class="relative inline-block w-11 h-5">
+                                                                <input id="switch-component-desc"
+                                                                    v-model="form.is_active" type="checkbox"
+                                                                    class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                                <label for="switch-component-desc"
+                                                                    class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                                </label>
+                                                            </div>
+
+                                                            <label for="switch-component-desc"
+                                                                class="text-green-900 text-sm cursor-pointer">
+                                                                <div>
+                                                                    <p class="font-medium">
+                                                                        Activar Anúncio
+                                                                    </p>
+                                                                    <p class="text-slate-500">
+                                                                        Permitir que esteja visível na página
+                                                                        inicial.
+                                                                    </p>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </section>
+                                                    <SheetFooter>
+                                                        <button type="submit" form="advertisement"
+                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                            <Save width="16" />
+                                                            Salvar
+                                                        </button>
+                                                        <SheetClose as-child>
+                                                            <button
+                                                                class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                        </SheetClose>
+                                                    </SheetFooter>
+                                                </SheetContent>
+                                            </Sheet>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="overflow-auto">
+                                        <table class="w-full mt-4 text-left table-auto min-w-max">
+                                            <thead>
+                                                <tr>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Descrição
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Situação
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                            Data Registo
+                                                        </p>
+                                                    </th>
+                                                    <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        </p>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="ads in ads.datar">
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="flex items-center gap-3">
+                                                            <img :src="'/storage/'.concat(ads.image)" :alt="ads.image"
+                                                                class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                                {{ ads.description }}
+                                                            </p>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <div class="w-max">
+                                                            <div v-if="ads.is_active"
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
+                                                                Activo
+                                                            </div>
+                                                            <div v-else
+                                                                class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-[#b91c1c] bg-[#FEEBE7] rounded-md select-none whitespace-nowrap">
+                                                                Inactivo
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-4 border-b border-blue-gray-50">
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            {{ new Date(ads.created_at).toDateString() }}
+                                                        </p>
+                                                    </td>
+                                                    <td class="text-right p-4 border-b border-blue-gray-50">
+                                                        <form id="e_advertisement" @submit.prevent="e_submit"
+                                                            class="m-0"></form>
+                                                        <Sheet>
+                                                            <SheetTrigger as-child>
+
+                                                                <button @click="get_ads_to_edit(ads)"
+                                                                    class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                                    type="button">
+                                                                    <span class="flex justify-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" fill="currentColor"
+                                                                            class="w-4 h-4">
+                                                                            <path
+                                                                                d="M12.8995 6.85453L17.1421 11.0972L7.24264 20.9967H3V16.754L12.8995 6.85453ZM14.3137 5.44032L16.435 3.319C16.8256 2.92848 17.4587 2.92848 17.8492 3.319L20.6777 6.14743C21.0682 6.53795 21.0682 7.17112 20.6777 7.56164L18.5563 9.68296L14.3137 5.44032Z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </button>
+
+                                                            </SheetTrigger>
+                                                            <SheetContent>
+                                                                <SheetHeader>
+                                                                    <SheetTitle class="text-lg">Anúncios</SheetTitle>
+                                                                    <SheetDescription>
+                                                                        Edite o anúncio aqui. Clique em
+                                                                        <span class="font-semibold">Editar</span> quando
+                                                                        terminar.
+                                                                    </SheetDescription>
+                                                                </SheetHeader>
+                                                                <section class="grid gap-4 px-4">
+                                                                    <div class="grid gap-2">
+                                                                        <Label for="description">Descrição</Label>
+                                                                        <Input id="description"
+                                                                            v-model="e_form.description"
+                                                                            name="description"
+                                                                            placeholder="Informe a descrição" />
+                                                                        <InputError message="" />
+                                                                    </div>
+                                                                    <div class="grid gap-2">
+                                                                        <Label for="email">Imagem</Label>
+                                                                        <Input id="email" type="file" name="ads" />
+                                                                        <InputError message="" />
+                                                                    </div>
+                                                                    <div class="inline-flex gap-2">
+                                                                        <div class="relative inline-block w-11 h-5">
+                                                                            <input id="switch-component-desc"
+                                                                                type="checkbox"
+                                                                                v-model="e_form.is_active"
+                                                                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                                            <label for="switch-component-desc"
+                                                                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <label for="switch-component-desc"
+                                                                            class="text-green-900 text-sm cursor-pointer">
+                                                                            <div>
+                                                                                <p class="font-medium">
+                                                                                    Activar Anúncio
+                                                                                </p>
+                                                                                <p class="text-slate-500">
+                                                                                    Permitir que esteja visível na
+                                                                                    página inicial.
+                                                                                </p>
+                                                                            </div>
+                                                                        </label>
+                                                                    </div>
+                                                                </section>
+                                                                <SheetFooter>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit" form="e_advertisement"
+                                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                                            <RefreshCcw width="16" />
+                                                                            Editar
+                                                                        </button>
+                                                                    </SheetClose>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit"
+                                                                            class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                                    </SheetClose>
+                                                                </SheetFooter>
+                                                            </SheetContent>
+                                                        </Sheet>
+
+                                                        <AlertDialog>
+                                                            <AlertDialogTrigger
+                                                                class="relative cursor-pointer rounded-lg text-center align-middle font-sans text-xs font-medium text-gray-900 uppercase transition-all select-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+
+                                                                <button
+                                                                    class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#B32E2E] transition-all hover:bg-[#FAEBEB] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                                                    type="button">
+                                                                    <span class="flex justify-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            viewBox="0 0 24 24" fill="currentColor"
+                                                                            class="w-4 h-4">
+                                                                            <path
+                                                                                d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </button>
+
+                                                            </AlertDialogTrigger>
+
+                                                            <AlertDialogContent class="rounded-2xl max-w-sm">
+                                                                <AlertDialogHeader>
+                                                                    <AlertDialogTitle class="text-center text-xl">
+                                                                        Excluír Anúncio
+                                                                    </AlertDialogTitle>
+                                                                    <AlertDialogDescription class="text-center">
+                                                                        Confirma a exclusão permanente do anúncio<br>
+                                                                        <span class="text-[#EC3636]">{{
+                                                                            ads.description }}
+                                                                        </span>?
+                                                                    </AlertDialogDescription>
+                                                                </AlertDialogHeader>
+                                                                <AlertDialogFooter class="grid grid-cols-2 gap-2 ">
+                                                                    <AlertDialogCancel class="my-0 px-3 cursor-pointer">
+                                                                        Cancelar
+                                                                    </AlertDialogCancel>
+                                                                    <AlertDialogAction
+                                                                        class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
+                                                                        @click="delete_ads(ads)">
+                                                                        Sim, Excluir
+                                                                    </AlertDialogAction>
+                                                                </AlertDialogFooter>
+                                                            </AlertDialogContent>
+                                                        </AlertDialog>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+                                </section>
+                                <Pagination :list="ads" />
                             </CardContent>
-                            <CardFooter>
-                                <Button>Save password</Button>
-                            </CardFooter>
                         </Card>
                     </TabsContent>
+
+
+
+                    
+
                 </Tabs>
             </div>
 
