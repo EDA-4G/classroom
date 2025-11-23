@@ -77,7 +77,7 @@ class DepartmentController extends Controller
     {
         $department->delete();
         return redirect()->route('admin_departments.index')->with('success', 'Excluído com sucesso!');
-        // return redirect()
+        // return redirect() 
         //     ->route('admin_departments.index')
         //     ->with('success', 'Excluído com sucesso!')
         //     ->withQueryString();
