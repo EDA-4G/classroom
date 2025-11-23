@@ -96,7 +96,7 @@ const value = ref('')
 const form = useForm({
     description: '',
     image: '',
-    level: '',
+    level: '1',
     status: '',
     is_active: false,
     department: 0
@@ -364,9 +364,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </div>
                                                     <div class="grid gap-2">
                                                         <Label for="email">Nível</Label>
-                                                        <ToggleGroup type="single" default-value="n1" class="flex-wrap">
+                                                        <ToggleGroup v-model="form.level" type="single"
+                                                            default-value="1" class="flex-wrap">
                                                             <ToggleGroupItem v-for="level in levels" :key="level"
-                                                                :value="'n' + level"
+                                                                :value="level.toString()"
                                                                 class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
                                                                 {{ level }}
                                                             </ToggleGroupItem>
