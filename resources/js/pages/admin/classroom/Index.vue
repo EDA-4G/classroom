@@ -89,6 +89,7 @@ const frameworks = [
     { value: 'remix', label: 'Remix' },
     { value: 'astro', label: 'Astro' },
 ]
+const levels = 22;
 const open = ref(false)
 const value = ref('')
 
@@ -361,9 +362,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <div class="grid gap-2">
                                                         <Label for="email">Nível</Label>
                                                         <ToggleGroup type="single" default-value="n1" class="flex-wrap">
-                                                            <ToggleGroupItem v-for="n in 30" :key="n" :value="'n' + n"
+                                                            <ToggleGroupItem v-for="level in levels" :key="level"
+                                                                :value="'n' + level"
                                                                 class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] min-h-7 border border-green-700 rounded-full cursor-pointer">
-                                                                {{ n }}
+                                                                {{ level }}
                                                             </ToggleGroupItem>
 
                                                         </ToggleGroup>
