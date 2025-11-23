@@ -65,6 +65,7 @@ defineProps({
 })
 
 import admin_departments from '@/routes/admin_departments';
+import admin_classrooms from '@/routes/admin_classrooms';
 
 const form = useForm({
     description: '',
@@ -181,7 +182,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Departamentos
                     </Link>
 
-                    <Link href="" role="tab"
+                    <Link :href="admin_classrooms.index().url" role="tab"
                         class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
