@@ -87,6 +87,11 @@ const deps_list = props.deps.map((dep: IClassroom) => ({
     label: dep.description,
     value: dep.id
 }))
+
+const status_list = [
+
+]
+
 const levels = 22;
 const open = ref(false)
 const value = ref('')
@@ -362,13 +367,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <ToggleGroup type="single" default-value="n1" class="flex-wrap">
                                                             <ToggleGroupItem v-for="level in levels" :key="level"
                                                                 :value="'n' + level"
-                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] min-h-7 border border-green-700 rounded-full cursor-pointer">
+                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
                                                                 {{ level }}
                                                             </ToggleGroupItem>
 
                                                         </ToggleGroup>
                                                     </div>
-                                                    <div class="inline-flex gap-2">
+                                                    <div class="inline-flex gap-2 mt-4">
                                                         <div class="relative inline-block w-11 h-5">
                                                             <input id="switch-component-desc" v-model="form.is_active"
                                                                 type="checkbox"
@@ -390,16 +395,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             </div>
                                                         </label>
                                                     </div>
-                                                    <div class="grid gap-2">
-                                                        <Label for="email">Estado</Label>
-                                                        <ToggleGroup type="single" default-value="n1" class="flex-wrap">
-                                                            <ToggleGroupItem v-for="n in 8" :key="n" :value="'n' + n"
-                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] min-h-7 border border-green-700 rounded-lg cursor-pointer">
-                                                                {{ n }}
-                                                            </ToggleGroupItem>
 
-                                                        </ToggleGroup>
-                                                    </div>
                                                 </section>
                                                 <SheetFooter>
                                                     <button type="submit" form="advertisement"
