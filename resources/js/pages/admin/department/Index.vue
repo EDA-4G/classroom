@@ -117,13 +117,12 @@ const e_submit = () => {
     });
 };
 
-const delete_ads = (advertisement: IAdvertisement) => {
-    router.delete(advertisements.destroy(advertisement).url, {
+const delete_dps = (admin_departments: IDepartment) => {
+    router.delete(advertisements.destroy(admin_departments).url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Anúncio excluído com sucesso.'),
-        onError: () => toast.error('Ocorreu um erro ao tentar excluir anúncio.')
+        onSuccess: () => toast.success('Departamento excluído com sucesso.'),
+        onError: () => toast.error('Ocorreu um erro ao tentar excluir departamento.')
     })
-
 }
 
 
@@ -498,7 +497,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </AlertDialogCancel>
                                                                 <AlertDialogAction
                                                                     class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
-                                                                    @click="delete_ads(dps)">
+                                                                    @click="delete_dps(dps)">
                                                                     Sim, Excluir
                                                                 </AlertDialogAction>
                                                             </AlertDialogFooter>
