@@ -199,7 +199,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </Link>
 
                     <Link :href="admin_departments.index().url" role="tab"
-                        class="px-3 py-2 text-[#008236] text-sm font-medium bg-white shadow-xs cursor-pointer rounded-sm">
+                        class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
                         <path
@@ -209,7 +209,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </Link>
 
                     <Link :href="admin_classrooms.index().url" role="tab"
-                        class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
+                        class="px-3 py-2 text-[#008236] text-sm font-medium bg-white shadow-xs cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
                         <path
