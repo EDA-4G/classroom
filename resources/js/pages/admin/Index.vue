@@ -185,7 +185,7 @@ const d_form = useForm({
 })
 
 const d_submit = () => {
-    d_form.post(departments.store().url, {
+    d_form.post(advertisements.store_department().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Departamento salvo com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
