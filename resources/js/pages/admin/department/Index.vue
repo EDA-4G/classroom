@@ -120,6 +120,7 @@ const e_submit = () => {
 const delete_dps = (department: IDepartment) => {
     router.delete(admin_departments.destroy(department).url, {
         preserveScroll: true,
+        preserveState: true,
         onSuccess: () => toast.success('Departamento excluído com sucesso.'),
         onError: () => toast.error('Ocorreu um erro ao tentar excluir departamento.')
     })
