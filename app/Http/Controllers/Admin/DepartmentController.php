@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,7 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         $description = $request->query('description');
-        // $departments = Advertisement::where('description', 'like', '%' . $description . '%')->paginate(5);
+        $departments = Department::where('description', 'like', '%' . $description . '%')->paginate(5);
         return Inertia::render('admin/Index', compact('ads'));
     }
 
