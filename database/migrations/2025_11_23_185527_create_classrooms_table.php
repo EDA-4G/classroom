@@ -28,6 +28,7 @@ return new class extends Migration
                 'exam',
                 'unlock',
                 'maintenance',
+                'to_wash',
                 'none'
             ])->default('none');
             $table->boolean('is_fixed')->default(false);
