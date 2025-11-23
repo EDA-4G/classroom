@@ -70,9 +70,9 @@ import { IAdvertisement, IDepartment } from '@/interfaces';
 
 
 defineProps({
-    css_rooms: {
+    rooms: {
         type: Object,
-        required: false
+        required: true
     },
     advertisement: {
         type: Object,
@@ -448,7 +448,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr v-for="room in css_rooms.data">
+                                            <tr v-for="room in rooms.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
                                                         <img :src="'/storage/'.concat(room.image)" :alt="room.image"
@@ -607,14 +607,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </AlertDialog>
 
                                                 </td>
-                                            </tr> -->
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
 
                             </section>
-                            <!-- <Pagination :list="css_rooms" /> -->
+                            <Pagination :list="rooms" />
                         </CardContent>
                     </Card>
                 </section>
