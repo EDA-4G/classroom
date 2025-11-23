@@ -51,7 +51,7 @@ class ClassroomController extends Controller
         ]);
 
         $department = new Department([
-            'id' => $request->department_id
+            'id' => $request->department
         ]);
         $classroom->department()->associate($department);
 
