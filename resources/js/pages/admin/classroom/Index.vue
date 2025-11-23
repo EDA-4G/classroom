@@ -98,14 +98,15 @@ const form = useForm({
     image: '',
     level: '',
     status: '',
-    is_active: false
+    is_active: false,
+    department: 0
 })
 
 const submit = () => {
-    form.post(admin_departments.store().url, {
+    form.post(admin_classrooms.store().url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Departamento salvo com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
+        onSuccess: () => toast.success('Sala de aulas salva com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar salvar sala de aulas')
     });
     form.reset();
 };

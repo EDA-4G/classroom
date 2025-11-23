@@ -50,6 +50,10 @@ class ClassroomController extends Controller
             'is_active' => $request->is_active
         ]);
 
+        $classroom->department()->associate(new Department([
+            'id' => $request->department_id
+        ]));
+
         $classroom->save();
         return redirect()->route('admin_classrooms.index')->with('success', 'Cadastrado com sucesso!');
     }
