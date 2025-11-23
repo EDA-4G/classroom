@@ -29,7 +29,7 @@ export interface IClassroom {
     description: string;
     image: string;
     level: string;
-    status: string;
+    status: ClassroomStatus;
     is_fixed: boolean;
     is_active: boolean;
     created_at?: Date;
