@@ -633,9 +633,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </SheetTrigger>
                                                 <SheetContent>
                                                     <SheetHeader>
-                                                        <SheetTitle class="text-lg">Salas de Aulas</SheetTitle>
+                                                        <SheetTitle class="text-lg">Departamentos</SheetTitle>
                                                         <SheetDescription>
-                                                            Cadastre o anúncio aqui. Clique em <span
+                                                            Cadastre o departamento aqui. Clique em <span
                                                                 class="font-semibold">Salvar</span> quando terminar.
                                                         </SheetDescription>
                                                     </SheetHeader>
