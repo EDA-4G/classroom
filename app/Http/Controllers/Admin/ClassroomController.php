@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -16,7 +17,8 @@ class ClassroomController extends Controller
     {
         $description = $request->query('description');
         $rooms = Classroom::where('description', 'like', '%' . $description . '%')->paginate(5);
-        return Inertia::render('admin/classroom/Index', compact('rooms'));
+        $deps = Department::where('is_active', true);
+        return Inertia::render('admin/classroom/Index', compact('rooms', 'deps'));
     }
 
     /**
