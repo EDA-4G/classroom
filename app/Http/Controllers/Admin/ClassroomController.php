@@ -70,9 +70,18 @@ class ClassroomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Classroom $classroom)
     {
-        //
+        $classroom->id = $request->input('id');
+        $classroom->description = $request->input('description');
+        $classroom->image = $request->input('image');
+        $classroom->level = $request->input('level');
+        $classroom->status = $request->input('status');
+        $classroom->is_fixed = $request->input('is_fixed');
+        $classroom->is_active = $request->input('is_active');
+        $classroom->save();
+
+        return redirect()->route('admin_classrooms.index')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
