@@ -30,6 +30,35 @@ import {
 
 import classrooms from '@/routes/classrooms';
 
+
+
+import { Button } from '@/components/ui/button'
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
+import { cn } from '@/lib/utils';
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from '@/components/ui/command'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
+import { ref } from 'vue';
+const frameworks = [
+    { value: 'Cadeiras Gerais', label: 'Cadeiras Gerais' },
+    { value: 'Eng. Quimica', label: 'Eng. Quimica' },
+]
+const open = ref(false)
+const value = ref('')
+
+
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -158,22 +187,45 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-                <div class="grid gap-2">
-                    <Label for="email">Onde encontrou o pertence</Label>
-                    <Select>
-                        <SelectTrigger class="w-auto">
-                            <SelectValue placeholder="Selecionar o departamento" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="apple">
-                                Cadeiras Gerais
-                            </SelectItem>
-                            <SelectItem value="banana">
-                                Eng. Quimica
-                            </SelectItem>
-                        </SelectContent>
-                    </Select>
 
+                <div class="grid gap-2">
+                    <Label for="dp">Onde encontrou o pertence</Label>
+                    <Popover id="dp" v-model:open="open">
+                        <PopoverTrigger as-child>
+                            <Button variant="outline" role="combobox" :aria-expanded="open"
+                                class="w-full font-normal justify-between cursor-pointer">
+                                {{
+                                    value
+                                        ? frameworks.find(framework => framework.value
+                                            === value)?.label
+                                        : 'Selecionar departamento...'
+                                }}
+                                <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent class="p-0">
+                            <Command class="w-full">
+                                <CommandInput placeholder="Buscar departamento..." />
+                                <CommandList>
+                                    <CommandEmpty>No framework found.
+                                    </CommandEmpty>
+                                    <CommandGroup>
+                                        <CommandItem class="cursor-pointer" v-for="framework in frameworks"
+                                            :key="framework.value" :value="framework.value" @select="() => {
+                                                value = value === framework.value ? '' : framework.value
+                                                open = false
+                                            }">
+                                            <CheckIcon :class="cn(
+                                                'mr-2 h-4 w-4',
+                                                value === framework.value ? 'opacity-100' : 'opacity-0',
+                                            )" />
+                                            {{ framework.label }}
+                                        </CommandItem>
+                                    </CommandGroup>
+                                </CommandList>
+                            </Command>
+                        </PopoverContent>
+                    </Popover>
                     <InputError message="" />
                 </div>
 
