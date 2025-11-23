@@ -92,7 +92,6 @@ class AdvertisementController extends Controller
 
     public function store_department(Request $request)
     {
-        dd('cheguei departm..');
         $department = new Department([
             'description' => $request->description,
             'is_active' => $request->is_active
