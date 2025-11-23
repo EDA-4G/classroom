@@ -641,74 +641,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </SheetHeader>
                                                     <section class="grid gap-4 px-4">
                                                         <div class="grid gap-2">
-                                                            <Label for="description">Identificação</Label>
+                                                            <Label for="description">Descrição</Label>
                                                             <Input id="description" v-model="form.description"
-                                                                name="description" placeholder="Ex: 202, DEEL" />
+                                                                name="description" placeholder="Informe a descrição" />
                                                             <InputError :message="form.errors.description" />
                                                         </div>
-                                                        <div class="grid gap-2">
-                                                            <Label for="email">Imagem</Label>
-                                                            <Input id="email" type="file" name="ads"
-                                                                @input="form.image = $event.target.files[0]" />
-                                                            <InputError :message="form.errors.image" />
-                                                        </div>
-                                                        <div class="grid gap-2">
-                                                            <Label for="dp">Departamento</Label>
-                                                            <Popover id="dp" v-model:open="open">
-                                                                <PopoverTrigger as-child>
-                                                                    <Button variant="outline" role="combobox"
-                                                                        :aria-expanded="open"
-                                                                        class="w-full font-normal justify-between cursor-pointer">
-                                                                        {{
-                                                                            value
-                                                                                ? frameworks.find(framework => framework.value
-                                                                                    === value)?.label
-                                                                                : 'Selecionar departamento...'
-                                                                        }}
-                                                                        <ChevronsUpDownIcon
-                                                                            class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                                    </Button>
-                                                                </PopoverTrigger>
-                                                                <PopoverContent class="p-0">
-                                                                    <Command class="w-full">
-                                                                        <CommandInput
-                                                                            placeholder="Buscar departamento..." />
-                                                                        <CommandList>
-                                                                            <CommandEmpty>No framework found.
-                                                                            </CommandEmpty>
-                                                                            <CommandGroup>
-                                                                                <CommandItem class="cursor-pointer"
-                                                                                    v-for="framework in frameworks"
-                                                                                    :key="framework.value"
-                                                                                    :value="framework.value" @select="() => {
-                                                                                        value = value === framework.value ? '' : framework.value
-                                                                                        open = false
-                                                                                    }">
-                                                                                    <CheckIcon :class="cn(
-                                                                                        'mr-2 h-4 w-4',
-                                                                                        value === framework.value ? 'opacity-100' : 'opacity-0',
-                                                                                    )" />
-                                                                                    {{ framework.label }}
-                                                                                </CommandItem>
-                                                                            </CommandGroup>
-                                                                        </CommandList>
-                                                                    </Command>
-                                                                </PopoverContent>
-                                                            </Popover>
-                                                            <InputError :message="form.errors.image" />
-                                                        </div>
-                                                        <div class="grid gap-2">
-                                                            <Label for="email">Nível</Label>
-                                                            <ToggleGroup type="single" default-value="n1"
-                                                                class="flex-wrap">
-                                                                <ToggleGroupItem v-for="n in 30" :key="n"
-                                                                    :value="'n' + n"
-                                                                    class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] min-h-7 border border-green-700 rounded-full cursor-pointer">
-                                                                    {{ n }}
-                                                                </ToggleGroupItem>
 
-                                                            </ToggleGroup>
-                                                        </div>
                                                         <div class="inline-flex gap-2">
                                                             <div class="relative inline-block w-11 h-5">
                                                                 <input id="switch-component-desc"
@@ -730,18 +668,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     </p>
                                                                 </div>
                                                             </label>
-                                                        </div>
-                                                        <div class="grid gap-2">
-                                                            <Label for="email">Estado</Label>
-                                                            <ToggleGroup type="single" default-value="n1"
-                                                                class="flex-wrap">
-                                                                <ToggleGroupItem v-for="n in 8" :key="n"
-                                                                    :value="'n' + n"
-                                                                    class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] min-h-7 border border-green-700 rounded-lg cursor-pointer">
-                                                                    {{ n }}
-                                                                </ToggleGroupItem>
-
-                                                            </ToggleGroup>
                                                         </div>
                                                     </section>
                                                     <SheetFooter>
