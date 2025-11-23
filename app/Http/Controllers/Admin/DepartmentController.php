@@ -60,9 +60,14 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Department $department)
     {
-        //
+        $department->id = $request->input('id');
+        $department->description = $request->input('description');
+        $department->is_active = $request->input('is_active');
+        $department->save();
+
+        return redirect()->route('admin_departments.index')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
