@@ -172,6 +172,38 @@ const open = ref(false)
 const value = ref('')
 
 
+
+
+
+
+
+//Dep
+const d_form = useForm({
+    description: '',
+    image: '',
+    is_active: false
+})
+
+
+// const description = ref('');
+// const search = () => {
+//     const options = {
+//         query: {
+//             description: description.value,
+//         },
+//     };
+//     router.get(advertisements.index.get(options).url)
+// };
+
+const d_submit = () => {
+    form.post(advertisements.store().url, {
+        preserveScroll: true,
+        onSuccess: () => toast.success('Departamento salvo com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
+    });
+};
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -642,15 +674,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <section class="grid gap-4 px-4">
                                                         <div class="grid gap-2">
                                                             <Label for="description">Descrição</Label>
-                                                            <Input id="description" v-model="form.description"
+                                                            <Input id="description" v-model="d_form.description"
                                                                 name="description" placeholder="Informe a descrição" />
-                                                            <InputError :message="form.errors.description" />
+                                                            <InputError :message="d_form.errors.description" />
                                                         </div>
 
                                                         <div class="inline-flex gap-2">
                                                             <div class="relative inline-block w-11 h-5">
                                                                 <input id="switch-component-desc"
-                                                                    v-model="form.is_active" type="checkbox"
+                                                                    v-model="d_form.is_active" type="checkbox"
                                                                     class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
                                                                 <label for="switch-component-desc"
                                                                     class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
@@ -661,7 +693,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 class="text-green-900 text-sm cursor-pointer">
                                                                 <div>
                                                                     <p class="font-medium">
-                                                                        Activar Sala
+                                                                        Activar Departamento
                                                                     </p>
                                                                     <p class="text-slate-500">
                                                                         Permitir que esteja disponível para o acesso.
