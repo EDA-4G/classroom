@@ -19,8 +19,7 @@ return new class extends Migration
                 ->onUpdate('CASCADE');
             $table->string('description');
             $table->string('image');
-            $table->string('levels');
-            $table->string('status');
+            $table->string('level');
             $table->enum('status', [
                 'open',
                 'in_class',
