@@ -18,10 +18,11 @@ enum ClassroomStatus {
     In_class = 'in_class',
     In_room = 'in_room',
     Test = 'test',
-    Exam = 'open',
-    Unlock = 'in_class',
-    Maintenance = 'in_room',
-    None = 'test',
+    Exam = 'exam',
+    Unlock = 'unlock',
+    Maintenance = 'maintenance',
+    To_wash = 'to_wash',
+    None = 'none',
 }
 
 export interface IClassroom {
