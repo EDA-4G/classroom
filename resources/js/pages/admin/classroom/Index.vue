@@ -74,7 +74,7 @@ defineProps({
         type: Object,
         required: true
     },
-    advertisement: {
+    deps: {
         type: Object,
         required: false
     }
