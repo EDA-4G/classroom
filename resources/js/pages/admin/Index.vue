@@ -692,11 +692,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </div>
                                                     </section>
                                                     <SheetFooter>
-                                                        <button type="submit" form="department"
-                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
-                                                            <Save width="16" />
-                                                            Salvar
-                                                        </button>
+                                                        <SheetClose>
+                                                            <button type="submit" form="department"
+                                                                class="w-full flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                                <Save width="16" />
+                                                                Salvar
+                                                            </button>
+                                                        </SheetClose>
                                                         <SheetClose as-child>
                                                             <button
                                                                 class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
