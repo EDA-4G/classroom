@@ -13,6 +13,17 @@ export interface IDepartment {
     created_at?: Date;
 }
 
+enum ClassroomStatus {
+    Open = 'open',
+    In_class = 'in_class',
+    In_room = 'in_room',
+    Test = 'test',
+    Exam = 'open',
+    Unlock = 'in_class',
+    Maintenance = 'in_room',
+    None = 'test',
+}
+
 export interface IClassroom {
     id: number;
     description: string;
