@@ -32,7 +32,6 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        dd('cheguei departm..');
         $advertisement = new Department([
             'description' => $request->description,
             'is_active' => $request->is_active
