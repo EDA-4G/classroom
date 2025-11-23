@@ -65,7 +65,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { IAdvertisement, IClassroom, IDepartment } from '@/interfaces';
+import { IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
 
 
 
@@ -321,7 +321,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     class="w-full font-normal justify-between cursor-pointer">
                                                                     {{
                                                                         value
-                                                                            ? deps_list.find((framework:{label:string,value:string}) => framework.value
+                                                                            ? deps_list.find((item: IPopoverItem) => item.value
                                                                                 === value)?.label
                                                                             : 'Selecionar departamento...'
                                                                     }}
