@@ -110,7 +110,7 @@ const e_submit = () => {
         is_active: e_form.is_active,
         created_at: new Date()
     }
-    e_form.put(advertisements.update(department).url, {
+    e_form.put(admin_departments.update(department).url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Departamento editado com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar editar departamento')
