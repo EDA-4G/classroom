@@ -7,7 +7,7 @@ export interface IAdvertisement {
 }
 
 export interface IDepartment {
-    id?: number;
+    id: number;
     description: string;
     is_active: boolean;
     created_at?: Date;
