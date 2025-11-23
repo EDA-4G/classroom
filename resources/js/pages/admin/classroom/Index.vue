@@ -91,7 +91,7 @@ const deps_list = props.deps.map((dep: IClassroom) => ({
 
 const levels = 22;
 const open = ref(false)
-const value = ref('')
+const dp_id = ref('')
 
 const form = useForm({
     description: '',
@@ -99,7 +99,7 @@ const form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: 0
+    department: dp_id.value
 })
 
 const submit = () => {
@@ -325,9 +325,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     :aria-expanded="open"
                                                                     class="w-full font-normal justify-between cursor-pointer">
                                                                     {{
-                                                                        value
+                                                                        dp_id
                                                                             ? deps_list.find((item: IPopoverItem) => item.value
-                                                                                === value)?.label
+                                                                                === dp_id)?.label
                                                                             : 'Selecionar departamento...'
                                                                     }}
                                                                     <ChevronsUpDownIcon
@@ -346,12 +346,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                                 v-for="framework in deps_list"
                                                                                 :key="framework.value"
                                                                                 :value="framework.value" @select="() => {
-                                                                                    value = value === framework.value ? '' : framework.value
+                                                                                    dp_id = dp_id === framework.value ? '' : framework.value
                                                                                     open = false
                                                                                 }">
                                                                                 <CheckIcon :class="cn(
                                                                                     'mr-2 h-4 w-4',
-                                                                                    value === framework.value ? 'opacity-100' : 'opacity-0',
+                                                                                    dp_id === framework.value ? 'opacity-100' : 'opacity-0',
                                                                                 )" />
                                                                                 {{ framework.label }}
                                                                             </CommandItem>
