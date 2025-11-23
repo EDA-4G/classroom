@@ -99,10 +99,11 @@ const form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: dp_id.value
+    department: ''
 })
 
 const submit = () => {
+    form.department = dp_id.value;
     form.post(admin_classrooms.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Sala de aulas salva com sucesso'),
