@@ -88,9 +88,6 @@ const deps_list = props.deps.map((dep: IClassroom) => ({
     value: dep.id
 }))
 
-const status_list = [
-
-]
 
 const levels = 22;
 const open = ref(false)
@@ -99,6 +96,8 @@ const value = ref('')
 const form = useForm({
     description: '',
     image: '',
+    level: '',
+    status: '',
     is_active: false
 })
 
@@ -284,7 +283,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                     <div
                                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                        <form id="advertisement" @submit.prevent="submit" class="m-0"
+                                        <form id="classroom" @submit.prevent="submit" class="m-0"
                                             enctype="multipart/form-data"></form>
                                         <Sheet>
                                             <SheetTrigger as-child>
@@ -306,7 +305,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </SheetHeader>
                                                 <section class="grid gap-4 px-4">
                                                     <div class="grid gap-2">
-                                                        <Label for="description">Identificação</Label>
+                                                        <Label for="description">Descrição</Label>
                                                         <Input id="description" v-model="form.description"
                                                             name="description" placeholder="Ex: 202, DEEL" />
                                                         <InputError :message="form.errors.description" />
@@ -398,7 +397,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                                 </section>
                                                 <SheetFooter>
-                                                    <button type="submit" form="advertisement"
+                                                    <button type="submit" form="classroom"
                                                         class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                         <Save width="16" />
                                                         Salvar
