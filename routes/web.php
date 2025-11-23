@@ -31,6 +31,7 @@ Route::resource('losses', LostFoundController::class);
 
 Route::resource('managers', ManagerController::class);
 Route::resource('advertisements', AdvertisementController::class);
-Route::resource('departments', DepartmentController::class);
+// Route::resource('departments', DepartmentController::class);
+Route::post('advertisements/departments', [AdvertisementController::class, 'store_department'])->name('advertisements.store_department');
 
 require __DIR__ . '/settings.php';
