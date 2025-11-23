@@ -65,30 +65,28 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { IAdvertisement, IDepartment } from '@/interfaces';
+import { IAdvertisement, IClassroom, IDepartment } from '@/interfaces';
 
 
 
-defineProps({
+const props = defineProps({
     rooms: {
         type: Object,
         required: true
     },
     deps: {
         type: Object,
-        required: false
+        required: true
     }
 })
 
 import admin_departments from '@/routes/admin_departments';
 import admin_classrooms from '@/routes/admin_classrooms';
-const frameworks = [
-    { value: 'next.js', label: 'Next.js' },
-    { value: 'sveltekit', label: 'SvelteKit' },
-    { value: 'nuxt.js', label: 'Nuxt.js' },
-    { value: 'remix', label: 'Remix' },
-    { value: 'astro', label: 'Astro' },
-]
+
+const deps_list = props.deps.map((dep: IClassroom) => ({
+    label: dep.description,
+    value: dep.id
+}))
 const levels = 22;
 const open = ref(false)
 const value = ref('')
@@ -323,7 +321,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     class="w-full font-normal justify-between cursor-pointer">
                                                                     {{
                                                                         value
-                                                                            ? frameworks.find(framework => framework.value
+                                                                            ? deps_list.find((framework:{label:string,value:string}) => framework.value
                                                                                 === value)?.label
                                                                             : 'Selecionar departamento...'
                                                                     }}
@@ -340,7 +338,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         </CommandEmpty>
                                                                         <CommandGroup>
                                                                             <CommandItem class="cursor-pointer"
-                                                                                v-for="framework in frameworks"
+                                                                                v-for="framework in deps_list"
                                                                                 :key="framework.value"
                                                                                 :value="framework.value" @select="() => {
                                                                                     value = value === framework.value ? '' : framework.value

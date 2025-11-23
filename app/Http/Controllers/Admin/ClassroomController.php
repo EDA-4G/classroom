@@ -17,7 +17,8 @@ class ClassroomController extends Controller
     {
         $description = $request->query('description');
         $rooms = Classroom::where('description', 'like', '%' . $description . '%')->paginate(5);
-        $deps = Department::where('is_active', true);
+        $deps = Department::where('is_active', true)->get();
+        // dd($deps);
         return Inertia::render('admin/classroom/Index', compact('rooms', 'deps'));
     }
 
