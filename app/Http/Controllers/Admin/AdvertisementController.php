@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -86,5 +87,18 @@ class AdvertisementController extends Controller
     {
         $advertisement->delete();
         return redirect()->route('advertisements.index')->with('success', 'Excluído com sucesso!');
+    }
+
+
+    public function store_department(Request $request)
+    {
+        dd('cheguei departm..');
+        $department = new Department([
+            'description' => $request->description,
+            'is_active' => $request->is_active
+        ]);
+
+        $department->save();
+        return redirect()->route('advertisements.index')->with('success', 'Cadastrado com sucesso!');
     }
 }
