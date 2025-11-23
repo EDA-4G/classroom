@@ -181,7 +181,6 @@ const value = ref('')
 //Dep
 const d_form = useForm({
     description: '',
-    image: '',
     is_active: false
 })
 
@@ -641,8 +640,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         </div>
                                         <div
                                             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                            <form id="advertisement" @submit.prevent="submit" class="m-0"
-                                                enctype="multipart/form-data"></form>
+                                            <form id="department" @submit.prevent="d_submit" class="m-0"></form>
                                             <Sheet>
                                                 <SheetTrigger as-child>
 
@@ -693,7 +691,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </div>
                                                     </section>
                                                     <SheetFooter>
-                                                        <button type="submit" form="advertisement"
+                                                        <button type="submit" form="department"
                                                             class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                             <Save width="16" />
                                                             Salvar
