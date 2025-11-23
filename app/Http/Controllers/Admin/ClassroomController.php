@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,9 +12,11 @@ class ClassroomController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('admin/classroom/Index');
+        $description = $request->query('description');
+        $rooms = Classroom::where('description', 'like', '%' . $description . '%')->paginate(5);
+        return Inertia::render('admin/classroom/Index', compact('rooms'));
     }
 
     /**
