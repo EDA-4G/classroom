@@ -31,5 +31,6 @@ Route::resource('losses', LostFoundController::class);
 
 Route::resource('managers', ManagerController::class);
 Route::resource('advertisements', AdvertisementController::class);
+Route::resource('departments', DepartmentController::class);
 
 require __DIR__ . '/settings.php';
