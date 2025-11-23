@@ -35,3 +35,8 @@ export interface IClassroom {
     is_active: boolean;
     created_at?: Date;
 }
+
+export interface IPopoverItem {
+    label: string;
+    value: string;
+}
