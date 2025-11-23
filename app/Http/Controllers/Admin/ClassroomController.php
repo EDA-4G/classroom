@@ -87,8 +87,9 @@ class ClassroomController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Classroom $classroom)
     {
-        //
+        $classroom->delete();
+        return redirect()->route('admin_classrooms.index')->with('success', 'Excluído com sucesso!');
     }
 }
