@@ -60,7 +60,7 @@ import { IAdvertisement } from '@/interfaces';
 
 
 defineProps({
-    ads: {
+    dps: {
         type: Object,
         required: true
     },
@@ -69,13 +69,6 @@ defineProps({
         required: false
     }
 })
-
-const form = useForm({
-    description: '',
-    image: '',
-    is_active: false
-})
-
 
 const description = ref('');
 const search = () => {
@@ -86,15 +79,6 @@ const search = () => {
     };
     router.get(advertisements.index.get(options).url)
 };
-
-const submit = () => {
-    form.post(advertisements.store().url, {
-        preserveScroll: true,
-        onSuccess: () => toast.success('Anúncio salvo com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar salvar anúncio')
-    });
-};
-
 
 
 const e_form = useForm({
@@ -162,30 +146,15 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover'
 import departments from '@/routes/departments';
-const frameworks = [
-    { value: 'next.js', label: 'Next.js' },
-    { value: 'sveltekit', label: 'SvelteKit' },
-    { value: 'nuxt.js', label: 'Nuxt.js' },
-    { value: 'remix', label: 'Remix' },
-    { value: 'astro', label: 'Astro' },
-]
-const open = ref(false)
-const value = ref('')
+import admin_departments from '@/routes/admin_departments';
 
-
-
-
-
-
-
-//Dep
 const d_form = useForm({
     description: '',
     is_active: false
 })
 
 const d_submit = () => {
-    d_form.post(advertisements.store_department().url, {
+    d_form.post(admin_departments.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Departamento salvo com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
@@ -418,21 +387,21 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="ads in ads.datar">
+                                            <tr v-for="dps in dps.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <img :src="'/storage/'.concat(ads.image)" :alt="ads.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
+                                                        <!-- <img :src="'/storage/'.concat(ads.image)" :alt="ads.image"
+                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" /> -->
                                                         <p
                                                             class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                            {{ ads.description }}
+                                                            {{ dps.description }}
                                                         </p>
                                                     </div>
                                                 </td>
 
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div v-if="ads.is_active"
+                                                        <div v-if="dps.is_active"
                                                             class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
                                                             Activo
                                                         </div>
@@ -445,7 +414,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                        {{ new Date(ads.created_at).toDateString() }}
+                                                        {{ new Date(dps.created_at).toDateString() }}
                                                     </p>
                                                 </td>
                                                 <td class="text-right p-4 border-b border-blue-gray-50">
@@ -454,7 +423,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <Sheet>
                                                         <SheetTrigger as-child>
 
-                                                            <button @click="get_ads_to_edit(ads)"
+                                                            <button @click="get_ads_to_edit(dps)"
                                                                 class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                 type="button">
                                                                 <span class="flex justify-center">
@@ -559,7 +528,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 <AlertDialogDescription class="text-center">
                                                                     Confirma a exclusão permanente do anúncio<br>
                                                                     <span class="text-[#EC3636]">{{
-                                                                        ads.description }}
+                                                                        dps.description }}
                                                                     </span>?
                                                                 </AlertDialogDescription>
                                                             </AlertDialogHeader>
@@ -569,7 +538,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </AlertDialogCancel>
                                                                 <AlertDialogAction
                                                                     class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
-                                                                    @click="delete_ads(ads)">
+                                                                    @click="delete_ads(dps)">
                                                                     Sim, Excluir
                                                                 </AlertDialogAction>
                                                             </AlertDialogFooter>
@@ -584,7 +553,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
                             </section>
-                            <Pagination :list="ads" />
+                            <Pagination :list="dps" />
                         </CardContent>
                     </Card>
                 </section>
