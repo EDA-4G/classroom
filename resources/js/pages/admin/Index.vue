@@ -161,6 +161,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover'
+import departments from '@/routes/departments';
 const frameworks = [
     { value: 'next.js', label: 'Next.js' },
     { value: 'sveltekit', label: 'SvelteKit' },
@@ -184,19 +185,8 @@ const d_form = useForm({
     is_active: false
 })
 
-
-// const description = ref('');
-// const search = () => {
-//     const options = {
-//         query: {
-//             description: description.value,
-//         },
-//     };
-//     router.get(advertisements.index.get(options).url)
-// };
-
 const d_submit = () => {
-    form.post(advertisements.store().url, {
+    d_form.post(departments.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Departamento salvo com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
