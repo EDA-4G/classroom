@@ -162,6 +162,7 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover'
 import departments from '@/routes/departments';
+import admin_departments from '@/routes/admin_departments';
 const frameworks = [
     { value: 'next.js', label: 'Next.js' },
     { value: 'sveltekit', label: 'SvelteKit' },
@@ -237,7 +238,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Anúncios
                     </Link>
 
-                    <Link :href="departments.index().url" role="tab"
+                    <Link :href="admin_departments.index().url" role="tab"
                         class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
