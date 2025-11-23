@@ -70,6 +70,22 @@ defineProps({
     }
 })
 
+import admin_departments from '@/routes/admin_departments';
+
+const form = useForm({
+    description: '',
+    is_active: false
+})
+
+const submit = () => {
+    form.post(admin_departments.store().url, {
+        preserveScroll: true,
+        onSuccess: () => toast.success('Departamento salvo com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
+    });
+    form.reset();
+};
+
 const description = ref('');
 const search = () => {
     const options = {
@@ -77,7 +93,7 @@ const search = () => {
             description: description.value,
         },
     };
-    router.get(advertisements.index.get(options).url)
+    router.get(admin_departments.index.get(options).url)
 };
 
 
@@ -119,48 +135,6 @@ const delete_ads = (advertisement: IAdvertisement) => {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
-import { cn } from '@/lib/utils';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from '@/components/ui/command'
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from '@/components/ui/popover'
-import departments from '@/routes/departments';
-import admin_departments from '@/routes/admin_departments';
-
-const d_form = useForm({
-    description: '',
-    is_active: false
-})
-
-const d_submit = () => {
-    d_form.post(admin_departments.store().url, {
-        preserveScroll: true,
-        onSuccess: () => toast.success('Departamento salvo com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
-    });
-    d_form.reset();
-};
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -288,7 +262,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                     <div
                                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                        <form id="department" @submit.prevent="d_submit" class="m-0"></form>
+                                        <form id="department" @submit.prevent="submit" class="m-0"></form>
                                         <Sheet>
                                             <SheetTrigger as-child>
 
@@ -310,14 +284,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <section class="grid gap-4 px-4">
                                                     <div class="grid gap-2">
                                                         <Label for="description">Descrição</Label>
-                                                        <Input id="description" v-model="d_form.description"
+                                                        <Input id="description" v-model="form.description"
                                                             name="description" placeholder="Informe a descrição" />
-                                                        <InputError :message="d_form.errors.description" />
+                                                        <InputError :message="form.errors.description" />
                                                     </div>
 
                                                     <div class="inline-flex gap-2">
                                                         <div class="relative inline-block w-11 h-5">
-                                                            <input id="switch-component-desc" v-model="d_form.is_active"
+                                                            <input id="switch-component-desc" v-model="form.is_active"
                                                                 type="checkbox"
                                                                 class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
                                                             <label for="switch-component-desc"
