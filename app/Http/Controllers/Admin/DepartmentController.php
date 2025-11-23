@@ -16,7 +16,7 @@ class DepartmentController extends Controller
     {
         $description = $request->query('description');
         $departments = Department::where('description', 'like', '%' . $description . '%')->paginate(5);
-        return Inertia::render('admin/Index', compact('ads'));
+        return Inertia::render('admin/department/Index', compact('departments'));
     }
 
     /**
