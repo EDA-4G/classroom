@@ -190,6 +190,7 @@ const d_submit = () => {
         onSuccess: () => toast.success('Departamento salvo com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar salvar departamento')
     });
+    d_form.reset();
 };
 
 
