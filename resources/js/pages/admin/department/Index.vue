@@ -196,7 +196,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="flex w-full flex-col gap-0">
                 <div role="tablist"
                     class="mb-2 p-1 bg-[#f5f5f5] flex flex-wrap text-muted-foreground border rounded-lg">
-                    <Link href="" role="tab"
+                    <Link :href="advertisements.index().url" role="tab"
                         class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
@@ -206,7 +206,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     Anúncios
                     </Link>
 
-                    <Link href="" role="tab"
+                    <Link :href="admin_departments.index().url" role="tab"
                         class="px-3 py-2 text-[#008236] text-sm font-medium bg-white shadow-xs cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
