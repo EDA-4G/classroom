@@ -32,7 +32,23 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image_path = null;
+        if ($request->hasFile('image')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('classroom', $file_name, 'public');
+        }
+
+        $classroom = new Classroom([
+            'description' => $request->description,
+            'image' => $image_path,
+            'level' => $request->level,
+            'status' => $request->status,
+            'is_fixed' => $request->is_fixed,
+            'is_active' => $request->is_active
+        ]);
+
+        $classroom->save();
+        return redirect()->route('admin_classrooms.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
