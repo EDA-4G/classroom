@@ -405,9 +405,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </SheetTrigger>
                                                         <SheetContent>
                                                             <SheetHeader>
-                                                                <SheetTitle class="text-lg">Anúncios</SheetTitle>
+                                                                <SheetTitle class="text-lg">Departamentos</SheetTitle>
                                                                 <SheetDescription>
-                                                                    Edite o anúncio aqui. Clique em
+                                                                    Edite o departamento aqui. Clique em
                                                                     <span class="font-semibold">Editar</span> quando
                                                                     terminar.
                                                                 </SheetDescription>
@@ -418,11 +418,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <Input id="description" v-model="e_form.description"
                                                                         name="description"
                                                                         placeholder="Informe a descrição" />
-                                                                    <InputError message="" />
-                                                                </div>
-                                                                <div class="grid gap-2">
-                                                                    <Label for="email">Imagem</Label>
-                                                                    <Input id="email" type="file" name="ads" />
                                                                     <InputError message="" />
                                                                 </div>
                                                                 <div class="inline-flex gap-2">
@@ -439,11 +434,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         class="text-green-900 text-sm cursor-pointer">
                                                                         <div>
                                                                             <p class="font-medium">
-                                                                                Activar Anúncio
+                                                                                Activar Departamento
                                                                             </p>
                                                                             <p class="text-slate-500">
                                                                                 Permitir que esteja visível na
-                                                                                página inicial.
+                                                                                página departamentos.
                                                                             </p>
                                                                         </div>
                                                                     </label>
