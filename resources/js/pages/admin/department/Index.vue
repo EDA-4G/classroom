@@ -104,16 +104,16 @@ const get_department_to_edit = (item: IDepartment) => {
 }
 
 const e_submit = () => {
-    const advertisement: IDepartment = {
+    const department: IDepartment = {
         id: e_form.id,
         description: e_form.description,
         is_active: e_form.is_active,
         created_at: new Date()
     }
-    e_form.put(advertisements.update(advertisement).url, {
+    e_form.put(advertisements.update(department).url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Anúncio editado com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar editar anúncio')
+        onSuccess: () => toast.success('Departamento editado com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar editar departamento')
     });
 };
 
