@@ -18,7 +18,7 @@ return new class extends Migration
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
             $table->string('description');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('level');
             $table->enum('status', [
                 'open',
@@ -30,8 +30,8 @@ return new class extends Migration
                 'maintenance',
                 'to_wash',
                 'none'
-            ])->default('none');
-            $table->boolean('is_fixed')->default(false);
+            ])->default('none')->nullable();
+            $table->boolean('is_fixed')->default(false)->nullable();
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
