@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Department;
 use App\Models\RepoDocument;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -48,6 +49,11 @@ class RepositoryController extends Controller
             'extension' => $document_extension,
             'is_active' => $request->is_active
         ]);
+
+        $user = new User([
+            'id' => $request->user
+        ]);
+        $document->department()->associate($user);
 
         $document->save();
         return redirect()->route('admin_repositories.index')->with('success', 'Cadastrado com sucesso!');
