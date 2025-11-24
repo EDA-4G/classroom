@@ -56,7 +56,7 @@ class PostController extends Controller
         $post->department()->associate($department);
 
         $post->save();
-        return redirect()->route('classroom.index')->with('success', 'Cadastrado com sucesso!');
+        return redirect()->route('classrooms.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
