@@ -33,8 +33,9 @@ import classrooms from '@/routes/classrooms';
 
 
 import { Button } from '@/components/ui/button'
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
+import { CheckIcon, ChevronsUpDownIcon, CloudUpload } from 'lucide-vue-next'
 import { cn } from '@/lib/utils';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import {
     Command,
     CommandEmpty,
@@ -49,7 +50,9 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover'
 import { ref } from 'vue';
-const frameworks = [
+import { IPopoverItem } from '@/interfaces';
+
+const deps_list: IPopoverItem[] = [
     { value: 'Cadeiras Gerais', label: 'Cadeiras Gerais' },
     { value: 'Eng. Quimica', label: 'Eng. Quimica' },
 ]
@@ -187,7 +190,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </section>
 
-
                 <div class="grid gap-2">
                     <Label for="dp">Onde encontrou o pertence</Label>
                     <Popover id="dp" v-model:open="open">
@@ -196,7 +198,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 class="w-full font-normal justify-between cursor-pointer">
                                 {{
                                     value
-                                        ? frameworks.find(framework => framework.value
+                                        ? deps_list.find((item: IPopoverItem) =>
+                                            item.value
                                             === value)?.label
                                         : 'Selecionar departamento...'
                                 }}
@@ -207,10 +210,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <Command class="w-full">
                                 <CommandInput placeholder="Buscar departamento..." />
                                 <CommandList>
-                                    <CommandEmpty>No framework found.
+                                    <CommandEmpty class="italic">
+                                        Departamento não
+                                        encontrado.
                                     </CommandEmpty>
                                     <CommandGroup>
-                                        <CommandItem class="cursor-pointer" v-for="framework in frameworks"
+                                        <CommandItem class="cursor-pointer" v-for="framework in deps_list"
                                             :key="framework.value" :value="framework.value" @select="() => {
                                                 value = value === framework.value ? '' : framework.value
                                                 open = false
@@ -226,7 +231,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </Command>
                         </PopoverContent>
                     </Popover>
-                    <InputError message="" />
+                    <InputError message="e_form.errors.image" />
                 </div>
 
                 <div class="inline-flex gap-2">
@@ -281,7 +286,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <div class="py-4 flex flex-col gap-2 lg:flex-row lg:justify-end">
                     <button type="submit"
-                        class="p-2 text-sm px-4 font-medium rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                        class="flex gap-1 items-center justify-center p-2 text-sm px-4 font-medium rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                        <CloudUpload width="14" />
                         Publicar
                     </button>
                     <button
