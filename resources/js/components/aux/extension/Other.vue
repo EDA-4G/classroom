@@ -1,5 +1,5 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48">
         <linearGradient id="-l1NVvjXZYK-cDBj9StJMa_NTG1DYcVIaS5_gr1" x1="-8.398" x2="84.447" y1="51.185" y2="-26.721"
             gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#faf3df"></stop>
