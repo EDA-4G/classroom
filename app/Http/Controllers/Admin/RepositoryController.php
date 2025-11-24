@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Department;
+use App\Models\RepoDocument;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -33,7 +34,23 @@ class RepositoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $document_path = null;
+        $document_extension = null;
+        if ($request->hasFile('document')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('document')->getClientOriginalName();
+            $document_extension = $request->file('document')->getClientOriginalExtension();
+            $document_path = $request->file('document')->storeAs('repository', $file_name, 'public');
+        }
+
+        $document = new RepoDocument([
+            'description' => $request->description,
+            'document' => $document_path,
+            'extension' => $document_extension,
+            'is_active' => $request->is_active
+        ]);
+
+        $document->save();
+        return redirect()->route('admin_repositories.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
