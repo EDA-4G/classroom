@@ -51,11 +51,7 @@ import Pagination from '@/components/aux/Pagination.vue';
 import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
 
 const props = defineProps({
-    rooms: {
-        type: Object,
-        required: true
-    },
-    deps: {
+    docs: {
         type: Object,
         required: true
     }
@@ -64,11 +60,6 @@ const props = defineProps({
 import admin_departments from '@/routes/admin_departments';
 import admin_classrooms from '@/routes/admin_classrooms';
 import admin_repositories from '@/routes/admin_repositories';
-
-let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
-    label: dep.description,
-    value: dep.id
-}))
 
 
 const current_year = new Date().getFullYear();
@@ -108,7 +99,6 @@ const e_form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
 })
 
 const get_classroom_to_edit = (item: IClassroom) => {
@@ -118,7 +108,6 @@ const get_classroom_to_edit = (item: IClassroom) => {
     e_form.level = item.level;
     e_form.status = item.status;
     e_form.is_active = Boolean(item.is_active);
-    e_form.department = deps_list.length > 0 ? deps_list[0].value : ''
 }
 
 const e_submit = () => {
@@ -381,7 +370,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="room in rooms.data">
+                                            <tr v-for="room in docs.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
                                                         <img v-if="room.image" :src="'/storage/'.concat(room.image)"
@@ -555,7 +544,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
                             </section>
-                            <Pagination :list="rooms" />
+                            <Pagination :list="docs" />
                         </CardContent>
                     </Card>
                 </section>
