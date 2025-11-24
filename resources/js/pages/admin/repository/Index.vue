@@ -48,7 +48,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
+import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IDocument, IPopoverItem } from '@/interfaces';
 
 const props = defineProps({
     docs: {
@@ -103,37 +103,34 @@ const search = () => {
 const e_form = useForm({
     id: 0,
     description: '',
-    image: '',
-    level: '1',
-    status: '',
-    is_active: false,
+    document: '',
+    extension: '',
+    user: page.props.auth.user.id,
+    is_active: false
 })
 
-const get_classroom_to_edit = (item: IClassroom) => {
+const get_document_to_edit = (item: IDocument) => {
     e_form.id = item.id;
     e_form.description = item.description;
-    e_form.image = item.image;
-    e_form.level = item.level;
-    e_form.status = item.status;
+    e_form.document = item.document;
+    e_form.extension = item.extension;
+    e_form.user = page.props.auth.user.id;
     e_form.is_active = Boolean(item.is_active);
 }
 
 const e_submit = () => {
-    const e_status: ClassroomStatus = ClassroomStatus[e_form.status as keyof typeof ClassroomStatus];
-    const classroom: IClassroom = {
+    const classroom: IDocument = {
         id: e_form.id,
         description: e_form.description,
-        image: e_form.image,
-        level: e_form.level,
-        status: e_status,
-        is_fixed: false,
+        document: e_form.document,
+        extension: e_form.extension,
         is_active: e_form.is_active,
         created_at: new Date()
     }
     e_form.put(admin_classrooms.update(classroom).url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Sala editada com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar editar sala')
+        onSuccess: () => toast.success('Documento editado com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar editar documento')
     });
 };
 
@@ -439,7 +436,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <Sheet>
                                                         <SheetTrigger as-child>
 
-                                                            <button @click="get_classroom_to_edit(room)"
+                                                            <button @click="get_document_to_edit(room)"
                                                                 class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                 type="button">
                                                                 <span class="flex justify-center">
@@ -476,8 +473,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <Label for="email">Documento</Label>
                                                                     <Input id="email" type="file" name="room"
                                                                         class="cursor-pointer"
-                                                                        @input="e_form.image = $event.target.files[0]" />
-                                                                    <InputError :message="e_form.errors.image" />
+                                                                        @input="e_form.document = $event.target.files[0]" />
+                                                                    <InputError :message="e_form.errors.document" />
                                                                 </div>
                                                                 <div class="inline-flex gap-2 mt-4">
                                                                     <div class="relative inline-block w-11 h-5">
