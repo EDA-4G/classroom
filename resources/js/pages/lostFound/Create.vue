@@ -62,7 +62,7 @@ const open = ref(false)
 const department = ref('')
 
 const users = ['student', 'teacher', 'employee']
-const usero = ref(users.at(2))
+const usero = ref(users.at(0))
 
 
 const page = usePage();
