@@ -97,6 +97,6 @@ class RepositoryController extends Controller
     public function destroy(RepoDocument $repository)
     {
         $repository->delete();
-        return redirect()->route('admin_departments.index')->with('success', 'Excluído com sucesso!');
+        return redirect()->route('admin_repositories.index')->with('success', 'Excluído com sucesso!');
     }
 }
