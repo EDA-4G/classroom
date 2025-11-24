@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Classroom;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -32,7 +34,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image_path = null;
+        if ($request->hasFile('image')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('post', $file_name, 'public');
+        }
+
+        $post = new Post([
+            'title' => $request->title,
+            'image' => $image_path,
+            'type' => $request->type,
+            'color' => $request->color,
+            'can_pay' => $request->can_pay,
+            'is_active' => $request->is_active
+        ]);
+
+        $user = User::find($request->user);
+        $post->user()->associate($user);
+
+        $department = Department::find($request->user);
+        $post->department()->associate($department);
+
+        $post->save();
+        return redirect()->route('dashboard')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
