@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Department;
-use App\Models\RepoDocument;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -17,8 +16,9 @@ class ClassroomController extends Controller
     public function index(Request $request)
     {
         $description = $request->query('description');
-        $docs = RepoDocument::where('description', 'like', '%' . $description . '%')->paginate(5);
-        return Inertia::render('admin/classroom/Index', compact('docs'));
+        $rooms = Classroom::where('description', 'like', '%' . $description . '%')->paginate(5);
+        $deps = Department::where('is_active', true)->get();
+        return Inertia::render('admin/classroom/Index', compact('rooms', 'deps'));
     }
 
     /**
