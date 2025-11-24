@@ -26,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $deps = Department::where('is_active', true)->get();
+        return Inertia::render('lostFound/Create', compact('deps'));
     }
 
     /**
