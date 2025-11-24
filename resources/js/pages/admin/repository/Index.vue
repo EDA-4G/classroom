@@ -136,12 +136,12 @@ const e_submit = () => {
     });
 };
 
-const delete_classroom = (classroom: IClassroom) => {
-    router.delete(admin_classrooms.destroy(classroom).url, {
+const delete_document = (document: IDocument) => {
+    router.delete(admin_repositories.destroy(document).url, {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => toast.success('Sala de aulas excluída com sucesso.'),
-        onError: () => toast.error('Ocorreu um erro ao tentar excluir sala de aulas.')
+        onSuccess: () => toast.success('Documento excluído com sucesso.'),
+        onError: () => toast.error('Ocorreu um erro ao tentar excluir documento.')
     })
 }
 
@@ -557,7 +557,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </AlertDialogCancel>
                                                                 <AlertDialogAction
                                                                     class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
-                                                                    @click="delete_classroom(room)">
+                                                                    @click="delete_document(room)">
                                                                     Sim, Excluir
                                                                 </AlertDialogAction>
                                                             </AlertDialogFooter>
