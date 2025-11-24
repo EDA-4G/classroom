@@ -70,6 +70,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import losses from '@/routes/losses';
+import posts from '@/routes/posts';
 
 function toggleMe() {
     // alert('toggle me!')
@@ -265,7 +266,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <FileDown class="w-full size-5" />
                                 Presenças
                             </button>
-                            <Link :href="losses.create().url" class="border py-6 rounded-lg text-center text-sm">
+                            <Link :href="posts.create().url" class="border py-6 rounded-lg text-center text-sm">
                             <CloudUpload class="w-full size-5" />
                             Publicar Achado
                             </Link>
