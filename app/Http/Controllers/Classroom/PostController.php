@@ -52,11 +52,11 @@ class PostController extends Controller
         $user = User::find($request->user);
         $post->user()->associate($user);
 
-        $department = Department::find($request->user);
+        $department = Department::find($request->department);
         $post->department()->associate($department);
 
         $post->save();
-        return redirect()->route('dashboard')->with('success', 'Cadastrado com sucesso!');
+        return redirect()->route('classroom.index')->with('success', 'Cadastrado com sucesso!');
     }
 
     /**
