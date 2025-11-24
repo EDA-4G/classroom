@@ -126,7 +126,11 @@ const search = () => {
 const e_form = useForm({
     id: 0,
     description: '',
-    is_active: false
+    image: '',
+    level: '1',
+    status: '',
+    is_active: false,
+    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
 })
 
 const get_classroom_to_edit = (item: IDepartment) => {
@@ -326,7 +330,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     :aria-expanded="open"
                                                                     class="w-full font-normal justify-between cursor-pointer">
                                                                     {{
-                                                                        dp_id
+                                                                        dp_id.toString()
                                                                             ? deps_list.find((item: IPopoverItem) => item.value
                                                                                 === dp_id)?.label
                                                                             : 'Selecionar departamento...'
@@ -340,7 +344,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <CommandInput
                                                                         placeholder="Buscar departamento..." />
                                                                     <CommandList>
-                                                                        <CommandEmpty>No framework found.
+                                                                        <CommandEmpty class="italic">Departamento não
+                                                                            encontrado.
                                                                         </CommandEmpty>
                                                                         <CommandGroup>
                                                                             <CommandItem class="cursor-pointer"
