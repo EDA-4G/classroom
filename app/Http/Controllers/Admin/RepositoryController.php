@@ -76,9 +76,19 @@ class RepositoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, RepoDocument $document)
     {
-        //
+        $document->id = $request->input('id');
+        $document->description = $request->input('description');
+        $document->document = $request->input('document');
+        $document->extension = $request->input('extension');
+        $document->is_active = $request->input('is_active');
+
+        $user = User::find($request->input('user'));
+        $document->user()->associate($user);
+        $document->save();
+
+        return redirect()->route('admin_repositories.index')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
