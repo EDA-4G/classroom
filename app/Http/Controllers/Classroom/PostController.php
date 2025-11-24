@@ -20,7 +20,7 @@ class PostController extends Controller
 
 
         $title = $request->query('title');
-        $posts = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->paginate(5);
+        $posts = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->paginate(8);
         return Inertia::render('lostFound/Index', compact('posts'));
     }
 
