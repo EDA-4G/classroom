@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class RepoDocument extends Model
 {
-    protected $fillable = ['id', 'description', 'document', 'is_active', 'created_at'];
+    protected $fillable = ['id', 'description', 'document', 'extension', 'is_active', 'created_at'];
 }
