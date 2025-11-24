@@ -490,7 +490,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </p>
                                                 </td>
                                                 <td class="text-right p-4 border-b border-blue-gray-50">
-                                                    <form id="e_advertisement" @submit.prevent="e_submit" class="m-0">
+                                                    <form id="e_classroom" @submit.prevent="e_submit" class="m-0">
                                                     </form>
                                                     <Sheet>
                                                         <SheetTrigger as-child>
@@ -622,7 +622,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             </section>
                                                             <SheetFooter>
                                                                 <SheetClose as-child>
-                                                                    <button type="submit" form="e_advertisement"
+                                                                    <button type="submit" form="e_classroom"
                                                                         class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                                         <RefreshCcw width="16" />
                                                                         Editar
