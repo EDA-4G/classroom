@@ -130,7 +130,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <p class="text-lg font-semibold">Publicação</p>
                 </div>
 
-                <form @submit.prevent="submit" class="grid gap-4">
+                <form id="post" @submit.prevent="submit" class="grid gap-4">
                     <div class="grid gap-2">
                         <Label for="title">Título</Label>
                         <Input id="title" v-model="form.title" type="text" name="title" autocomplete="title"
@@ -316,7 +316,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </form>
 
                 <div class="py-4 flex flex-col gap-2 lg:flex-row lg:justify-end">
-                    <button type="submit"
+                    <button type="submit" form="post"
                         class="flex gap-1 items-center justify-center p-2 text-sm px-4 font-medium rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                         <CloudUpload width="14" />
                         Publicar
