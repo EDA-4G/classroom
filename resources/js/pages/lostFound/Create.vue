@@ -51,6 +51,8 @@ import {
 } from '@/components/ui/popover'
 import { ref } from 'vue';
 import { IPopoverItem } from '@/interfaces';
+import posts from '@/routes/posts';
+import { toast } from 'vue-sonner';
 
 const deps_list: IPopoverItem[] = [
     { value: 'Cadeiras Gerais', label: 'Cadeiras Gerais' },
@@ -72,8 +74,18 @@ const form = useForm({
     can_pay: false,
     is_active: false,
     user: page.props.auth.user.id,
-    department: 0
+    department: '0'
 })
+
+const submit = () => {
+    form.department = department.value;
+    form.post(posts.store().url, {
+        preserveScroll: true,
+        onSuccess: () => toast.success('Sua postagem foi publicada'),
+        onError: () => toast.error('Ocorreu um erro ao enviar a postagem.')
+    });
+    form.reset();
+}
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
