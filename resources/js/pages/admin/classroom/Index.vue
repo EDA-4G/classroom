@@ -100,7 +100,7 @@ const form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
+    department: deps_list.length > 0 ? deps_list[0].value : ''
 })
 
 const submit = () => {
@@ -131,7 +131,7 @@ const e_form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
+    department: deps_list.length > 0 ? deps_list[0].value : ''
 })
 
 const get_classroom_to_edit = (item: IClassroom) => {
