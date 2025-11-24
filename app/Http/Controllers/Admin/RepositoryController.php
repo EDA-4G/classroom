@@ -15,11 +15,11 @@ class RepositoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rooms = Classroom::where('description', 'like', '%' . '' . '%')->paginate(5);
-        $deps = Department::where('is_active', true)->get();
-        return Inertia::render('admin/repository/Index', compact('rooms', 'deps'));
+        $description = $request->query('description');
+        $docs = RepoDocument::where('description', 'like', '%' . $description . '%')->paginate(5);
+        return Inertia::render('admin/repository/Index', compact('docs'));
     }
 
     /**
