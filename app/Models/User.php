@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function documents()
+    {
+        return $this->hasMany(RepoDocument::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
