@@ -60,9 +60,17 @@ const props = defineProps({
 import admin_departments from '@/routes/admin_departments';
 import admin_classrooms from '@/routes/admin_classrooms';
 import admin_repositories from '@/routes/admin_repositories';
+import Docx from '@/components/aux/extension/Docx.vue';
+import Image from '@/components/aux/extension/Image.vue';
+import Other from '@/components/aux/extension/Other.vue';
+import Pdf from '@/components/aux/extension/Pdf.vue';
+import Pptx from '@/components/aux/extension/Pptx.vue';
+import Xlsx from '@/components/aux/extension/Xlsx.vue';
+import Txt from '@/components/aux/extension/Txt.vue';
 
 
 const current_year = new Date().getFullYear();
+const image_extensions = ['jpeg', 'jpg', 'png', 'svg']
 
 const page = usePage();
 const form = useForm({
@@ -373,16 +381,23 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             <tr v-for="room in docs.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <img v-if="room.image" :src="'/storage/'.concat(room.image)"
-                                                            :alt="room.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
-                                                        <img v-else src="https://picsum.photos/200/300"
-                                                            :alt="room.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                            {{ room.description }}
-                                                        </p>
+                                                        <section>
+                                                            <Docx v-if="room.extension === 'docx'" width="40" />
+                                                            <Image v-if="image_extensions.includes(room.extension)"
+                                                                width="40" />
+                                                            <Pdf v-if="room.extension === 'pdf'" width="40" />
+                                                            <Pptx v-if="room.extension === 'pptx'" width="40" />
+                                                            <Xlsx v-if="room.extension === 'xlsx'" width="40" />
+                                                            <Txt v-if="room.extension === 'txt'" width="40" />
+                                                        </section>
+
+                                                        <div class="">
+                                                            <p
+                                                                class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                                {{ room.description }}
+                                                            </p>
+                                                            <p class="text-xs">{{ room.created_at }}</p>
+                                                        </div>
                                                     </div>
                                                 </td>
 
