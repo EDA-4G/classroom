@@ -62,7 +62,6 @@ import admin_classrooms from '@/routes/admin_classrooms';
 import admin_repositories from '@/routes/admin_repositories';
 import Docx from '@/components/aux/extension/Docx.vue';
 import Image from '@/components/aux/extension/Image.vue';
-import Other from '@/components/aux/extension/Other.vue';
 import Pdf from '@/components/aux/extension/Pdf.vue';
 import Pptx from '@/components/aux/extension/Pptx.vue';
 import Xlsx from '@/components/aux/extension/Xlsx.vue';

@@ -40,3 +40,12 @@ export interface IPopoverItem {
     label: string;
     value: string;
 }
+
+export interface IDocument {
+    id: number;
+    description: string;
+    document: string;
+    extension: string;
+    is_active: boolean;
+    created_at?: Date;
+}
