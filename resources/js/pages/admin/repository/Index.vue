@@ -331,11 +331,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                                 </section>
                                                 <SheetFooter>
-                                                    <button type="submit" form="repository"
-                                                        class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
-                                                        <CloudUpload width="16" />
-                                                        Publicar
-                                                    </button>
+                                                    <SheetClose>
+                                                        <button type="submit" form="repository"
+                                                            class="flex w-full gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                            <CloudUpload width="16" />
+                                                            Publicar
+                                                        </button>
+                                                    </SheetClose>
                                                     <SheetClose as-child>
                                                         <button
                                                             class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
@@ -426,7 +428,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <button
                                                         class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#A78C2A] transition-all hover:bg-[#FAF7EB] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                                                         <a :href="'/storage/'.concat(room.document)"
-                                                            :download="room.document.replace('repository/', '')">
+                                                            :download="room.document.replace('repository/', '').split('-').at(1)">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 640 640" class="w-4 h-4 w-full"
                                                                 fill="currentColor" stroke="currentColor">
