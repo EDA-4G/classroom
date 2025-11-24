@@ -162,12 +162,12 @@ const e_submit = () => {
     });
 };
 
-const delete_classroom = (department: IDepartment) => {
-    router.delete(admin_departments.destroy(department).url, {
+const delete_classroom = (classroom: IClassroom) => {
+    router.delete(admin_classrooms.destroy(classroom).url, {
         preserveScroll: true,
         preserveState: true,
-        onSuccess: () => toast.success('Departamento excluído com sucesso.'),
-        onError: () => toast.error('Ocorreu um erro ao tentar excluir departamento.')
+        onSuccess: () => toast.success('Sala de aulas excluída com sucesso.'),
+        onError: () => toast.error('Ocorreu um erro ao tentar excluir sala de aulas.')
     })
 }
 
