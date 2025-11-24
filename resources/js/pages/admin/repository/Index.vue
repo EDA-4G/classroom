@@ -83,7 +83,7 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.post(admin_classrooms.store().url, {
+    form.post(admin_repositories.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Documento publicado com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar publicar documento')
