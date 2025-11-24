@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import {
     Breadcrumb,
@@ -57,10 +57,23 @@ const deps_list: IPopoverItem[] = [
     { value: 'Eng. Quimica', label: 'Eng. Quimica' },
 ]
 const open = ref(false)
-const value = ref('')
+const department = ref('')
+
+const users = ['student', 'teacher', 'employee']
+const usero = ref(users.at(2))
 
 
-
+const page = usePage();
+const form = useForm({
+    title: '',
+    image: '',
+    type: '',
+    color: '',
+    can_pay: false,
+    is_active: false,
+    user: page.props.auth.user.id,
+    department: 0
+})
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -104,185 +117,191 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="">
                     <p class="text-lg font-semibold">Publicação</p>
                 </div>
-                <div class="grid gap-2">
-                    <Label for="title">Título</Label>
-                    <Input id="title" type="text" name="title" autocomplete="title"
-                        placeholder="Informe um titúlo descritivo e claro" />
-                    <InputError message="" />
-                </div>
 
-                <section class="grid lg:grid-cols-3 gap-2">
+                <form @submit.prevent="" class="grid gap-4">
                     <div class="grid gap-2">
-                        <Label for="email">Imagem</Label>
-                        <Input id="email" type="file" name="email" />
-                        <InputError message="" />
+                        <Label for="title">Título</Label>
+                        <Input id="title" v-model="form.title" type="text" name="title" autocomplete="title"
+                            placeholder="Informe um titúlo descritivo e claro" />
+                        <InputError message="Título é obrigatório" />
                     </div>
-                    <div class="grid gap-2">
-                        <Label for="type">Tipo do bem</Label>
-                        <Input id="type" type="text" name="type" autocomplete="type" placeholder="Ex: Caderno" />
-                        <InputError message="" />
-                    </div>
-                    <div class="grid gap-2">
-                        <Label for="color">Cor dominante</Label>
-                        <Input id="color" type="text" name="color" autocomplete="color" placeholder="Ex: Preto" />
-                        <InputError message="" />
-                    </div>
-                </section>
 
-                <div>
-                    <FieldGroup>
-                        <FieldSet>
-                            <RadioGroup default-value="student" class="grid lg:grid-cols-3">
-                                <FieldLabel for="student-e1"
-                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
-                                    <Field orientation="horizontal">
-                                        <FieldContent class="gap-0">
-                                            <FieldTitle>Estudante</FieldTitle>
-                                            <FieldDescription>
-                                                Cobrança limite MZN <span class="font-semibold">50,00</span>
-                                                meticais.
-                                            </FieldDescription>
-                                        </FieldContent>
-                                        <RadioGroupItem id="student-e1" value="student" class="text-[#1F8261]" />
-                                    </Field>
-                                </FieldLabel>
-                                <FieldLabel for="teacher-e2"
-                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
-                                    <Field orientation="horizontal">
-                                        <FieldContent class="gap-0">
-                                            <FieldTitle>Docente</FieldTitle>
-                                            <FieldDescription>
-                                                Cobrança limite MZN <span class="font-semibold">10,00</span>
-                                                meticais.
-                                            </FieldDescription>
-                                        </FieldContent>
-                                        <RadioGroupItem id="teacher-e2" value="teacher" class="text-[#1F8261]" />
-                                    </Field>
-                                </FieldLabel>
-                                <FieldLabel for="employee-e3"
-                                    class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
-                                    <Field orientation="horizontal">
-                                        <FieldContent class="gap-0">
-                                            <FieldTitle>Funcionário</FieldTitle>
-                                            <FieldDescription>
-                                                Cobrança limite MZN <span class="font-semibold">20,00</span>
-                                                meticais.
-                                            </FieldDescription>
-                                        </FieldContent>
-                                        <RadioGroupItem id="employee-e3" value="employee" class="text-[#1F8261]" />
-                                    </Field>
-                                </FieldLabel>
-                            </RadioGroup>
-                        </FieldSet>
-                    </FieldGroup>
-                </div>
+                    <section class="grid lg:grid-cols-3 gap-2">
+                        <div class="grid gap-2">
+                            <Label for="email">Imagem</Label>
+                            <Input id="email" type="file" name="image" @input="form.image = $event.target.files[0]"
+                                accept="image/*" class="cursor-pointer" />
+                            <InputError message="Imagem é obrigatório" />
+                        </div>
+                        <div class="grid gap-2">
+                            <Label for="type">Tipo do bem</Label>
+                            <Input id="type" v-model="form.type" type="text" name="type" autocomplete="type"
+                                placeholder="Ex: Caderno" />
+                            <InputError message="Tipo é obrigatório" />
+                        </div>
+                        <div class="grid gap-2">
+                            <Label for="color">Cor dominante</Label>
+                            <Input id="color" v-model="form.color" type="text" name="color" autocomplete="color"
+                                placeholder="Ex: Preto" />
+                            <InputError message="" />
+                        </div>
+                    </section>
 
-                <section class="grid lg:grid-cols-3 gap-2">
-                    <div class="grid gap-2">
-                        <Label for="id">Código</Label>
-                        <Input id="id" type="number" name="id" placeholder="Informe o código instituicional" />
-                        <InputError message="" />
+                    <div>
+                        <FieldGroup>
+                            <FieldSet>
+                                <RadioGroup :default-value="usero" class="grid lg:grid-cols-3">
+                                    <FieldLabel for="student-e1"
+                                        class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                        <Field orientation="horizontal">
+                                            <FieldContent class="gap-0">
+                                                <FieldTitle>Estudante</FieldTitle>
+                                                <FieldDescription>
+                                                    Cobrança limite MZN <span class="font-semibold">50,00</span>
+                                                    meticais.
+                                                </FieldDescription>
+                                            </FieldContent>
+                                            <RadioGroupItem id="student-e1" value="student" class="text-[#1F8261]" />
+                                        </Field>
+                                    </FieldLabel>
+                                    <FieldLabel for="teacher-e2"
+                                        class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                        <Field orientation="horizontal">
+                                            <FieldContent class="gap-0">
+                                                <FieldTitle>Docente</FieldTitle>
+                                                <FieldDescription>
+                                                    Cobrança limite MZN <span class="font-semibold">10,00</span>
+                                                    meticais.
+                                                </FieldDescription>
+                                            </FieldContent>
+                                            <RadioGroupItem id="teacher-e2" value="teacher" class="text-[#1F8261]" />
+                                        </Field>
+                                    </FieldLabel>
+                                    <FieldLabel for="employee-e3"
+                                        class="cursor-pointer has-[[data-state=checked]]:bg-[#EAFAF5] has-[[data-state=checked]]:border-[#1F8261] dark:has-[[data-state=checked]]:bg-primary/10">
+                                        <Field orientation="horizontal">
+                                            <FieldContent class="gap-0">
+                                                <FieldTitle>Funcionário</FieldTitle>
+                                                <FieldDescription>
+                                                    Cobrança limite MZN <span class="font-semibold">20,00</span>
+                                                    meticais.
+                                                </FieldDescription>
+                                            </FieldContent>
+                                            <RadioGroupItem id="employee-e3" value="employee" class="text-[#1F8261]" />
+                                        </Field>
+                                    </FieldLabel>
+                                </RadioGroup>
+                            </FieldSet>
+                        </FieldGroup>
                     </div>
+
+                    <section class="grid lg:grid-cols-3 gap-2">
+                        <div class="grid gap-2">
+                            <Label for="id">Código</Label>
+                            <Input id="id" type="number" name="id" placeholder="Informe o código instituicional" />
+                            <InputError message="" />
+                        </div>
+                        <div class="grid gap-2">
+                            <Label for="email">Email Instituicional</Label>
+                            <Input id="email" type="text" name="email" placeholder="Ex: nome.apelido@uem.ac.mz" />
+                            <InputError message="" />
+                        </div>
+                    </section>
+
                     <div class="grid gap-2">
-                        <Label for="email">Email Instituicional</Label>
-                        <Input id="email" type="text" name="email" placeholder="Ex: nome.apelido@uem.ac.mz" />
-                        <InputError message="" />
+                        <Label for="dp">Onde encontrou o pertence</Label>
+                        <Popover id="dp" v-model:open="open">
+                            <PopoverTrigger as-child>
+                                <Button variant="outline" role="combobox" :aria-expanded="open"
+                                    class="w-full font-normal justify-between cursor-pointer">
+                                    {{
+                                        department
+                                            ? deps_list.find((item: IPopoverItem) =>
+                                                item.value
+                                                === department)?.label
+                                            : 'Selecionar departamento...'
+                                    }}
+                                    <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent class="p-0">
+                                <Command class="w-full">
+                                    <CommandInput placeholder="Buscar departamento..." />
+                                    <CommandList>
+                                        <CommandEmpty class="italic">
+                                            Departamento não
+                                            encontrado.
+                                        </CommandEmpty>
+                                        <CommandGroup>
+                                            <CommandItem class="cursor-pointer" v-for="framework in deps_list"
+                                                :key="framework.value" :value="framework.value" @select="() => {
+                                                    department = department === framework.value ? '' : framework.value
+                                                    open = false
+                                                }">
+                                                <CheckIcon :class="cn(
+                                                    'mr-2 h-4 w-4',
+                                                    department === framework.value ? 'opacity-100' : 'opacity-0',
+                                                )" />
+                                                {{ framework.label }}
+                                            </CommandItem>
+                                        </CommandGroup>
+                                    </CommandList>
+                                </Command>
+                            </PopoverContent>
+                        </Popover>
+                        <InputError message="e_form.errors.image" />
                     </div>
-                </section>
 
-                <div class="grid gap-2">
-                    <Label for="dp">Onde encontrou o pertence</Label>
-                    <Popover id="dp" v-model:open="open">
-                        <PopoverTrigger as-child>
-                            <Button variant="outline" role="combobox" :aria-expanded="open"
-                                class="w-full font-normal justify-between cursor-pointer">
-                                {{
-                                    value
-                                        ? deps_list.find((item: IPopoverItem) =>
-                                            item.value
-                                            === value)?.label
-                                        : 'Selecionar departamento...'
-                                }}
-                                <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent class="p-0">
-                            <Command class="w-full">
-                                <CommandInput placeholder="Buscar departamento..." />
-                                <CommandList>
-                                    <CommandEmpty class="italic">
-                                        Departamento não
-                                        encontrado.
-                                    </CommandEmpty>
-                                    <CommandGroup>
-                                        <CommandItem class="cursor-pointer" v-for="framework in deps_list"
-                                            :key="framework.value" :value="framework.value" @select="() => {
-                                                value = value === framework.value ? '' : framework.value
-                                                open = false
-                                            }">
-                                            <CheckIcon :class="cn(
-                                                'mr-2 h-4 w-4',
-                                                value === framework.value ? 'opacity-100' : 'opacity-0',
-                                            )" />
-                                            {{ framework.label }}
-                                        </CommandItem>
-                                    </CommandGroup>
-                                </CommandList>
-                            </Command>
-                        </PopoverContent>
-                    </Popover>
-                    <InputError message="e_form.errors.image" />
-                </div>
+                    <div class="inline-flex gap-2">
+                        <div class="relative inline-block w-11 h-5">
+                            <input id="switch-component-desc" type="checkbox"
+                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                            <label for="switch-component-desc"
+                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                            </label>
+                        </div>
 
-                <div class="inline-flex gap-2">
-                    <div class="relative inline-block w-11 h-5">
-                        <input id="switch-component-desc" type="checkbox"
-                            class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
-                        <label for="switch-component-desc"
-                            class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                        <label for="switch-component-desc" class="text-green-900 text-sm cursor-pointer">
+                            <div>
+                                <p class="font-medium">
+                                    Solicitar Pagamento
+                                </p>
+                                <p class="text-slate-500">
+                                    Receber pagamento para entrega do bem.
+                                </p>
+                            </div>
                         </label>
                     </div>
 
-                    <label for="switch-component-desc" class="text-green-900 text-sm cursor-pointer">
-                        <div>
-                            <p class="font-medium">
-                                Solicitar Pagamento
-                            </p>
-                            <p class="text-slate-500">
-                                Receber pagamento para entrega do bem.
-                            </p>
+                    <section class="grid lg:grid-cols-3 gap-2">
+                        <div class="grid items-center gap-2">
+                            <Label for="phone" class="text-right">
+                                Conta M-Pesa
+                            </Label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-4 h-4 text-slate-600">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <Input id="phone" type="number" name="phone"
+                                    class="w-full bg-transparent placeholder:text-gray-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                    placeholder="Ex: 84/85 xxx xxxx" min="1"
+                                    title="Número de conta M-Pesa deve ser válido: 84/85 xxx xxxx" />
+                            </div>
+                            <InputError message="" />
                         </div>
-                    </label>
-                </div>
 
-                <section class="grid lg:grid-cols-3 gap-2">
-                    <div class="grid items-center gap-2">
-                        <Label for="phone" class="text-right">
-                            Conta M-Pesa
-                        </Label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-4 h-4 text-slate-600">
-                                    <path fill-rule="evenodd"
-                                        d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </span>
-                            <Input id="phone" type="number" name="phone"
-                                class="w-full bg-transparent placeholder:text-gray-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Ex: 84/85 xxx xxxx" min="1"
-                                title="Número de conta M-Pesa deve ser válido: 84/85 xxx xxxx" />
+                        <div class="grid gap-2">
+                            <Label for="amount">Valor</Label>
+                            <Input id="amount" type="number" name="amount" min="1" placeholder="Informe o valor" />
+                            <InputError message="" />
                         </div>
-                        <InputError message="" />
-                    </div>
-
-                    <div class="grid gap-2">
-                        <Label for="amount">Valor</Label>
-                        <Input id="amount" type="number" name="amount" min="1" placeholder="Informe o valor" />
-                        <InputError message="" />
-                    </div>
-                </section>
+                    </section>
+                </form>
 
                 <div class="py-4 flex flex-col gap-2 lg:flex-row lg:justify-end">
                     <button type="submit"
