@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ManagerController;
 use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\ClassroomController as AdminClassroomController;
+use App\Http\Controllers\Admin\RepositoryController as AdminRepositoryController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -35,6 +36,7 @@ Route::resource('managers', ManagerController::class);
 Route::resource('advertisements', AdvertisementController::class);
 Route::resource('admin/departments', AdminDepartmentController::class)->names('admin_departments');
 Route::resource('admin/classrooms', AdminClassroomController::class)->names('admin_classrooms');
+Route::resource('admin/repositories', AdminRepositoryController::class)->names('admin_repositories');
 Route::post('advertisements/departments', [AdvertisementController::class, 'store_department'])->name('advertisements.store_department');
 
 require __DIR__ . '/settings.php';
