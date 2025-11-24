@@ -83,7 +83,7 @@ const props = defineProps({
 import admin_departments from '@/routes/admin_departments';
 import admin_classrooms from '@/routes/admin_classrooms';
 
-const deps_list = props.deps.map((dep: IClassroom) => ({
+let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
     label: dep.description,
     value: dep.id
 }))
@@ -99,7 +99,7 @@ const form = useForm({
     level: '1',
     status: '',
     is_active: false,
-    department: ''
+    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
 })
 
 const submit = () => {
