@@ -192,7 +192,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </svg>
                     Salas de Aulas
                     </Link>
-                    <Link href="" role="tab"
+                    <Link :href="admin_repositories.index().url" role="tab"
                         class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
@@ -201,7 +201,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </svg>
                     Repositório Instituicional
                     </Link>
-                    <Link :href="admin_repositories.index().url" role="tab"
+                    <Link href="" role="tab"
                         class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
                         stroke="currentColor">
