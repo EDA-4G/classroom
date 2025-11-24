@@ -133,10 +133,14 @@ const e_form = useForm({
     department: deps_list.length > 0 ? deps_list[0].value : 'nada'
 })
 
-const get_classroom_to_edit = (item: IDepartment) => {
+const get_classroom_to_edit = (item: IClassroom) => {
     e_form.id = item.id;
     e_form.description = item.description;
+    e_form.image = item.image;
+    e_form.level = item.level;
+    e_form.status = item.status;
     e_form.is_active = Boolean(item.is_active);
+    e_form.department = deps_list.length > 0 ? deps_list[0].value : ''
 }
 
 const e_submit = () => {
