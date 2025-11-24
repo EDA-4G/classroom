@@ -119,15 +119,17 @@ const get_document_to_edit = (item: IDocument) => {
 }
 
 const e_submit = () => {
-    const classroom: IDocument = {
+    const document: IDocument = {
         id: e_form.id,
         description: e_form.description,
         document: e_form.document,
         extension: e_form.extension,
+        user_id: e_form.user,
         is_active: e_form.is_active,
         created_at: new Date()
     }
-    e_form.put(admin_classrooms.update(classroom).url, {
+
+    e_form.put(admin_repositories.update(document).url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Documento editado com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar editar documento')

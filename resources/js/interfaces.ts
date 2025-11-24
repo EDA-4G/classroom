@@ -43,6 +43,7 @@ export interface IPopoverItem {
 
 export interface IDocument {
     id: number;
+    user_id: number;
     description: string;
     document: string;
     extension: string;
