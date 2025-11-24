@@ -78,9 +78,28 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $image_path = null;
+        if ($request->hasFile('image')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('post', $file_name, 'public');
+        }
+
+        $post->save();
+        $post->id = $request->input('id');
+        $post->title = $request->input('title');
+        $post->image = $request->input('image');
+        $post->type = $request->input('type');
+        $post->color = $request->input('color');
+        $post->can_pay = $request->input('can_pay');
+        $post->is_active = $request->input('is_active');
+
+        $user = User::find($request->input('user'));
+        $post->user()->associate($user);
+        $post->save();
+
+        return redirect()->route('dashboard')->with('success', 'Actualizado com sucesso!');
     }
 
     /**
