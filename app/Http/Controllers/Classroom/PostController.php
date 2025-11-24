@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $title = $request->query('title');
         $posts = Post::where('title', 'like', '%' . $title . '%')->paginate(5);
-        return Inertia::render('admin/Repository', compact('posts'));
+        return Inertia::render('admin/lostFound/Index', compact('posts'));
     }
 
     /**
