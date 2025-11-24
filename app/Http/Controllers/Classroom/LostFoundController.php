@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Classroom;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,7 +22,8 @@ class LostFoundController extends Controller
      */
     public function create()
     {
-        return Inertia::render('lostFound/Create');
+        $deps = Department::where('is_active', true)->get();
+        return Inertia::render('lostFound/Create', compact('deps'));
     }
 
     /**
