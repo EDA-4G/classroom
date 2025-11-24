@@ -157,7 +157,7 @@ const e_submit = () => {
     }
     e_form.put(admin_classrooms.update(classroom).url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Sala editado com sucesso'),
+        onSuccess: () => toast.success('Sala editada com sucesso'),
         onError: () => toast.error('Ocorreu um erro ao tentar editar sala')
     });
 };
