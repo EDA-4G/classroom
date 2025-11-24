@@ -96,7 +96,7 @@ const search = () => {
             description: description.value,
         },
     };
-    router.get(admin_classrooms.index.get(options).url)
+    router.get(admin_repositories.index.get(options).url)
 };
 
 
