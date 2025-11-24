@@ -8,6 +8,7 @@ use App\Http\Controllers\Classroom\RepositoryController;
 use App\Http\Controllers\Classroom\ClassroomController;
 use App\Http\Controllers\Classroom\LostFoundController;
 use App\Http\Controllers\Classroom\ClassRepositoryController;
+use App\Http\Controllers\Classroom\PostController;
 use App\Http\Controllers\Admin\ManagerController;
 use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
@@ -29,8 +30,8 @@ Route::resource('repositories', RepositoryController::class);
 Route::resource('classrooms', ClassroomController::class);
 
 Route::resource('files', ClassRepositoryController::class);
-
 Route::resource('losses', LostFoundController::class);
+route::resource('posts', PostController::class);
 
 Route::resource('managers', ManagerController::class);
 Route::resource('advertisements', AdvertisementController::class);
