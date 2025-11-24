@@ -88,7 +88,6 @@ const form = useForm({
 
 const submit = () => {
     form.department = department.value;
-    alert(form.department);
     form.post(posts.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Sua postagem foi publicada'),
