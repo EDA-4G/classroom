@@ -13,7 +13,7 @@ export interface IDepartment {
     created_at?: Date;
 }
 
-enum ClassroomStatus {
+export enum ClassroomStatus {
     Open = 'open',
     In_class = 'in_class',
     In_room = 'in_room',

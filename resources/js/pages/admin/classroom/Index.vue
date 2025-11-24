@@ -65,7 +65,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
+import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
 
 
 
@@ -144,16 +144,21 @@ const get_classroom_to_edit = (item: IClassroom) => {
 }
 
 const e_submit = () => {
-    const department: IDepartment = {
+    const e_status: ClassroomStatus = ClassroomStatus[e_form.status as keyof typeof ClassroomStatus];
+    const classroom: IClassroom = {
         id: e_form.id,
         description: e_form.description,
+        image: e_form.image,
+        level: e_form.level,
+        status: e_status,
+        is_fixed: false,
         is_active: e_form.is_active,
         created_at: new Date()
     }
-    e_form.put(admin_departments.update(department).url, {
+    e_form.put(admin_classrooms.update(classroom).url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Departamento editado com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar editar departamento')
+        onSuccess: () => toast.success('Sala editado com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar editar sala')
     });
 };
 
