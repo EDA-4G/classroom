@@ -11,4 +11,9 @@ class Department extends Model
     {
         return $this->hasMany(Classroom::class);
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
