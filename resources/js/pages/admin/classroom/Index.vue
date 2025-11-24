@@ -449,8 +449,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             <tr v-for="room in rooms.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <img :src="'/storage/'.concat(room.image)" :alt="room.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" />
+                                                        <img v-if="room.image" :src="'/storage/'.concat(room.image)"
+                                                            :alt="room.image"
+                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
+                                                        <img v-else src="https://picsum.photos/200/300"
+                                                            :alt="room.image"
+                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
                                                         <p
                                                             class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
                                                             {{ room.description }}
