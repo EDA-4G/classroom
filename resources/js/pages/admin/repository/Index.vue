@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/card'
 
 import { Label } from '@/components/ui/label'
-import { Plus, Search, Save, RefreshCcw } from "lucide-vue-next"
+import { Plus, Search, CloudUpload, RefreshCcw } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -45,22 +45,6 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
-import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
-import { cn } from '@/lib/utils';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
-import {
-    Command,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from '@/components/ui/command'
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from '@/components/ui/popover'
 import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
@@ -90,25 +74,19 @@ let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
 }))
 
 
-const levels = 22;
-const open = ref(false)
-const dp_id = ref('')
+const current_year = new Date().getFullYear();
 
 const form = useForm({
     description: '',
-    image: '',
-    level: '1',
-    status: '',
-    is_active: false,
-    department: deps_list.length > 0 ? deps_list[0].value : 'nada'
+    document: '',
+    is_active: false
 })
 
 const submit = () => {
-    form.department = dp_id.value;
     form.post(admin_classrooms.store().url, {
         preserveScroll: true,
-        onSuccess: () => toast.success('Sala de aulas salva com sucesso'),
-        onError: () => toast.error('Ocorreu um erro ao tentar salvar sala de aulas')
+        onSuccess: () => toast.success('Documento publicado com sucesso'),
+        onError: () => toast.error('Ocorreu um erro ao tentar publicar documento')
     });
     form.reset();
 };
@@ -299,7 +277,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                     <div
                                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                                        <form id="classroom" @submit.prevent="submit" class="m-0"
+                                        <form id="repository" @submit.prevent="submit" class="m-0"
                                             enctype="multipart/form-data"></form>
                                         <Sheet>
                                             <SheetTrigger as-child>
@@ -315,80 +293,23 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <SheetHeader>
                                                     <SheetTitle class="text-lg">Repositório Instituicional</SheetTitle>
                                                     <SheetDescription>
-                                                        Publique o documento no aqui. Clique em <span
-                                                            class="font-semibold">Puvlicar</span> quando terminar.
+                                                        Publique o documento aqui. Clique em <span
+                                                            class="font-semibold">Publicar</span> quando terminar.
                                                     </SheetDescription>
                                                 </SheetHeader>
                                                 <section class="grid gap-4 px-4">
                                                     <div class="grid gap-2">
                                                         <Label for="description">Descrição</Label>
                                                         <Input id="description" v-model="form.description"
-                                                            name="description" placeholder="Ex: 202, DEEL" />
+                                                            name="description"
+                                                            :placeholder="'Ex: Calendário Acadêmico ' + current_year" />
                                                         <InputError :message="form.errors.description" />
                                                     </div>
                                                     <div class="grid gap-2">
-                                                        <Label for="email">Imagem</Label>
-                                                        <Input id="email" type="file" name="room"
-                                                            @input="form.image = $event.target.files[0]" />
-                                                        <InputError :message="form.errors.image" />
-                                                    </div>
-                                                    <div class="grid gap-2">
-                                                        <Label for="dp">Departamento</Label>
-                                                        <Popover id="dp" v-model:open="open">
-                                                            <PopoverTrigger as-child>
-                                                                <Button variant="outline" role="combobox"
-                                                                    :aria-expanded="open"
-                                                                    class="w-full font-normal justify-between cursor-pointer">
-                                                                    {{
-                                                                        dp_id.toString()
-                                                                            ? deps_list.find((item: IPopoverItem) => item.value
-                                                                                === dp_id)?.label
-                                                                            : 'Selecionar departamento...'
-                                                                    }}
-                                                                    <ChevronsUpDownIcon
-                                                                        class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                                </Button>
-                                                            </PopoverTrigger>
-                                                            <PopoverContent class="p-0">
-                                                                <Command class="w-full">
-                                                                    <CommandInput
-                                                                        placeholder="Buscar departamento..." />
-                                                                    <CommandList>
-                                                                        <CommandEmpty class="italic">Departamento não
-                                                                            encontrado.
-                                                                        </CommandEmpty>
-                                                                        <CommandGroup>
-                                                                            <CommandItem class="cursor-pointer"
-                                                                                v-for="framework in deps_list"
-                                                                                :key="framework.value"
-                                                                                :value="framework.value" @select="() => {
-                                                                                    dp_id = dp_id === framework.value ? '' : framework.value
-                                                                                    open = false
-                                                                                }">
-                                                                                <CheckIcon :class="cn(
-                                                                                    'mr-2 h-4 w-4',
-                                                                                    dp_id === framework.value ? 'opacity-100' : 'opacity-0',
-                                                                                )" />
-                                                                                {{ framework.label }}
-                                                                            </CommandItem>
-                                                                        </CommandGroup>
-                                                                    </CommandList>
-                                                                </Command>
-                                                            </PopoverContent>
-                                                        </Popover>
-                                                        <InputError :message="form.errors.image" />
-                                                    </div>
-                                                    <div class="grid gap-2">
-                                                        <Label for="email">Nível</Label>
-                                                        <ToggleGroup v-model="form.level" type="single"
-                                                            default-value="1" class="flex-wrap">
-                                                            <ToggleGroupItem v-for="level in levels" :key="level"
-                                                                :value="level.toString()"
-                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
-                                                                {{ level }}
-                                                            </ToggleGroupItem>
-
-                                                        </ToggleGroup>
+                                                        <Label for="email">Documento</Label>
+                                                        <Input id="email" type="file" name="room" class="cursor-pointer"
+                                                            @input="form.document = $event.target.files[0]" />
+                                                        <InputError :message="form.errors.document" />
                                                     </div>
                                                     <div class="inline-flex gap-2 mt-4">
                                                         <div class="relative inline-block w-11 h-5">
@@ -404,10 +325,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             class="text-green-900 text-sm cursor-pointer">
                                                             <div>
                                                                 <p class="font-medium">
-                                                                    Activar Sala
+                                                                    Activar Documento
                                                                 </p>
                                                                 <p class="text-slate-500">
-                                                                    Permitir que esteja disponível para o acesso.
+                                                                    Permitir que esteja disponível no repositório.
                                                                 </p>
                                                             </div>
                                                         </label>
@@ -415,10 +336,10 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                                                 </section>
                                                 <SheetFooter>
-                                                    <button type="submit" form="classroom"
+                                                    <button type="submit" form="repository"
                                                         class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
-                                                        <Save width="16" />
-                                                        Salvar
+                                                        <CloudUpload width="16" />
+                                                        Publicar
                                                     </button>
                                                     <SheetClose as-child>
                                                         <button
@@ -496,7 +417,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </p>
                                                 </td>
                                                 <td class="text-right p-4 border-b border-blue-gray-50">
-                                                    <form id="e_classroom" @submit.prevent="e_submit" class="m-0">
+                                                    <form id="e_repository" @submit.prevent="e_submit" class="m-0">
                                                     </form>
                                                     <Sheet>
                                                         <SheetTrigger as-child>
@@ -518,10 +439,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </SheetTrigger>
                                                         <SheetContent>
                                                             <SheetHeader>
-                                                                <SheetTitle class="text-lg">Sala de Aulas</SheetTitle>
+                                                                <SheetTitle class="text-lg">Repositório Instituicional
+                                                                </SheetTitle>
                                                                 <SheetDescription>
-                                                                    Edite a sala aqui. Clique em
-                                                                    <span class="font-semibold">Editar</span> quando
+                                                                    Edite o documento aqui. Clique em <span
+                                                                        class="font-semibold">Editar</span> quando
                                                                     terminar.
                                                                 </SheetDescription>
                                                             </SheetHeader>
@@ -530,76 +452,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <Label for="description">Descrição</Label>
                                                                     <Input id="description" v-model="e_form.description"
                                                                         name="description"
-                                                                        placeholder="Ex: 202, DEEL" />
+                                                                        :placeholder="'Ex: Calendário Acadêmico ' + current_year" />
                                                                     <InputError :message="e_form.errors.description" />
                                                                 </div>
                                                                 <div class="grid gap-2">
-                                                                    <Label for="email">Imagem</Label>
+                                                                    <Label for="email">Documento</Label>
                                                                     <Input id="email" type="file" name="room"
+                                                                        class="cursor-pointer"
                                                                         @input="e_form.image = $event.target.files[0]" />
                                                                     <InputError :message="e_form.errors.image" />
-                                                                </div>
-                                                                <div class="grid gap-2">
-                                                                    <Label for="dp">Departamento</Label>
-                                                                    <Popover id="dp" v-model:open="open">
-                                                                        <PopoverTrigger as-child>
-                                                                            <Button variant="outline" role="combobox"
-                                                                                :aria-expanded="open"
-                                                                                class="w-full font-normal justify-between cursor-pointer">
-                                                                                {{
-                                                                                    dp_id.toString()
-                                                                                        ? deps_list.find((item: IPopoverItem) =>
-                                                                                            item.value
-                                                                                            === dp_id)?.label
-                                                                                        : 'Selecionar departamento...'
-                                                                                }}
-                                                                                <ChevronsUpDownIcon
-                                                                                    class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                                            </Button>
-                                                                        </PopoverTrigger>
-                                                                        <PopoverContent class="p-0">
-                                                                            <Command class="w-full">
-                                                                                <CommandInput
-                                                                                    placeholder="Buscar departamento..." />
-                                                                                <CommandList>
-                                                                                    <CommandEmpty class="italic">
-                                                                                        Departamento não
-                                                                                        encontrado.
-                                                                                    </CommandEmpty>
-                                                                                    <CommandGroup>
-                                                                                        <CommandItem
-                                                                                            class="cursor-pointer"
-                                                                                            v-for="framework in deps_list"
-                                                                                            :key="framework.value"
-                                                                                            :value="framework.value"
-                                                                                            @select="() => {
-                                                                                                dp_id = dp_id === framework.value ? '' : framework.value
-                                                                                                open = false
-                                                                                            }">
-                                                                                            <CheckIcon :class="cn(
-                                                                                                'mr-2 h-4 w-4',
-                                                                                                dp_id === framework.value ? 'opacity-100' : 'opacity-0',
-                                                                                            )" />
-                                                                                            {{ framework.label }}
-                                                                                        </CommandItem>
-                                                                                    </CommandGroup>
-                                                                                </CommandList>
-                                                                            </Command>
-                                                                        </PopoverContent>
-                                                                    </Popover>
-                                                                    <InputError :message="e_form.errors.image" />
-                                                                </div>
-                                                                <div class="grid gap-2">
-                                                                    <Label for="email">Nível</Label>
-                                                                    <ToggleGroup v-model="e_form.level" type="single"
-                                                                        default-value="1" class="flex-wrap">
-                                                                        <ToggleGroupItem v-for="level in levels"
-                                                                            :key="level" :value="level.toString()"
-                                                                            class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
-                                                                            {{ level }}
-                                                                        </ToggleGroupItem>
-
-                                                                    </ToggleGroup>
                                                                 </div>
                                                                 <div class="inline-flex gap-2 mt-4">
                                                                     <div class="relative inline-block w-11 h-5">
@@ -615,11 +476,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         class="text-green-900 text-sm cursor-pointer">
                                                                         <div>
                                                                             <p class="font-medium">
-                                                                                Activar Sala
+                                                                                Activar Documento
                                                                             </p>
                                                                             <p class="text-slate-500">
-                                                                                Permitir que esteja disponível para o
-                                                                                acesso.
+                                                                                Permitir que esteja disponível no
+                                                                                repositório.
                                                                             </p>
                                                                         </div>
                                                                     </label>
@@ -628,7 +489,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             </section>
                                                             <SheetFooter>
                                                                 <SheetClose as-child>
-                                                                    <button type="submit" form="e_classroom"
+                                                                    <button type="submit" form="e_repository"
                                                                         class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                                         <RefreshCcw width="16" />
                                                                         Editar
