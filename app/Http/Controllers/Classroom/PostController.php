@@ -16,8 +16,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $description = $request->query('title');
-        $posts = Post::where('title', 'like', '%' . $description . '%')->paginate(5);
+        $title = $request->query('title');
+        $posts = Post::where('title', 'like', '%' . $title . '%')->paginate(5);
         return Inertia::render('admin/Repository', compact('posts'));
     }
 
