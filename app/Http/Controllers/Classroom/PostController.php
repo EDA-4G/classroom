@@ -21,7 +21,8 @@ class PostController extends Controller
 
         $title = $request->query('title');
         $posts = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->paginate(8);
-        return Inertia::render('lostFound/Index', compact('posts'));
+        $deps = Department::where('is_active', true)->get();
+        return Inertia::render('lostFound/Index', compact('posts', 'deps'));
     }
 
     /**
