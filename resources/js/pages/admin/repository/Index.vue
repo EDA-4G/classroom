@@ -67,6 +67,7 @@ import Pdf from '@/components/aux/extension/Pdf.vue';
 import Pptx from '@/components/aux/extension/Pptx.vue';
 import Xlsx from '@/components/aux/extension/Xlsx.vue';
 import Txt from '@/components/aux/extension/Txt.vue';
+import { date_long_format } from '@/formatter';
 
 
 const current_year = new Date().getFullYear();
@@ -396,7 +397,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
                                                                 {{ room.description }}
                                                             </p>
-                                                            <p class="text-xs">{{ room.created_at }}</p>
+                                                            <p class="text-xs text-muted-foreground">{{
+                                                                date_long_format(room.created_at) }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </td>
