@@ -50,10 +50,8 @@ class RepositoryController extends Controller
             'is_active' => $request->is_active
         ]);
 
-        $user = new User([
-            'id' => $request->user
-        ]);
-        $document->department()->associate($user);
+        $user = User::find($request->user);
+        $document->user()->associate($user);
 
         $document->save();
         return redirect()->route('admin_repositories.index')->with('success', 'Cadastrado com sucesso!');
