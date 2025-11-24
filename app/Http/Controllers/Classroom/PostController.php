@@ -16,8 +16,11 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        // $sales = Sale::where('description', 'like', '%' . $description . '%')->with(['details', 'details.product', 'paymentMethod'])
+
+
         $title = $request->query('title');
-        $posts = Post::where('title', 'like', '%' . $title . '%')->paginate(5);
+        $posts = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->paginate(5);
         return Inertia::render('lostFound/Index', compact('posts'));
     }
 
