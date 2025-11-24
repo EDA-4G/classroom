@@ -50,14 +50,23 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover'
 import { ref } from 'vue';
-import { IPopoverItem } from '@/interfaces';
+import { IDepartment, IPopoverItem } from '@/interfaces';
 import posts from '@/routes/posts';
 import { toast } from 'vue-sonner';
 
-const deps_list: IPopoverItem[] = [
-    { value: 'Cadeiras Gerais', label: 'Cadeiras Gerais' },
-    { value: 'Eng. Quimica', label: 'Eng. Quimica' },
-]
+
+const props = defineProps({
+    deps: {
+        type: Object,
+        required: true
+    }
+})
+
+let deps_list: IPopoverItem[] = props.deps.map((dep: IDepartment) => ({
+    label: dep.description,
+    value: dep.id
+}))
+
 const open = ref(false)
 const department = ref('')
 
@@ -79,6 +88,7 @@ const form = useForm({
 
 const submit = () => {
     form.department = department.value;
+    alert(form.department);
     form.post(posts.store().url, {
         preserveScroll: true,
         onSuccess: () => toast.success('Sua postagem foi publicada'),
