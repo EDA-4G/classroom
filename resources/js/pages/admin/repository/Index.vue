@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, router, useForm, Link } from '@inertiajs/vue3';
+import { Head, router, useForm, Link, usePage } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import {
     Breadcrumb,
@@ -12,7 +12,6 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
@@ -51,8 +50,6 @@ import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
 import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
 
-
-
 const props = defineProps({
     rooms: {
         type: Object,
@@ -76,9 +73,11 @@ let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
 
 const current_year = new Date().getFullYear();
 
+const page = usePage();
 const form = useForm({
     description: '',
     document: '',
+    user: page.props.auth.user.id,
     is_active: false
 })
 
