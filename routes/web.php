@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\DepartmentController as AdminDepartmentController;
 use App\Http\Controllers\Admin\ClassroomController as AdminClassroomController;
 use App\Http\Controllers\Admin\RepositoryController as AdminRepositoryController;
+use App\Http\Controllers\HomeController;
+use App\Models\Advertisement;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -22,8 +24,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
+    $ads = Advertisement::where('is_active', true)->orderBy('created_at', 'desc')->get();
+    return Inertia::render('Dashboard', compact('ads'));
 })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::resource('dashboard', HomeController::class)->names('dashboard');
+
 
 Route::resource('departments', DepartmentController::class);
 Route::resource('repositories', RepositoryController::class);

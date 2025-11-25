@@ -16,8 +16,16 @@ import {
 } from 'lucide-vue-next';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
-import losses from '@/routes/losses';
-import managers from '@/routes/managers';
+
+defineProps({
+    ads: {
+        type: Object,
+        required: true
+    }
+})
+
+
+
 
 const [emblaRef, emblaApi] = emblaCarouselVue({ loop: true }, [
     Autoplay({ delay: 8000 }),
@@ -33,11 +41,6 @@ function scrollPrev() {
 import { onMounted, onUnmounted, ref } from 'vue';
 import advertisements from '@/routes/advertisements';
 import posts from '@/routes/posts';
-const slides = [
-    'https://picsum.photos/id/1015/800/400',
-    'https://picsum.photos/id/1016/800/400',
-    'https://picsum.photos/id/1018/800/400',
-];
 
 const selectedIndex = ref(0);
 function scrollTo(index: number) {
@@ -75,18 +78,13 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="px-4 py-4 sm:px-4 lg:px-2 lg:py-4">
                 <section class="embla overflow-hidden" ref="emblaRef">
                     <div class="embla__container flex gap-1">
-                        <div class="embla__slide h-100 w-full min-w-0 flex-[0_0_100%]">
-                            <img src="/storage/hero/colors.jpg" class="h-full w-full rounded-xl object-cover"
-                                loading="lazy" decoding="async" />
+
+                        <div v-for="ad in ads"
+                            class="embla__slide h-100 w-full border rounded-xl min-w-0 flex-[0_0_100%]">
+                            <img v-if="ad.image" :src="'/storage/'.concat(ad.image)" :alt="ad.description"
+                                class="h-full w-full rounded-xl object-cover" loading="lazy" decoding="async" />
                         </div>
-                        <div class="embla__slide h-100 w-full min-w-0 flex-[0_0_100%]">
-                            <img src="/storage/hero/ocean.jpg" class="h-full w-full rounded-xl object-cover"
-                                loading="lazy" decoding="async" />
-                        </div>
-                        <div class="embla__slide h-100 w-full min-w-0 flex-[0_0_100%]">
-                            <img src="/storage/hero/arindam.jpg" class="h-full w-full rounded-xl object-cover"
-                                loading="lazy" decoding="async" />
-                        </div>
+
                     </div>
                 </section>
 
@@ -103,14 +101,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
 
                     <div class="flex items-center justify-center space-x-3">
-                        <button v-for="(_, index) in slides" :key="'dot-' + index" @click="scrollTo(index)"
+                        <button v-for="(slide, index) in ads" :key="'dot-' + slide.id" @click="scrollTo(Number(index))"
                             class="h-3.5 w-3.5 cursor-pointer rounded-full border-2 transition-all duration-300 ease-in-out focus:outline-none"
-                            :class="selectedIndex === index
+                            :class="selectedIndex === Number(index)
                                 ? 'scale-110 border-[#038043] bg-[#038043] shadow-sm'
-                                : 'border-gray-400 bg-transparent hover:scale-105 hover:border-[#1fad68]'
-                                "></button>
+                                : 'border-gray-400 bg-transparent hover:scale-105 hover:border-[#1fad68]'">
+                        </button>
                     </div>
                 </section>
+                <p>{{ ads }}</p>
 
                 <section class="grid gap-2 lg:grid-cols-2">
                     <Link :href="departments.index().url"
