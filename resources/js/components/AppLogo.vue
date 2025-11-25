@@ -3,7 +3,7 @@ import AppLogoIcon from '@/components/AppLogoIcon.vue';
 </script>
 
 <template>
-    <div class="size-6">
+    <div class="size-6 text-[#038043]">
         <AppLogoIcon />
     </div>
     <div class="ml-1 grid flex-1 text-left text-sm">

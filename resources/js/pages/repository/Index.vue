@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import { Search, ChevronLeft, ChevronRight } from "lucide-vue-next"
 
 import {
@@ -88,6 +88,18 @@ import {
 } from "@/components/ui/sheet"
 import { date_long_format } from '@/formatter';
 import Pagination from '@/components/aux/Pagination.vue';
+import repositories from '@/routes/repositories';
+import { ref } from 'vue';
+
+const description = ref('');
+const search = () => {
+    const options = {
+        query: {
+            description: description.value,
+        },
+    };
+    router.get(repositories.index.get(options).url)
+};
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -121,7 +133,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
             <InputGroup>
-                <InputGroupInput id="#" placeholder="Documento..." class="text-sm" />
+                <InputGroupInput id="#" v-model="description" @keyup.enter="search" placeholder="Documento..."
+                    class="text-sm" />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
