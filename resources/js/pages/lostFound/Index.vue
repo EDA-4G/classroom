@@ -140,11 +140,11 @@ const value = ref<typeof frameworks[0]>()
 //Search
 const title = ref('');
 const search = () => {
-    alert(dp_id.value + '\n' + filter.value);
     const options = {
         query: {
             title: title.value,
-            department: dp_id.value
+            department: dp_id.value,
+            type: filter.value
         },
     };
     router.get(posts.index.get(options).url)
@@ -313,7 +313,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         :src="'/storage/'.concat(post.image)" :alt="post.title" width="120px" />
                                     <div>
                                         <h5 class="mb-1 text-lg font-semibold tracking-tight text-heading">{{ post.title
-                                        }}</h5>
+                                            }}</h5>
                                         <p class="text-xs">{{ date_long_format(post.created_at) }}</p>
                                     </div>
 
@@ -321,7 +321,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <div>
                                             <p class="mt-0">— {{ post.user.name.split(' ').at(0) }}</p>
                                             <p class="text-sm font-medium text-green-700">{{ post.department.description
-                                            }}</p>
+                                                }}</p>
                                         </div>
 
                                         <div class="h-fit mt-2 flex flex-wrap justify-end gap-1">
