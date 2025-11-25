@@ -65,12 +65,6 @@ const music = [
         album: "Binary Beats",
         duration: "3:30",
     },
-    {
-        title: "Digital Rain",
-        artist: "Cyber Symphony",
-        album: "Binary Beats",
-        duration: "3:30",
-    },
 ]
 
 
