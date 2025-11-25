@@ -35,7 +35,7 @@ Route::resource('repositories', RepositoryController::class);
 Route::resource('classrooms', ClassroomController::class);
 
 Route::resource('files', ClassRepositoryController::class);
-Route::resource('losses', LostFoundController::class);
+// Route::resource('losses', LostFoundController::class);
 route::resource('posts', PostController::class);
 
 Route::resource('managers', ManagerController::class);

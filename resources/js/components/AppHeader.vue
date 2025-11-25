@@ -38,7 +38,7 @@ import { LayoutGrid, Clock, Folder, Locate, Menu, Search } from 'lucide-vue-next
 import { computed } from 'vue';
 import departments from '@/routes/departments';
 import repositories from '@/routes/repositories';
-import losses from '@/routes/losses';
+import posts from '@/routes/posts';
 
 interface Props {
     breadcrumbs?: BreadcrumbItem[];
@@ -81,12 +81,12 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Perdidos e Achados',
-        href: losses.index().url,
+        href: posts.index().url,
         icon: Locate,
     },
     {
         title: 'Horário',
-        href: losses.index().url,
+        href: posts.index().url,
         icon: Clock
     },
 ];
@@ -99,12 +99,12 @@ const rightNavItems: NavItem[] = [
     },
     {
         title: 'Perdidos e Achados',
-        href: losses.index().url,
+        href: posts.index().url,
         icon: Locate,
     },
     {
         title: 'Horário',
-        href: losses.index().url,
+        href: posts.index().url,
         icon: Clock
     },
 ];
