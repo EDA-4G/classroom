@@ -16,29 +16,14 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Spinner } from '@/components/ui/spinner';
-import { Loader } from 'lucide-vue-next';
+
 import { Button } from '@/components/ui/button';
-import { Waypoints, Layers, ChevronLeft, ChevronRight, GraduationCap } from 'lucide-vue-next';
+import { Waypoints, Layers, ChevronLeft, ChevronRight, GraduationCap, Send } from 'lucide-vue-next';
 
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from "@/components/ui/input-group";
 
 import { Check, ChevronsUpDown, Search } from "lucide-vue-next"
 import { ref } from "vue"
-
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 import { Label } from "@/components/ui/label"
@@ -68,9 +53,36 @@ import {
 } from '@/components/ui/radio-group'
 import { date_long_format } from '@/formatter';
 import Pagination from '@/components/aux/Pagination.vue';
+import { Calendar } from '@/components/ui/calendar'
 
+import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
+import { CalendarIcon } from 'lucide-vue-next'
+// import { ref } from 'vue'
+// import { Button } from '@/components/ui/button'
+// import { Calendar } from '@/components/ui/calendar'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
+import { cn } from '@/lib/utils'
+import { IClassroom, IPopoverItem } from '@/interfaces';
+const date = ref<Date>()
+const defaultPlaceholder = today(getLocalTimeZone())
 
-defineProps({
+// const date = ref(null)
+
+import { CheckIcon, ChevronsUpDownIcon } from 'lucide-vue-next'
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from '@/components/ui/command'
+
+const props = defineProps({
     posts: {
         type: Object,
         required: true
@@ -80,6 +92,14 @@ defineProps({
         required: true
     }
 })
+
+const open = ref(false)
+const dp_id = ref('')
+
+let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
+    label: dep.description,
+    value: dep.id
+}))
 
 const frameworks = [
     { value: "1", label: "1" },
@@ -147,7 +167,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             </Breadcrumb>
 
             <InputGroup>
-                <InputGroupInput id="#" placeholder="Descrição, departamento, sala, turno, data..." class="text-sm" />
+                <InputGroupInput id="#" placeholder="Descrição, departamento, sala, data..." class="text-sm" />
                 <InputGroupAddon>
                     <Search />
                 </InputGroupAddon>
@@ -167,46 +187,62 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 class="flex gap-2 flex-wrap justify-start">
                                 <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
                                     @click="me(filter.name)"
-                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3 max-h-6 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
+                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3.5 max-h-6.5 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
                                     {{ filter.name }}
                                 </ToggleGroupItem>
                             </ToggleGroup>
                         </section>
 
                     </div>
-                    <div class="flex flex-col items-end lg:flex-row lg:justify-end gap-2">
+                    <div class="flex flex-col items-end lg:flex-row lg:justify-end lg:items-center gap-2 lg:gap-4">
 
-                        <section class="relative flex items-center">
-                            <select
-                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-[#A1B2AD] rounded-lg pl-3 pr-8 py-1 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-[#04724D] appearance-none cursor-pointer">
-                                <option value="brazil" class="">Todos departamentos</option>
-                                <option value="brazil">Brazil</option>
-                                <option value="bucharest">Bucharest</option>
-                                <option value="london">London</option>
-                                <option value="washington">Washington</option>
-                            </select>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
-                                stroke="currentColor" class="h-4 w-4 ml-1 absolute top-2 right-2.5 text-slate-700">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                            </svg>
-                        </section>
+                        <div class="grid gap-2 order-2 lg:order-1">
+                            <Popover id="dp" v-model:open="open">
+                                <PopoverTrigger as-child>
+                                    <Button variant="outline" role="combobox" :aria-expanded="open"
+                                        class="w-full h-7.5 border border-[#A1B2AD] rounded-xl font-normal justify-between cursor-pointer">
+                                        {{
+                                            dp_id.toString()
+                                                ? deps_list.find((item: IPopoverItem) =>
+                                                    item.value
+                                                    === dp_id)?.label
+                                                : 'Buscar por depart...'
+                                        }}
+                                        <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent class="p-0">
+                                    <Command class="">
+                                        <CommandInput placeholder="Buscar departamento..." />
+                                        <CommandList>
+                                            <CommandEmpty class="italic">
+                                                Departamento não
+                                                encontrado.
+                                            </CommandEmpty>
+                                            <CommandGroup>
+                                                <CommandItem class="cursor-pointer" v-for="framework in deps_list"
+                                                    :key="framework.value" :value="framework.value" @select="() => {
+                                                        dp_id = dp_id === framework.value ? '' : framework.value
+                                                        open = false
+                                                    }">
+                                                    <CheckIcon :class="cn(
+                                                        'mr-2 h-4 w-4',
+                                                        dp_id === framework.value ? 'opacity-100' : 'opacity-0',
+                                                    )" />
+                                                    {{ framework.label }}
+                                                </CommandItem>
+                                            </CommandGroup>
+                                        </CommandList>
+                                    </Command>
+                                </PopoverContent>
+                            </Popover>
+                        </div>
 
-                        <section class="relative flex items-center">
-                            <select
-                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-[#A1B2AD] rounded-lg pl-3 pr-8 py-1 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-[#04724D] appearance-none cursor-pointer">
-                                <option value="brazil" class="">Todos cursos</option>
-                                <option value="brazil" class="">Eng. Mecanica</option>
-                                <option value="bucharest">Bucharest</option>
-                                <option value="london">London</option>
-                                <option value="washington">Washington</option>
-                            </select>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2"
-                                stroke="currentColor" class="h-4 w-4 ml-1 absolute top-2 right-2.5 text-slate-700">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                            </svg>
-                        </section>
+                        <Link href=""
+                            class="order-1 lg:order-2 flex items-center justify-center border text-white text-sm px-2 pr-3 py-1.5 rounded-xl bg-[#31A03C] hover:bg-[#3CC349]">
+                        <Send height="14" />
+                        Publicar
+                        </Link>
 
                     </div>
                 </section>
