@@ -26,6 +26,11 @@ import {
     ItemTitle,
 } from "@/components/ui/item"
 import Xlsx from '@/components/aux/extension/Xlsx.vue';
+import Docx from '@/components/aux/extension/Docx.vue';
+import Image from '@/components/aux/extension/Image.vue';
+import Pdf from '@/components/aux/extension/Pdf.vue';
+import Pptx from '@/components/aux/extension/Pptx.vue';
+import Txt from '@/components/aux/extension/Txt.vue';
 
 const props = defineProps({
     docs: {
@@ -82,6 +87,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { date_long_format } from '@/formatter';
+import Pagination from '@/components/aux/Pagination.vue';
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -256,33 +262,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </ItemGroup>
                 </div>
             </section>
-            <section class="flex items-center justify-between py-4">
-                <div class="text-sm text-slate-500 grid md:grid-cols-2 md:gap-1 lg:grid-cols-2 lg:gap-1">
-                    <p>Mostrando</p>
-                    <p><b>1-4</b> de 45</p>
-                </div>
-                <div class="flex space-x-1">
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        <ChevronLeft width="16" />
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-[#038043] bg-[#038043] px-3 py-1 text-sm font-normal text-white transition duration-200 hover:border-[#1fad68] hover:bg-[#1fad68]">
-                        1
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        2
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        3
-                    </button>
-                    <button
-                        class="ease min-h-10 min-w-10 rounded border border-slate-200 bg-white px-3 py-1 text-sm font-normal text-slate-500 transition duration-200 hover:border-slate-400 hover:bg-slate-50">
-                        <ChevronRight width="16" />
-                    </button>
-                </div>
+            <section class="py-4">
+                <Pagination :list="docs" />
             </section>
         </div>
     </AppLayout>
