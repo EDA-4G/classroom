@@ -81,6 +81,7 @@ import {
     CommandItem,
     CommandList,
 } from '@/components/ui/command'
+import posts from '@/routes/posts';
 
 const props = defineProps({
     postss: {
@@ -238,7 +239,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </Popover>
                         </div>
 
-                        <Link href=""
+                        <Link :href="posts.create().url"
                             class="order-1 lg:order-2 flex items-center justify-center border text-white text-sm px-2 pr-3 py-1.5 rounded-xl bg-[#31A03C] hover:bg-[#3CC349]">
                         <Send height="14" />
                         Publicar
