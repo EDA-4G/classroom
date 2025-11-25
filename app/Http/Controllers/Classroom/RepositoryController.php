@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Classroom;
 
 use App\Http\Controllers\Controller;
+use App\Models\RepoDocument;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,9 +12,11 @@ class RepositoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('repository/Index');
+        $description = $request->query('description');
+        $docs = RepoDocument::where('description', 'like', '%' . $description . '%')->paginate(5);
+        return Inertia::render('repository/Index', compact('docs'));
     }
 
     /**
