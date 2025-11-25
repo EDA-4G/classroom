@@ -108,7 +108,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                    }}</span>
+                            }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -166,10 +166,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Link v-for="room in dp.classrooms" :key="room.id" :href="classrooms.index().url"
                         :class="dps.is_active ? 'cursor-pointer' : ''"
                         class="group relative h-46 h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
-                    <img v-if="room" :src="'/storage/'.concat(room.image)" :alt="room.description"
+                    <img v-if="room.image" :src="'/storage/'.concat(room.image)" :alt="room.description"
                         :class="dps.is_active ? '' : 'grayscale'"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <img v-else src="https://placehold.co/600x400" alt="sem imagem"
+                    <img v-else src="https://placehold.co/600x400?text=S/I" alt="sem imagem"
                         :class="dps.is_active ? '' : 'grayscale'"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
@@ -230,7 +230,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 9l10 6 10-6-10-6z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2 15l10 6 10-6" />
                         </svg>
-                        <span class="text-sm font-semibold text-white/90 leading-none">5</span>
+                        <span class="text-sm font-semibold text-white/90 leading-none">{{ room.level }}</span>
                     </div>
 
 
