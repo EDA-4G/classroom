@@ -16,7 +16,7 @@ import {
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
-import { ChevronRightIcon, BellRing } from "lucide-vue-next"
+import { ChevronRightIcon, BellRing, Save } from "lucide-vue-next"
 import {
     Item,
     ItemActions,
@@ -60,7 +60,9 @@ import repositories from '@/routes/repositories';
 import { ref } from 'vue';
 
 const description = ref('');
+let enable_recent = true;
 const search = () => {
+    enable_recent = false;
     const options = {
         query: {
             description: description.value,
@@ -107,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Search />
                 </InputGroupAddon>
                 <InputGroupAddon align="inline-end">
-                    12 resultados
+                    {{ docs.data.length }} resultados
                 </InputGroupAddon>
             </InputGroup>
 
@@ -133,10 +135,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </SheetTrigger>
                     <SheetContent>
                         <SheetHeader>
-                            <SheetTitle class="text-lg">Inscrição</SheetTitle>
+                            <SheetTitle class="text-lg">Notificação</SheetTitle>
                             <SheetDescription>
-                                Faça as alterações da sua inscrição aqui e clique em <span class="font-semibold">Salvar
-                                    Alterações</span> quando terminar.
+                                Habilite a sua inscrição para receber <strong>alerta no email</strong> sempre que um
+                                documento for publicado.
                             </SheetDescription>
                         </SheetHeader>
                         <div class="grid gap-4 p-4">
@@ -176,8 +178,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <SheetFooter>
                             <SheetClose as-child>
                                 <button type="submit"
-                                    class="p-2 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">Salvar
-                                    Alterações</button>
+                                    class="p-2 flex items-center justify-center gap-1 text-sm rounded-md border border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] cursor-pointer">
+                                    <Save width="14" />
+                                    Salvar
+                                </button>
                             </SheetClose>
                             <SheetClose as-child>
                                 <button type="submit"
@@ -188,7 +192,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </Sheet>
             </section>
 
-            <section>
+            <section v-if="enable_recent">
                 <div class="py-2">
                     <p class="text-md font-bold">Recentes</p>
                 </div>
@@ -221,7 +225,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
             </section>
             <section>
-                <div class="py-2">
+                <div class="p-2">
                     <p class="text-md font-bold">Todos documentos</p>
                 </div>
                 <div class="">
