@@ -165,22 +165,24 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <section class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                     <Link v-for="room in dp.classrooms" :key="room.id" :href="classrooms.index().url"
-                        :class="dps.is_active ? 'cursor-pointer' : ''"
+                        :class="room.status !== ClassroomStatus.None && room.status !== null ? 'cursor-pointer' : ''"
                         class="group relative h-46 h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+
                     <img v-if="room.image" :src="'/storage/'.concat(room.image)" :alt="room.description"
-                        :class="dps.is_active ? '' : 'grayscale'"
+                        :class="room.status !== ClassroomStatus.None && room.status !== null ? '' : 'grayscale'"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <img v-else src="https://placehold.co/600x400?text=S/I" alt="sem imagem"
-                        :class="dps.is_active ? '' : 'grayscale'"
+                        :class="room.status !== ClassroomStatus.None && room.status !== null ? '' : 'grayscale'"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 
 
                     <div :class="dps.is_active ? 'bg-black/30' : ''" class="absolute inset-0 bg-gray-800/60"></div>
 
-                    <section>
+                    <section class="absolute top-2 left-2 flex items-center gap-2">
+                        <!-- absolute top-2 left-2  -->
                         <!-- Aberto -->
-                        <div v-if="true"
-                            class="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
+                        <div v-if="room.status === ClassroomStatus.Unlock"
+                            class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 1 1 8 0v4" />
@@ -190,8 +192,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <!-- Fechado -->
-                        <div v-if="room.status === ClassroomStatus.None"
-                            class="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-full bg-red-800/95 shadow-md border border-white/20 backdrop-blur-sm">
+                        <div v-if="room.status === ClassroomStatus.None || room.status === null"
+                            class="flex items-center justify-center w-7 h-7 rounded-full bg-red-800/95 shadow-md border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -202,8 +204,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <!-- Manutencao -->
-                        <div v-if="false"
-                            class="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-full bg-[#1E85C9] shadow-md border border-white/20 backdrop-blur-sm">
+                        <div v-if="room.status === ClassroomStatus.Maintenance"
+                            class="flex items-center justify-center w-7 h-7 rounded-full bg-[#1E85C9] shadow-md border border-white/20 backdrop-blur-sm">
 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-4 h-4 text-white/90"
                                 fill="currentColor" stroke="currentColor">
@@ -213,18 +215,29 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <!-- Lavar o chão -->
-                        <div v-if="false"
-                            class="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-full bg-[#C9871E] shadow-md border border-white/20 backdrop-blur-sm">
+                        <div v-if="room.status === ClassroomStatus.To_wash"
+                            class="flex items-center justify-center w-7 h-7 rounded-full bg-[#C9871E] shadow-md border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-4 h-4 text-white/90"
                                 fill="currentColor" stroke="currentColor">
                                 <path
                                     d="M474.6 188.1C495.3 203.7 520.6 218.8 548.8 222.6C561.9 224.4 574 215.1 575.8 202C577.6 188.9 568.3 176.8 555.2 175C539.3 172.9 522 163.7 503.5 149.8C465.1 120.8 413 120.8 374.5 149.8C350.5 167.9 333.8 176.1 320 176.1C306.2 176.1 289.5 167.9 265.5 149.8C227.1 120.8 175 120.8 136.5 149.8C118 163.7 100.7 172.9 84.8 175C71.7 176.8 62.4 188.8 64.2 202C66 215.2 78 224.4 91.2 222.6C119.4 218.8 144.8 203.7 165.4 188.1C186.7 172 215.3 172 236.6 188.1C260.8 206.4 288.9 224 320 224C351.1 224 379.1 206.3 403.4 188.1C424.7 172 453.3 172 474.6 188.1zM474.6 332.1C495.3 347.7 520.6 362.8 548.8 366.6C561.9 368.4 574 359.1 575.8 346C577.6 332.9 568.3 320.8 555.2 319C539.3 316.9 522 307.7 503.5 293.8C465.1 264.8 413 264.8 374.5 293.8C350.5 311.9 333.8 320.1 320 320.1C306.2 320.1 289.5 311.9 265.5 293.8C227.1 264.8 175 264.8 136.5 293.8C118 307.7 100.7 316.9 84.8 319C71.7 320.7 62.4 332.8 64.2 346C66 359.2 78 368.4 91.2 366.6C119.4 362.8 144.8 347.7 165.4 332.1C186.7 316 215.3 316 236.6 332.1C260.8 350.4 288.9 368 320 368C351.1 368 379.1 350.3 403.4 332.1C424.7 316 453.3 316 474.6 332.1zM403.4 476.1C424.7 460 453.3 460 474.6 476.1C495.3 491.7 520.6 506.8 548.8 510.6C561.9 512.4 574 503.1 575.8 490C577.6 476.9 568.3 464.8 555.2 463C539.3 460.9 522 451.7 503.5 437.8C465.1 408.8 413 408.8 374.5 437.8C350.5 455.9 333.8 464.1 320 464.1C306.2 464.1 289.5 455.9 265.5 437.8C227.1 408.8 175 408.8 136.5 437.8C118 451.7 100.7 460.9 84.8 463C71.7 464.8 62.4 476.8 64.2 490C66 503.2 78 512.4 91.2 510.6C119.4 506.8 144.8 491.7 165.4 476.1C186.7 460 215.3 460 236.6 476.1C260.8 494.4 288.9 512 320 512C351.1 512 379.1 494.3 403.4 476.1z" />
                             </svg>
                         </div>
+
+                        <!-- Camadas:Número do andares -->
+                        <div
+                            class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 9l10 6 10-6-10-6z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2 15l10 6 10-6" />
+                            </svg>
+                            <span class="text-sm font-semibold text-white/90 leading-none">{{ room.level }}</span>
+                        </div>
                     </section>
 
                     <!-- Camadas:Número do andares -->
-                    <div
+                    <!-- <div
                         class="absolute top-2 left-11 flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -232,11 +245,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2 15l10 6 10-6" />
                         </svg>
                         <span class="text-sm font-semibold text-white/90 leading-none">{{ room.level }}</span>
-                    </div>
+                    </div> -->
 
 
                     <section>
-                        <div v-if="false"
+                        <div v-if="room.status === ClassroomStatus.In_class"
                             class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
@@ -245,7 +258,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </span>
                             <span>Em Aula</span>
                         </div>
-                        <div v-if="false"
+                        <div v-if="room.status === ClassroomStatus.Test"
                             class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
@@ -254,7 +267,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </span>
                             <span>Teste</span>
                         </div>
-                        <div v-if="false"
+                        <div v-if="room.status === ClassroomStatus.Exam"
                             class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
@@ -263,7 +276,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </span>
                             <span>Exame</span>
                         </div>
-                        <div v-if="true"
+                        <div v-if="room.status === ClassroomStatus.In_room"
                             class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
