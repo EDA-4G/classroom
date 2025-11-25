@@ -16,10 +16,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        // $sales = Sale::where('description', 'like', '%' . $description . '%')->with(['details', 'details.product', 'paymentMethod'])
-
-
         $title = $request->query('title');
+        $department = $request->query('department');
         $postss = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->orderBy('created_at', 'desc')->paginate(8);
         $deps = Department::where('is_active', true)->get();
         return Inertia::render('lostFound/Index', compact('postss', 'deps'));
