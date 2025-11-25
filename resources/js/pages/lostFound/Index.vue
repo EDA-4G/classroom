@@ -115,20 +115,21 @@ const frameworks = [
 
 interface Filter {
     id: number;
-    name: string
+    name: string;
+    key: string;
 }
 
 const filters: Filter[] = [
-    { id: 1, name: 'Todos' },
-    { id: 2, name: 'Pago' },
-    { id: 3, name: 'Gratuito' }
+    { id: 1, name: 'Todos', key: 'all' },
+    { id: 2, name: 'Pago', key: 'paid' },
+    { id: 3, name: 'Gratuito', key: 'free' }
 ]
 
 const me = (item: string) => {
     // alert(item);
 }
 
-const filter = ref(filters ? filters.at(0)?.name : '')
+const filter = ref(filters ? filters.at(0)?.key : '')
 const handleToggleGroup = (value: any) => {
     if (value) filter.value = value
 }
@@ -139,9 +140,11 @@ const value = ref<typeof frameworks[0]>()
 //Search
 const title = ref('');
 const search = () => {
+    alert(dp_id.value + '\n' + filter.value);
     const options = {
         query: {
             title: title.value,
+            department: dp_id.value
         },
     };
     router.get(posts.index.get(options).url)
@@ -199,7 +202,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <section>
                             <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
                                 class="flex gap-2 flex-wrap justify-start">
-                                <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
+                                <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.key"
                                     @click="me(filter.name)"
                                     class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3.5 max-h-6.5 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
                                     {{ filter.name }}
