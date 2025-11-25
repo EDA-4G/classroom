@@ -21,6 +21,7 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 import classrooms from '@/routes/classrooms';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import Pagination from '@/components/aux/Pagination.vue';
+import { ClassroomStatus } from '@/interfaces';
 
 defineProps({
     dps: {
@@ -108,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                            }}</span>
+                    }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -189,7 +190,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <!-- Fechado -->
-                        <div v-if="false"
+                        <div v-if="room.status === ClassroomStatus.None"
                             class="absolute top-2 left-2 flex items-center justify-center w-7 h-7 rounded-full bg-red-800/95 shadow-md border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
