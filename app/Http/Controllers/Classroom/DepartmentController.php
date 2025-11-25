@@ -15,7 +15,7 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         $description = $request->query('description');
-        $dps = Department::where('description', 'like', '%' . $description . '%')->with('classrooms')->orderBy('description', 'asc')->paginate(1);
+        $dps = Department::where('description', 'like', '%' . $description . '%')->where('is_active', true)->with('classrooms')->orderBy('description', 'asc')->paginate(1);
         return Inertia::render('department/Index', compact('dps'));
     }
 
