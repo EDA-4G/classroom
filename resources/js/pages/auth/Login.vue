@@ -59,7 +59,7 @@ defineProps<{
 
                 <Button type="submit" class="mt-4 w-full" :tabindex="4" :disabled="processing" data-test="login-button">
                     <Spinner v-if="processing" />
-                    Log in
+                    Entrar
                 </Button>
             </div>
 
