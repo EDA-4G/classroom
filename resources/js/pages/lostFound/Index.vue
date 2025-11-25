@@ -98,8 +98,8 @@ interface Filter {
 }
 
 const filters: Filter[] = [
-    { id: 1, name: 'Todas' },
-    { id: 2, name: 'Pagos' },
+    { id: 1, name: 'Todos' },
+    { id: 2, name: 'Pago' },
     { id: 3, name: 'Gratuito' }
 ]
 
