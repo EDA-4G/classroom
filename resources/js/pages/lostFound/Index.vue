@@ -83,7 +83,7 @@ import {
 } from '@/components/ui/command'
 
 const props = defineProps({
-    posts: {
+    postss: {
         type: Object,
         required: true
     },
@@ -251,10 +251,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="pb-2">
                         <h2 class="font-semibold text-lg text-heading">Encontre o teu bem perdido.</h2>
                     </div>
-                    <p>{{ posts.department }}</p>
+                    <p>{{ postss.department }}</p>
                     <section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
 
-                        <Sheet v-for="post in posts.data">
+                        <Sheet v-for="post in postss.data">
                             <SheetTrigger as-child>
 
 
@@ -296,7 +296,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         :src="'/storage/'.concat(post.image)" :alt="post.title" width="120px" />
                                     <div>
                                         <h5 class="mb-1 text-lg font-semibold tracking-tight text-heading">{{ post.title
-                                            }}</h5>
+                                        }}</h5>
                                         <p class="text-xs">{{ date_long_format(post.created_at) }}</p>
                                     </div>
 
@@ -304,7 +304,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <div>
                                             <p class="mt-0">— {{ post.user.name.split(' ').at(0) }}</p>
                                             <p class="text-sm font-medium text-green-700">{{ post.department.description
-                                                }}</p>
+                                            }}</p>
                                         </div>
 
                                         <div class="h-fit mt-2 flex flex-wrap justify-end gap-1">
@@ -422,7 +422,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
             </section>
 
-            <Pagination :list="posts" />
+            <Pagination :list="postss" />
         </div>
     </AppLayout>
 </template>
