@@ -11,6 +11,7 @@ import { register } from '@/routes';
 import { store } from '@/routes/login';
 import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/vue3';
+import { LockKeyhole } from 'lucide-vue-next';
 
 defineProps<{
     status?: string;
@@ -60,6 +61,7 @@ defineProps<{
                 <Button type="submit" class="mt-4 w-full bg-[#038043] hover:bg-[#1fad68]" :tabindex="4"
                     :disabled="processing" data-test="login-button">
                     <Spinner v-if="processing" />
+                    <LockKeyhole />
                     Entrar
                 </Button>
             </div>
