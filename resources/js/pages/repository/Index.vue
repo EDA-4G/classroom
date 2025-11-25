@@ -36,37 +36,11 @@ const props = defineProps({
     docs: {
         type: Object,
         required: true
-    }
+    },
+    recent_four: Object
 })
 
 const image_extensions = ['jpeg', 'jpg', 'png', 'svg']
-const music = [
-    {
-        title: "Midnight City Lights",
-        artist: "Neon Dreams",
-        album: "Electric Nights",
-        duration: "3:45",
-    },
-    {
-        title: "Coffee Shop Conversations",
-        artist: "The Morning Brew",
-        album: "Urban Stories",
-        duration: "4:05",
-    },
-    {
-        title: "Digital Rain",
-        artist: "Cyber Symphony",
-        album: "Binary Beats",
-        duration: "3:30",
-    },
-    {
-        title: "Digital Rain",
-        artist: "Cyber Symphony",
-        album: "Binary Beats",
-        duration: "3:30",
-    },
-]
-
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -220,16 +194,26 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
                 <div class="">
                     <ItemGroup class="grid lg:grid-cols-2 gap-4">
-                        <Item v-for="song in music" :key="song.title" variant="outline" as-child role="listitem">
-                            <a href="#" download>
+                        <Item v-for="doc in recent_four" :key="doc.id" variant="outline" as-child role="listitem">
+                            <a :href="'/storage/'.concat(doc.document)"
+                                :download="doc.document.replace('repository/', '').split('-').at(1)">
                                 <ItemMedia variant="image">
                                     <Xlsx />
+                                    <section>
+                                        <Docx v-if="doc.extension === 'docx'" width="40" />
+                                        <Image v-if="image_extensions.includes(doc.extension)" width="40" />
+                                        <Pdf v-if="doc.extension === 'pdf'" width="40" />
+                                        <Pptx v-if="doc.extension === 'pptx'" width="40" />
+                                        <Xlsx v-if="doc.extension === 'xlsx'" width="40" />
+                                        <Txt v-if="doc.extension === 'txt'" width="40" />
+                                    </section>
                                 </ItemMedia>
                                 <ItemContent>
                                     <ItemTitle class="line-clamp-1">
-                                        {{ song.title }}.extension
+                                        {{ doc.description }}.{{ doc.extension }}
                                     </ItemTitle>
-                                    <ItemDescription class="text-xs">Sun 22 Feb 2025, 12:45</ItemDescription>
+                                    <ItemDescription class="text-xs">{{ date_long_format(doc.created_at) }}
+                                    </ItemDescription>
                                 </ItemContent>
                             </a>
                         </Item>
@@ -241,7 +225,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <p class="text-md font-bold">Todos documentos</p>
                 </div>
                 <div class="">
-                    <!-- v-for="room in docs.data" -->
+
                     <ItemGroup class="grid lg:grid-cols-2 gap-4">
                         <Item v-for="doc in docs.data" :key="doc.id" variant="outline" as-child role="listitem">
                             <a :href="'/storage/'.concat(doc.document)"
@@ -267,6 +251,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </a>
                         </Item>
                     </ItemGroup>
+
                 </div>
             </section>
             <section class="py-4">
