@@ -2,7 +2,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-import { Head, useForm, usePage } from '@inertiajs/vue3';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import {
     Breadcrumb,
@@ -12,7 +12,6 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from "@/components/ui/label"
 import {
     Field,
@@ -33,9 +32,8 @@ import classrooms from '@/routes/classrooms';
 
 
 import { Button } from '@/components/ui/button'
-import { CheckIcon, ChevronsUpDownIcon, CloudUpload } from 'lucide-vue-next'
+import { CheckIcon, ChevronsUpDownIcon, CloudUpload, Presentation, Rss } from 'lucide-vue-next'
 import { cn } from '@/lib/utils';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import {
     Command,
     CommandEmpty,
@@ -116,13 +114,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <BreadcrumbItem1>
                         <BreadcrumbLink :href="dashboard().url">
                             Início
-                        </BreadcrumbLink>
-                    </BreadcrumbItem1>
-                    <BreadcrumbSeparator />
-
-                    <BreadcrumbItem1>
-                        <BreadcrumbLink :href="classrooms.index().url">
-                            Sala
                         </BreadcrumbLink>
                     </BreadcrumbItem1>
                     <BreadcrumbSeparator />
@@ -330,8 +321,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <CloudUpload width="14" />
                         Publicar
                     </button>
-                    <button
-                        class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                    <Link :href="classrooms.index().url"
+                        class="p-2 flex items-center justify-center gap-1 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">
+                    <Presentation width="14" />
+                    Sala de Aulas</Link>
+                    <Link :href="posts.index().url"
+                        class="p-2 flex items-center gap-1 justify-center text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">
+                    <Rss width="14" />
+                    Postagens</Link>
                 </div>
             </section>
 
