@@ -37,7 +37,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, int $from_page)
+    public function store(Request $request)
     {
         $image_path = null;
         if ($request->hasFile('image')) {
@@ -61,9 +61,6 @@ class PostController extends Controller
         $post->department()->associate($department);
 
         $post->save();
-
-        if ($from_page === 1)
-            return redirect()->route('classrooms.index')->with('success', 'Cadastrado com sucesso!');
         return redirect()->route('posts.index')->with('success', 'Cadastrado com sucesso!');
     }
 
