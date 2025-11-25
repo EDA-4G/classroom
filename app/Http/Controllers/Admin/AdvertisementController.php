@@ -60,9 +60,9 @@ class AdvertisementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Advertisement $advertisement)
+    public function edit(string $id)
     {
-        return Inertia::render('admin/Index', compact('advertisement'));
+        //
     }
 
     /**
@@ -86,17 +86,5 @@ class AdvertisementController extends Controller
     {
         $advertisement->delete();
         return redirect()->route('advertisements.index')->with('success', 'Excluído com sucesso!');
-    }
-
-
-    public function store_department(Request $request)
-    {
-        $department = new Department([
-            'description' => $request->description,
-            'is_active' => $request->is_active
-        ]);
-
-        $department->save();
-        return redirect()->route('advertisements.index')->with('success', 'Cadastrado com sucesso!');
     }
 }
