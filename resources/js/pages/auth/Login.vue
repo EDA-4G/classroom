@@ -57,7 +57,8 @@ defineProps<{
                     </Label>
                 </div>
 
-                <Button type="submit" class="mt-4 w-full" :tabindex="4" :disabled="processing" data-test="login-button">
+                <Button type="submit" class="mt-4 w-full bg-[#038043] hover:bg-[#1fad68]" :tabindex="4"
+                    :disabled="processing" data-test="login-button">
                     <Spinner v-if="processing" />
                     Entrar
                 </Button>
