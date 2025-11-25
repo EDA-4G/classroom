@@ -109,7 +109,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </button>
                     </div>
                 </section>
-                <p>{{ ads }}</p>
 
                 <section class="grid gap-2 lg:grid-cols-2">
                     <Link :href="departments.index().url"
