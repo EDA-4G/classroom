@@ -20,9 +20,9 @@ class PostController extends Controller
 
 
         $title = $request->query('title');
-        $posts = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->orderBy('created_at', 'desc')->paginate(8);
+        $postss = Post::where('title', 'like', '%' . $title . '%')->with(['user', 'department'])->orderBy('created_at', 'desc')->paginate(8);
         $deps = Department::where('is_active', true)->get();
-        return Inertia::render('lostFound/Index', compact('posts', 'deps'));
+        return Inertia::render('lostFound/Index', compact('postss', 'deps'));
     }
 
     /**
