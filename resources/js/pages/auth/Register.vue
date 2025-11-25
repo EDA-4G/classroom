@@ -12,96 +12,51 @@ import { Form, Head } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <AuthBase
-        title="Create an account"
-        description="Enter your details below to create your account"
-    >
+    <AuthBase title="Crie uma conta" description="Insira seus dados abaixo para criar sua conta.">
+
         <Head title="Register" />
 
-        <Form
-            v-bind="store.form()"
-            :reset-on-success="['password', 'password_confirmation']"
-            v-slot="{ errors, processing }"
-            class="flex flex-col gap-6"
-        >
+        <Form v-bind="store.form()" :reset-on-success="['password', 'password_confirmation']"
+            v-slot="{ errors, processing }" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
-                    <Input
-                        id="name"
-                        type="text"
-                        required
-                        autofocus
-                        :tabindex="1"
-                        autocomplete="name"
-                        name="name"
-                        placeholder="Full name"
-                    />
+                    <Label for="name">Nome</Label>
+                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" name="name"
+                        placeholder="Nome Completo" />
                     <InputError :message="errors.name" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        required
-                        :tabindex="2"
-                        autocomplete="email"
-                        name="email"
-                        placeholder="email@example.com"
-                    />
+                    <Label for="email">Email</Label>
+                    <Input id="email" type="email" required :tabindex="2" autocomplete="email" name="email"
+                        placeholder="nome.apelido@uem.ac.mz" />
                     <InputError :message="errors.email" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="3"
-                        autocomplete="new-password"
-                        name="password"
-                        placeholder="Password"
-                    />
+                    <Label for="password">Senha</Label>
+                    <Input id="password" type="password" required :tabindex="3" autocomplete="new-password"
+                        name="password" placeholder="Senha" />
                     <InputError :message="errors.password" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirm password</Label>
-                    <Input
-                        id="password_confirmation"
-                        type="password"
-                        required
-                        :tabindex="4"
-                        autocomplete="new-password"
-                        name="password_confirmation"
-                        placeholder="Confirm password"
-                    />
+                    <Label for="password_confirmation">Confirme sua senha</Label>
+                    <Input id="password_confirmation" type="password" required :tabindex="4" autocomplete="new-password"
+                        name="password_confirmation" placeholder="Confirme sua senha" />
                     <InputError :message="errors.password_confirmation" />
                 </div>
 
-                <Button
-                    type="submit"
-                    class="mt-2 w-full"
-                    tabindex="5"
-                    :disabled="processing"
-                    data-test="register-user-button"
-                >
+                <Button type="submit" class="mt-2 w-full bg-[#038043] hover:bg-[#1fad68]" tabindex="5"
+                    :disabled="processing" data-test="register-user-button">
                     <Spinner v-if="processing" />
-                    Create account
+                    Criar uma conta
                 </Button>
             </div>
 
             <div class="text-center text-sm text-muted-foreground">
-                Already have an account?
-                <TextLink
-                    :href="login()"
-                    class="underline underline-offset-4"
-                    :tabindex="6"
-                    >Log in</TextLink
-                >
+                Já tem uma conta?
+                <TextLink :href="login()" class="underline underline-offset-4" :tabindex="6">Entrar</TextLink>
             </div>
         </Form>
     </AuthBase>
