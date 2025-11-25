@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Classroom;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -11,9 +12,11 @@ class DepartmentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('department/Index');
+        $description = $request->query('description');
+        $dps = Department::where('description', 'like', '%' . $description . '%')->with('classrooms')->orderBy('description', 'asc')->paginate(1);
+        return Inertia::render('department/Index', compact('dps'));
     }
 
     /**
