@@ -207,7 +207,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </Sheet>
             </section>
 
-            <section>
+            <!-- <section>
                 <div class="py-2">
                     <p class="text-md font-bold">Recentes</p>
                 </div>
@@ -228,7 +228,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </Item>
                     </ItemGroup>
                 </div>
-            </section>
+            </section> -->
             <section>
                 <div class="py-2">
                     <p class="text-md font-bold">Todos documentos</p>
