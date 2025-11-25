@@ -15,7 +15,8 @@ class RepositoryController extends Controller
     public function index(Request $request)
     {
         $description = $request->query('description');
-        $docs = RepoDocument::where('description', 'like', '%' . $description . '%')->where('is_active', true)->orderBy('created_at', 'desc')->paginate(5);
+        $docs = RepoDocument::where('description', 'like', '%' . $description . '%')->where('is_active', true)
+            ->orderBy('created_at', 'desc')->paginate(6);
         $recent_four = $docs->slice(0, 4);
         return Inertia::render('repository/Index', compact('docs', 'recent_four'));
     }
