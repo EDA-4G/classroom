@@ -400,7 +400,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </p>
                                                 </td>
                                                 <td class="text-right p-4 border-b border-blue-gray-50">
-                                                    <form id="e_advertisement" @submit.prevent="e_submit" class="m-0">
+                                                    <form id="e_advertisement" @submit.prevent="e_submit"
+                                                        enctype="multipart/form-data" class="m-0">
                                                     </form>
                                                     <Sheet>
                                                         <SheetTrigger as-child>
