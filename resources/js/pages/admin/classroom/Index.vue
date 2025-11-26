@@ -464,12 +464,78 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             <tr v-for="room in rooms.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
-                                                        <img v-if="room.image" :src="'/storage/'.concat(room.image)"
-                                                            :alt="room.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
-                                                        <img v-else src="https://picsum.photos/200/300"
-                                                            :alt="room.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover border object-center" />
+
+
+                                                        <Sheet>
+                                                            <SheetTrigger as-child>
+
+                                                                <button class="cursor-pointer">
+                                                                    <img v-if="room.image"
+                                                                        :src="'/storage/'.concat(room.image)"
+                                                                        :alt="room.image"
+                                                                        class="relative inline-block h-10 w-10 hover:border-green-400 !rounded-md object-cover border object-center" />
+                                                                    <img v-else src="https://picsum.photos/200/300"
+                                                                        :alt="room.image"
+                                                                        class="relative inline-block h-10 w-10 hover:border-green-400 !rounded-md object-cover border object-center" />
+                                                                </button>
+
+                                                            </SheetTrigger>
+                                                            <SheetContent>
+                                                                <SheetHeader>
+                                                                    <SheetTitle class="text-lg">Imagem
+                                                                    </SheetTitle>
+                                                                    <SheetDescription>
+                                                                        Actualize a imagem da sala aqui. Clique em
+                                                                        <span class="font-semibold">Salvar</span> quando
+                                                                        terminar.
+                                                                    </SheetDescription>
+                                                                </SheetHeader>
+                                                                <section class="grid gap-4 px-4">
+                                                                    <div class="grid gap-2">
+                                                                        <label for="description"
+                                                                            class="text-xl font-semibold">
+                                                                            Sala {{ room.description }}
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="grid gap-2">
+                                                                        <Label>Imagem Actual</Label>
+                                                                        <div class="py-0 w-full h-40">
+                                                                            <img v-if="room.image"
+                                                                                :src="'/storage/'.concat(room.image)"
+                                                                                :alt="room.image"
+                                                                                class="relative inline-block w-full h-full object-cover rounded-lg object-cover border object-center" />
+                                                                            <img v-else
+                                                                                src="https://picsum.photos/200/300"
+                                                                                :alt="room.image"
+                                                                                class="relative inline-block w-full h-full object-cover rounded-lg object-cover border object-center" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="grid gap-2">
+                                                                        <Label for="email">Nova Imagem</Label>
+                                                                        <Input id="email" type="file" name="room"
+                                                                            class="cursor-pointer"
+                                                                            @input="e_form.image = $event.target.files[0]" />
+                                                                        <InputError :message="e_form.errors.image" />
+                                                                    </div>
+
+                                                                </section>
+                                                                <SheetFooter>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit" form="e_classroom"
+                                                                            class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
+                                                                            <RefreshCcw width="16" />
+                                                                            Salvar
+                                                                        </button>
+                                                                    </SheetClose>
+                                                                    <SheetClose as-child>
+                                                                        <button type="submit"
+                                                                            class="p-2 text-sm rounded-md border border-[#038043]  text-[#038043] hover:text-[#1fad68] cursor-pointer">Cancelar</button>
+                                                                    </SheetClose>
+                                                                </SheetFooter>
+                                                            </SheetContent>
+                                                        </Sheet>
+
+
                                                         <p
                                                             class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
                                                             {{ room.description }}
