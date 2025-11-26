@@ -42,7 +42,7 @@ Route::resource('managers', ManagerController::class);
 Route::resource('advertisements', AdvertisementController::class);
 Route::resource('admin/departments', AdminDepartmentController::class)->names('admin_departments');
 Route::resource('admin/classrooms', AdminClassroomController::class)->names('admin_classrooms');
-Route::post('admin/classrooms/cover', [AdminClassroomController::class, 'cover'])->name('admin_classrooms.cover');
+Route::post('admin/classrooms/cover/{classroom}', [AdminClassroomController::class, 'cover'])->name('admin_classrooms.cover');
 
 Route::resource('admin/repositories', AdminRepositoryController::class)->names('admin_repositories');
 Route::post('advertisements/departments', [AdvertisementController::class, 'store_department'])->name('advertisements.store_department');

@@ -99,8 +99,6 @@ class ClassroomController extends Controller
             $image_path = $request->file('image')->storeAs('classroom', $file_name, 'public');
         }
 
-        $classroom->id = $request->input('id');
-        $classroom->description = $request->input('description');
         $classroom->image = $image_path;
         $classroom->save();
         return redirect()->route('admin_classrooms.index')->with('success', 'Image actualizada com sucesso!');

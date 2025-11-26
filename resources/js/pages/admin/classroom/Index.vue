@@ -172,6 +172,13 @@ const delete_classroom = (classroom: IClassroom) => {
     })
 }
 
+const update_image = (classroom: IClassroom) => {
+    const form = new FormData();
+    form.append('image', e_form.image);
+
+    router.post(admin_classrooms.cover(classroom).url, form);
+}
+
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -328,7 +335,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </div>
                                                     <div class="grid gap-2">
                                                         <Label for="email">Imagem</Label>
-                                                        <Input id="email" type="file" name="room"
+                                                        <Input id="email" type="file" name="room" accept="image/*"
                                                             @input="form.image = $event.target.files[0]" />
                                                         <InputError :message="form.errors.image" />
                                                     </div>
@@ -513,15 +520,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <div class="grid gap-2">
                                                                         <Label for="email">Nova Imagem</Label>
                                                                         <Input id="email" type="file" name="room"
-                                                                            class="cursor-pointer"
+                                                                            accept="image/*" class="cursor-pointer"
                                                                             @input="e_form.image = $event.target.files[0]" />
-                                                                        <InputError :message="e_form.errors.image" />
+                                                                        <InputError message="Imagem não inportada." />
                                                                     </div>
 
                                                                 </section>
                                                                 <SheetFooter>
                                                                     <SheetClose as-child>
-                                                                        <button type="submit" form="e_classroom"
+                                                                        <button @click="update_image(room)"
                                                                             class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                                             <RefreshCcw width="16" />
                                                                             Salvar
