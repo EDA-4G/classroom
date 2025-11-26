@@ -451,6 +451,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Departamento
+                                                    </p>
+                                                </th>
+                                                <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                                         Situação
                                                     </p>
                                                 </th>
@@ -460,7 +466,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         Data Registo
                                                     </p>
                                                 </th>
-                                                <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                <th class="w-26 p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                                     </p>
@@ -549,7 +555,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         </p>
                                                     </div>
                                                 </td>
-
+                                                <td class="p-4 border-b border-blue-gray-50">
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                        {{ room.department.description }}
+                                                    </p>
+                                                </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
                                                         <div v-if="room.is_active"
@@ -568,7 +579,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         {{ new Date(room.created_at).toDateString() }}
                                                     </p>
                                                 </td>
-                                                <td class="text-right p-4 border-b border-blue-gray-50">
+                                                <td class="max-w-26 text-right p-4 border-b border-blue-gray-50">
                                                     <form id="e_classroom" @submit.prevent="e_submit" class="m-0">
                                                     </form>
                                                     <Sheet>

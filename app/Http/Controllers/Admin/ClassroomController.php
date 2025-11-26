@@ -16,7 +16,7 @@ class ClassroomController extends Controller
     public function index(Request $request)
     {
         $description = $request->query('description');
-        $rooms = Classroom::where('description', 'like', '%' . $description . '%')->paginate(5);
+        $rooms = Classroom::where('description', 'like', '%' . $description . '%')->with('department:id,description')->orderBy('description', 'asc')->paginate(5);
         $deps = Department::where('is_active', true)->get();
         return Inertia::render('admin/classroom/Index', compact('rooms', 'deps'));
     }
