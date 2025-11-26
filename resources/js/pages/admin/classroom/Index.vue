@@ -537,7 +537,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         <button @click="update_image(room)"
                                                                             class="flex gap-2 items-center justify-center p-2 text-sm rounded-md border font-semibold border-[#038043] bg-[#038043] text-white hover:bg-[#1fad68] hover:border-[#1fad68] cursor-pointer">
                                                                             <RefreshCcw width="16" />
-                                                                            Salvar
+                                                                            Editar
                                                                         </button>
                                                                     </SheetClose>
                                                                     <SheetClose as-child>
