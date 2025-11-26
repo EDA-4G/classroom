@@ -19,6 +19,7 @@ return new class extends Migration
                 ->onUpdate('CASCADE');
             $table->string('description');
             $table->string('document');
+            $table->smallInteger('size');
             $table->string('extension');
             $table->boolean('is_active')->default(false);
             $table->timestamps();
