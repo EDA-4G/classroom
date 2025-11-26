@@ -335,7 +335,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                                                        Num. Salas
+                                                        Salas
                                                     </p>
                                                 </th>
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
@@ -365,7 +365,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         {{ dps.description }}
                                                     </p>
                                                 </td>
-
+                                                <td class="p-4 border-b border-blue-gray-50">
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                        {{ dps.classrooms.length }}
+                                                    </p>
+                                                </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
                                                         <div v-if="dps.is_active"
