@@ -18,7 +18,7 @@ return new class extends Migration
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
             $table->string('description');
-            $table->string('image')->nullable();
+            $table->string('cover')->nullable();
             $table->string('level');
             $table->enum('access_state', [
                 'lock',
