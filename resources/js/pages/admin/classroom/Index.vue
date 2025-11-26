@@ -90,7 +90,7 @@ let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
 }))
 
 
-const levels = 22;
+const levels = 18;
 const open = ref(false)
 const dp_id = ref('')
 
