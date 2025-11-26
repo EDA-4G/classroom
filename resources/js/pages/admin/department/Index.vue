@@ -12,12 +12,10 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from '@/components/ui/button'
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
@@ -49,7 +47,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { IAdvertisement, IDepartment } from '@/interfaces';
+import { IDepartment } from '@/interfaces';
 
 
 
@@ -337,6 +335,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Num. Salas
+                                                    </p>
+                                                </th>
+                                                <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                                         Situação
                                                     </p>
                                                 </th>
@@ -356,14 +360,10 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <tbody>
                                             <tr v-for="dps in dps.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
-                                                    <div class="flex items-center gap-3">
-                                                        <!-- <img :src="'/storage/'.concat(ads.image)" :alt="ads.image"
-                                                            class="relative inline-block h-10 w-10 !rounded-md object-cover object-center" /> -->
-                                                        <p
-                                                            class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                            {{ dps.description }}
-                                                        </p>
-                                                    </div>
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                        {{ dps.description }}
+                                                    </p>
                                                 </td>
 
                                                 <td class="p-4 border-b border-blue-gray-50">
