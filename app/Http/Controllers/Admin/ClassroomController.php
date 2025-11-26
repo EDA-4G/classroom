@@ -91,6 +91,21 @@ class ClassroomController extends Controller
         return redirect()->route('admin_classrooms.index')->with('success', 'Actualizado com sucesso!');
     }
 
+    public function cover(Request $request, Classroom $classroom)
+    {
+        $image_path = null;
+        if ($request->hasFile('image')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
+            $image_path = $request->file('image')->storeAs('classroom', $file_name, 'public');
+        }
+
+        $classroom->id = $request->input('id');
+        $classroom->description = $request->input('description');
+        $classroom->image = $image_path;
+        $classroom->save();
+        return redirect()->route('admin_classrooms.index')->with('success', 'Image actualizada com sucesso!');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
