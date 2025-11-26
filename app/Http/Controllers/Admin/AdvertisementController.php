@@ -74,8 +74,7 @@ class AdvertisementController extends Controller
         $advertisement->description = $request->input('description');
         $advertisement->image = $request->input('image');
         $advertisement->is_active = $request->input('is_active');
-        dd($request->all());
-        // $advertisement->save();
+        $advertisement->save();
 
         return redirect()->route('advertisements.index')->with('success', 'Actualizado com sucesso!');
     }
