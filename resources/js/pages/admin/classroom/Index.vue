@@ -176,9 +176,13 @@ const update_image = (classroom: IClassroom) => {
     const form = new FormData();
     form.append('image', e_form.image);
 
-    router.post(admin_classrooms.cover(classroom).url, form);
+    router.post(admin_classrooms.cover(classroom).url, form, {
+        preserveScroll: true,
+        preserveState: true,
+        onSuccess: () => toast.success('Imagem da sala foi actualizada.'),
+        onError: () => toast.error('Ocorreu um erro ao tentar actualizar imagem da sala.')
+    });
 }
-
 
 
 const breadcrumbs: BreadcrumbItem[] = [
