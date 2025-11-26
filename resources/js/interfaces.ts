@@ -36,6 +36,11 @@ export enum AccessStateEnum {
     None = 'none',
 }
 
+export enum UsageStateEnum {
+    Lock = 'lock',
+    Unlock = 'unlock',
+}
+
 export interface IClassroom {
     id: number;
     description: string;
