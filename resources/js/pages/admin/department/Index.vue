@@ -367,7 +367,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </td>
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <p
-                                                        class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
+                                                        class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                                         {{ dps.classrooms.length }}
                                                     </p>
                                                 </td>
