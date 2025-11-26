@@ -25,6 +25,17 @@ export enum ClassroomStatus {
     None = 'none',
 }
 
+export enum AccessStateEnum {
+    Book = 'book',
+    In_class = 'in_class',
+    In_room = 'in_room',
+    Test = 'test',
+    Exam = 'exam',
+    Maintenance = 'maintenance',
+    To_wash = 'to_wash',
+    None = 'none',
+}
+
 export interface IClassroom {
     id: number;
     description: string;
