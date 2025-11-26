@@ -20,18 +20,22 @@ return new class extends Migration
             $table->string('description');
             $table->string('image')->nullable();
             $table->string('level');
-            $table->enum('status', [
-                'open',
+            $table->enum('access_state', [
+                'lock',
+                'unlock',
+            ])->default('lock');
+            $table->enum('usage_state', [
+                'book',
                 'in_class',
                 'in_room',
                 'test',
                 'exam',
-                'unlock',
                 'maintenance',
                 'to_wash',
                 'none'
-            ])->default('none')->nullable();
-            $table->boolean('is_fixed')->default(false)->nullable();
+            ])->default('none');
+            $table->boolean('is_fixed')->default(false);
+            $table->boolean('is_washroom')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
