@@ -16,7 +16,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
@@ -48,7 +47,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IDocument, IPopoverItem } from '@/interfaces';
+import { IDocument } from '@/interfaces';
 
 const props = defineProps({
     docs: {
@@ -362,6 +361,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                                        Tamanho
+                                                    </p>
+                                                </th>
+                                                <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                                    <p
+                                                        class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                                         Situação
                                                     </p>
                                                 </th>
@@ -379,34 +384,41 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="room in docs.data">
+                                            <tr v-for="doc in docs.data">
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
                                                         <section>
-                                                            <Docx v-if="room.extension === 'docx'" width="40" />
-                                                            <Image v-if="image_extensions.includes(room.extension)"
+                                                            <Docx v-if="doc.extension === 'docx'" width="40" />
+                                                            <Image v-if="image_extensions.includes(doc.extension)"
                                                                 width="40" />
-                                                            <Pdf v-if="room.extension === 'pdf'" width="40" />
-                                                            <Pptx v-if="room.extension === 'pptx'" width="40" />
-                                                            <Xlsx v-if="room.extension === 'xlsx'" width="40" />
-                                                            <Txt v-if="room.extension === 'txt'" width="40" />
+                                                            <Pdf v-if="doc.extension === 'pdf'" width="40" />
+                                                            <Pptx v-if="doc.extension === 'pptx'" width="40" />
+                                                            <Xlsx v-if="doc.extension === 'xlsx'" width="40" />
+                                                            <Txt v-if="doc.extension === 'txt'" width="40" />
                                                         </section>
 
                                                         <div class="">
                                                             <p
                                                                 class="block font-sans text-sm antialiased font-semibold leading-normal text-blue-gray-900">
-                                                                {{ room.description }}
+                                                                {{ doc.description }}
                                                             </p>
                                                             <p class="text-xs text-muted-foreground">{{
-                                                                date_long_format(room.created_at) }}
+                                                                date_long_format(doc.created_at) }}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </td>
-
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="w-max">
-                                                        <div v-if="room.is_active"
+                                                        <p
+                                                            class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                                            {{ doc.size }} KB
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="p-4 border-b border-blue-gray-50">
+                                                    <div class="w-max">
+                                                        <div v-if="doc.is_active"
                                                             class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 rounded-md select-none whitespace-nowrap bg-green-500/20">
                                                             Activo
                                                         </div>
@@ -419,7 +431,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <p
                                                         class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                                        {{ new Date(room.created_at).toDateString() }}
+                                                        {{ new Date(doc.created_at).toDateString() }}
                                                     </p>
                                                 </td>
                                                 <td class="text-right p-4 border-b border-blue-gray-50">
@@ -427,8 +439,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </form>
                                                     <button
                                                         class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#A78C2A] transition-all hover:bg-[#FAF7EB] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-                                                        <a :href="'/storage/'.concat(room.document)"
-                                                            :download="room.document.replace('repository/', '').split('-').at(1)">
+                                                        <a :href="'/storage/'.concat(doc.document)"
+                                                            :download="doc.document.replace('repository/', '').split('-').at(1)">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 640 640" class="w-4 h-4 w-full"
                                                                 fill="currentColor" stroke="currentColor">
@@ -440,7 +452,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <Sheet>
                                                         <SheetTrigger as-child>
 
-                                                            <button @click="get_document_to_edit(room)"
+                                                            <button @click="get_document_to_edit(doc)"
                                                                 class="h-10 max-h-[30px] w-10 max-w-[30px] cursor-pointer select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-[#008236] transition-all hover:bg-[#EDF8F2] active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                                                 type="button">
                                                                 <span class="flex justify-center">
@@ -549,7 +561,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 <AlertDialogDescription class="text-center">
                                                                     Confirma a exclusão permanente da sala<br>
                                                                     <span class="text-[#EC3636]">{{
-                                                                        room.description }}
+                                                                        doc.description }}
                                                                     </span>?
                                                                 </AlertDialogDescription>
                                                             </AlertDialogHeader>
@@ -559,7 +571,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </AlertDialogCancel>
                                                                 <AlertDialogAction
                                                                     class="px-3 cursor-pointer bg-[#EC3636] hover:bg-[#F16A6A]"
-                                                                    @click="delete_document(room)">
+                                                                    @click="delete_document(doc)">
                                                                     Sim, Excluir
                                                                 </AlertDialogAction>
                                                             </AlertDialogFooter>
