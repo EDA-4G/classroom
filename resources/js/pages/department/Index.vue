@@ -236,18 +236,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
                     </section>
 
-                    <!-- Camadas:Número do andares -->
-                    <!-- <div
-                        class="absolute top-2 left-11 flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3L2 9l10 6 10-6-10-6z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2 15l10 6 10-6" />
-                        </svg>
-                        <span class="text-sm font-semibold text-white/90 leading-none">{{ room.level }}</span>
-                    </div> -->
-
-
                     <section>
                         <div v-if="room.status === ClassroomStatus.In_class"
                             class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
@@ -288,13 +276,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </section>
 
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-                        <span class="text-2xl font-bold drop-shadow-md transition-colors">
-                            Sala {{ room.description }}
+                        <span v-if="room.is_washroom" class="text-2xl font-bold drop-shadow-md transition-colors">
+                            {{ room.description }}
                         </span>
-                        <!-- <span class="text-sm font-medium text-white drop-shadow-md">
-                            Dep. {{ dp.description }}
-                        </span> -->
-                    </div>
+                        <span v-else class="text-2xl font-bold drop-shadow-md transition-colors">
+                            {{ room.description }}
+                        </span>
+                        <span>Sala de Aula</span>
+
+                    </div>type(aulas, wc_masculino wc_femnino,secretaria,bibioteca)
                     </Link>
 
 
