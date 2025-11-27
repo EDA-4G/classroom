@@ -49,7 +49,7 @@ class RepositoryController extends Controller
             'description' => $request->description,
             'document' => $document_path,
             'extension' => $document_extension,
-            'size' => $document_size,
+            'size' => round($document_size / 1024),
             'is_active' => $request->is_active
         ]);
 
