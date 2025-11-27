@@ -44,10 +44,12 @@ export enum UsageStateEnum {
 export interface IClassroom {
     id: number;
     description: string;
-    image: string;
+    cover: string;
     level: string;
-    status: ClassroomStatus;
+    access_state?: AccessStateEnum;
+    usage_state?: UsageStateEnum;
     is_fixed: boolean;
+    is_washroom: boolean;
     is_active: boolean;
     created_at?: Date;
 }

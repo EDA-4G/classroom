@@ -36,17 +36,20 @@ class RepositoryController extends Controller
     public function store(Request $request)
     {
         $document_path = null;
+        $document_size = null;
         $document_extension = null;
         if ($request->hasFile('document')) {
             $file_name = rand(0, 9999999) . '-' . $request->file('document')->getClientOriginalName();
             $document_extension = $request->file('document')->getClientOriginalExtension();
             $document_path = $request->file('document')->storeAs('repository', $file_name, 'public');
+            $document_size = $request->file('document')->getSize();
         }
 
         $document = new RepoDocument([
             'description' => $request->description,
             'document' => $document_path,
             'extension' => $document_extension,
+            'size' => $document_size,
             'is_active' => $request->is_active
         ]);
 

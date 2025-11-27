@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Classroom;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ClassroomController extends Controller
@@ -35,17 +36,19 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         $image_path = null;
-        if ($request->hasFile('image')) {
-            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
-            $image_path = $request->file('image')->storeAs('classroom', $file_name, 'public');
+        if ($request->hasFile('cover')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('cover')->getClientOriginalName();
+            $image_path = $request->file('cover')->storeAs('classroom', $file_name, 'public');
         }
 
         $classroom = new Classroom([
             'description' => $request->description,
-            'image' => $image_path,
+            'cover' => $image_path,
             'level' => $request->level,
-            'status' => $request->status,
+            // 'access_state' => $request->access_state,
+            // 'usage_state' => $request->usage_state,
             'is_fixed' => $request->is_fixed,
+            'is_washroom' => $request->is_washroom,
             'is_active' => $request->is_active
         ]);
 
@@ -81,10 +84,10 @@ class ClassroomController extends Controller
     {
         $classroom->id = $request->input('id');
         $classroom->description = $request->input('description');
-        $classroom->image = $request->input('image');
+        $classroom->cover = $request->input('cover');
         $classroom->level = $request->input('level');
-        $classroom->status = $request->input('status');
         $classroom->is_fixed = $request->input('is_fixed');
+        $classroom->is_washroom = $request->input('is_washroom');
         $classroom->is_active = $request->input('is_active');
         $classroom->save();
 
@@ -94,13 +97,17 @@ class ClassroomController extends Controller
     public function cover(Request $request, Classroom $classroom)
     {
         $image_path = null;
-        if ($request->hasFile('image')) {
-            $file_name = rand(0, 9999999) . '-' . $request->file('image')->getClientOriginalName();
-            $image_path = $request->file('image')->storeAs('classroom', $file_name, 'public');
+        if ($request->hasFile('cover')) {
+            $file_name = rand(0, 9999999) . '-' . $request->file('cover')->getClientOriginalName();
+            $image_path = $request->file('cover')->storeAs('classroom', $file_name, 'public');
         }
 
-        $classroom->image = $image_path;
+        $classroom->cover = $image_path;
         $classroom->save();
+
+        if (Storage::disk('public')->exists($image_path)) {
+            Storage::disk('public')->delete($image_path);
+        }
         return redirect()->route('admin_classrooms.index')->with('success', 'Image actualizada com sucesso!');
     }
 
@@ -110,6 +117,10 @@ class ClassroomController extends Controller
     public function destroy(Classroom $classroom)
     {
         $classroom->delete();
+        if (Storage::disk('public')->exists($classroom->cover)) {
+            Storage::disk('public')->delete($classroom->cover);
+        }
+
         return redirect()->route('admin_classrooms.index')->with('success', 'Excluído com sucesso!');
     }
 }

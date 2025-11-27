@@ -65,7 +65,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem } from '@/interfaces';
+import { AccessStateEnum, ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem, UsageStateEnum } from '@/interfaces';
 
 
 
@@ -96,9 +96,10 @@ const dp_id = ref('')
 
 const form = useForm({
     description: '',
-    image: '',
+    cover: '',
     level: '1',
-    status: '',
+    is_fixed: false,
+    is_washroom: false,
     is_active: false,
     department: deps_list.length > 0 ? deps_list[0].value : ''
 })
@@ -127,9 +128,10 @@ const search = () => {
 const e_form = useForm({
     id: 0,
     description: '',
-    image: '',
+    cover: '',
     level: '1',
-    status: '',
+    is_fixed: false,
+    is_washroom: false,
     is_active: false,
     department: deps_list.length > 0 ? deps_list[0].value : ''
 })
@@ -137,22 +139,22 @@ const e_form = useForm({
 const get_classroom_to_edit = (item: IClassroom) => {
     e_form.id = item.id;
     e_form.description = item.description;
-    e_form.image = item.image;
+    e_form.cover = item.cover;
     e_form.level = item.level;
-    e_form.status = item.status;
+    e_form.is_fixed = Boolean(item.is_washroom);
+    e_form.is_washroom = Boolean(item.is_washroom);
     e_form.is_active = Boolean(item.is_active);
     e_form.department = deps_list.length > 0 ? deps_list[0].value : ''
 }
 
 const e_submit = () => {
-    const e_status: ClassroomStatus = ClassroomStatus[e_form.status as keyof typeof ClassroomStatus];
     const classroom: IClassroom = {
         id: e_form.id,
         description: e_form.description,
-        image: e_form.image,
+        cover: e_form.cover,
         level: e_form.level,
-        status: e_status,
         is_fixed: false,
+        is_washroom: e_form.is_washroom,
         is_active: e_form.is_active,
         created_at: new Date()
     }
@@ -174,7 +176,7 @@ const delete_classroom = (classroom: IClassroom) => {
 
 const update_image = (classroom: IClassroom) => {
     const form = new FormData();
-    form.append('image', e_form.image);
+    form.append('cover', e_form.cover);
 
     router.post(admin_classrooms.cover(classroom).url, form, {
         preserveScroll: true,
@@ -340,8 +342,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <div class="grid gap-2">
                                                         <Label for="email">Imagem</Label>
                                                         <Input id="email" type="file" name="room" accept="image/*"
-                                                            @input="form.image = $event.target.files[0]" />
-                                                        <InputError :message="form.errors.image" />
+                                                            class="cursor-pointer"
+                                                            @input="form.cover = $event.target.files[0]" />
+                                                        <InputError :message="form.errors.cover" />
                                                     </div>
                                                     <div class="grid gap-2">
                                                         <Label for="dp">Departamento</Label>
@@ -387,7 +390,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </Command>
                                                             </PopoverContent>
                                                         </Popover>
-                                                        <InputError :message="form.errors.image" />
+                                                        <InputError :message="form.errors.cover" />
                                                     </div>
                                                     <div class="grid gap-2">
                                                         <Label for="email">Nível</Label>
@@ -482,17 +485,16 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 <td class="p-4 border-b border-blue-gray-50">
                                                     <div class="flex items-center gap-3">
 
-
                                                         <Sheet>
                                                             <SheetTrigger as-child>
 
                                                                 <button class="cursor-pointer">
-                                                                    <img v-if="room.image"
-                                                                        :src="'/storage/'.concat(room.image)"
-                                                                        :alt="room.image"
+                                                                    <img v-if="room.cover"
+                                                                        :src="'/storage/'.concat(room.cover)"
+                                                                        :alt="room.description"
                                                                         class="relative inline-block h-10 w-10 hover:border-green-400 !rounded-md object-cover border object-center" />
                                                                     <img v-else src="https://picsum.photos/200/300"
-                                                                        :alt="room.image"
+                                                                        :alt="room.description"
                                                                         class="relative inline-block h-10 w-10 hover:border-green-400 !rounded-md object-cover border object-center" />
                                                                 </button>
 
@@ -517,13 +519,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <div class="grid gap-2">
                                                                         <Label>Imagem Actual</Label>
                                                                         <div class="py-0 w-full h-40">
-                                                                            <img v-if="room.image"
-                                                                                :src="'/storage/'.concat(room.image)"
-                                                                                :alt="room.image"
+                                                                            <img v-if="room.cover"
+                                                                                :src="'/storage/'.concat(room.cover)"
+                                                                                :alt="room.description"
                                                                                 class="relative inline-block w-full h-full object-cover rounded-lg object-cover border object-center" />
                                                                             <img v-else
                                                                                 src="https://picsum.photos/200/300"
-                                                                                :alt="room.image"
+                                                                                :alt="room.cover"
                                                                                 class="relative inline-block w-full h-full object-cover rounded-lg object-cover border object-center" />
                                                                         </div>
                                                                     </div>
@@ -531,7 +533,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         <Label for="email">Nova Imagem</Label>
                                                                         <Input id="email" type="file" name="room"
                                                                             accept="image/*" class="cursor-pointer"
-                                                                            @input="e_form.image = $event.target.files[0]" />
+                                                                            @input="e_form.cover = $event.target.files[0]" />
                                                                         <InputError message="Imagem não inportada." />
                                                                     </div>
 
@@ -624,8 +626,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 <div class="grid gap-2">
                                                                     <Label for="email">Imagem</Label>
                                                                     <Input id="email" type="file" name="room"
-                                                                        @input="e_form.image = $event.target.files[0]" />
-                                                                    <InputError :message="e_form.errors.image" />
+                                                                        @input="e_form.cover = $event.target.files[0]" />
+                                                                    <InputError :message="e_form.errors.cover" />
                                                                 </div>
                                                                 <div class="grid gap-2">
                                                                     <Label for="dp">Departamento</Label>
@@ -675,8 +677,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                             </Command>
                                                                         </PopoverContent>
                                                                     </Popover>
-                                                                    <InputError :message="e_form.errors.image" />
-                                                                </div>
+                                                                    <InputError :message="e_form.errors.cover" />
+                                                                </div>coverco
                                                                 <div class="grid gap-2">
                                                                     <Label for="email">Nível</Label>
                                                                     <ToggleGroup v-model="e_form.level" type="single"
