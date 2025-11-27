@@ -21,7 +21,7 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 import classrooms from '@/routes/classrooms';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import Pagination from '@/components/aux/Pagination.vue';
-import { ClassroomStatus } from '@/interfaces';
+import { ClassroomStatus, TypeOfRoomEnum } from '@/interfaces';
 
 defineProps({
     dps: {
@@ -109,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                    }}</span>
+                            }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -282,7 +282,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                         <span v-else class="text-2xl font-bold drop-shadow-md transition-colors">
                             {{ room.description }}
                         </span>
-                        <span>Sala de Aula</span>
+                        <span v-if="room.type === TypeOfRoomEnum.Classroom">Sala de Aula</span>
+                        <span v-else-if="room.type === TypeOfRoomEnum.Laboratory">Laboratório</span>
+                        <span v-else-if="room.type === TypeOfRoomEnum.Secretary">Secretaria</span>
+                        <span v-else-if="room.type === TypeOfRoomEnum.Library">Biblioteca</span>
+                        <span v-else-if="room.type === TypeOfRoomEnum.MaleToilet">Masculino</span>
+                        <span v-else>Feminino</span>
 
                     </div>type(aulas, wc_masculino wc_femnino,secretaria,bibioteca)
                     </Link>
