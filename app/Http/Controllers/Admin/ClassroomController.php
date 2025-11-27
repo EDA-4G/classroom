@@ -96,19 +96,19 @@ class ClassroomController extends Controller
 
     public function cover(Request $request, Classroom $classroom)
     {
+        if ($classroom->cover <> null)
+            if (Storage::disk('public')->exists($classroom->cover)) {
+                Storage::disk('public')->delete($classroom->cover);
+            }
+
         $image_path = null;
         if ($request->hasFile('cover')) {
             $file_name = rand(0, 9999999) . '-' . $request->file('cover')->getClientOriginalName();
             $image_path = $request->file('cover')->storeAs('classroom', $file_name, 'public');
         }
 
-        if (Storage::disk('public')->exists($classroom->cover)) {
-            Storage::disk('public')->delete($classroom->cover);
-        }
-
         $classroom->cover = $image_path;
         $classroom->save();
-
         return redirect()->route('admin_classrooms.index')->with('success', 'Image actualizada com sucesso!');
     }
 
