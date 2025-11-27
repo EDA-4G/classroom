@@ -89,9 +89,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
 
                 <section class="mb-4 flex justify-between py-4">
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 text-[#038043]">
                         <button @click="scrollPrev"
-                            class="embla__prev cursor-pointer rounded-lg border px-2 py-1 text-sm">
+                            class="embla__prev cursor-pointer rounded-lg border border px-2 py-1 text-sm">
                             <ChevronLeft width="16" />
                         </button>
                         <button @click="scrollNext"
