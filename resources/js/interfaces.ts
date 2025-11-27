@@ -30,7 +30,7 @@ export enum TypeOfRoomEnum {
     Secretary = 'secretary',
     Library = 'library',
     MaleToilet = 'male_toilet',
-    FemaleToilet = 'male_toilet',
+    FemaleToilet = 'female_toilet',
 }
 
 export enum AccessStateEnum {
