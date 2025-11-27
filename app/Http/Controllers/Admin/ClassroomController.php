@@ -102,12 +102,13 @@ class ClassroomController extends Controller
             $image_path = $request->file('cover')->storeAs('classroom', $file_name, 'public');
         }
 
+        if (Storage::disk('public')->exists($classroom->cover)) {
+            Storage::disk('public')->delete($classroom->cover);
+        }
+
         $classroom->cover = $image_path;
         $classroom->save();
 
-        if (Storage::disk('public')->exists($image_path)) {
-            Storage::disk('public')->delete($image_path);
-        }
         return redirect()->route('admin_classrooms.index')->with('success', 'Image actualizada com sucesso!');
     }
 
