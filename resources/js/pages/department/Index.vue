@@ -109,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                            }}</span>
+                    }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -168,7 +168,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         :class="room.status !== ClassroomStatus.None && room.status !== null ? 'cursor-pointer' : ''"
                         class="group relative h-46 h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
 
-                    <img v-if="room.image" :src="'/storage/'.concat(room.image)" :alt="room.description"
+                    <img v-if="room.cover" :src="'/storage/'.concat(room.cover)" :alt="room.description"
                         :class="room.status !== ClassroomStatus.None && room.status !== null ? '' : 'grayscale'"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     <img v-else src="https://placehold.co/600x400?text=S/I" alt="sem imagem"
