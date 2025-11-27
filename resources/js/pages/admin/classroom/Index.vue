@@ -65,7 +65,7 @@ import advertisements from '@/routes/advertisements';
 import { toast } from 'vue-sonner';
 import { ref } from 'vue';
 import Pagination from '@/components/aux/Pagination.vue';
-import { AccessStateEnum, ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem, UsageStateEnum } from '@/interfaces';
+import { AccessStateEnum, ClassroomStatus, IAdvertisement, IClassroom, IDepartment, IPopoverItem, TypeOfRoomEnum, UsageStateEnum } from '@/interfaces';
 
 
 
@@ -93,21 +93,20 @@ const type_of_rooms = [
     { name: 'classroom', Text: 'Sala de Aula' },
     { name: 'secretary', Text: 'Secretaria' },
     { name: 'library', Text: 'Biblioteca' },
-    { name: 'male_toilet', Text: 'WC Masculino' },
-    { name: 'female_toilet', Text: 'WC Feminino' }
+    { name: 'male_toilet', Text: 'Banheiro Masculino' },
+    { name: 'female_toilet', Text: 'Banheiro Feminino' }
 ]
 
-const levels = 18;
+const levels = 16;
 const open = ref(false)
 const dp_id = ref('')
 
 const form = useForm({
     description: '',
-    type: '',
+    type: 'classroom',
     cover: '',
     level: '1',
     is_fixed: false,
-    is_washroom: false,
     is_active: false,
     department: deps_list.length > 0 ? deps_list[0].value : ''
 })
@@ -140,18 +139,17 @@ const e_form = useForm({
     cover: '',
     level: '1',
     is_fixed: false,
-    is_washroom: false,
     is_active: false,
     department: deps_list.length > 0 ? deps_list[0].value : ''
 })
 
 const get_classroom_to_edit = (item: IClassroom) => {
     e_form.id = item.id;
+    e_form.type = item.type;
     e_form.description = item.description;
     e_form.cover = item.cover;
     e_form.level = item.level;
-    e_form.is_fixed = Boolean(item.is_washroom);
-    e_form.is_washroom = Boolean(item.is_washroom);
+    e_form.is_fixed = Boolean(item.is_fixed);
     e_form.is_active = Boolean(item.is_active);
     e_form.department = deps_list.length > 0 ? deps_list[0].value : ''
 }
@@ -160,10 +158,10 @@ const e_submit = () => {
     const classroom: IClassroom = {
         id: e_form.id,
         description: e_form.description,
+        type: TypeOfRoomEnum[e_form.type as keyof typeof TypeOfRoomEnum],
         cover: e_form.cover,
         level: e_form.level,
         is_fixed: false,
-        is_washroom: e_form.is_washroom,
         is_active: e_form.is_active,
         created_at: new Date()
     }
@@ -349,13 +347,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <InputError :message="form.errors.description" />
                                                     </div>
                                                     <div class="grid gap-2">
-                                                        <Label for="email">Tipo</Label>
-                                                        <ToggleGroup v-model="form.type" type="single" default-value="1"
-                                                            class="flex-wrap">
-                                                            <ToggleGroupItem v-for="level in levels" :key="level"
-                                                                :value="level.toString()"
-                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
-                                                                {{ level }}
+                                                        <Label for="email">Tipo de Sala</Label>
+                                                        <ToggleGroup v-model="form.type" type="single"
+                                                            default-value="classroom" class="flex-wrap justify-start">
+                                                            <ToggleGroupItem v-for="type in type_of_rooms"
+                                                                :key="type.name" :value="type.name"
+                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#FAFFFC] hover:text-black max-h-7 border border-green-700 rounded-full cursor-pointer">
+                                                                {{ type.Text }}
                                                             </ToggleGroupItem>
 
                                                         </ToggleGroup>
@@ -416,7 +414,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     <div class="grid gap-2">
                                                         <Label for="email">Nível</Label>
                                                         <ToggleGroup v-model="form.level" type="single"
-                                                            default-value="1" class="flex-wrap">
+                                                            default-value="1" class="flex-wrap justify-start">
                                                             <ToggleGroupItem v-for="level in levels" :key="level"
                                                                 :value="level.toString()"
                                                                 class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
@@ -424,26 +422,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             </ToggleGroupItem>
 
                                                         </ToggleGroup>
-                                                    </div>
-                                                    <div class="inline-flex gap-2 mt-4">
-                                                        <div class="relative inline-block w-11 h-5">
-                                                            <input id="wc" v-model="form.is_washroom" type="checkbox"
-                                                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
-                                                            <label for="switch-component-desc"
-                                                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
-                                                            </label>
-                                                        </div>
-
-                                                        <label for="wc" class="text-green-900 text-sm cursor-pointer">
-                                                            <div>
-                                                                <p class="font-medium">
-                                                                    Possuí lavatório (WC)
-                                                                </p>
-                                                                <p class="text-slate-500">
-                                                                    Necessidades fisiológicas.
-                                                                </p>
-                                                            </div>
-                                                        </label>
                                                     </div>
                                                     <div class="inline-flex gap-2 mt-4">
                                                         <div class="relative inline-block w-11 h-5">
@@ -459,7 +437,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             class="text-green-900 text-sm cursor-pointer">
                                                             <div>
                                                                 <p class="font-medium">
-                                                                    Disponibilizar a sala
+                                                                    Disponibilizar a Sala
                                                                 </p>
                                                                 <p class="text-slate-500">
                                                                     Permitir que esteja disponível para o acesso.
@@ -665,6 +643,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                     <InputError :message="e_form.errors.description" />
                                                                 </div>
                                                                 <div class="grid gap-2">
+                                                                    <Label for="type">Tipo de Sala</Label>
+                                                                    <ToggleGroup v-model="e_form.type" type="single"
+                                                                        default-value="classroom"
+                                                                        class="flex-wrap justify-start">
+                                                                        <ToggleGroupItem v-for="type in type_of_rooms"
+                                                                            :key="type.name" :value="type.name"
+                                                                            class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#FAFFFC] hover:text-black max-h-7 border border-green-700 rounded-full cursor-pointer">
+                                                                            {{ type.Text }}
+                                                                        </ToggleGroupItem>
+
+                                                                    </ToggleGroup>
+                                                                </div>
+                                                                <div class="grid gap-2">
                                                                     <Label for="email">Imagem</Label>
                                                                     <Input id="email" type="file" name="room"
                                                                         @input="e_form.cover = $event.target.files[0]" />
@@ -734,28 +725,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                 </div>
                                                                 <div class="inline-flex gap-2 mt-4">
                                                                     <div class="relative inline-block w-11 h-5">
-                                                                        <input id="wc" v-model="e_form.is_washroom"
-                                                                            type="checkbox"
-                                                                            class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
-                                                                        <label for="switch-component-desc"
-                                                                            class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
-                                                                        </label>
-                                                                    </div>
-
-                                                                    <label for="wc"
-                                                                        class="text-green-900 text-sm cursor-pointer">
-                                                                        <div>
-                                                                            <p class="font-medium">
-                                                                                Possuí lavatório (WC)
-                                                                            </p>
-                                                                            <p class="text-slate-500">
-                                                                                Necessidades fisiológicas.
-                                                                            </p>
-                                                                        </div>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="inline-flex gap-2 mt-4">
-                                                                    <div class="relative inline-block w-11 h-5">
                                                                         <input id="switch-component-desc"
                                                                             v-model="e_form.is_active" type="checkbox"
                                                                             class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
@@ -768,7 +737,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         class="text-green-900 text-sm cursor-pointer">
                                                                         <div>
                                                                             <p class="font-medium">
-                                                                                Disponibilizar a sala
+                                                                                Disponibilizar a Sala
                                                                             </p>
                                                                             <p class="text-slate-500">
                                                                                 Permitir que esteja disponível para o

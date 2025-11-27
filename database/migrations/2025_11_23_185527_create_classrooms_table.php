@@ -18,6 +18,13 @@ return new class extends Migration
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
             $table->string('description');
+            $table->enum('type', [
+                'classroom',
+                'secretary',
+                'library',
+                'male_toilet',
+                'female_toilet'
+            ])->default('classroom');
             $table->string('cover')->nullable();
             $table->string('level');
             $table->enum('access_state', [
@@ -35,7 +42,6 @@ return new class extends Migration
                 'none'
             ])->default('none');
             $table->boolean('is_fixed')->default(false);
-            $table->boolean('is_washroom')->default(false);
             $table->boolean('is_active')->default(false);
             $table->timestamps();
         });

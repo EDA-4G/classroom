@@ -52,12 +52,12 @@ export enum UsageStateEnum {
 export interface IClassroom {
     id: number;
     description: string;
+    type: TypeOfRoomEnum;
     cover: string;
     level: string;
     access_state?: AccessStateEnum;
     usage_state?: UsageStateEnum;
     is_fixed: boolean;
-    is_washroom: boolean;
     is_active: boolean;
     created_at?: Date;
 }

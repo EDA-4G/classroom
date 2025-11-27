@@ -9,12 +9,12 @@ class Classroom extends Model
     protected $fillable = [
         'id',
         'description',
+        'type',
         'cover',
         'level',
         'access_state',
         'usage_state',
         'is_fixed',
-        'is_washroom',
         'is_active',
         'created_at'
     ];
