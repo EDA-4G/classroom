@@ -406,6 +406,26 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                     </div>
                                                     <div class="inline-flex gap-2 mt-4">
                                                         <div class="relative inline-block w-11 h-5">
+                                                            <input id="wc" v-model="form.is_washroom" type="checkbox"
+                                                                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                            <label for="switch-component-desc"
+                                                                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                            </label>
+                                                        </div>
+
+                                                        <label for="wc" class="text-green-900 text-sm cursor-pointer">
+                                                            <div>
+                                                                <p class="font-medium">
+                                                                    Possuí lavatório (WC)
+                                                                </p>
+                                                                <p class="text-slate-500">
+                                                                    Necessidades fisiológicas.
+                                                                </p>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                    <div class="inline-flex gap-2 mt-4">
+                                                        <div class="relative inline-block w-11 h-5">
                                                             <input id="switch-component-desc" v-model="form.is_active"
                                                                 type="checkbox"
                                                                 class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
@@ -418,7 +438,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                             class="text-green-900 text-sm cursor-pointer">
                                                             <div>
                                                                 <p class="font-medium">
-                                                                    Activar Sala
+                                                                    Disponibilizar a sala
                                                                 </p>
                                                                 <p class="text-slate-500">
                                                                     Permitir que esteja disponível para o acesso.
@@ -678,7 +698,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         </PopoverContent>
                                                                     </Popover>
                                                                     <InputError :message="e_form.errors.cover" />
-                                                                </div>coverco
+                                                                </div>
                                                                 <div class="grid gap-2">
                                                                     <Label for="email">Nível</Label>
                                                                     <ToggleGroup v-model="e_form.level" type="single"
@@ -690,6 +710,28 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         </ToggleGroupItem>
 
                                                                     </ToggleGroup>
+                                                                </div>
+                                                                <div class="inline-flex gap-2 mt-4">
+                                                                    <div class="relative inline-block w-11 h-5">
+                                                                        <input id="wc" v-model="e_form.is_washroom"
+                                                                            type="checkbox"
+                                                                            class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-[#024625] cursor-pointer transition-colors duration-300" />
+                                                                        <label for="switch-component-desc"
+                                                                            class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <label for="wc"
+                                                                        class="text-green-900 text-sm cursor-pointer">
+                                                                        <div>
+                                                                            <p class="font-medium">
+                                                                                Possuí lavatório (WC)
+                                                                            </p>
+                                                                            <p class="text-slate-500">
+                                                                                Necessidades fisiológicas.
+                                                                            </p>
+                                                                        </div>
+                                                                    </label>
                                                                 </div>
                                                                 <div class="inline-flex gap-2 mt-4">
                                                                     <div class="relative inline-block w-11 h-5">
@@ -705,7 +747,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                                         class="text-green-900 text-sm cursor-pointer">
                                                                         <div>
                                                                             <p class="font-medium">
-                                                                                Activar Sala
+                                                                                Disponibilizar a sala
                                                                             </p>
                                                                             <p class="text-slate-500">
                                                                                 Permitir que esteja disponível para o
