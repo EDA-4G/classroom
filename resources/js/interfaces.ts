@@ -34,7 +34,7 @@ export enum TypeOfRoomEnum {
     FemaleToilet = 'female_toilet',
 }
 
-export enum AccessStateEnum {
+export enum UsageStateEnum {
     Book = 'book',
     In_class = 'in_class',
     In_room = 'in_room',
@@ -45,7 +45,7 @@ export enum AccessStateEnum {
     None = 'none',
 }
 
-export enum UsageStateEnum {
+export enum AccessStateEnum {
     Lock = 'lock',
     Unlock = 'unlock',
 }
