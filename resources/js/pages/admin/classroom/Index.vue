@@ -89,6 +89,13 @@ let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
     value: dep.id
 }))
 
+const type_of_rooms = [
+    { name: 'classroom', Text: 'Sala de Aula' },
+    { name: 'secretary', Text: 'Secretaria' },
+    { name: 'library', Text: 'Biblioteca' },
+    { name: 'male_toilet', Text: 'WC Masculino' },
+    { name: 'female_toilet', Text: 'WC Feminino' }
+]
 
 const levels = 18;
 const open = ref(false)
@@ -96,6 +103,7 @@ const dp_id = ref('')
 
 const form = useForm({
     description: '',
+    type: '',
     cover: '',
     level: '1',
     is_fixed: false,
@@ -128,6 +136,7 @@ const search = () => {
 const e_form = useForm({
     id: 0,
     description: '',
+    type: '',
     cover: '',
     level: '1',
     is_fixed: false,
@@ -338,6 +347,18 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <Input id="description" v-model="form.description"
                                                             name="description" placeholder="Ex: 202, DEEL" />
                                                         <InputError :message="form.errors.description" />
+                                                    </div>
+                                                    <div class="grid gap-2">
+                                                        <Label for="email">Tipo</Label>
+                                                        <ToggleGroup v-model="form.type" type="single" default-value="1"
+                                                            class="flex-wrap">
+                                                            <ToggleGroupItem v-for="level in levels" :key="level"
+                                                                :value="level.toString()"
+                                                                class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] hover:bg-[#EBFAF2] hover:text-black min-h-7 border border-green-700 rounded-full cursor-pointer">
+                                                                {{ level }}
+                                                            </ToggleGroupItem>
+
+                                                        </ToggleGroup>
                                                     </div>
                                                     <div class="grid gap-2">
                                                         <Label for="email">Imagem</Label>
