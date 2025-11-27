@@ -27,6 +27,7 @@ export enum ClassroomStatus {
 
 export enum TypeOfRoomEnum {
     Classroom = 'classroom',
+    Laboratory = 'laboratory',
     Secretary = 'secretary',
     Library = 'library',
     MaleToilet = 'male_toilet',

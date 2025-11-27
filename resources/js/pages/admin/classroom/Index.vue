@@ -91,10 +91,11 @@ let deps_list: IPopoverItem[] = props.deps.map((dep: IClassroom) => ({
 
 const type_of_rooms = [
     { name: 'classroom', Text: 'Sala de Aula' },
+    { name: 'laboratory', Text: 'Laboratório' },
     { name: 'secretary', Text: 'Secretaria' },
     { name: 'library', Text: 'Biblioteca' },
-    { name: 'male_toilet', Text: 'Banheiro Masculino' },
-    { name: 'female_toilet', Text: 'Banheiro Feminino' }
+    { name: 'male_toilet', Text: 'WC Masculino' },
+    { name: 'female_toilet', Text: 'WC Feminino' }
 ]
 
 const levels = 16;

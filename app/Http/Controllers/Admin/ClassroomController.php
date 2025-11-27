@@ -43,12 +43,10 @@ class ClassroomController extends Controller
 
         $classroom = new Classroom([
             'description' => $request->description,
+            'type' => $request->type,
             'cover' => $image_path,
             'level' => $request->level,
-            // 'access_state' => $request->access_state,
-            // 'usage_state' => $request->usage_state,
             'is_fixed' => $request->is_fixed,
-            'is_washroom' => $request->is_washroom,
             'is_active' => $request->is_active
         ]);
 
@@ -84,10 +82,10 @@ class ClassroomController extends Controller
     {
         $classroom->id = $request->input('id');
         $classroom->description = $request->input('description');
+        $classroom->type = $request->input('type');
         $classroom->cover = $request->input('cover');
         $classroom->level = $request->input('level');
         $classroom->is_fixed = $request->input('is_fixed');
-        $classroom->is_washroom = $request->input('is_washroom');
         $classroom->is_active = $request->input('is_active');
         $classroom->save();
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->enum('type', [
                 'classroom',
+                'laboratory',
                 'secretary',
                 'library',
                 'male_toilet',
