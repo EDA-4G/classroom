@@ -21,7 +21,7 @@ import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, 
 import classrooms from '@/routes/classrooms';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import Pagination from '@/components/aux/Pagination.vue';
-import { ClassroomStatus, TypeOfRoomEnum } from '@/interfaces';
+import { AccessStateEnum, ClassroomStatus, TypeOfRoomEnum } from '@/interfaces';
 
 defineProps({
     dps: {
@@ -109,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                            }}</span>
+                    }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -164,24 +164,26 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </section>
 
                 <section class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                    <Link v-for="room in dp.classrooms" :key="room.id" :href="classrooms.index().url"
-                        :class="room.status !== ClassroomStatus.None && room.status !== null ? 'cursor-pointer' : ''"
-                        class="group relative h-46 h-46 cursor-not-allowed overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
+                    <Link v-for="room in dp.classrooms" :key="room.id"
+                        :href="room.access_state === AccessStateEnum.Unlock ? classrooms.index().url : ''"
+                        :class="room.access_state === AccessStateEnum.Lock ? 'cursor-not-allowed' : 'cursor-pointer'"
+                        class="group relative h-46 h-46 overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
 
                     <img v-if="room.cover" :src="'/storage/'.concat(room.cover)" :alt="room.description"
-                        :class="room.status !== ClassroomStatus.None && room.status !== null ? '' : 'grayscale'"
-                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        :class="room.access_state === AccessStateEnum.Lock ? 'grayscale' : 'group-hover:scale-105'"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500" />
                     <img v-else src="https://placehold.co/600x400?text=S/I" alt="sem imagem"
-                        :class="room.status !== ClassroomStatus.None && room.status !== null ? '' : 'grayscale'"
-                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        :class="room.access_state === AccessStateEnum.Lock ? 'grayscale' : 'group-hover:scale-105'"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500" />
 
 
-                    <div :class="dps.is_active ? 'bg-black/30' : ''" class="absolute inset-0 bg-gray-800/60"></div>
+                    <div :class="room.access_state === AccessStateEnum.Lock ? 'bg-gray-500 opacity-80 ' : 'bg-gray-700 opacity-60'"
+                        class="absolute inset-0"></div>
 
                     <section class="absolute top-2 left-2 flex items-center gap-2">
-                        <!-- absolute top-2 left-2  -->
+
                         <!-- Aberto -->
-                        <div v-if="room.status === ClassroomStatus.Unlock"
+                        <div v-if="room.access_state === AccessStateEnum.Unlock"
                             class="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-600/90 shadow-sm border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -192,7 +194,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <!-- Fechado -->
-                        <div v-if="room.status === ClassroomStatus.None || room.status === null"
+                        <div v-else
                             class="flex items-center justify-center w-7 h-7 rounded-full bg-red-800/95 shadow-md border border-white/20 backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white/90" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -200,27 +202,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     d="M12 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M6 10V8a6 6 0 1 1 12 0v2M5 10h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z" />
-                            </svg>
-                        </div>
-
-                        <!-- Manutencao -->
-                        <div v-if="room.status === ClassroomStatus.Maintenance"
-                            class="flex items-center justify-center w-7 h-7 rounded-full bg-[#1E85C9] shadow-md border border-white/20 backdrop-blur-sm">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-4 h-4 text-white/90"
-                                fill="currentColor" stroke="currentColor">
-                                <path
-                                    d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z" />
-                            </svg>
-                        </div>
-
-                        <!-- Lavar o chão -->
-                        <div v-if="room.status === ClassroomStatus.To_wash"
-                            class="flex items-center justify-center w-7 h-7 rounded-full bg-[#C9871E] shadow-md border border-white/20 backdrop-blur-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-4 h-4 text-white/90"
-                                fill="currentColor" stroke="currentColor">
-                                <path
-                                    d="M474.6 188.1C495.3 203.7 520.6 218.8 548.8 222.6C561.9 224.4 574 215.1 575.8 202C577.6 188.9 568.3 176.8 555.2 175C539.3 172.9 522 163.7 503.5 149.8C465.1 120.8 413 120.8 374.5 149.8C350.5 167.9 333.8 176.1 320 176.1C306.2 176.1 289.5 167.9 265.5 149.8C227.1 120.8 175 120.8 136.5 149.8C118 163.7 100.7 172.9 84.8 175C71.7 176.8 62.4 188.8 64.2 202C66 215.2 78 224.4 91.2 222.6C119.4 218.8 144.8 203.7 165.4 188.1C186.7 172 215.3 172 236.6 188.1C260.8 206.4 288.9 224 320 224C351.1 224 379.1 206.3 403.4 188.1C424.7 172 453.3 172 474.6 188.1zM474.6 332.1C495.3 347.7 520.6 362.8 548.8 366.6C561.9 368.4 574 359.1 575.8 346C577.6 332.9 568.3 320.8 555.2 319C539.3 316.9 522 307.7 503.5 293.8C465.1 264.8 413 264.8 374.5 293.8C350.5 311.9 333.8 320.1 320 320.1C306.2 320.1 289.5 311.9 265.5 293.8C227.1 264.8 175 264.8 136.5 293.8C118 307.7 100.7 316.9 84.8 319C71.7 320.7 62.4 332.8 64.2 346C66 359.2 78 368.4 91.2 366.6C119.4 362.8 144.8 347.7 165.4 332.1C186.7 316 215.3 316 236.6 332.1C260.8 350.4 288.9 368 320 368C351.1 368 379.1 350.3 403.4 332.1C424.7 316 453.3 316 474.6 332.1zM403.4 476.1C424.7 460 453.3 460 474.6 476.1C495.3 491.7 520.6 506.8 548.8 510.6C561.9 512.4 574 503.1 575.8 490C577.6 476.9 568.3 464.8 555.2 463C539.3 460.9 522 451.7 503.5 437.8C465.1 408.8 413 408.8 374.5 437.8C350.5 455.9 333.8 464.1 320 464.1C306.2 464.1 289.5 455.9 265.5 437.8C227.1 408.8 175 408.8 136.5 437.8C118 451.7 100.7 460.9 84.8 463C71.7 464.8 62.4 476.8 64.2 490C66 503.2 78 512.4 91.2 510.6C119.4 506.8 144.8 491.7 165.4 476.1C186.7 460 215.3 460 236.6 476.1C260.8 494.4 288.9 512 320 512C351.1 512 379.1 494.3 403.4 476.1z" />
                             </svg>
                         </div>
 
