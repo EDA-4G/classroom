@@ -25,6 +25,14 @@ export enum ClassroomStatus {
     None = 'none',
 }
 
+export enum TypeOfRoomEnum {
+    Classroom = 'classroom',
+    Secretary = 'secretary',
+    Library = 'library',
+    MaleToilet = 'male_toilet',
+    FemaleToilet = 'male_toilet',
+}
+
 export enum AccessStateEnum {
     Book = 'book',
     In_class = 'in_class',
