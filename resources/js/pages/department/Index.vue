@@ -109,7 +109,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                    }}</span>
+                            }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
@@ -165,7 +165,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                 <section class="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
                     <Link v-for="room in dp.classrooms" :key="room.id"
-                        :href="room.access_state === AccessStateEnum.Unlock ? classrooms.index().url : ''"
+                        :href="room.access_state === AccessStateEnum.Unlock ? classrooms.index().url : $page.url"
                         :class="room.access_state === AccessStateEnum.Lock ? 'cursor-not-allowed' : 'cursor-pointer'"
                         class="group relative h-46 h-46 overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl">
 
