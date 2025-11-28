@@ -81,7 +81,8 @@ const filters: Filter[] = [
     { id: 1, name: 'Todas' },
     { id: 2, name: 'Em Aulas' },
     { id: 3, name: 'Abertas' },
-    { id: 4, name: 'Fechadas' }
+    { id: 4, name: 'Fechadas' },
+    { id: 5, name: 'WC' }
 ]
 
 
