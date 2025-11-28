@@ -288,7 +288,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </svg>
                                 </span>
 
-                                Lavar Chão
+                                Limpeza
                             </button>
                             <button class="border py-6 rounded-lg text-sm">
                                 <span class="w-full flex justify-center">
