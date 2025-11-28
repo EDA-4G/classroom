@@ -246,7 +246,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                             Repositório
                             </Link>
                             <button class="border py-6 rounded-lg text-sm">
-                                <!-- <Play class="w-full size-5" /> -->
                                 <span class="w-full flex justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24"
                                         fill="currentColor" stroke="currentColor">
@@ -257,7 +256,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 Iniciar Aula
                             </button>
                             <button class="border py-6 rounded-lg text-sm">
-                                <!-- <UserRound class="w-full size-5" /> -->
                                 <span class="w-full flex justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24"
                                         fill="currentColor" stroke="currentColor">
@@ -268,7 +266,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 Notificar
                             </button>
                             <button class="border py-6 rounded-lg text-sm">
-                                <!-- <Album class="w-full size-5" /> -->
                                 <span class="w-full flex justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="24"
                                         fill="currentColor" stroke="currentColor">
@@ -343,7 +340,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <Item variant="outline" size="sm" as-child>
                                 <a href="#">
                                     <ItemMedia>
-                                        <!-- <BadgeCheckIcon class="size-5" /> -->
                                         <Info class="size-5" />
                                     </ItemMedia>
                                     <ItemContent>
@@ -357,7 +353,6 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <Item variant="outline" size="sm" as-child>
                                 <a href="#">
                                     <ItemMedia>
-                                        <!-- <BadgeCheckIcon class="size-5" /> -->
                                         <Info class="size-5" />
                                     </ItemMedia>
                                     <ItemContent>
