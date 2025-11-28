@@ -44,6 +44,7 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover'
 const frameworks = [
+    { value: "0", label: "0" },
     { value: "1", label: "1" },
     { value: "2", label: "2" },
     { value: "3", label: "3" },
@@ -140,7 +141,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                    }}</span>
+                            }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
