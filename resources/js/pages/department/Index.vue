@@ -181,10 +181,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 
                         <div class="grid gap-2 order-3">
                             <Popover id="dp" v-model:open="open">
-                                <!-- hover:bg-[#1fad7e] hover:border-[#1fad7e] -->
                                 <PopoverTrigger as-child>
                                     <Button variant="outline" role="combobox" :aria-expanded="open"
-                                        class="font-normal justify-between cursor-pointer">
+                                        class="h-8  border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
                                         <Layers width="16" />
                                         <p>Nível</p>
                                         {{
@@ -220,16 +219,16 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </Command>
                                 </PopoverContent>
                             </Popover>
-                            <InputError message="form.errors.cover" />
+
                         </div>
 
 
                         <section>
                             <ToggleGroup type="single" :model-value="filter" @update:model-value="handleToggleGroup"
-                                class="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-4">
+                                class="flex gap-2 flex-wrap justify-start">
                                 <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
                                     @click="me(filter.name)"
-                                    class="data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3 max-h-6 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
+                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3.5 max-h-6.5 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
                                     {{ filter.name }}
                                 </ToggleGroupItem>
                             </ToggleGroup>
@@ -252,7 +251,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500" />
 
 
-                    <div :class="room.access_state === AccessStateEnum.Lock ? 'bg-gray-500 opacity-80 ' : 'bg-gray-700 opacity-60'"
+                    <div :class="room.access_state === AccessStateEnum.Lock ? 'bg-gray-500 opacity-70 ' : 'bg-gray-700 opacity-60'"
                         class="absolute inset-0"></div>
 
                     <section class="absolute top-2 left-2 flex items-center gap-2">
@@ -292,9 +291,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
                     </section>
 
-                    <section>
+                    <section class="absolute top-2 right-2">
                         <div v-if="room.usage_state === UsageStateEnum.In_class"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -304,7 +303,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.Test"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -314,7 +313,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.Exam"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -324,7 +323,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.In_room"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -334,7 +333,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.In_room"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -344,7 +343,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.Book"
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-2.5 w-2">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
@@ -354,11 +353,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                         </div>
 
                         <div v-else
-                            class="absolute top-2 right-2 flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            class="flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-4 w-4">
-                                <!-- <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span> -->
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
                                     stroke="currentColor">
                                     <path
