@@ -17,8 +17,13 @@ use App\Http\Controllers\Admin\RepositoryController as AdminRepositoryController
 use App\Http\Controllers\HomeController;
 use App\Models\Advertisement;
 
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canRegister' => Features::enabled(Features::registration()),
+//     ]);
+// })->name('home');
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('auth/Login', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
