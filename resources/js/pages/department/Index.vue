@@ -294,65 +294,39 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <section class="absolute top-2 right-2">
                         <div v-if="room.usage_state === UsageStateEnum.In_class"
                             class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
+                            <span class="relative flex h-2.5 w-2.5">
                                 <span
                                     class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
                                 <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
                             </span>
-                            <span>Aula</span>
+                            <span>Em Aula</span>
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.Test"
-                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
-                                <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                            class="flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            <span class="relative flex h-4 w-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
+                                    stroke="currentColor">
+                                    <path
+                                        d="M472.8 64C445.4 64 419.2 74.9 399.8 94.2L382.1 112L369 98.9C340.9 70.8 295.3 70.8 267.2 98.9L167 199C157.6 208.4 157.6 223.6 167 232.9C176.4 242.2 191.6 242.3 200.9 232.9L301.1 132.9C310.5 123.5 325.7 123.5 335 132.9L348.1 145.9L248 246.1L393.9 392L545.8 240.2C565.2 220.8 576 194.6 576 167.2C576 110.2 529.8 64 472.8 64zM166.4 327.7C116.5 377.6 83.1 441.7 70.9 511.2L64.4 547.8C63 555.6 65.5 563.4 71 569C76.5 574.6 84.4 577 92.1 575.7L128.8 569.2C198.3 556.9 262.4 523.6 312.3 473.7L360 425.9L214.1 280L166.4 327.7z" />
+                                </svg>
                             </span>
                             <span>Avaliação</span>
                         </div>
 
                         <div v-else-if="room.usage_state === UsageStateEnum.Exam"
-                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
-                                <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
+                            class="flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            <span class="relative flex h-4 w-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
+                                    stroke="currentColor">
+                                    <path
+                                        d="M539.3 64.1C549.2 63.3 558.9 67.1 565.9 74.1C572.9 81.1 576.7 90.8 575.9 100.7C571.9 150 558.5 226.9 529.6 300.4C527.8 304.9 524.1 308.3 519.4 309.7L438.5 334C434.6 335.2 432 338.7 432 342.8C432 347.9 436.1 352 441.2 352L479.8 352C491.8 352 499.5 364.8 493.3 375.1C489.3 381.8 485 388.3 480.6 394.7C478.6 397.6 475.6 399.7 472.2 400.8L374.5 430C370.6 431.2 368 434.7 368 438.8C368 443.9 372.1 448 377.2 448L393.2 448C407.8 448 414.2 465.4 402 473.4C334 518.4 264.3 516.7 219.6 504.7C206.9 501.3 195.6 494.8 185.2 486.8L112 560C103.2 568.8 88.8 568.8 80 560C71.2 551.2 71.2 536.8 80 528L160 448L160.5 448.5C161.2 447.2 162.1 446 163.2 444.9L320 288C328.8 279.2 328.8 264.8 320 256C311.2 247.2 296.8 247.2 288 256L153.7 390.2C144.8 399.1 129.7 394.6 128.7 382C124.4 328.8 138 258.9 201.3 195.6C292.4 104.5 455.5 70.9 539.2 64.1z" />
+                                </svg>
                             </span>
                             <span>Exame</span>
                         </div>
 
-                        <div v-else-if="room.usage_state === UsageStateEnum.In_room"
-                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
-                                <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
-                            </span>
-                            <span>Na Sala</span>
-                        </div>
-
-                        <div v-else-if="room.usage_state === UsageStateEnum.In_room"
-                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
-                                <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
-                            </span>
-                            <span>Em Manuntenção</span>
-                        </div>
-
-                        <div v-else-if="room.usage_state === UsageStateEnum.Book"
-                            class="flex animate-[pulse_2s_infinite] items-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
-                            <span class="relative flex h-2.5 w-2">
-                                <span
-                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-200 opacity-75"></span>
-                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
-                            </span>
-                            <span>Reservado</span>
-                        </div>
-
-                        <div v-else
+                        <div v-else-if="room.usage_state === UsageStateEnum.Maintenance"
                             class="flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
                             <span class="relative flex h-4 w-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
@@ -363,6 +337,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                             </span>
                             <span>Inspecção</span>
                         </div>
+
+                        <div v-else-if="room.usage_state === UsageStateEnum.Book"
+                            class="flex animate-[pulse_2s_infinite] items-center gap-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-2 py-1 text-xs font-semibold text-white ring-1 ring-white/40">
+                            <span class="relative flex h-4 w-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
+                                    stroke="currentColor">
+                                    <path
+                                        d="M320 128C302.3 128 288 142.3 288 160C288 177.7 302.3 192 320 192C337.7 192 352 177.7 352 160C352 142.3 337.7 128 320 128zM224 160C224 107 267 64 320 64C373 64 416 107 416 160C416 201.8 389.3 237.4 352 250.5L352 508.4C414.9 494.1 462.2 438.7 463.9 371.9L447.8 386C437.8 394.7 422.7 393.7 413.9 383.7C405.1 373.7 406.2 358.6 416.2 349.8L480.2 293.8C489.2 285.9 502.8 285.9 511.8 293.8L575.8 349.8C585.8 358.5 586.8 373.7 578.1 383.7C569.4 393.7 554.2 394.7 544.2 386L528 371.9C525.9 485 433.6 576 320 576C206.4 576 114.1 485 112 371.9L95.8 386.1C85.8 394.8 70.7 393.8 61.9 383.8C53.1 373.8 54.2 358.7 64.2 349.9L128.2 293.9C137.2 286 150.8 286 159.8 293.9L223.8 349.9C233.8 358.6 234.8 373.8 226.1 383.8C217.4 393.8 202.2 394.8 192.2 386.1L176.1 372C177.9 438.8 225.2 494.2 288 508.5L288 250.6C250.7 237.4 224 201.9 224 160.1z" />
+                                </svg>
+                            </span>
+                            <span>Reservado</span>
+                        </div>
+                         
                     </section>
 
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
