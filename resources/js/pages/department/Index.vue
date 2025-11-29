@@ -141,16 +141,16 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </InputGroupAddon>
             </InputGroup>
             <section v-for="dp in dps.data" :key="dp.id">
-                <div class="py-4">
+                <div class="pb-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                    }}</span>
+                            }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
                     <div class="flex justify-between gap-2 pb-2">
 
-                        <div class="flex flex-wrap gap-2 order-3">
+                        <div class="flex flex-wrap justify-end gap-2 order-3">
                             <Popover id="state" v-model:open="opin">
                                 <PopoverTrigger as-child>
                                     <Button variant="outline" role="combobox" :aria-expanded="opin"
@@ -238,7 +238,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 class="flex gap-2 flex-wrap justify-start">
                                 <ToggleGroupItem v-for="filter in filters" :key="filter.id" :value="filter.name"
                                     @click="me(filter.name)"
-                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-3 py-3.5 max-h-6.5 text-xs hover:bg-[#048B5F] hover:text-white transition-none border border-gray-700 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
+                                    class="w-fit data-[state=on]:bg-[#04724D] data-[state=on]:text-white data-[state=on]:border-[#04724D] px-2.5 py-3.5 max-h-6.5 text-sm hover:bg-[#048B5F] hover:text-white transition-none border border-gray-400 hover:border-[#048B5F] text-gray-700 cursor-pointer rounded-full">
                                     {{ filter.name }}
                                 </ToggleGroupItem>
                             </ToggleGroup>
