@@ -72,6 +72,9 @@ const type_of_rooms = [
 const open = ref(false)
 const dp_id = ref('')
 
+const opin = ref(false)
+const type_r_value = ref('')
+
 interface Filter {
     id: number;
     name: string
@@ -79,10 +82,9 @@ interface Filter {
 
 const filters: Filter[] = [
     { id: 1, name: 'Todas' },
-    { id: 2, name: 'Em Aulas' },
     { id: 3, name: 'Abertas' },
     { id: 4, name: 'Fechadas' },
-    { id: 5, name: 'WC' }
+    { id: 5, name: 'Reservadas' }
 ]
 
 
@@ -142,46 +144,53 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div class="py-4">
                     <p class="text-2xl font-bold">{{ dp.description }}</p>
                     <p class="text-sm text-gray-400">Encontrados <span class="font-semibold">{{ dp.classrooms.length
-                            }}</span>
+                    }}</span>
                         salas e <span class="font-semibold">{{ dp.classrooms.length }}</span> wc's</p>
                 </div>
                 <section>
                     <div class="flex justify-between gap-2 pb-2">
-                        <!-- <Combobox v-model="value" by="label" class="order-3">
-                            <ComboboxAnchor as-child class="max-w-23 hover:bg-[#1fad7e] hover:border-[#1fad7e]">
-                                <ComboboxTrigger as-child>
-                                    <Button
-                                        class="flex max-h-6 items-center font-semibold order-2 gap-2 text-sm bg-[#0e976a] text-white border border-[#0e976a] px-2 cursor-pointer rounded-lg">
+
+                        <div class="flex gap-2 order-3">
+                            <Popover id="state" v-model:open="opin">
+                                <PopoverTrigger as-child>
+                                    <Button variant="outline" role="combobox" :aria-expanded="opin"
+                                        class="h-8 max-w-50 border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
                                         <Layers width="16" />
-                                        <p>Nível</p>
-                                        <p>0</p>
+                                        <!-- <p>Estado</p> -->
+                                        {{
+                                            type_r_value.toString()
+                                                ? type_of_rooms.find((item: any) => item.name
+                                                    === type_r_value)?.Text
+                                                : 'Selecionar estado ..'
+                                        }}
+                                        <ChevronsUpDownIcon class="h-4 w-4 shrink-0 opacity-50" />
                                     </Button>
-                                </ComboboxTrigger>
-                            </ComboboxAnchor>
+                                </PopoverTrigger>
+                                <PopoverContent as-child class="p-0 max-w-50">
+                                    <Command>
+                                        <CommandInput placeholder="Buscar ..." />
+                                        <CommandList>
+                                            <CommandEmpty class="italic">
+                                                Nenhum <br>nível encontrado.
+                                            </CommandEmpty>
+                                            <CommandGroup>
+                                                <CommandItem class="cursor-pointer" v-for="framework in type_of_rooms"
+                                                    :key="framework.name" :value="framework.name" @select="() => {
+                                                        type_r_value = type_r_value === framework.name ? '' : framework.name
+                                                        opin = false
+                                                    }">
+                                                    <CheckIcon :class="cn(
+                                                        'mr-2 h-4 w-4',
+                                                        type_r_value === framework.name ? 'opacity-100' : 'opacity-0',
+                                                    )" />
+                                                    {{ framework.Text }}
+                                                </CommandItem>
+                                            </CommandGroup>
+                                        </CommandList>
+                                    </Command>
+                                </PopoverContent>
+                            </Popover>
 
-                            <ComboboxList class="max-w-23">
-                                <div class="relative w-full max-w-sm items-center">
-                                    <ComboboxInput
-                                        class="pl-9 focus-visible:ring-0 border-0 border-b rounded-none h-10" />
-                                    <span class="absolute start-0 inset-y-0 flex items-center justify-center px-3">
-                                        <Search class="size-4 text-muted-foreground" />
-                                    </span>
-                                </div>
-
-                                <ComboboxEmpty class="italic">
-                                    Nenhum <br>nível encontrado.
-                                </ComboboxEmpty>
-
-                                <ComboboxGroup>
-                                    <ComboboxItem v-for="framework in frameworks" :key="framework.value"
-                                        :value="framework">
-                                        {{ framework.label }}
-                                    </ComboboxItem>
-                                </ComboboxGroup>
-                            </ComboboxList>
-                        </Combobox> -->
-
-                        <div class="grid gap-2 order-3">
                             <Popover id="dp" v-model:open="open">
                                 <PopoverTrigger as-child>
                                     <Button variant="outline" role="combobox" :aria-expanded="open"
