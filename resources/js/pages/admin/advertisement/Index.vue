@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/card'
 
 import { Label } from '@/components/ui/label'
-import { Plus, Search, Save, RefreshCcw } from "lucide-vue-next"
+import { Plus, Search, Save, RefreshCcw, ChartNoAxesColumn } from "lucide-vue-next"
 import {
     Sheet,
     SheetClose,
@@ -212,6 +212,24 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </svg>
                     Perdidos e Achados
                     </Link>
+                    <Link href="" role="tab"
+                        class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                        stroke="currentColor">
+                        <path
+                            d="M320 48C337.7 48 352 62.3 352 80L352 98.3C450.1 112.3 527.7 189.9 541.7 288L560 288C577.7 288 592 302.3 592 320C592 337.7 577.7 352 560 352L541.7 352C527.7 450.1 450.1 527.7 352 541.7L352 560C352 577.7 337.7 592 320 592C302.3 592 288 577.7 288 560L288 541.7C189.9 527.7 112.3 450.1 98.3 352L80 352C62.3 352 48 337.7 48 320C48 302.3 62.3 288 80 288L98.3 288C112.3 189.9 189.9 112.3 288 98.3L288 80C288 62.3 302.3 48 320 48zM160 320C160 408.4 231.6 480 320 480C408.4 480 480 408.4 480 320C480 231.6 408.4 160 320 160C231.6 160 160 231.6 160 320zM320 224C373 224 416 267 416 320C416 373 373 416 320 416C267 416 224 373 224 320C224 267 267 224 320 224z" />
+                    </svg>
+                    Cursos Académicos
+                    </Link>
+                    <Link href="" role="tab"
+                        class="px-3 py-2 text-sm font-medium hover:bg-gray-100 cursor-pointer rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="20" fill="currentColor"
+                        stroke="currentColor">
+                        <path
+                            d="M320 48C337.7 48 352 62.3 352 80L352 98.3C450.1 112.3 527.7 189.9 541.7 288L560 288C577.7 288 592 302.3 592 320C592 337.7 577.7 352 560 352L541.7 352C527.7 450.1 450.1 527.7 352 541.7L352 560C352 577.7 337.7 592 320 592C302.3 592 288 577.7 288 560L288 541.7C189.9 527.7 112.3 450.1 98.3 352L80 352C62.3 352 48 337.7 48 320C48 302.3 62.3 288 80 288L98.3 288C112.3 189.9 189.9 112.3 288 98.3L288 80C288 62.3 302.3 48 320 48zM160 320C160 408.4 231.6 480 320 480C408.4 480 480 408.4 480 320C480 231.6 408.4 160 320 160C231.6 160 160 231.6 160 320zM320 224C373 224 416 267 416 320C416 373 373 416 320 416C267 416 224 373 224 320C224 267 267 224 320 224z" />
+                    </svg>
+                    Disciplinas
+                    </Link>
                 </div>
 
 
@@ -257,6 +275,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                     <div
                                         class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                                        <button @click="search"
+                                            class="flex items-center gap-1 justify-center select-none w-full lg:w-fit cursor-pointer rounded-lg border border-gray-300 lg:border-gray-300 py-1.5 px-4 text-center align-middle font-sans text-sm text-[#008236] lg:text-gray-900 hover:text-green-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                            type="button">
+                                            <ChartNoAxesColumn width="16" />
+                                            Métricas
+                                        </button>
                                         <form id="advertisement" @submit.prevent="submit" class="m-0"
                                             enctype="multipart/form-data"></form>
                                         <Sheet>
