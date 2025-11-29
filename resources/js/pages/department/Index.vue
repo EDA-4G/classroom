@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Button } from '@/components/ui/button';
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import { Search, ChevronsUpDownIcon, Layers, CheckIcon } from "lucide-vue-next"
+import { Search, ChevronsUpDownIcon, Layers, CheckIcon, BrickWall } from "lucide-vue-next"
 import { ref } from "vue"
 import { Combobox, ComboboxAnchor, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxList, ComboboxTrigger } from "@/components/ui/combobox"
 import classrooms from '@/routes/classrooms';
@@ -64,16 +64,16 @@ const type_of_rooms = [
     { name: 'laboratory', Text: 'Laboratório' },
     { name: 'secretary', Text: 'Secretaria' },
     { name: 'library', Text: 'Biblioteca' },
-    { name: 'male_toilet', Text: 'WC Masculino' },
-    { name: 'female_toilet', Text: 'WC Feminino' }
+    { name: 'wc', Text: 'WC' },
+    { name: 'all', Text: 'Todos' }
 ]
 
 
 const open = ref(false)
-const dp_id = ref('')
+const dep_value = ref('0')
 
 const opin = ref(false)
-const type_r_value = ref('')
+const type_r_value = ref('all')
 
 interface Filter {
     id: number;
@@ -150,18 +150,17 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <section>
                     <div class="flex justify-between gap-2 pb-2">
 
-                        <div class="flex gap-2 order-3">
+                        <div class="flex flex-wrap gap-2 order-3">
                             <Popover id="state" v-model:open="opin">
                                 <PopoverTrigger as-child>
                                     <Button variant="outline" role="combobox" :aria-expanded="opin"
-                                        class="h-8 max-w-50 border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
-                                        <Layers width="16" />
-                                        <!-- <p>Estado</p> -->
+                                        class="h-7.5 max-w-50 border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
+                                        <BrickWall width="16" />
                                         {{
                                             type_r_value.toString()
                                                 ? type_of_rooms.find((item: any) => item.name
                                                     === type_r_value)?.Text
-                                                : 'Selecionar estado ..'
+                                                : 'Tipo de sala ..'
                                         }}
                                         <ChevronsUpDownIcon class="h-4 w-4 shrink-0 opacity-50" />
                                     </Button>
@@ -171,7 +170,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                         <CommandInput placeholder="Buscar ..." />
                                         <CommandList>
                                             <CommandEmpty class="italic">
-                                                Nenhum <br>nível encontrado.
+                                                Nenhum <br>tipo encontrado.
                                             </CommandEmpty>
                                             <CommandGroup>
                                                 <CommandItem class="cursor-pointer" v-for="framework in type_of_rooms"
@@ -194,13 +193,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <Popover id="dp" v-model:open="open">
                                 <PopoverTrigger as-child>
                                     <Button variant="outline" role="combobox" :aria-expanded="open"
-                                        class="h-8  border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
+                                        class="h-7.5  border border-[#A1B2AD] font-normal justify-between cursor-pointer rounded-xl">
                                         <Layers width="16" />
                                         <p>Nível</p>
                                         {{
-                                            dp_id.toString()
+                                            dep_value.toString()
                                                 ? frameworks.find((item: IPopoverItem) => item.value
-                                                    === dp_id)?.label
+                                                    === dep_value)?.label
                                                 : '0'
                                         }}
                                         <ChevronsUpDownIcon class="h-4 w-4 shrink-0 opacity-50" />
@@ -216,12 +215,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                             <CommandGroup>
                                                 <CommandItem class="cursor-pointer" v-for="framework in frameworks"
                                                     :key="framework.value" :value="framework.value" @select="() => {
-                                                        dp_id = dp_id === framework.value ? '' : framework.value
+                                                        dep_value = dep_value === framework.value ? '' : framework.value
                                                         open = false
                                                     }">
                                                     <CheckIcon :class="cn(
                                                         'mr-2 h-4 w-4',
-                                                        dp_id === framework.value ? 'opacity-100' : 'opacity-0',
+                                                        dep_value === framework.value ? 'opacity-100' : 'opacity-0',
                                                     )" />
                                                     {{ framework.label }}
                                                 </CommandItem>
