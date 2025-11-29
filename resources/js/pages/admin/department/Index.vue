@@ -280,6 +280,14 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                         <InputError :message="form.errors.description" />
                                                     </div>
 
+                                                    <div class="grid gap-2">
+                                                        <Label for="levels">Niveis</Label>
+                                                        <Input id="levels" type="number" v-model="form.description"
+                                                            min="0" name="levels"
+                                                            placeholder="Informe o número de niveis" />
+                                                        <InputError :message="form.errors.description" />
+                                                    </div>
+
                                                     <div class="inline-flex gap-2">
                                                         <div class="relative inline-block w-11 h-5">
                                                             <input id="switch-component-desc" v-model="form.is_active"
