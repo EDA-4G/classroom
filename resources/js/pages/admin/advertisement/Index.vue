@@ -303,6 +303,12 @@ const breadcrumbs: BreadcrumbItem[] = [
                                                 </SheetHeader>
                                                 <section class="grid gap-4 px-4">
                                                     <div class="grid gap-2">
+                                                        <Label for="description">Título</Label>
+                                                        <Input id="description" v-model="form.description"
+                                                            name="description" placeholder="Informe a descrição" />
+                                                        <InputError :message="form.errors.description" />
+                                                    </div>
+                                                    <div class="grid gap-2">
                                                         <Label for="description">Descrição</Label>
                                                         <Input id="description" v-model="form.description"
                                                             name="description" placeholder="Informe a descrição" />
